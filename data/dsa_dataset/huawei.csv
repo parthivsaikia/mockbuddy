@@ -1,0 +1,412 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+221,221. Maximal Square,"Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 4
+
+Example 2:
+
+Input: matrix = [[""0"",""1""],[""1"",""0""]]
+Output: 1
+
+Example 3:
+Input: matrix = [[""0""]]
+Output: 0
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 300
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Matrix",Medium,,"85,769,1312,2200","Maximal Rectangle,Largest Plus Sign,Count Artifacts That Can Be Extracted,Stamping the Grid"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+45,45. Jump Game II,"You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
+Each element nums[i] represents the maximum length of a forward jump from index i. In other words, if you are at nums[i], you can jump to any nums[i + j] where:
+
+0 <= j <= nums[i] and
+i + j < n
+
+Return the minimum number of jumps to reach nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].
+ 
+Example 1:
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+Example 2:
+Input: nums = [2,3,0,1,4]
+Output: 2
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+0 <= nums[i] <= 1000
+It's guaranteed that you can reach nums[n - 1].
+
+","Array,Dynamic Programming,Greedy",Medium,,"55,1428,2001","Jump Game,Jump Game III,Jump Game VII"
+43,43. Multiply Strings,"Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
+ 
+Example 1:
+Input: num1 = ""2"", num2 = ""3""
+Output: ""6""
+Example 2:
+Input: num1 = ""123"", num2 = ""456""
+Output: ""56088""
+
+ 
+Constraints:
+
+1 <= num1.length, num2.length <= 200
+num1 and num2 consist of digits only.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+
+","Math,String,Simulation",Medium,,"2,66,67,415","Add Two Numbers,Plus One,Add Binary,Add Strings"
+3,3. Longest Substring Without Repeating Characters,"Given a string s, find the length of the longest substring without repeating characters.
+ 
+Example 1:
+Input: s = ""abcabcbb""
+Output: 3
+Explanation: The answer is ""abc"", with the length of 3.
+
+Example 2:
+Input: s = ""bbbbb""
+Output: 1
+Explanation: The answer is ""b"", with the length of 1.
+
+Example 3:
+Input: s = ""pwwkew""
+Output: 3
+Explanation: The answer is ""wke"", with the length of 3.
+Notice that the answer must be a substring, ""pwke"" is a subsequence and not a substring.
+
+ 
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+","Hash Table,String,Sliding Window",Medium,,"159,340,1034,1813,2209","Longest Substring with At Most Two Distinct Characters,Longest Substring with At Most K Distinct Characters,Subarrays with K Different Integers,Maximum Erasure Value,Number of Equal Count Substrings"
+394,394. Decode String,"Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there will not be input like 3a or 2[4].
+The test cases are generated so that the length of the output will never exceed 105.
+ 
+Example 1:
+Input: s = ""3[a]2[bc]""
+Output: ""aaabcbc""
+
+Example 2:
+Input: s = ""3[a2[c]]""
+Output: ""accaccacc""
+
+Example 3:
+Input: s = ""2[abc]3[cd]ef""
+Output: ""abcabccdcdcdef""
+
+ 
+Constraints:
+
+1 <= s.length <= 30
+s consists of lowercase English letters, digits, and square brackets '[]'.
+s is guaranteed to be a valid input.
+All the integers in s are in the range [1, 300].
+
+","String,Stack,Recursion",Medium,,"471,726,1076","Encode String with Shortest Length,Number of Atoms,Brace Expansion"
+617,617. Merge Two Binary Trees,"You are given two binary trees root1 and root2.
+Imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not. You need to merge the two trees into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of the new tree.
+Return the merged tree.
+Note: The merging process must start from the root nodes of both trees.
+ 
+Example 1:
+
+Input: root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]
+Output: [3,4,5,5,4,null,7]
+
+Example 2:
+Input: root1 = [1], root2 = [1,2]
+Output: [2,2]
+
+ 
+Constraints:
+
+The number of nodes in both trees is in the range [0, 2000].
+-104 <= Node.val <= 104
+
+","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Easy,,,
+387,387. First Unique Character in a String,"Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+ 
+Example 1:
+Input: s = ""leetcode""
+Output: 0
+Example 2:
+Input: s = ""loveleetcode""
+Output: 2
+Example 3:
+Input: s = ""aabb""
+Output: -1
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+s consists of only lowercase English letters.
+
+","Hash Table,String,Queue,Counting",Easy,,451,Sort Characters By Frequency
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+5,5. Longest Palindromic Substring,"Given a string s, return the longest palindromic substring in s.
+ 
+Example 1:
+Input: s = ""babad""
+Output: ""bab""
+Explanation: ""aba"" is also a valid answer.
+
+Example 2:
+Input: s = ""cbbd""
+Output: ""bb""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation.","214,266,336,516,647","Shortest Palindrome,Palindrome Permutation,Palindrome Pairs,Longest Palindromic Subsequence,Palindromic Substrings"
+91,91. Decode Ways,"A message containing letters from A-Z can be encoded into numbers using the following mapping:
+'A' -> ""1""
+'B' -> ""2""
+...
+'Z' -> ""26""
+
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, ""11106"" can be mapped into:
+
+""AAJF"" with the grouping (1 1 10 6)
+""KJF"" with the grouping (11 10 6)
+
+Note that the grouping (1 11 06) is invalid because ""06"" cannot be mapped into 'F' since ""6"" is different from ""06"".
+Given a string s containing only digits, return the number of ways to decode it.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: s = ""12""
+Output: 2
+Explanation: ""12"" could be decoded as ""AB"" (1 2) or ""L"" (12).
+
+Example 2:
+Input: s = ""226""
+Output: 3
+Explanation: ""226"" could be decoded as ""BZ"" (2 26), ""VF"" (22 6), or ""BBF"" (2 2 6).
+
+Example 3:
+Input: s = ""06""
+Output: 0
+Explanation: ""06"" cannot be mapped to ""F"" because of the leading zero (""6"" is different from ""06"").
+
+ 
+Constraints:
+
+1 <= s.length <= 100
+s contains only digits and may contain leading zero(s).
+
+","String,Dynamic Programming",Medium,,"639,2091","Decode Ways II,Number of Ways to Separate Numbers"
+69,69. Sqrt(x),"Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+You must not use any built-in exponent function or operator.
+
+For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+
+ 
+Example 1:
+Input: x = 4
+Output: 2
+Explanation: The square root of 4 is 2, so we return 2.
+
+Example 2:
+Input: x = 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+
+ 
+Constraints:
+
+0 <= x <= 231 - 1
+
+","Math,Binary Search",Easy,Try exploring all integers. (Credits: @annujoshi) Use the sorted property of integers to reduced the search space. (Credits: @annujoshi),"50,367","Pow(x, n),Valid Perfect Square"
+2,2. Add Two Numbers,"You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ 
+Example 1:
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+
+Example 2:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+
+Example 3:
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+
+ 
+Constraints:
+
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+
+","Linked List,Math,Recursion",Medium,,"43,67,371,415,445,1031,1774","Multiply Strings,Add Binary,Sum of Two Integers,Add Strings,Add Two Numbers II,Add to Array-Form of Integer,Add Two Polynomials Represented as Linked Lists"
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+70,70. Climbing Stairs,"You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ 
+Example 1:
+Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+
+Example 2:
+Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+
+ 
+Constraints:
+
+1 <= n <= 45
+
+","Math,Dynamic Programming,Memoization",Easy,"To reach nth step, what could have been your previous steps? (Think about the step sizes)","747,1013,1236","Min Cost Climbing Stairs,Fibonacci Number,N-th Tribonacci Number"
+151,151. Reverse Words in a String,"Given an input string s, reverse the order of the words.
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+Return a string of the words in reverse order concatenated by a single space.
+Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+ 
+Example 1:
+Input: s = ""the sky is blue""
+Output: ""blue is sky the""
+
+Example 2:
+Input: s = ""  hello world  ""
+Output: ""world hello""
+Explanation: Your reversed string should not contain leading or trailing spaces.
+
+Example 3:
+Input: s = ""a good   example""
+Output: ""example good a""
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s contains English letters (upper-case and lower-case), digits, and spaces ' '.
+There is at least one word in s.
+
+ 
+Follow-up: If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
+","Two Pointers,String",Medium,,186,Reverse Words in a String II
+21,21. Merge Two Sorted Lists,"You are given the heads of two sorted linked lists list1 and list2.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Return the head of the merged linked list.
+ 
+Example 1:
+
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in both lists is in the range [0, 50].
+-100 <= Node.val <= 100
+Both list1 and list2 are sorted in non-decreasing order.
+
+","Linked List,Recursion",Easy,,"23,88,148,244,1774,2071","Merge k Sorted Lists,Merge Sorted Array,Sort List,Shortest Word Distance II,Add Two Polynomials Represented as Linked Lists,Longest Common Subsequence Between Sorted Arrays"

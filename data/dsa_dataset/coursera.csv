@@ -1,0 +1,382 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+10,10. Regular Expression Matching,"Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
+
+'.' Matches any single character.​​​​
+'*' Matches zero or more of the preceding element.
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""a*""
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes ""aa"".
+
+Example 3:
+Input: s = ""ab"", p = "".*""
+Output: true
+Explanation: "".*"" means ""zero or more (*) of any character (.)"".
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= p.length <= 20
+s contains only lowercase English letters.
+p contains only lowercase English letters, '.', and '*'.
+It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.
+
+","String,Dynamic Programming,Recursion",Hard,,44,Wildcard Matching
+920,920. Number of Music Playlists,"Your music player contains n different songs. You want to listen to goal songs (not necessarily different) during your trip. To avoid boredom, you will create a playlist so that:
+
+Every song is played at least once.
+A song can only be played again only if k other songs have been played.
+
+Given n, goal, and k, return the number of possible playlists that you can create. Since the answer can be very large, return it modulo 109 + 7.
+ 
+Example 1:
+Input: n = 3, goal = 3, k = 1
+Output: 6
+Explanation: There are 6 possible playlists: [1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], and [3, 2, 1].
+
+Example 2:
+Input: n = 2, goal = 3, k = 0
+Output: 6
+Explanation: There are 6 possible playlists: [1, 1, 2], [1, 2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 2], and [1, 2, 2].
+
+Example 3:
+Input: n = 2, goal = 3, k = 1
+Output: 2
+Explanation: There are 2 possible playlists: [1, 2, 1] and [2, 1, 2].
+
+ 
+Constraints:
+
+0 <= k < n <= goal <= 100
+
+","Hash Table,String",Easy,,2190,Count Common Words With One Occurrence
+453,453. Minimum Moves to Equal Array Elements,"Given an integer array nums of size n, return the minimum number of moves required to make all array elements equal.
+In one move, you can increment n - 1 elements of the array by 1.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 3
+Explanation: Only three moves are needed (remember each move increments two elements):
+[1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+
+Example 2:
+Input: nums = [1,1,1]
+Output: 0
+
+ 
+Constraints:
+
+n == nums.length
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Array,Math",Medium,,"462,2263,2273","Minimum Moves to Equal Array Elements II,Maximum Running Time of N Computers,Pour Water Between Buckets to Make Water Levels Equal"
+761,761. Special Binary String,"Special binary strings are binary strings with the following two properties:
+
+The number of 0's is equal to the number of 1's.
+Every prefix of the binary string has at least as many 1's as 0's.
+
+You are given a special binary string s.
+A move consists of choosing two consecutive, non-empty, special substrings of s, and swapping them. Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.
+Return the lexicographically largest resulting string possible after applying the mentioned operations on the string.
+ 
+Example 1:
+Input: s = ""11011000""
+Output: ""11100100""
+Explanation: The strings ""10"" [occuring at s[1]] and ""1100"" [at s[3]] are swapped.
+This is the lexicographically largest string possible after some number of swaps.
+
+Example 2:
+Input: s = ""10""
+Output: ""10""
+
+ 
+Constraints:
+
+1 <= s.length <= 50
+s[i] is either '0' or '1'.
+s is a special binary string.
+
+","Array,Sorting,Heap (Priority Queue)",Hard,"Take all the intervals and do an ""events"" (or ""line sweep"") approach - an event of (x, OPEN) increases the number of active intervals, while (x, CLOSE) decreases it.
+
+Processing in sorted order from left to right, if the number of active intervals is zero, then you crossed a region of common free time.","56,1028","Merge Intervals,Interval List Intersections"
+713,713. Subarray Product Less Than K,"Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
+ 
+Example 1:
+Input: nums = [10,5,2,6], k = 100
+Output: 8
+Explanation: The 8 subarrays that have product less than 100 are:
+[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
+
+Example 2:
+Input: nums = [1,2,3], k = 0
+Output: 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 3 * 104
+1 <= nums[i] <= 1000
+0 <= k <= 106
+
+","Array,Sliding Window",Medium,"For each j, let opt(j) be the smallest i so that nums[i] * nums[i+1] * ... * nums[j] is less than k.  opt is an increasing function.","152,325,560,1083,2233","Maximum Product Subarray,Maximum Size Subarray Sum Equals k,Subarray Sum Equals K,Two Sum Less Than K,Number of Smooth Descent Periods of a Stock"
+780,780. Reaching Points,"Given four integers sx, sy, tx, and ty, return true if it is possible to convert the point (sx, sy) to the point (tx, ty) through some operations, or false otherwise.
+The allowed operation on some point (x, y) is to convert it to either (x, x + y) or (x + y, y).
+ 
+Example 1:
+Input: sx = 1, sy = 1, tx = 3, ty = 5
+Output: true
+Explanation:
+One series of moves that transforms the starting point to the target is:
+(1, 1) -> (1, 2)
+(1, 2) -> (3, 2)
+(3, 2) -> (3, 5)
+
+Example 2:
+Input: sx = 1, sy = 1, tx = 2, ty = 2
+Output: false
+
+Example 3:
+Input: sx = 1, sy = 1, tx = 1, ty = 1
+Output: true
+
+ 
+Constraints:
+
+1 <= sx, sy, tx, ty <= 109
+
+","Array,Stack,Greedy,Sorting,Monotonic Stack",Medium,"The first chunk can be found as the smallest k for which A[:k+1] == [0, 1, 2, ...k]; then we repeat this process.",779,Max Chunks To Make Sorted II
+239,239. Sliding Window Maximum,"You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+
+","Array,Queue,Sliding Window,Heap (Priority Queue),Monotonic Queue",Hard,How about using a data structure such as deque (double-ended queue)? The queue size need not be the same as the window’s size. Remove redundant elements and the queue should store only elements that need to be considered.,"76,155,159,265,1814","Minimum Window Substring,Min Stack,Longest Substring with At Most Two Distinct Characters,Paint House II,Jump Game VI"
+44,44. Wildcard Matching,"Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:
+
+'?' Matches any single character.
+'*' Matches any sequence of characters (including the empty sequence).
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""*""
+Output: true
+Explanation: '*' matches any sequence.
+
+Example 3:
+Input: s = ""cb"", p = ""?a""
+Output: false
+Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+
+ 
+Constraints:
+
+0 <= s.length, p.length <= 2000
+s contains only lowercase English letters.
+p contains only lowercase English letters, '?' or '*'.
+
+","String,Dynamic Programming,Greedy,Recursion",Hard,,10,Regular Expression Matching
+1112,1112. Highest Grade For Each Student,,"Array,Hash Table,String",Easy,"Solve the problem for each string in words independently. Now try to think in frequency of letters. Count how many times each character occurs in string chars. To form a string using characters from chars, the frequency of each character in chars must be greater than or equal the frequency of that character in the string to be formed.",,
+647,647. Palindromic Substrings,"Given a string s, return the number of palindromic substrings in it.
+A string is a palindrome when it reads the same backward as forward.
+A substring is a contiguous sequence of characters within the string.
+ 
+Example 1:
+Input: s = ""abc""
+Output: 3
+Explanation: Three palindromic strings: ""a"", ""b"", ""c"".
+
+Example 2:
+Input: s = ""aaa""
+Output: 6
+Explanation: Six palindromic strings: ""a"", ""a"", ""a"", ""aa"", ""aa"", ""aaa"".
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” and palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation?","5,516","Longest Palindromic Substring,Longest Palindromic Subsequence"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+392,392. Is Subsequence,"Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., ""ace"" is a subsequence of ""abcde"" while ""aec"" is not).
+ 
+Example 1:
+Input: s = ""abc"", t = ""ahbgdc""
+Output: true
+Example 2:
+Input: s = ""axc"", t = ""ahbgdc""
+Output: false
+
+ 
+Constraints:
+
+0 <= s.length <= 100
+0 <= t.length <= 104
+s and t consist only of lowercase English letters.
+
+ 
+Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?","Two Pointers,String,Dynamic Programming",Easy,,"808,1051","Number of Matching Subsequences,Shortest Way to Form String"
+945,945. Minimum Increment to Make Array Unique,"You are given an integer array nums. In one move, you can pick an index i where 0 <= i < nums.length and increment nums[i] by 1.
+Return the minimum number of moves to make every value in nums unique.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: nums = [1,2,2]
+Output: 1
+Explanation: After 1 move, the array could be [1, 2, 3].
+
+Example 2:
+Input: nums = [3,2,1,2,1,7]
+Output: 6
+Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+0 <= nums[i] <= 105
+
+","Array,Breadth-First Search,Matrix",Medium,,,
+1137,1137. N-th Tribonacci Number,"The Tribonacci sequence Tn is defined as follows: 
+T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
+Given n, return the value of Tn.
+ 
+Example 1:
+Input: n = 4
+Output: 4
+Explanation:
+T_3 = 0 + 1 + 1 = 2
+T_4 = 1 + 1 + 2 = 4
+
+Example 2:
+Input: n = 25
+Output: 1389537
+
+ 
+Constraints:
+
+0 <= n <= 37
+The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
+","Array,Sorting,Counting Sort",Easy,"Build the correct order of heights by sorting another array, then compare the two arrays.",,

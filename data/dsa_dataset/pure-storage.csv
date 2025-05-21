@@ -1,0 +1,304 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+593,593. Valid Square,"Given the coordinates of four points in 2D space p1, p2, p3 and p4, return true if the four points construct a square.
+The coordinate of a point pi is represented as [xi, yi]. The input is not given in any order.
+A valid square has four equal sides with positive length and four equal angles (90-degree angles).
+ 
+Example 1:
+Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]
+Output: true
+
+Example 2:
+Input: p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,12]
+Output: false
+
+Example 3:
+Input: p1 = [1,0], p2 = [-1,0], p3 = [0,1], p4 = [0,-1]
+Output: true
+
+ 
+Constraints:
+
+p1.length == p2.length == p3.length == p4.length == 2
+-104 <= xi, yi <= 104
+
+","Math,Geometry",Medium,,,
+203,203. Remove Linked List Elements,"Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+ 
+Example 1:
+
+Input: head = [1,2,6,3,4,5,6], val = 6
+Output: [1,2,3,4,5]
+
+Example 2:
+Input: head = [], val = 1
+Output: []
+
+Example 3:
+Input: head = [7,7,7,7], val = 7
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is in the range [0, 104].
+1 <= Node.val <= 50
+0 <= val <= 50
+
+","Linked List,Recursion",Easy,,"27,237,2216","Remove Element,Delete Node in a Linked List,Delete the Middle Node of a Linked List"
+75,75. Sort Colors,"Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+You must solve this problem without using the library's sort function.
+ 
+Example 1:
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+
+Example 2:
+Input: nums = [2,0,1]
+Output: [0,1,2]
+
+ 
+Constraints:
+
+n == nums.length
+1 <= n <= 300
+nums[i] is either 0, 1, or 2.
+
+ 
+Follow up: Could you come up with a one-pass algorithm using only constant extra space?
+","Array,Two Pointers,Sorting",Medium,"A rather straight forward solution is a two-pass algorithm using counting sort. Iterate the array counting number of 0's, 1's, and 2's. Overwrite array with the total number of 0's, then 1's and followed by 2's.","148,280,324","Sort List,Wiggle Sort,Wiggle Sort II"
+647,647. Palindromic Substrings,"Given a string s, return the number of palindromic substrings in it.
+A string is a palindrome when it reads the same backward as forward.
+A substring is a contiguous sequence of characters within the string.
+ 
+Example 1:
+Input: s = ""abc""
+Output: 3
+Explanation: Three palindromic strings: ""a"", ""b"", ""c"".
+
+Example 2:
+Input: s = ""aaa""
+Output: 6
+Explanation: Six palindromic strings: ""a"", ""a"", ""a"", ""aa"", ""aa"", ""aaa"".
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” and palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation?","5,516","Longest Palindromic Substring,Longest Palindromic Subsequence"
+730,730. Count Different Palindromic Subsequences,"Given a string s, return the number of different non-empty palindromic subsequences in s. Since the answer may be very large, return it modulo 109 + 7.
+A subsequence of a string is obtained by deleting zero or more characters from the string.
+A sequence is palindromic if it is equal to the sequence reversed.
+Two sequences a1, a2, ... and b1, b2, ... are different if there is some i for which ai != bi.
+ 
+Example 1:
+Input: s = ""bccb""
+Output: 6
+Explanation: The 6 different non-empty palindromic subsequences are 'b', 'c', 'bb', 'cc', 'bcb', 'bccb'.
+Note that 'bcb' is counted only once, even though it occurs twice.
+
+Example 2:
+Input: s = ""abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba""
+Output: 104860361
+Explanation: There are 3104860382 different non-empty palindromic subsequences, which is 104860361 modulo 109 + 7.
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s[i] is either 'a', 'b', 'c', or 'd'.
+
+","String,Dynamic Programming",Hard,"Let dp(i, j) be the answer for the string T = S[i:j+1] including the empty sequence. The answer is the number of unique characters in T, plus palindromes of the form ""a_a"", ""b_b"", ""c_c"", and ""d_d"", where ""_"" represents zero or more characters.",516,Longest Palindromic Subsequence
+202,202. Happy Number,"Write an algorithm to determine if a number n is happy.
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+
+Return true if n is a happy number, and false if not.
+ 
+Example 1:
+Input: n = 19
+Output: true
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+
+Example 2:
+Input: n = 2
+Output: false
+
+ 
+Constraints:
+
+1 <= n <= 231 - 1
+
+","Hash Table,Math,Two Pointers",Easy,,"141,258,263,2076","Linked List Cycle,Add Digits,Ugly Number,Sum of Digits of String After Convert"
+716,716. Max Stack,,"Linked List,Stack,Design,Doubly-Linked List,Ordered Set",Easy,,155,Min Stack
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+5,5. Longest Palindromic Substring,"Given a string s, return the longest palindromic substring in s.
+ 
+Example 1:
+Input: s = ""babad""
+Output: ""bab""
+Explanation: ""aba"" is also a valid answer.
+
+Example 2:
+Input: s = ""cbbd""
+Output: ""bb""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation.","214,266,336,516,647","Shortest Palindrome,Palindrome Permutation,Palindrome Pairs,Longest Palindromic Subsequence,Palindromic Substrings"
+155,155. Min Stack,"Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+ 
+Example 1:
+Input
+[""MinStack"",""push"",""push"",""push"",""getMin"",""pop"",""top"",""getMin""]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+Methods pop, top and getMin operations will always be called on non-empty stacks.
+At most 3 * 104 calls will be made to push, pop, top, and getMin.
+
+","Stack,Design",Easy,Consider each node in the stack having a minimum value. (Credits to @aakarshmadhavan),"239,716","Sliding Window Maximum,Max Stack"
+167,167. Two Sum II - Input Array Is Sorted,"Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 < numbers.length.
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+Your solution must use only constant extra space.
+ 
+Example 1:
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+
+Example 2:
+Input: numbers = [2,3,4], target = 6
+Output: [1,3]
+Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
+
+Example 3:
+Input: numbers = [-1,0], target = -1
+Output: [1,2]
+Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
+
+ 
+Constraints:
+
+2 <= numbers.length <= 3 * 104
+-1000 <= numbers[i] <= 1000
+numbers is sorted in non-decreasing order.
+-1000 <= target <= 1000
+The tests are generated such that there is exactly one solution.
+
+","Array,Two Pointers,Binary Search",Medium,,"1,653,1083","Two Sum,Two Sum IV - Input is a BST,Two Sum Less Than K"
+1206,1206. Design Skiplist,"Design a Skiplist without using any built-in libraries.
+A skiplist is a data structure that takes O(log(n)) time to add, erase and search. Comparing with treap and red-black tree which has the same function and performance, the code length of Skiplist can be comparatively short and the idea behind Skiplists is just simple linked lists.
+For example, we have a Skiplist containing [30,40,50,60,70,90] and we want to add 80 and 45 into it. The Skiplist works this way:
+
+Artyom Kalinin [CC BY-SA 3.0], via Wikimedia Commons
+You can see there are many layers in the Skiplist. Each layer is a sorted linked list. With the help of the top layers, add, erase and search can be faster than O(n). It can be proven that the average time complexity for each operation is O(log(n)) and space complexity is O(n).
+See more about Skiplist: https://en.wikipedia.org/wiki/Skip_list
+Implement the Skiplist class:
+
+Skiplist() Initializes the object of the skiplist.
+bool search(int target) Returns true if the integer target exists in the Skiplist or false otherwise.
+void add(int num) Inserts the value num into the SkipList.
+bool erase(int num) Removes the value num from the Skiplist and returns true. If num does not exist in the Skiplist, do nothing and return false. If there exist multiple num values, removing any one of them is fine.
+
+Note that duplicates may exist in the Skiplist, your code needs to handle this situation.
+ 
+Example 1:
+Input
+[""Skiplist"", ""add"", ""add"", ""add"", ""search"", ""add"", ""search"", ""erase"", ""erase"", ""search""]
+[[], [1], [2], [3], [0], [4], [1], [0], [1], [1]]
+Output
+[null, null, null, null, false, null, true, false, true, false]
+
+Explanation
+Skiplist skiplist = new Skiplist();
+skiplist.add(1);
+skiplist.add(2);
+skiplist.add(3);
+skiplist.search(0); // return False
+skiplist.add(4);
+skiplist.search(1); // return True
+skiplist.erase(0);  // return False, 0 is not in skiplist.
+skiplist.erase(1);  // return True
+skiplist.search(1); // return False, 1 has already been erased.
+ 
+Constraints:
+
+0 <= num, target <= 2 * 104
+At most 5 * 104 calls will be made to search, add, and erase.
+
+","Array,Prefix Sum",Medium,,,

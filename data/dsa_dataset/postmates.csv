@@ -1,0 +1,220 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1190,1190. Reverse Substrings Between Each Pair of Parentheses,"You are given a string s that consists of lower case English letters and brackets.
+Reverse the strings in each pair of matching parentheses, starting from the innermost one.
+Your result should not contain any brackets.
+ 
+Example 1:
+Input: s = ""(abcd)""
+Output: ""dcba""
+
+Example 2:
+Input: s = ""(u(love)i)""
+Output: ""iloveu""
+Explanation: The substring ""love"" is reversed first, then the whole string is reversed.
+
+Example 3:
+Input: s = ""(ed(et(oc))el)""
+Output: ""leetcode""
+Explanation: First, we reverse the substring ""oc"", then ""etco"", and finally, the whole string.
+
+ 
+Constraints:
+
+1 <= s.length <= 2000
+s only contains lower case English characters and parentheses.
+It is guaranteed that all parentheses are balanced.
+
+","Array,Hash Table,String,Tree,Depth-First Search,Breadth-First Search",Medium,Try to model the problem as a graph problem. The given graph is a tree. The problem is reduced to finding the lowest common ancestor of two nodes in a tree.,"235,236","Lowest Common Ancestor of a Binary Search Tree,Lowest Common Ancestor of a Binary Tree"
+301,301. Remove Invalid Parentheses,"Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
+Return a list of unique strings that are valid with the minimum number of removals. You may return the answer in any order.
+ 
+Example 1:
+Input: s = ""()())()""
+Output: [""(())()"",""()()()""]
+
+Example 2:
+Input: s = ""(a)())()""
+Output: [""(a())()"",""(a)()()""]
+
+Example 3:
+Input: s = "")(""
+Output: [""""]
+
+ 
+Constraints:
+
+1 <= s.length <= 25
+s consists of lowercase English letters and parentheses '(' and ')'.
+There will be at most 20 parentheses in s.
+
+","String,Backtracking,Breadth-First Search",Hard,"Since we don't know which of the brackets can possibly be removed, we try out all the options! We can use recursion to try out all possibilities for the given expression. For each of the brackets, we have 2 options:
+
+
+ We keep the bracket and add it to the expression that we are building on the fly during recursion.
+ OR, we can discard the bracket and move on. The one thing all these valid expressions have in common is that they will all be of the same length i.e. as compared to the original expression, all of these expressions will have the same number of characters removed. 
+
+Can we somehow find the number of misplaced parentheses and use it in our solution? For every left parenthesis, we should have a corresponding right parenthesis. We can make use of two counters which keep track of misplaced left and right parenthesis and in one iteration we can find out these two values. 
+
+
+0 1 2 3 4 5 6 7
+( ) ) ) ( ( ( )  
+i = 0, left = 1, right = 0
+i = 1, left = 0, right = 0
+i = 2, left = 0, right = 1
+i = 3, left = 0, right = 2
+i = 4, left = 1, right = 2
+i = 5, left = 2, right = 2
+i = 6, left = 3, right = 2
+i = 7, left = 2, right = 2
+
+
+We have 2 misplaced left and 2 misplaced right parentheses. We found out that the exact number of left and right parenthesis that has to be removed to get a valid expression. So, e.g. in a 1000 parentheses string, if there are 2 misplaced left and 2 misplaced right parentheses, after we are done discarding 2 left and 2 right parentheses, we will have only one option per remaining character in the expression i.e. to consider them. We can't discard them.","20,2095","Valid Parentheses,Minimum Number of Swaps to Make the String Balanced"
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+759,759. Employee Free Time,,"Array,Greedy,Sorting",Hard,,,
+253,253. Meeting Rooms II,,"Array,Two Pointers,Greedy,Sorting,Heap (Priority Queue)",Medium,"Think about how we would approach this problem in a very simplistic way. We will allocate rooms to meetings that occur earlier in the day v/s the ones that occur later on, right? If you've figured out that we have to sort the meetings by their start time, the next thing to think about is how do we do the allocation? There are two scenarios possible here for any meeting. Either there is no meeting room available and a new one has to be allocated, or a meeting room has freed up and this meeting can take place there. An important thing to note is that we don't really care which room gets freed up while allocating a room for the current meeting. As long as a room is free, our job is done. We already know the rooms we have allocated till now and we also know when are they due to get free because of the end times of the meetings going on in those rooms. We can simply check the room which is due to get vacated the earliest amongst all the allocated rooms. Following up on the previous hint, we can make use of a min-heap to store the end times of the meetings in various rooms. So, every time we want to check if any room is free or not, simply check the topmost element of the min heap as that would be the room that would get free the earliest out of all the other rooms currently occupied.
+
+If the room we extracted from the top of the min heap isn't free, then no other room is. So, we can save time here and simply allocate a new room.","56,252,452,1184","Merge Intervals,Meeting Rooms,Minimum Number of Arrows to Burst Balloons,Car Pooling"
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+55,55. Jump Game,"You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+Return true if you can reach the last index, or false otherwise.
+ 
+Example 1:
+Input: nums = [2,3,1,1,4]
+Output: true
+Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+Example 2:
+Input: nums = [3,2,1,0,4]
+Output: false
+Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+0 <= nums[i] <= 105
+
+","Array,Dynamic Programming,Greedy",Medium,,"45,1428,2001","Jump Game II,Jump Game III,Jump Game VII"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"

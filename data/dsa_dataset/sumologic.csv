@@ -1,0 +1,222 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+558,558. Logical OR of Two Binary Grids Represented as Quad-Trees,"A Binary Matrix is a matrix in which all the elements are either 0 or 1.
+Given quadTree1 and quadTree2. quadTree1 represents a n * n binary matrix and quadTree2 represents another n * n binary matrix.
+Return a Quad-Tree representing the n * n binary matrix which is the result of logical bitwise OR of the two binary matrixes represented by quadTree1 and quadTree2.
+Notice that you can assign the value of a node to True or False when isLeaf is False, and both are accepted in the answer.
+A Quad-Tree is a tree data structure in which each internal node has exactly four children. Besides, each node has two attributes:
+
+val: True if the node represents a grid of 1's or False if the node represents a grid of 0's.
+isLeaf: True if the node is leaf node on the tree or False if the node has the four children.
+
+class Node {
+    public boolean val;
+    public boolean isLeaf;
+    public Node topLeft;
+    public Node topRight;
+    public Node bottomLeft;
+    public Node bottomRight;
+}
+We can construct a Quad-Tree from a two-dimensional area using the following steps:
+
+If the current grid has the same value (i.e all 1's or all 0's) set isLeaf True and set val to the value of the grid and set the four children to Null and stop.
+If the current grid has different values, set isLeaf to False and set val to any value and divide the current grid into four sub-grids as shown in the photo.
+Recurse for each of the children with the proper sub-grid.
+
+
+If you want to know more about the Quad-Tree, you can refer to the wiki.
+Quad-Tree format:
+The input/output represents the serialized format of a Quad-Tree using level order traversal, where null signifies a path terminator where no node exists below.
+It is very similar to the serialization of the binary tree. The only difference is that the node is represented as a list [isLeaf, val].
+If the value of isLeaf or val is True we represent it as 1 in the list [isLeaf, val] and if the value of isLeaf or val is False we represent it as 0.
+ 
+Example 1:
+ 
+Input: quadTree1 = [[0,1],[1,1],[1,1],[1,0],[1,0]]
+, quadTree2 = [[0,1],[1,1],[0,1],[1,1],[1,0],null,null,null,null,[1,0],[1,0],[1,1],[1,1]]
+Output: [[0,0],[1,1],[1,1],[1,1],[1,0]]
+Explanation: quadTree1 and quadTree2 are shown above. You can see the binary matrix which is represented by each Quad-Tree.
+If we apply logical bitwise OR on the two binary matrices we get the binary matrix below which is represented by the result Quad-Tree.
+Notice that the binary matrices shown are only for illustration, you don't have to construct the binary matrix to get the result tree.
+
+
+Example 2:
+Input: quadTree1 = [[1,0]], quadTree2 = [[1,0]]
+Output: [[1,0]]
+Explanation: Each tree represents a binary matrix of size 1*1. Each matrix contains only zero.
+The resulting matrix is of size 1*1 with also zero.
+
+ 
+Constraints:
+
+quadTree1 and quadTree2 are both valid Quad-Trees each representing a n * n grid.
+n == 2x where 0 <= x <= 9.
+
+",,,,,
+981,981. Time Based Key-Value Store,"Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+Implement the TimeMap class:
+
+TimeMap() Initializes the object of the data structure.
+void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.
+String get(String key, int timestamp) Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns """".
+
+ 
+Example 1:
+Input
+[""TimeMap"", ""set"", ""get"", ""get"", ""set"", ""get"", ""get""]
+[[], [""foo"", ""bar"", 1], [""foo"", 1], [""foo"", 3], [""foo"", ""bar2"", 4], [""foo"", 4], [""foo"", 5]]
+Output
+[null, null, ""bar"", ""bar"", null, ""bar2"", ""bar2""]
+
+Explanation
+TimeMap timeMap = new TimeMap();
+timeMap.set(""foo"", ""bar"", 1);  // store the key ""foo"" and value ""bar"" along with timestamp = 1.
+timeMap.get(""foo"", 1);         // return ""bar""
+timeMap.get(""foo"", 3);         // return ""bar"", since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is ""bar"".
+timeMap.set(""foo"", ""bar2"", 4); // store the key ""foo"" and value ""bar2"" along with timestamp = 4.
+timeMap.get(""foo"", 4);         // return ""bar2""
+timeMap.get(""foo"", 5);         // return ""bar2""
+
+ 
+Constraints:
+
+1 <= key.length, value.length <= 100
+key and value consist of lowercase English letters and digits.
+1 <= timestamp <= 107
+All the timestamps timestamp of set are strictly increasing.
+At most 2 * 105 calls will be made to set and get.
+
+","Array,String",Easy,,,
+850,850. Rectangle Area II,"You are given a 2D array of axis-aligned rectangles. Each rectangle[i] = [xi1, yi1, xi2, yi2] denotes the ith rectangle where (xi1, yi1) are the coordinates of the bottom-left corner, and (xi2, yi2) are the coordinates of the top-right corner.
+Calculate the total area covered by all rectangles in the plane. Any area covered by two or more rectangles should only be counted once.
+Return the total area. Since the answer may be too large, return it modulo 109 + 7.
+ 
+Example 1:
+
+Input: rectangles = [[0,0,2,2],[1,0,2,3],[1,0,3,1]]
+Output: 6
+Explanation: A total area of 6 is covered by all three rectangles, as illustrated in the picture.
+From (1,1) to (2,2), the green and red rectangles overlap.
+From (1,0) to (2,3), all three rectangles overlap.
+
+Example 2:
+Input: rectangles = [[0,0,1000000000,1000000000]]
+Output: 49
+Explanation: The answer is 1018 modulo (109 + 7), which is 49.
+
+ 
+Constraints:
+
+1 <= rectangles.length <= 200
+rectanges[i].length == 4
+0 <= xi1, yi1, xi2, yi2 <= 109
+xi1 <= xi2
+yi1 <= yi2
+
+",Linked List,Medium,,147,Insertion Sort List
+31,31. Next Permutation,"A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+For example, the next permutation of arr = [1,2,3] is [1,3,2].
+Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+
+Given an array of integers nums, find the next permutation of nums.
+The replacement must be in place and use only constant extra memory.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: nums = [3,2,1]
+Output: [1,2,3]
+
+Example 3:
+Input: nums = [1,1,5]
+Output: [1,5,1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 100
+
+","Array,Two Pointers",Medium,,"46,47,60,267,1978","Permutations,Permutations II,Permutation Sequence,Palindrome Permutation II,Minimum Adjacent Swaps to Reach the Kth Smallest Number"
+990,990. Satisfiability of Equality Equations,"You are given an array of strings equations that represent relationships between variables where each string equations[i] is of length 4 and takes one of two different forms: ""xi==yi"" or ""xi!=yi"".Here, xi and yi are lowercase letters (not necessarily different) that represent one-letter variable names.
+Return true if it is possible to assign integers to variable names so as to satisfy all the given equations, or false otherwise.
+ 
+Example 1:
+Input: equations = [""a==b"",""b!=a""]
+Output: false
+Explanation: If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.
+There is no way to assign the variables to satisfy both equations.
+
+Example 2:
+Input: equations = [""b==a"",""a==b""]
+Output: true
+Explanation: We could assign a = 1 and b = 1 to satisfy both equations.
+
+ 
+Constraints:
+
+1 <= equations.length <= 500
+equations[i].length == 4
+equations[i][0] is a lowercase letter.
+equations[i][1] is either '=' or '!'.
+equations[i][2] is '='.
+equations[i][3] is a lowercase letter.
+
+","Array,Hash Table,String",Easy,,,
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"

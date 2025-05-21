@@ -1,0 +1,1105 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+829,829. Consecutive Numbers Sum,"Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers.
+ 
+Example 1:
+Input: n = 5
+Output: 2
+Explanation: 5 = 2 + 3
+
+Example 2:
+Input: n = 9
+Output: 3
+Explanation: 9 = 4 + 5 = 2 + 3 + 4
+
+Example 3:
+Input: n = 15
+Output: 4
+Explanation: 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+
+ 
+Constraints:
+
+1 <= n <= 109
+
+","Array,Hash Table,String,Counting",Medium,,,
+285,285. Inorder Successor in BST,,"Tree,Depth-First Search,Binary Search Tree,Binary Tree",Medium,,"94,173,509","Binary Tree Inorder Traversal,Binary Search Tree Iterator,Inorder Successor in BST II"
+241,241. Different Ways to Add Parentheses,"Given a string expression of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. You may return the answer in any order.
+The test cases are generated such that the output values fit in a 32-bit integer and the number of different results does not exceed 104.
+ 
+Example 1:
+Input: expression = ""2-1-1""
+Output: [0,2]
+Explanation:
+((2-1)-1) = 0 
+(2-(1-1)) = 2
+
+Example 2:
+Input: expression = ""2*3-4*5""
+Output: [-34,-14,-10,-10,10]
+Explanation:
+(2*(3-(4*5))) = -34 
+((2*3)-(4*5)) = -14 
+((2*(3-4))*5) = -10 
+(2*((3-4)*5)) = -10 
+(((2*3)-4)*5) = 10
+
+ 
+Constraints:
+
+1 <= expression.length <= 20
+expression consists of digits and the operator '+', '-', and '*'.
+All the integer values in the input expression are in the range [0, 99].
+
+","Math,String,Dynamic Programming,Recursion,Memoization",Medium,,"95,224,282,2147,2328","Unique Binary Search Trees II,Basic Calculator,Expression Add Operators,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+1048,1048. Longest String Chain,"You are given an array of words where each word consists of lowercase English letters.
+wordA is a predecessor of wordB if and only if we can insert exactly one letter anywhere in wordA without changing the order of the other characters to make it equal to wordB.
+
+For example, ""abc"" is a predecessor of ""abac"", while ""cba"" is not a predecessor of ""bcad"".
+
+A word chain is a sequence of words [word1, word2, ..., wordk] with k >= 1, where word1 is a predecessor of word2, word2 is a predecessor of word3, and so on. A single word is trivially a word chain with k == 1.
+Return the length of the longest possible word chain with words chosen from the given list of words.
+ 
+Example 1:
+Input: words = [""a"",""b"",""ba"",""bca"",""bda"",""bdca""]
+Output: 4
+Explanation: One of the longest word chains is [""a"",""ba"",""bda"",""bdca""].
+
+Example 2:
+Input: words = [""xbc"",""pcxbcf"",""xb"",""cxbc"",""pcxbc""]
+Output: 5
+Explanation: All the words can be put in a word chain [""xb"", ""xbc"", ""cxbc"", ""pcxbc"", ""pcxbcf""].
+
+Example 3:
+Input: words = [""abcd"",""dbqca""]
+Output: 1
+Explanation: The trivial word chain [""abcd""] is one of the longest word chains.
+[""abcd"",""dbqca""] is not a valid word chain because the ordering of the letters is changed.
+
+ 
+Constraints:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of lowercase English letters.
+
+","Math,Stack,Simulation",Medium,,,
+935,935. Knight Dialer,"The chess knight has a unique movement, it may move two squares vertically and one square horizontally, or two squares horizontally and one square vertically (with both forming the shape of an L). The possible movements of chess knight are shown in this diagaram:
+A chess knight can move as indicated in the chess diagram below:
+
+We have a chess knight and a phone pad as shown below, the knight can only stand on a numeric cell (i.e. blue cell).
+
+Given an integer n, return how many distinct phone numbers of length n we can dial.
+You are allowed to place the knight on any numeric cell initially and then you should perform n - 1 jumps to dial a number of length n. All jumps should be valid knight jumps.
+As the answer may be very large, return the answer modulo 109 + 7.
+ 
+Example 1:
+Input: n = 1
+Output: 10
+Explanation: We need to dial a number of length 1, so placing the knight over any numeric cell of the 10 cells is sufficient.
+
+Example 2:
+Input: n = 2
+Output: 20
+Explanation: All the valid number we can dial are [04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81, 83, 92, 94]
+
+Example 3:
+Input: n = 3131
+Output: 136006598
+Explanation: Please take care of the mod.
+
+ 
+Constraints:
+
+1 <= n <= 5000
+
+","Math,String,Sorting",Hard,,,
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+628,628. Maximum Product of Three Numbers,"Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 6
+Example 2:
+Input: nums = [1,2,3,4]
+Output: 24
+Example 3:
+Input: nums = [-1,-2,-3]
+Output: -6
+
+ 
+Constraints:
+
+3 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+","Array,Math,Sorting",Easy,,152,Maximum Product Subarray
+85,85. Maximal Rectangle,"Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 6
+Explanation: The maximal rectangle is shown in the above picture.
+
+Example 2:
+Input: matrix = [[""0""]]
+Output: 0
+
+Example 3:
+Input: matrix = [[""1""]]
+Output: 1
+
+ 
+Constraints:
+
+rows == matrix.length
+cols == matrix[i].length
+1 <= row, cols <= 200
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Stack,Matrix,Monotonic Stack",Hard,,"84,221","Largest Rectangle in Histogram,Maximal Square"
+232,232. Implement Queue using Stacks,"Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
+Implement the MyQueue class:
+
+void push(int x) Pushes element x to the back of the queue.
+int pop() Removes the element from the front of the queue and returns it.
+int peek() Returns the element at the front of the queue.
+boolean empty() Returns true if the queue is empty, false otherwise.
+
+Notes:
+
+You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
+Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.
+
+ 
+Example 1:
+Input
+[""MyQueue"", ""push"", ""push"", ""peek"", ""pop"", ""empty""]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 1, 1, false]
+
+Explanation
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2] (leftmost is front of the queue)
+myQueue.peek(); // return 1
+myQueue.pop(); // return 1, queue is [2]
+myQueue.empty(); // return false
+
+ 
+Constraints:
+
+1 <= x <= 9
+At most 100 calls will be made to push, pop, peek, and empty.
+All the calls to pop and peek are valid.
+
+ 
+Follow-up: Can you implement the queue such that each operation is amortized O(1) time complexity? In other words, performing n operations will take overall O(n) time even if one of those operations may take longer.
+","Stack,Design,Queue",Easy,,225,Implement Stack using Queues
+647,647. Palindromic Substrings,"Given a string s, return the number of palindromic substrings in it.
+A string is a palindrome when it reads the same backward as forward.
+A substring is a contiguous sequence of characters within the string.
+ 
+Example 1:
+Input: s = ""abc""
+Output: 3
+Explanation: Three palindromic strings: ""a"", ""b"", ""c"".
+
+Example 2:
+Input: s = ""aaa""
+Output: 6
+Explanation: Six palindromic strings: ""a"", ""a"", ""a"", ""aa"", ""aa"", ""aaa"".
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” and palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation?","5,516","Longest Palindromic Substring,Longest Palindromic Subsequence"
+221,221. Maximal Square,"Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 4
+
+Example 2:
+
+Input: matrix = [[""0"",""1""],[""1"",""0""]]
+Output: 1
+
+Example 3:
+Input: matrix = [[""0""]]
+Output: 0
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 300
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Matrix",Medium,,"85,769,1312,2200","Maximal Rectangle,Largest Plus Sign,Count Artifacts That Can Be Extracted,Stamping the Grid"
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+253,253. Meeting Rooms II,,"Array,Two Pointers,Greedy,Sorting,Heap (Priority Queue)",Medium,"Think about how we would approach this problem in a very simplistic way. We will allocate rooms to meetings that occur earlier in the day v/s the ones that occur later on, right? If you've figured out that we have to sort the meetings by their start time, the next thing to think about is how do we do the allocation? There are two scenarios possible here for any meeting. Either there is no meeting room available and a new one has to be allocated, or a meeting room has freed up and this meeting can take place there. An important thing to note is that we don't really care which room gets freed up while allocating a room for the current meeting. As long as a room is free, our job is done. We already know the rooms we have allocated till now and we also know when are they due to get free because of the end times of the meetings going on in those rooms. We can simply check the room which is due to get vacated the earliest amongst all the allocated rooms. Following up on the previous hint, we can make use of a min-heap to store the end times of the meetings in various rooms. So, every time we want to check if any room is free or not, simply check the topmost element of the min heap as that would be the room that would get free the earliest out of all the other rooms currently occupied.
+
+If the room we extracted from the top of the min heap isn't free, then no other room is. So, we can save time here and simply allocate a new room.","56,252,452,1184","Merge Intervals,Meeting Rooms,Minimum Number of Arrows to Burst Balloons,Car Pooling"
+239,239. Sliding Window Maximum,"You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+
+","Array,Queue,Sliding Window,Heap (Priority Queue),Monotonic Queue",Hard,How about using a data structure such as deque (double-ended queue)? The queue size need not be the same as the window’s size. Remove redundant elements and the queue should store only elements that need to be considered.,"76,155,159,265,1814","Minimum Window Substring,Min Stack,Longest Substring with At Most Two Distinct Characters,Paint House II,Jump Game VI"
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+32,32. Longest Valid Parentheses,"Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring.
+ 
+Example 1:
+Input: s = ""(()""
+Output: 2
+Explanation: The longest valid parentheses substring is ""()"".
+
+Example 2:
+Input: s = "")()())""
+Output: 4
+Explanation: The longest valid parentheses substring is ""()()"".
+
+Example 3:
+Input: s = """"
+Output: 0
+
+ 
+Constraints:
+
+0 <= s.length <= 3 * 104
+s[i] is '(', or ')'.
+
+","String,Dynamic Programming,Stack",Hard,,20,Valid Parentheses
+240,240. Search a 2D Matrix II,"Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+
+ 
+Example 1:
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+Output: true
+
+Example 2:
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+Output: false
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matrix[i][j] <= 109
+All the integers in each row are sorted in ascending order.
+All the integers in each column are sorted in ascending order.
+-109 <= target <= 109
+
+","Array,Binary Search,Divide and Conquer,Matrix",Medium,,74,Search a 2D Matrix
+332,332. Reconstruct Itinerary,"You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.
+All of the tickets belong to a man who departs from ""JFK"", thus, the itinerary must begin with ""JFK"". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.
+
+For example, the itinerary [""JFK"", ""LGA""] has a smaller lexical order than [""JFK"", ""LGB""].
+
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+ 
+Example 1:
+
+Input: tickets = [[""MUC"",""LHR""],[""JFK"",""MUC""],[""SFO"",""SJC""],[""LHR"",""SFO""]]
+Output: [""JFK"",""MUC"",""LHR"",""SFO"",""SJC""]
+
+Example 2:
+
+Input: tickets = [[""JFK"",""SFO""],[""JFK"",""ATL""],[""SFO"",""ATL""],[""ATL"",""JFK""],[""ATL"",""SFO""]]
+Output: [""JFK"",""ATL"",""JFK"",""SFO"",""ATL"",""SFO""]
+Explanation: Another possible reconstruction is [""JFK"",""SFO"",""ATL"",""JFK"",""ATL"",""SFO""] but it is larger in lexical order.
+
+ 
+Constraints:
+
+1 <= tickets.length <= 300
+tickets[i].length == 2
+fromi.length == 3
+toi.length == 3
+fromi and toi consist of uppercase English letters.
+fromi != toi
+
+","Depth-First Search,Graph,Eulerian Circuit",Hard,,"2051,2201","Longest Common Subpath,Valid Arrangement of Pairs"
+622,622. Design Circular Queue,"Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called ""Ring Buffer"".
+One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
+Implement the MyCircularQueue class:
+
+MyCircularQueue(k) Initializes the object with the size of the queue to be k.
+int Front() Gets the front item from the queue. If the queue is empty, return -1.
+int Rear() Gets the last item from the queue. If the queue is empty, return -1.
+boolean enQueue(int value) Inserts an element into the circular queue. Return true if the operation is successful.
+boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
+boolean isEmpty() Checks whether the circular queue is empty or not.
+boolean isFull() Checks whether the circular queue is full or not.
+
+You must solve the problem without using the built-in queue data structure in your programming language. 
+ 
+Example 1:
+Input
+[""MyCircularQueue"", ""enQueue"", ""enQueue"", ""enQueue"", ""enQueue"", ""Rear"", ""isFull"", ""deQueue"", ""enQueue"", ""Rear""]
+[[3], [1], [2], [3], [4], [], [], [], [4], []]
+Output
+[null, true, true, true, false, 3, true, true, true, 4]
+
+Explanation
+MyCircularQueue myCircularQueue = new MyCircularQueue(3);
+myCircularQueue.enQueue(1); // return True
+myCircularQueue.enQueue(2); // return True
+myCircularQueue.enQueue(3); // return True
+myCircularQueue.enQueue(4); // return False
+myCircularQueue.Rear();     // return 3
+myCircularQueue.isFull();   // return True
+myCircularQueue.deQueue();  // return True
+myCircularQueue.enQueue(4); // return True
+myCircularQueue.Rear();     // return 4
+
+ 
+Constraints:
+
+1 <= k <= 1000
+0 <= value <= 1000
+At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and isFull.
+
+",,,,,
+121,121. Best Time to Buy and Sell Stock,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming",Easy,,"53,122,123,188,309,2138,2144","Maximum Subarray,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Sum of Beauty in the Array,Maximum Difference Between Increasing Elements"
+225,225. Implement Stack using Queues,"Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
+Implement the MyStack class:
+
+void push(int x) Pushes element x to the top of the stack.
+int pop() Removes the element on the top of the stack and returns it.
+int top() Returns the element on the top of the stack.
+boolean empty() Returns true if the stack is empty, false otherwise.
+
+Notes:
+
+You must use only standard operations of a queue, which means that only push to back, peek/pop from front, size and is empty operations are valid.
+Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.
+
+ 
+Example 1:
+Input
+[""MyStack"", ""push"", ""push"", ""top"", ""pop"", ""empty""]
+[[], [1], [2], [], [], []]
+Output
+[null, null, null, 2, 2, false]
+
+Explanation
+MyStack myStack = new MyStack();
+myStack.push(1);
+myStack.push(2);
+myStack.top(); // return 2
+myStack.pop(); // return 2
+myStack.empty(); // return False
+
+ 
+Constraints:
+
+1 <= x <= 9
+At most 100 calls will be made to push, pop, top, and empty.
+All the calls to pop and top are valid.
+
+ 
+Follow-up: Can you implement the stack using only one queue?
+","Stack,Design,Queue",Easy,,232,Implement Queue using Stacks
+340,340. Longest Substring with At Most K Distinct Characters,,"Hash Table,String,Sliding Window",Medium,,"3,159,424,1034,1046,2134","Longest Substring Without Repeating Characters,Longest Substring with At Most Two Distinct Characters,Longest Repeating Character Replacement,Subarrays with K Different Integers,Max Consecutive Ones III,Maximize the Confusion of an Exam"
+297,297. Serialize and Deserialize Binary Tree,"Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+ 
+Example 1:
+
+Input: root = [1,2,3,null,null,4,5]
+Output: [1,2,3,null,null,4,5]
+
+Example 2:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-1000 <= Node.val <= 1000
+
+","String,Tree,Depth-First Search,Breadth-First Search,Design,Binary Tree",Hard,,"271,449,652,765","Encode and Decode Strings,Serialize and Deserialize BST,Find Duplicate Subtrees,Serialize and Deserialize N-ary Tree"
+724,724. Find Pivot Index,"Given an array of integers nums, calculate the pivot index of this array.
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+Return the leftmost pivot index. If no such index exists, return -1.
+ 
+Example 1:
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+Example 2:
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+Example 3:
+Input: nums = [2,1,-1]
+Output: 0
+Explanation:
+The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+ 
+Note: This question is the same as 1991: https://leetcode.com/problems/find-the-middle-index-in-array/
+","Array,Prefix Sum",Easy,"We can precompute prefix sums P[i] = nums[0] + nums[1] + ... + nums[i-1].
+Then for each index, the left sum is P[i], and the right sum is P[P.length - 1] - P[i] - nums[i].","560,2102,2369","Subarray Sum Equals K,Find the Middle Index in Array,Maximum Sum Score of Array"
+123,123. Best Time to Buy and Sell Stock III,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+Find the maximum profit you can achieve. You may complete at most two transactions.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+ 
+Example 1:
+Input: prices = [3,3,5,0,0,3,1,4]
+Output: 6
+Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
+Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+
+Example 3:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 105
+
+","Array,Dynamic Programming",Hard,,"121,122,188,689","Best Time to Buy and Sell Stock,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock IV,Maximum Sum of 3 Non-Overlapping Subarrays"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+212,212. Word Search II,"Given an m x n board of characters and a list of strings words, return all words on the board.
+Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+ 
+Example 1:
+
+Input: board = [[""o"",""a"",""a"",""n""],[""e"",""t"",""a"",""e""],[""i"",""h"",""k"",""r""],[""i"",""f"",""l"",""v""]], words = [""oath"",""pea"",""eat"",""rain""]
+Output: [""eat"",""oath""]
+
+Example 2:
+
+Input: board = [[""a"",""b""],[""c"",""d""]], words = [""abcb""]
+Output: []
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 12
+board[i][j] is a lowercase English letter.
+1 <= words.length <= 3 * 104
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+All the strings of words are unique.
+
+","Array,String,Backtracking,Trie,Matrix",Hard,"You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier? If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.","79,1022,1433","Word Search,Unique Paths III,Encrypt and Decrypt Strings"
+295,295. Find Median from Data Stream,"The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.
+
+For example, for arr = [2,3,4], the median is 3.
+For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+
+Implement the MedianFinder class:
+
+MedianFinder() initializes the MedianFinder object.
+void addNum(int num) adds the integer num from the data stream to the data structure.
+double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+
+ 
+Example 1:
+Input
+[""MedianFinder"", ""addNum"", ""addNum"", ""findMedian"", ""addNum"", ""findMedian""]
+[[], [1], [2], [], [3], []]
+Output
+[null, null, null, 1.5, null, 2.0]
+
+Explanation
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.addNum(1);    // arr = [1]
+medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.findMedian(); // return 2.0
+
+ 
+Constraints:
+
+-105 <= num <= 105
+There will be at least one element in the data structure before calling findMedian.
+At most 5 * 104 calls will be made to addNum and findMedian.
+
+ 
+Follow up:
+
+If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+","Two Pointers,Design,Sorting,Heap (Priority Queue),Data Stream",Hard,,"480,1953,2207","Sliding Window Median,Finding MK Average,Sequentially Ordinal Rank Tracker"
+122,122. Best Time to Buy and Sell Stock II,"You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
+Find and return the maximum profit you can achieve.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.
+
+Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Total profit is 4.
+
+Example 3:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 3 * 104
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming,Greedy",Medium,,"121,123,188,309,714","Best Time to Buy and Sell Stock,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Best Time to Buy and Sell Stock with Transaction Fee"
+199,199. Binary Tree Right Side View,"Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+ 
+Example 1:
+
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+
+Example 2:
+Input: root = [1,null,3]
+Output: [1,3]
+
+Example 3:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 100].
+-100 <= Node.val <= 100
+
+","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,,"116,545","Populating Next Right Pointers in Each Node,Boundary of Binary Tree"
+105,105. Construct Binary Tree from Preorder and Inorder Traversal,"Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+ 
+Example 1:
+
+Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+Output: [3,9,20,null,null,15,7]
+
+Example 2:
+Input: preorder = [-1], inorder = [-1]
+Output: [-1]
+
+ 
+Constraints:
+
+1 <= preorder.length <= 3000
+inorder.length == preorder.length
+-3000 <= preorder[i], inorder[i] <= 3000
+preorder and inorder consist of unique values.
+Each value of inorder also appears in preorder.
+preorder is guaranteed to be the preorder traversal of the tree.
+inorder is guaranteed to be the inorder traversal of the tree.
+
+","Array,Hash Table,Divide and Conquer,Tree,Binary Tree",Medium,,106,Construct Binary Tree from Inorder and Postorder Traversal
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+53,53. Maximum Subarray,"Given an integer array nums, find the subarray with the largest sum, and return its sum.
+ 
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+Example 3:
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+ 
+Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+","Array,Divide and Conquer,Dynamic Programming",Easy,,"121,152,697,1020,1849,1893","Best Time to Buy and Sell Stock,Maximum Product Subarray,Degree of an Array,Longest Turbulent Subarray,Maximum Absolute Sum of Any Subarray,Maximum Subarray Sum After One Operation"
+28,28. Find the Index of the First Occurrence in a String,"Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+ 
+Example 1:
+Input: haystack = ""sadbutsad"", needle = ""sad""
+Output: 0
+Explanation: ""sad"" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+Example 2:
+Input: haystack = ""leetcode"", needle = ""leeto""
+Output: -1
+Explanation: ""leeto"" did not occur in ""leetcode"", so we return -1.
+
+ 
+Constraints:
+
+1 <= haystack.length, needle.length <= 104
+haystack and needle consist of only lowercase English characters.
+
+","Two Pointers,String,String Matching",Easy,,"214,459","Shortest Palindrome,Repeated Substring Pattern"
+8,8. String to Integer (atoi),"Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+The algorithm for myAtoi(string s) is as follows:
+
+Read in and ignore any leading whitespace.
+Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
+Read in next the characters until the next non-digit character or the end of the input is reached. The rest of the string is ignored.
+Convert these digits into an integer (i.e. ""123"" -> 123, ""0032"" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
+If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
+Return the integer as the final result.
+
+Note:
+
+Only the space character ' ' is considered a whitespace character.
+Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+
+ 
+Example 1:
+Input: s = ""42""
+Output: 42
+Explanation: The underlined characters are what is read in, the caret is the current reader position.
+Step 1: ""42"" (no characters read because there is no leading whitespace)
+         ^
+Step 2: ""42"" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: ""42"" (""42"" is read in)
+           ^
+The parsed integer is 42.
+Since 42 is in the range [-231, 231 - 1], the final result is 42.
+
+Example 2:
+Input: s = ""   -42""
+Output: -42
+Explanation:
+Step 1: ""   -42"" (leading whitespace is read and ignored)
+            ^
+Step 2: ""   -42"" ('-' is read, so the result should be negative)
+             ^
+Step 3: ""   -42"" (""42"" is read in)
+               ^
+The parsed integer is -42.
+Since -42 is in the range [-231, 231 - 1], the final result is -42.
+
+Example 3:
+Input: s = ""4193 with words""
+Output: 4193
+Explanation:
+Step 1: ""4193 with words"" (no characters read because there is no leading whitespace)
+         ^
+Step 2: ""4193 with words"" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: ""4193 with words"" (""4193"" is read in; reading stops because the next character is a non-digit)
+             ^
+The parsed integer is 4193.
+Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+
+ 
+Constraints:
+
+0 <= s.length <= 200
+s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
+
+",String,Medium,,"7,65,2168","Reverse Integer,Valid Number,Check if Numbers Are Ascending in a Sentence"
+102,102. Binary Tree Level Order Traversal,"Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
+
+Example 2:
+Input: root = [1]
+Output: [[1]]
+
+Example 3:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-1000 <= Node.val <= 1000
+
+","Tree,Breadth-First Search,Binary Tree",Medium,,"103,107,111,314,637,764,1035","Binary Tree Zigzag Level Order Traversal,Binary Tree Level Order Traversal II,Minimum Depth of Binary Tree,Binary Tree Vertical Order Traversal,Average of Levels in Binary Tree,N-ary Tree Level Order Traversal,Cousins in Binary Tree"
+151,151. Reverse Words in a String,"Given an input string s, reverse the order of the words.
+A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+Return a string of the words in reverse order concatenated by a single space.
+Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+ 
+Example 1:
+Input: s = ""the sky is blue""
+Output: ""blue is sky the""
+
+Example 2:
+Input: s = ""  hello world  ""
+Output: ""world hello""
+Explanation: Your reversed string should not contain leading or trailing spaces.
+
+Example 3:
+Input: s = ""a good   example""
+Output: ""example good a""
+Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s contains English letters (upper-case and lower-case), digits, and spaces ' '.
+There is at least one word in s.
+
+ 
+Follow-up: If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
+","Two Pointers,String",Medium,,186,Reverse Words in a String II
+70,70. Climbing Stairs,"You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ 
+Example 1:
+Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+
+Example 2:
+Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+
+ 
+Constraints:
+
+1 <= n <= 45
+
+","Math,Dynamic Programming,Memoization",Easy,"To reach nth step, what could have been your previous steps? (Think about the step sizes)","747,1013,1236","Min Cost Climbing Stairs,Fibonacci Number,N-th Tribonacci Number"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+718,718. Maximum Length of Repeated Subarray,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+ 
+Example 1:
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
+
+Example 2:
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 100
+
+","Array,Binary Search,Dynamic Programming,Sliding Window,Rolling Hash,Hash Function",Medium,"Use dynamic programming.  dp[i][j] will be the answer for inputs A[i:], B[j:].","209,2051","Minimum Size Subarray Sum,Longest Common Subpath"
+1515,1515. Best Position for a Service Centre,"A delivery company wants to build a new service center in a new city. The company knows the positions of all the customers in this city on a 2D-Map and wants to build the new center in a position such that the sum of the euclidean distances to all customers is minimum.
+Given an array positions where positions[i] = [xi, yi] is the position of the ith customer on the map, return the minimum sum of the euclidean distances to all customers.
+In other words, you need to choose the position of the service center [xcentre, ycentre] such that the following formula is minimized:
+
+Answers within 10-5 of the actual value will be accepted.
+ 
+Example 1:
+
+Input: positions = [[0,1],[1,0],[1,2],[2,1]]
+Output: 4.00000
+Explanation: As shown, you can see that choosing [xcentre, ycentre] = [1, 1] will make the distance to each customer = 1, the sum of all distances is 4 which is the minimum possible we can achieve.
+
+Example 2:
+
+Input: positions = [[1,1],[3,3]]
+Output: 2.82843
+Explanation: The minimum possible sum of distances = sqrt(2) + sqrt(2) = 2.82843
+
+ 
+Constraints:
+
+1 <= positions.length <= 50
+positions[i].length == 2
+0 <= xi, yi <= 100
+
+",Greedy,Medium,"Generate all Fibonacci numbers up to the limit (they are few). Use greedy solution, taking at every time the greatest Fibonacci number which is smaller than or equal to the current number. Subtract this Fibonacci number from the current number and repeat again the process.",,

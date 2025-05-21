@@ -1,0 +1,201 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+166,166. Fraction to Recurring Decimal,"Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+If the fractional part is repeating, enclose the repeating part in parentheses.
+If multiple answers are possible, return any of them.
+It is guaranteed that the length of the answer string is less than 104 for all the given inputs.
+ 
+Example 1:
+Input: numerator = 1, denominator = 2
+Output: ""0.5""
+
+Example 2:
+Input: numerator = 2, denominator = 1
+Output: ""2""
+
+Example 3:
+Input: numerator = 4, denominator = 333
+Output: ""0.(012)""
+
+ 
+Constraints:
+
+-231 <= numerator, denominator <= 231 - 1
+denominator != 0
+
+","Hash Table,Math,String",Medium,"No scary math, just apply elementary math knowledge. Still remember how to perform a long division? Try a long division on 4/9, the repeating part is obvious. Now try 4/333. Do you see a pattern? Notice that once the remainder starts repeating, so does the divided result. Be wary of edge cases! List out as many test cases as you can think of and test your code thoroughly.",,
+51,51. N-Queens,"The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+Given an integer n, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+ 
+Example 1:
+
+Input: n = 4
+Output: [["".Q.."",""...Q"",""Q..."",""..Q.""],[""..Q."",""Q..."",""...Q"","".Q..""]]
+Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+
+Example 2:
+Input: n = 1
+Output: [[""Q""]]
+
+ 
+Constraints:
+
+1 <= n <= 9
+
+","Array,Backtracking",Hard,,"52,1043","N-Queens II,Grid Illumination"
+123,123. Best Time to Buy and Sell Stock III,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+Find the maximum profit you can achieve. You may complete at most two transactions.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+ 
+Example 1:
+Input: prices = [3,3,5,0,0,3,1,4]
+Output: 6
+Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
+Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+
+Example 3:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 105
+
+","Array,Dynamic Programming",Hard,,"121,122,188,689","Best Time to Buy and Sell Stock,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock IV,Maximum Sum of 3 Non-Overlapping Subarrays"
+528,528. Random Pick with Weight,"You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
+
+For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).
+
+ 
+Example 1:
+Input
+[""Solution"",""pickIndex""]
+[[[1]],[]]
+Output
+[null,0]
+
+Explanation
+Solution solution = new Solution([1]);
+solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
+
+Example 2:
+Input
+[""Solution"",""pickIndex"",""pickIndex"",""pickIndex"",""pickIndex"",""pickIndex""]
+[[[1,3]],[],[],[],[],[]]
+Output
+[null,1,1,1,1,0]
+
+Explanation
+Solution solution = new Solution([1, 3]);
+solution.pickIndex(); // return 1. It is returning the second element (index = 1) that has a probability of 3/4.
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 0. It is returning the first element (index = 0) that has a probability of 1/4.
+
+Since this is a randomization problem, multiple answers are allowed.
+All of the following outputs can be considered correct:
+[null,1,1,1,1,0]
+[null,1,1,1,1,1]
+[null,1,1,1,0,0]
+[null,1,1,1,0,1]
+[null,1,0,1,0,0]
+......
+and so on.
+
+ 
+Constraints:
+
+1 <= w.length <= 104
+1 <= w[i] <= 105
+pickIndex will be called at most 104 times.
+
+","Linked List,Two Pointers",Medium,We can transform the linked list to an array this should ease things up After transforming the linked list to an array it becomes as easy as swapping two integers in an array then rebuilding the linked list,"19,24,25","Remove Nth Node From End of List,Swap Nodes in Pairs,Reverse Nodes in k-Group"
+31,31. Next Permutation,"A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+For example, the next permutation of arr = [1,2,3] is [1,3,2].
+Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+
+Given an array of integers nums, find the next permutation of nums.
+The replacement must be in place and use only constant extra memory.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: nums = [3,2,1]
+Output: [1,2,3]
+
+Example 3:
+Input: nums = [1,1,5]
+Output: [1,5,1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 100
+
+","Array,Two Pointers",Medium,,"46,47,60,267,1978","Permutations,Permutations II,Permutation Sequence,Palindrome Permutation II,Minimum Adjacent Swaps to Reach the Kth Smallest Number"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+64,64. Minimum Path Sum,"Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+ 
+Example 1:
+
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
+Example 2:
+Input: grid = [[1,2,3],[4,5,6]]
+Output: 12
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 200
+0 <= grid[i][j] <= 200
+
+","Array,Dynamic Programming,Matrix",Medium,,"62,174,741,2067,2192","Unique Paths,Dungeon Game,Cherry Pickup,Maximum Number of Points with Cost,Minimum Cost Homecoming of a Robot in a Grid"
+723,723. Candy Crush,,"Array,Two Pointers,Matrix,Simulation",Medium,"Carefully perform the ""crush"" and ""gravity"" steps.  In the crush step, flag each candy that should be removed, then go through and crush each flagged candy.  In the gravity step, collect the candy in each column and then rewrite the column appropriately.  Do these steps repeatedly until there's no work left to do.",,

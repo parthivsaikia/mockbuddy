@@ -1,0 +1,406 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1228,1228. Missing Number In Arithmetic Progression,,"Dynamic Programming,Stack,Greedy,Monotonic Stack",Medium,"Do a DP, where dp(i, j) is the answer for the subarray arr[i]..arr[j]. For each possible way to partition the subarray i <= k < j, the answer is max(arr[i]..arr[k]) * max(arr[k+1]..arr[j]) + dp(i, k) + dp(k+1, j).",,
+545,545. Boundary of Binary Tree,,"Tree,Depth-First Search,Binary Tree",Medium,,199,Binary Tree Right Side View
+472,472. Concatenated Words,"Given an array of strings words (without duplicates), return all the concatenated words in the given list of words.
+A concatenated word is defined as a string that is comprised entirely of at least two shorter words (not necessarily distinct) in the given array.
+ 
+Example 1:
+Input: words = [""cat"",""cats"",""catsdogcats"",""dog"",""dogcatsdog"",""hippopotamuses"",""rat"",""ratcatdogcat""]
+Output: [""catsdogcats"",""dogcatsdog"",""ratcatdogcat""]
+Explanation: ""catsdogcats"" can be concatenated by ""cats"", ""dog"" and ""cats""; 
+""dogcatsdog"" can be concatenated by ""dog"", ""cats"" and ""dog""; 
+""ratcatdogcat"" can be concatenated by ""rat"", ""cat"", ""dog"" and ""cat"".
+Example 2:
+Input: words = [""cat"",""dog"",""catdog""]
+Output: [""catdog""]
+
+ 
+Constraints:
+
+1 <= words.length <= 104
+1 <= words[i].length <= 30
+words[i] consists of only lowercase English letters.
+All the strings of words are unique.
+1 <= sum(words[i].length) <= 105
+
+","Array,String,Dynamic Programming,Depth-First Search,Trie",Hard,,140,Word Break II
+140,140. Word Break II,"Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""catsanddog"", wordDict = [""cat"",""cats"",""and"",""sand"",""dog""]
+Output: [""cats and dog"",""cat sand dog""]
+
+Example 2:
+Input: s = ""pineapplepenapple"", wordDict = [""apple"",""pen"",""applepen"",""pine"",""pineapple""]
+Output: [""pine apple pen apple"",""pineapple pen apple"",""pine applepen apple""]
+Explanation: Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: []
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 10
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+Input is generated in a way that the length of the answer doesn't exceed 105.
+
+","Hash Table,String,Dynamic Programming,Backtracking,Trie,Memoization",Hard,,"139,472","Word Break,Concatenated Words"
+73,73. Set Matrix Zeroes,"Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+You must do it in place.
+ 
+Example 1:
+
+Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Output: [[1,0,1],[0,0,0],[1,0,1]]
+
+Example 2:
+
+Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
+Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[0].length
+1 <= m, n <= 200
+-231 <= matrix[i][j] <= 231 - 1
+
+ 
+Follow up:
+
+A straightforward solution using O(mn) space is probably a bad idea.
+A simple improvement uses O(m + n) space, but still not the best solution.
+Could you devise a constant space solution?
+
+","Array,Hash Table,Matrix",Medium,"If any cell of the matrix has a zero we can record its row and column number using additional memory.
+But if you don't want to use extra memory then you can manipulate the array instead. i.e. simulating exactly what the question says. Setting cell values to zero on the fly while iterating might lead to discrepancies. What if you use some other integer value as your marker?
+There is still a better approach for this problem with 0(1) space. We could have used 2 sets to keep a record of rows/columns which need to be set to zero. But for an O(1) space solution, you can use one of the rows and and one of the columns to keep track of this information. We can use the first cell of every row and column as a flag. This flag would determine whether a row or column has been set to zero.","289,2244,2259,2314","Game of Life,Number of Laser Beams in a Bank,Minimum Operations to Remove Adjacent Ones in Matrix,Remove All Ones With Row and Column Flips II"
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+139,139. Word Break,"Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""leetcode"", wordDict = [""leet"",""code""]
+Output: true
+Explanation: Return true because ""leetcode"" can be segmented as ""leet code"".
+
+Example 2:
+Input: s = ""applepenapple"", wordDict = [""apple"",""pen""]
+Output: true
+Explanation: Return true because ""applepenapple"" can be segmented as ""apple pen apple"".
+Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 300
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 20
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+
+","Hash Table,String,Dynamic Programming,Trie,Memoization",Medium,,140,Word Break II
+937,937. Reorder Data in Log Files,"You are given an array of logs. Each log is a space-delimited string of words, where the first word is the identifier.
+There are two types of logs:
+
+Letter-logs: All words (except the identifier) consist of lowercase English letters.
+Digit-logs: All words (except the identifier) consist of digits.
+
+Reorder these logs so that:
+
+The letter-logs come before all digit-logs.
+The letter-logs are sorted lexicographically by their contents. If their contents are the same, then sort them lexicographically by their identifiers.
+The digit-logs maintain their relative ordering.
+
+Return the final order of the logs.
+ 
+Example 1:
+Input: logs = [""dig1 8 1 5 1"",""let1 art can"",""dig2 3 6"",""let2 own kit dig"",""let3 art zero""]
+Output: [""let1 art can"",""let3 art zero"",""let2 own kit dig"",""dig1 8 1 5 1"",""dig2 3 6""]
+Explanation:
+The letter-log contents are all different, so their ordering is ""art can"", ""art zero"", ""own kit dig"".
+The digit-logs have a relative order of ""dig1 8 1 5 1"", ""dig2 3 6"".
+
+Example 2:
+Input: logs = [""a1 9 2 3 1"",""g1 act car"",""zo4 4 7"",""ab1 off key dog"",""a8 act zoo""]
+Output: [""g1 act car"",""a8 act zoo"",""ab1 off key dog"",""a1 9 2 3 1"",""zo4 4 7""]
+
+ 
+Constraints:
+
+1 <= logs.length <= 100
+3 <= logs[i].length <= 100
+All the tokens of logs[i] are separated by a single space.
+logs[i] is guaranteed to have an identifier and at least one word after the identifier.
+
+","Stack,Design,Monotonic Stack,Data Stream",Medium,,739,Daily Temperatures
+127,127. Word Ladder,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: 5
+Explanation: One shortest transformation sequence is ""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> cog"", which is 5 words long.
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: 0
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 10
+endWord.length == beginWord.length
+1 <= wordList.length <= 5000
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+
+","Hash Table,String,Breadth-First Search",Hard,,"126,433","Word Ladder II,Minimum Genetic Mutation"
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+101,101. Symmetric Tree,"Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+ 
+Example 1:
+
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+
+Example 2:
+
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 1000].
+-100 <= Node.val <= 100
+
+ 
+Follow up: Could you solve it both recursively and iteratively?","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Easy,,,
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+121,121. Best Time to Buy and Sell Stock,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming",Easy,,"53,122,123,188,309,2138,2144","Maximum Subarray,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Sum of Beauty in the Array,Maximum Difference Between Increasing Elements"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+1200,1200. Minimum Absolute Difference,"Given an array of distinct integers arr, find all pairs of elements with the minimum absolute difference of any two elements.
+Return a list of pairs in ascending order(with respect to pairs), each pair [a, b] follows
+
+a, b are from arr
+a < b
+b - a equals to the minimum absolute difference of any two elements in arr
+
+ 
+Example 1:
+Input: arr = [4,2,1,3]
+Output: [[1,2],[2,3],[3,4]]
+Explanation: The minimum absolute difference is 1. List all pairs with difference equal to 1 in ascending order.
+Example 2:
+Input: arr = [1,3,6,10,15]
+Output: [[1,3]]
+
+Example 3:
+Input: arr = [3,8,-10,23,19,-4,-14,27]
+Output: [[-14,-10],[19,23],[23,27]]
+
+ 
+Constraints:
+
+2 <= arr.length <= 105
+-106 <= arr[i] <= 106
+
+",Array,Medium,Solve the problem for every interval alone. Divide the problem into cases according to the position of the two intervals.,,

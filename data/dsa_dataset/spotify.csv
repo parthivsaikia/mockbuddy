@@ -1,0 +1,455 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+286,286. Walls and Gates,,"Array,Breadth-First Search,Matrix",Medium,,"130,200,317,865,1036","Surrounded Regions,Number of Islands,Shortest Distance from All Buildings,Robot Room Cleaner,Rotting Oranges"
+383,383. Ransom Note,"Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+Each letter in magazine can only be used once in ransomNote.
+ 
+Example 1:
+Input: ransomNote = ""a"", magazine = ""b""
+Output: false
+Example 2:
+Input: ransomNote = ""aa"", magazine = ""ab""
+Output: false
+Example 3:
+Input: ransomNote = ""aa"", magazine = ""aab""
+Output: true
+
+ 
+Constraints:
+
+1 <= ransomNote.length, magazine.length <= 105
+ransomNote and magazine consist of lowercase English letters.
+
+","Hash Table,String,Counting",Easy,,691,Stickers to Spell Word
+480,480. Sliding Window Median,"The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle values.
+
+For examples, if arr = [2,3,4], the median is 3.
+For examples, if arr = [1,2,3,4], the median is (2 + 3) / 2 = 2.5.
+
+You are given an integer array nums and an integer k. There is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the median array for each window in the original array. Answers within 10-5 of the actual value will be accepted.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [1.00000,-1.00000,-1.00000,3.00000,5.00000,6.00000]
+Explanation: 
+Window position                Median
+---------------                -----
+[1  3  -1] -3  5  3  6  7        1
+ 1 [3  -1  -3] 5  3  6  7       -1
+ 1  3 [-1  -3  5] 3  6  7       -1
+ 1  3  -1 [-3  5  3] 6  7        3
+ 1  3  -1  -3 [5  3  6] 7        5
+ 1  3  -1  -3  5 [3  6  7]       6
+
+Example 2:
+Input: nums = [1,2,3,4,2,3,1,4,2], k = 3
+Output: [2.00000,3.00000,3.00000,3.00000,2.00000,3.00000,2.00000]
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+
+","Array,Hash Table,Sliding Window,Heap (Priority Queue)",Hard,"The simplest of solutions comes from the basic idea of finding the median given a set of numbers. We know that by definition, a median is the center element (or an average of the two center elements). Given an unsorted list of numbers, how do we find the median element? If you know the answer to this question, can we extend this idea to every sliding window that we come across in the array? Is there a better way to do what we are doing in the above hint? Don't you think there is duplication of calculation being done there? Is there some sort of optimization that we can do to achieve the same result? This approach is merely a modification of the basic approach except that it simply reduces duplication of calculations once done. The third line of thought is also based on this same idea but achieving the result in a different way. We obviously need the window to be sorted for us to be able to find the median. Is there a data-structure out there that we can use (in one or more quantities) to obtain the median element extremely fast, say O(1) time while having the ability to perform the other operations fairly efficiently as well?",295,Find Median from Data Stream
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+22,22. Generate Parentheses,"Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ 
+Example 1:
+Input: n = 3
+Output: [""((()))"",""(()())"",""(())()"",""()(())"",""()()()""]
+Example 2:
+Input: n = 1
+Output: [""()""]
+
+ 
+Constraints:
+
+1 <= n <= 8
+
+","String,Dynamic Programming,Backtracking",Medium,,"17,20,2221","Letter Combinations of a Phone Number,Valid Parentheses,Check if a Parentheses String Can Be Valid"
+784,784. Letter Case Permutation,"Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
+Return a list of all possible strings we could create. Return the output in any order.
+ 
+Example 1:
+Input: s = ""a1b2""
+Output: [""a1b2"",""a1B2"",""A1b2"",""A1B2""]
+
+Example 2:
+Input: s = ""3z4""
+Output: [""3z4"",""3Z4""]
+
+ 
+Constraints:
+
+1 <= s.length <= 12
+s consists of lowercase English letters, uppercase English letters, and digits.
+
+","Tree,Binary Search Tree,Binary Tree",Medium,,783,Search in a Binary Search Tree
+128,128. Longest Consecutive Sequence,"Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+You must write an algorithm that runs in O(n) time.
+ 
+Example 1:
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+Example 2:
+Input: nums = [0,3,7,2,5,8,4,6,0,1]
+Output: 9
+
+ 
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+
+","Array,Hash Table,Union Find",Medium,,"298,2278","Binary Tree Longest Consecutive Sequence,Find Three Consecutive Integers That Sum to a Given Number"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+443,443. String Compression,"Given an array of characters chars, compress it using the following algorithm:
+Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+If the group's length is 1, append the character to s.
+Otherwise, append the character followed by the group's length.
+
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+After you are done modifying the input array, return the new length of the array.
+You must write an algorithm that uses only constant extra space.
+ 
+Example 1:
+Input: chars = [""a"",""a"",""b"",""b"",""c"",""c"",""c""]
+Output: Return 6, and the first 6 characters of the input array should be: [""a"",""2"",""b"",""2"",""c"",""3""]
+Explanation: The groups are ""aa"", ""bb"", and ""ccc"". This compresses to ""a2b2c3"".
+
+Example 2:
+Input: chars = [""a""]
+Output: Return 1, and the first character of the input array should be: [""a""]
+Explanation: The only group is ""a"", which remains uncompressed since it's a single character.
+
+Example 3:
+Input: chars = [""a"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b""]
+Output: Return 4, and the first 4 characters of the input array should be: [""a"",""b"",""1"",""2""].
+Explanation: The groups are ""a"" and ""bbbbbbbbbbbb"". This compresses to ""ab12"".
+ 
+Constraints:
+
+1 <= chars.length <= 2000
+chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol.
+
+","Two Pointers,String",Medium,How do you know if you are at the end of a consecutive group of characters?,"38,271,604,1241","Count and Say,Encode and Decode Strings,Design Compressed String Iterator,Decompress Run-Length Encoded List"
+206,206. Reverse Linked List,"Given the head of a singly linked list, reverse the list, and return the reversed list.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+ 
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+","Linked List,Recursion",Easy,,"92,156,234,2196,2236","Reverse Linked List II,Binary Tree Upside Down,Palindrome Linked List,Reverse Nodes in Even Length Groups,Maximum Twin Sum of a Linked List"
+215,215. Kth Largest Element in an Array,"Given an integer array nums and an integer k, return the kth largest element in the array.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Can you solve it without sorting?
+ 
+Example 1:
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+Example 2:
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+","Array,Divide and Conquer,Sorting,Heap (Priority Queue),Quickselect",Medium,,"324,347,414,789,1014,2113,2204,2250","Wiggle Sort II,Top K Frequent Elements,Third Maximum Number,Kth Largest Element in a Stream,K Closest Points to Origin,Find the Kth Largest Integer in the Array,Find Subsequence of Length K With the Largest Sum,K Highest Ranked Items Within a Price Range"
+412,412. Fizz Buzz,"Given an integer n, return a string array answer (1-indexed) where:
+
+answer[i] == ""FizzBuzz"" if i is divisible by 3 and 5.
+answer[i] == ""Fizz"" if i is divisible by 3.
+answer[i] == ""Buzz"" if i is divisible by 5.
+answer[i] == i (as a string) if none of the above conditions are true.
+
+ 
+Example 1:
+Input: n = 3
+Output: [""1"",""2"",""Fizz""]
+Example 2:
+Input: n = 5
+Output: [""1"",""2"",""Fizz"",""4"",""Buzz""]
+Example 3:
+Input: n = 15
+Output: [""1"",""2"",""Fizz"",""4"",""Buzz"",""Fizz"",""7"",""8"",""Fizz"",""Buzz"",""11"",""Fizz"",""13"",""14"",""FizzBuzz""]
+
+ 
+Constraints:
+
+1 <= n <= 104
+
+","Math,String,Simulation",Easy,,1316,Fizz Buzz Multithreaded
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+3,3. Longest Substring Without Repeating Characters,"Given a string s, find the length of the longest substring without repeating characters.
+ 
+Example 1:
+Input: s = ""abcabcbb""
+Output: 3
+Explanation: The answer is ""abc"", with the length of 3.
+
+Example 2:
+Input: s = ""bbbbb""
+Output: 1
+Explanation: The answer is ""b"", with the length of 1.
+
+Example 3:
+Input: s = ""pwwkew""
+Output: 3
+Explanation: The answer is ""wke"", with the length of 3.
+Notice that the answer must be a substring, ""pwke"" is a subsequence and not a substring.
+
+ 
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+","Hash Table,String,Sliding Window",Medium,,"159,340,1034,1813,2209","Longest Substring with At Most Two Distinct Characters,Longest Substring with At Most K Distinct Characters,Subarrays with K Different Integers,Maximum Erasure Value,Number of Equal Count Substrings"
+127,127. Word Ladder,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: 5
+Explanation: One shortest transformation sequence is ""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> cog"", which is 5 words long.
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: 0
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 10
+endWord.length == beginWord.length
+1 <= wordList.length <= 5000
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+
+","Hash Table,String,Breadth-First Search",Hard,,"126,433","Word Ladder II,Minimum Genetic Mutation"
+347,347. Top K Frequent Elements,"Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+ 
+Example 1:
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+k is in the range [1, the number of unique elements in the array].
+It is guaranteed that the answer is unique.
+
+ 
+Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+","Array,Hash Table,Divide and Conquer,Sorting,Heap (Priority Queue),Bucket Sort,Counting,Quickselect",Medium,,"192,215,451,659,692,1014,1919","Word Frequency,Kth Largest Element in an Array,Sort Characters By Frequency,Split Array into Consecutive Subsequences,Top K Frequent Words,K Closest Points to Origin,Sort Features by Popularity"
+66,66. Plus One,"You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+Increment the large integer by one and return the resulting array of digits.
+ 
+Example 1:
+Input: digits = [1,2,3]
+Output: [1,2,4]
+Explanation: The array represents the integer 123.
+Incrementing by one gives 123 + 1 = 124.
+Thus, the result should be [1,2,4].
+
+Example 2:
+Input: digits = [4,3,2,1]
+Output: [4,3,2,2]
+Explanation: The array represents the integer 4321.
+Incrementing by one gives 4321 + 1 = 4322.
+Thus, the result should be [4,3,2,2].
+
+Example 3:
+Input: digits = [9]
+Output: [1,0]
+Explanation: The array represents the integer 9.
+Incrementing by one gives 9 + 1 = 10.
+Thus, the result should be [1,0].
+
+ 
+Constraints:
+
+1 <= digits.length <= 100
+0 <= digits[i] <= 9
+digits does not contain any leading 0's.
+
+","Array,Math",Easy,,"43,67,369,1031","Multiply Strings,Add Binary,Plus One Linked List,Add to Array-Form of Integer"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"

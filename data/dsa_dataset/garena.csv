@@ -1,0 +1,73 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+46,46. Permutations,"Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+Example 2:
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+Example 3:
+Input: nums = [1]
+Output: [[1]]
+
+ 
+Constraints:
+
+1 <= nums.length <= 6
+-10 <= nums[i] <= 10
+All the integers of nums are unique.
+
+","Array,Backtracking",Medium,,"31,47,60,77","Next Permutation,Permutations II,Permutation Sequence,Combinations"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+810,810. Chalkboard XOR Game,"You are given an array of integers nums represents the numbers written on a chalkboard.
+Alice and Bob take turns erasing exactly one number from the chalkboard, with Alice starting first. If erasing a number causes the bitwise XOR of all the elements of the chalkboard to become 0, then that player loses. The bitwise XOR of one element is that element itself, and the bitwise XOR of no elements is 0.
+Also, if any player starts their turn with the bitwise XOR of all the elements of the chalkboard equal to 0, then that player wins.
+Return true if and only if Alice wins the game, assuming both players play optimally.
+ 
+Example 1:
+Input: nums = [1,1,2]
+Output: false
+Explanation: 
+Alice has two choices: erase 1 or erase 2. 
+If she erases 1, the nums array becomes [1, 2]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 2 = 3. Now Bob can remove any element he wants, because Alice will be the one to erase the last element and she will lose. 
+If Alice erases 2 first, now nums become [1, 1]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 1 = 0. Alice will lose.
+
+Example 2:
+Input: nums = [0,1]
+Output: true
+
+Example 3:
+Input: nums = [1,2,3]
+Output: true
+
+ 
+Constraints:
+
+1 <= nums.length <= 1000
+0 <= nums[i] < 216
+
+","Array,String",Medium,,348,Design Tic-Tac-Toe

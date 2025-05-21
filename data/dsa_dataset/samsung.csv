@@ -1,0 +1,662 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+312,312. Burst Balloons,"You are given n balloons, indexed from 0 to n - 1. Each balloon is painted with a number on it represented by an array nums. You are asked to burst all the balloons.
+If you burst the ith balloon, you will get nums[i - 1] * nums[i] * nums[i + 1] coins. If i - 1 or i + 1 goes out of bounds of the array, then treat it as if there is a balloon with a 1 painted on it.
+Return the maximum coins you can collect by bursting the balloons wisely.
+ 
+Example 1:
+Input: nums = [3,1,5,8]
+Output: 167
+Explanation:
+nums = [3,1,5,8] --> [3,5,8] --> [3,8] --> [8] --> []
+coins =  3*1*5    +   3*5*8   +  1*3*8  + 1*8*1 = 167
+Example 2:
+Input: nums = [1,5]
+Output: 10
+
+ 
+Constraints:
+
+n == nums.length
+1 <= n <= 300
+0 <= nums[i] <= 100
+
+","Array,Dynamic Programming",Hard,,1042,Minimum Cost to Merge Stones
+85,85. Maximal Rectangle,"Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 6
+Explanation: The maximal rectangle is shown in the above picture.
+
+Example 2:
+Input: matrix = [[""0""]]
+Output: 0
+
+Example 3:
+Input: matrix = [[""1""]]
+Output: 1
+
+ 
+Constraints:
+
+rows == matrix.length
+cols == matrix[i].length
+1 <= row, cols <= 200
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Stack,Matrix,Monotonic Stack",Hard,,"84,221","Largest Rectangle in Histogram,Maximal Square"
+5,5. Longest Palindromic Substring,"Given a string s, return the longest palindromic substring in s.
+ 
+Example 1:
+Input: s = ""babad""
+Output: ""bab""
+Explanation: ""aba"" is also a valid answer.
+
+Example 2:
+Input: s = ""cbbd""
+Output: ""bb""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation.","214,266,336,516,647","Shortest Palindrome,Palindrome Permutation,Palindrome Pairs,Longest Palindromic Subsequence,Palindromic Substrings"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+190,190. Reverse Bits,"Reverse bits of a given 32 bits unsigned integer.
+Note:
+
+Note that in some languages, such as Java, there is no unsigned integer type. In this case, both input and output will be given as a signed integer type. They should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
+In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 2 above, the input represents the signed integer -3 and the output represents the signed integer -1073741825.
+
+ 
+Example 1:
+Input: n = 00000010100101000001111010011100
+Output:    964176192 (00111001011110000010100101000000)
+Explanation: The input binary string 00000010100101000001111010011100 represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000.
+
+Example 2:
+Input: n = 11111111111111111111111111111101
+Output:   3221225471 (10111111111111111111111111111111)
+Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.
+
+ 
+Constraints:
+
+The input must be a binary string of length 32
+
+ 
+Follow up: If this function is called many times, how would you optimize it?
+","Divide and Conquer,Bit Manipulation",Easy,,"7,191,2238","Reverse Integer,Number of 1 Bits,A Number After a Double Reversal"
+103,103. Binary Tree Zigzag Level Order Traversal,"Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[20,9],[15,7]]
+
+Example 2:
+Input: root = [1]
+Output: [[1]]
+
+Example 3:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-100 <= Node.val <= 100
+
+","Tree,Breadth-First Search,Binary Tree",Medium,,102,Binary Tree Level Order Traversal
+32,32. Longest Valid Parentheses,"Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring.
+ 
+Example 1:
+Input: s = ""(()""
+Output: 2
+Explanation: The longest valid parentheses substring is ""()"".
+
+Example 2:
+Input: s = "")()())""
+Output: 4
+Explanation: The longest valid parentheses substring is ""()()"".
+
+Example 3:
+Input: s = """"
+Output: 0
+
+ 
+Constraints:
+
+0 <= s.length <= 3 * 104
+s[i] is '(', or ')'.
+
+","String,Dynamic Programming,Stack",Hard,,20,Valid Parentheses
+523,523. Continuous Subarray Sum,"Given an integer array nums and an integer k, return true if nums has a good subarray or false otherwise.
+A good subarray is a subarray where:
+
+its length is at least two, and
+the sum of the elements of the subarray is a multiple of k.
+
+Note that:
+
+A subarray is a contiguous part of the array.
+An integer x is a multiple of k if there exists an integer n such that x = n * k. 0 is always a multiple of k.
+
+ 
+Example 1:
+Input: nums = [23,2,4,6,7], k = 6
+Output: true
+Explanation: [2, 4] is a continuous subarray of size 2 whose elements sum up to 6.
+
+Example 2:
+Input: nums = [23,2,6,4,7], k = 6
+Output: true
+Explanation: [23, 2, 6, 4, 7] is an continuous subarray of size 5 whose elements sum up to 42.
+42 is a multiple of 6 because 42 = 7 * 6 and 7 is an integer.
+
+Example 3:
+Input: nums = [23,2,6,4,7], k = 13
+Output: false
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+0 <= nums[i] <= 109
+0 <= sum(nums[i]) <= 231 - 1
+1 <= k <= 231 - 1
+
+","Array,Hash Table,Math,Prefix Sum",Medium,,"560,2119,2240","Subarray Sum Equals K,Minimum Number of Operations to Make Array Continuous,Intervals Between Identical Elements"
+572,572. Subtree of Another Tree,"Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise.
+A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be considered as a subtree of itself.
+ 
+Example 1:
+
+Input: root = [3,4,5,1,2], subRoot = [4,1,2]
+Output: true
+
+Example 2:
+
+Input: root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the root tree is in the range [1, 2000].
+The number of nodes in the subRoot tree is in the range [1, 1000].
+-104 <= root.val <= 104
+-104 <= subRoot.val <= 104
+
+","Tree,Depth-First Search,String Matching,Binary Tree,Hash Function",Easy,"Which approach is better here- recursive or iterative? If recursive approach is better, can you write recursive function with its parameters? Two trees s and t are said to be identical if their root values are same and their left and right subtrees are identical. Can you write this in form of recursive formulae? Recursive formulae can be: 
+isIdentical(s,t)= s.val==t.val AND isIdentical(s.left,t.left) AND isIdentical(s.right,t.right)","250,508","Count Univalue Subtrees,Most Frequent Subtree Sum"
+18,18. 4Sum,"Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+
+You may return the answer in any order.
+ 
+Example 1:
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+
+Example 2:
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+
+ 
+Constraints:
+
+1 <= nums.length <= 200
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+
+","Array,Two Pointers,Sorting",Medium,,"1,15,454,2122","Two Sum,3Sum,4Sum II,Count Special Quadruplets"
+876,876. Middle of the Linked List,"Given the head of a singly linked list, return the middle node of the linked list.
+If there are two middle nodes, return the second middle node.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+Explanation: The middle node of the list is node 3.
+
+Example 2:
+
+Input: head = [1,2,3,4,5,6]
+Output: [4,5,6]
+Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
+
+ 
+Constraints:
+
+The number of nodes in the list is in the range [1, 100].
+1 <= Node.val <= 100
+
+","Array,Hash Table,Greedy,Sorting",Medium,,,
+31,31. Next Permutation,"A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+For example, the next permutation of arr = [1,2,3] is [1,3,2].
+Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+
+Given an array of integers nums, find the next permutation of nums.
+The replacement must be in place and use only constant extra memory.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: nums = [3,2,1]
+Output: [1,2,3]
+
+Example 3:
+Input: nums = [1,1,5]
+Output: [1,5,1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 100
+
+","Array,Two Pointers",Medium,,"46,47,60,267,1978","Permutations,Permutations II,Permutation Sequence,Palindrome Permutation II,Minimum Adjacent Swaps to Reach the Kth Smallest Number"
+127,127. Word Ladder,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: 5
+Explanation: One shortest transformation sequence is ""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> cog"", which is 5 words long.
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: 0
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 10
+endWord.length == beginWord.length
+1 <= wordList.length <= 5000
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+
+","Hash Table,String,Breadth-First Search",Hard,,"126,433","Word Ladder II,Minimum Genetic Mutation"
+22,22. Generate Parentheses,"Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ 
+Example 1:
+Input: n = 3
+Output: [""((()))"",""(()())"",""(())()"",""()(())"",""()()()""]
+Example 2:
+Input: n = 1
+Output: [""()""]
+
+ 
+Constraints:
+
+1 <= n <= 8
+
+","String,Dynamic Programming,Backtracking",Medium,,"17,20,2221","Letter Combinations of a Phone Number,Valid Parentheses,Check if a Parentheses String Can Be Valid"
+33,33. Search in Rotated Sorted Array,"There is an integer array nums sorted in ascending order (with distinct values).
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+Input: nums = [1], target = 0
+Output: -1
+
+ 
+Constraints:
+
+1 <= nums.length <= 5000
+-104 <= nums[i] <= 104
+All values of nums are unique.
+nums is an ascending array that is possibly rotated.
+-104 <= target <= 104
+
+","Array,Binary Search",Medium,,"81,153,2273","Search in Rotated Sorted Array II,Find Minimum in Rotated Sorted Array,Pour Water Between Buckets to Make Water Levels Equal"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+21,21. Merge Two Sorted Lists,"You are given the heads of two sorted linked lists list1 and list2.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Return the head of the merged linked list.
+ 
+Example 1:
+
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in both lists is in the range [0, 50].
+-100 <= Node.val <= 100
+Both list1 and list2 are sorted in non-decreasing order.
+
+","Linked List,Recursion",Easy,,"23,88,148,244,1774,2071","Merge k Sorted Lists,Merge Sorted Array,Sort List,Shortest Word Distance II,Add Two Polynomials Represented as Linked Lists,Longest Common Subsequence Between Sorted Arrays"
+3,3. Longest Substring Without Repeating Characters,"Given a string s, find the length of the longest substring without repeating characters.
+ 
+Example 1:
+Input: s = ""abcabcbb""
+Output: 3
+Explanation: The answer is ""abc"", with the length of 3.
+
+Example 2:
+Input: s = ""bbbbb""
+Output: 1
+Explanation: The answer is ""b"", with the length of 1.
+
+Example 3:
+Input: s = ""pwwkew""
+Output: 3
+Explanation: The answer is ""wke"", with the length of 3.
+Notice that the answer must be a substring, ""pwke"" is a subsequence and not a substring.
+
+ 
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+","Hash Table,String,Sliding Window",Medium,,"159,340,1034,1813,2209","Longest Substring with At Most Two Distinct Characters,Longest Substring with At Most K Distinct Characters,Subarrays with K Different Integers,Maximum Erasure Value,Number of Equal Count Substrings"
+653,653. Two Sum IV - Input is a BST,"Given the root of a binary search tree and an integer k, return true if there exist two elements in the BST such that their sum is equal to k, or false otherwise.
+ 
+Example 1:
+
+Input: root = [5,3,6,2,4,null,7], k = 9
+Output: true
+
+Example 2:
+
+Input: root = [5,3,6,2,4,null,7], k = 28
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 104].
+-104 <= Node.val <= 104
+root is guaranteed to be a valid binary search tree.
+-105 <= k <= 105
+
+","Hash Table,Two Pointers,Tree,Depth-First Search,Breadth-First Search,Binary Search Tree,Binary Tree",Easy,,"1,167,170,1150","Two Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Two Sum BSTs"
+987,987. Vertical Order Traversal of a Binary Tree,"Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
+For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0).
+The vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values.
+Return the vertical order traversal of the binary tree.
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[9],[3,15],[20],[7]]
+Explanation:
+Column -1: Only node 9 is in this column.
+Column 0: Nodes 3 and 15 are in this column in that order from top to bottom.
+Column 1: Only node 20 is in this column.
+Column 2: Only node 7 is in this column.
+Example 2:
+
+Input: root = [1,2,3,4,5,6,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation:
+Column -2: Only node 4 is in this column.
+Column -1: Only node 2 is in this column.
+Column 0: Nodes 1, 5, and 6 are in this column.
+          1 is at the top, so it comes first.
+          5 and 6 are at the same position (2, 0), so we order them by their value, 5 before 6.
+Column 1: Only node 3 is in this column.
+Column 2: Only node 7 is in this column.
+
+Example 3:
+
+Input: root = [1,2,3,4,6,5,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation:
+This case is the exact same as example 2, but with nodes 5 and 6 swapped.
+Note that the solution remains the same since 5 and 6 are in the same location and should be ordered by their values.
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 1000].
+0 <= Node.val <= 1000
+
+","Array,Queue,Sorting,Simulation",Medium,,,
+1301,1301. Number of Paths with Max Score,"You are given a square board of characters. You can move on the board starting at the bottom right square marked with the character 'S'.
+You need to reach the top left square marked with the character 'E'. The rest of the squares are labeled either with a numeric character 1, 2, ..., 9 or with an obstacle 'X'. In one move you can go up, left or up-left (diagonally) only if there is no obstacle there.
+Return a list of two integers: the first integer is the maximum sum of numeric characters you can collect, and the second is the number of such paths that you can take to get that maximum sum, taken modulo 10^9 + 7.
+In case there is no path, return [0, 0].
+ 
+Example 1:
+Input: board = [""E23"",""2X2"",""12S""]
+Output: [7,1]
+Example 2:
+Input: board = [""E12"",""1X1"",""21S""]
+Output: [4,2]
+Example 3:
+Input: board = [""E11"",""XXX"",""11S""]
+Output: [0,0]
+
+ 
+Constraints:
+
+2 <= board.length == board[i].length <= 100
+",Database,Easy,,,
+1139,1139. Largest 1-Bordered Square,"Given a 2D grid of 0s and 1s, return the number of elements in the largest square subgrid that has all 1s on its border, or 0 if such a subgrid doesn't exist in the grid.
+ 
+Example 1:
+Input: grid = [[1,1,1],[1,0,1],[1,1,1]]
+Output: 9
+
+Example 2:
+Input: grid = [[1,1,0,0]]
+Output: 1
+
+ 
+Constraints:
+
+1 <= grid.length <= 100
+1 <= grid[0].length <= 100
+grid[i][j] is 0 or 1
+","Array,Greedy",Medium,"You need to swap two values, one larger than the other.  Where is the larger one located?",,
+1464,1464. Maximum Product of Two Elements in an Array,"Given the array of integers nums, you will choose two different indices i and j of that array. Return the maximum value of (nums[i]-1)*(nums[j]-1).
+ 
+Example 1:
+Input: nums = [3,4,5,2]
+Output: 12 
+Explanation: If you choose the indices i=1 and j=2 (indexed from 0), you will get the maximum value, that is, (nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12. 
+
+Example 2:
+Input: nums = [1,5,4,5]
+Output: 16
+Explanation: Choosing the indices i=1 and j=3 (indexed from 0), you will get the maximum value of (5-1)*(5-1) = 16.
+
+Example 3:
+Input: nums = [3,7]
+Output: 12
+
+ 
+Constraints:
+
+2 <= nums.length <= 500
+1 <= nums[i] <= 10^3
+
+","Array,Hash Table,Greedy,Sorting,Heap (Priority Queue)",Medium,"Count the frequency of each integer in the array. Start with an empty set, add to the set the integer with the maximum frequency. Keep Adding the integer with the max frequency until you remove at least half of the integers.",,
+1519,1519. Number of Nodes in the Sub-Tree With the Same Label,"You are given a tree (i.e. a connected, undirected graph that has no cycles) consisting of n nodes numbered from 0 to n - 1 and exactly n - 1 edges. The root of the tree is the node 0, and each node of the tree has a label which is a lower-case character given in the string labels (i.e. The node with the number i has the label labels[i]).
+The edges array is given on the form edges[i] = [ai, bi], which means there is an edge between nodes ai and bi in the tree.
+Return an array of size n where ans[i] is the number of nodes in the subtree of the ith node which have the same label as node i.
+A subtree of a tree T is the tree consisting of a node in T and all of its descendant nodes.
+ 
+Example 1:
+
+Input: n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], labels = ""abaedcd""
+Output: [2,1,1,1,1,1,1]
+Explanation: Node 0 has label 'a' and its sub-tree has node 2 with label 'a' as well, thus the answer is 2. Notice that any node is part of its sub-tree.
+Node 1 has a label 'b'. The sub-tree of node 1 contains nodes 1,4 and 5, as nodes 4 and 5 have different labels than node 1, the answer is just 1 (the node itself).
+
+Example 2:
+
+Input: n = 4, edges = [[0,1],[1,2],[0,3]], labels = ""bbbb""
+Output: [4,2,1,1]
+Explanation: The sub-tree of node 2 contains only node 2, so the answer is 1.
+The sub-tree of node 3 contains only node 3, so the answer is 1.
+The sub-tree of node 1 contains nodes 1 and 2, both have label 'b', thus the answer is 2.
+The sub-tree of node 0 contains nodes 0, 1, 2 and 3, all with label 'b', thus the answer is 4.
+
+Example 3:
+
+Input: n = 5, edges = [[0,1],[0,2],[1,3],[0,4]], labels = ""aabab""
+Output: [3,2,1,1,1]
+
+ 
+Constraints:
+
+1 <= n <= 105
+edges.length == n - 1
+edges[i].length == 2
+0 <= ai, bi < n
+ai != bi
+labels.length == n
+labels is consisting of only of lowercase English letters.
+
+","Array,Greedy,Sorting",Easy,Sort elements and take each element from the largest until accomplish the conditions.,2316,Count Hills and Valleys in an Array

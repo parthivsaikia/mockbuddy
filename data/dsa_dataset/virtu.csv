@@ -1,0 +1,5 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1271,1271. Hexspeak,,"String,Depth-First Search,Breadth-First Search,Interactive",Medium,Use DFS/BFS to search start from the startURL. Remember to get rid of duplicate URLs.,1368,Web Crawler Multithreaded
+1243,1243. Array Transformation,,"Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,"Traverse the tree keeping the parent and the grandparent. If the grandparent of the current node is even-valued, add the value of this node to the answer.",,
+1180,1180. Count Substrings with Only One Distinct Letter,,Database,Easy,,"1179,1181","Game Play Analysis I,Game Play Analysis III"
+1196,1196. How Many Apples Can You Put into the Basket,,"Array,Dynamic Programming",Medium,Use dynamic programming:  dp(i) will be the answer to the problem for books[i:].,,

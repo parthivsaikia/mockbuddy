@@ -1,0 +1,543 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+547,547. Number of Provinces,"There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+Return the total number of provinces.
+ 
+Example 1:
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Example 2:
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+
+ 
+Constraints:
+
+1 <= n <= 200
+n == isConnected.length
+n == isConnected[i].length
+isConnected[i][j] is 1 or 0.
+isConnected[i][i] == 1
+isConnected[i][j] == isConnected[j][i]
+
+","Depth-First Search,Breadth-First Search,Union Find,Graph",Medium,,"323,657,734,737,1085,2206","Number of Connected Components in an Undirected Graph,Robot Return to Origin,Sentence Similarity,Sentence Similarity II,The Earliest Moment When Everyone Become Friends,Detonate the Maximum Bombs"
+1048,1048. Longest String Chain,"You are given an array of words where each word consists of lowercase English letters.
+wordA is a predecessor of wordB if and only if we can insert exactly one letter anywhere in wordA without changing the order of the other characters to make it equal to wordB.
+
+For example, ""abc"" is a predecessor of ""abac"", while ""cba"" is not a predecessor of ""bcad"".
+
+A word chain is a sequence of words [word1, word2, ..., wordk] with k >= 1, where word1 is a predecessor of word2, word2 is a predecessor of word3, and so on. A single word is trivially a word chain with k == 1.
+Return the length of the longest possible word chain with words chosen from the given list of words.
+ 
+Example 1:
+Input: words = [""a"",""b"",""ba"",""bca"",""bda"",""bdca""]
+Output: 4
+Explanation: One of the longest word chains is [""a"",""ba"",""bda"",""bdca""].
+
+Example 2:
+Input: words = [""xbc"",""pcxbcf"",""xb"",""cxbc"",""pcxbc""]
+Output: 5
+Explanation: All the words can be put in a word chain [""xb"", ""xbc"", ""cxbc"", ""pcxbc"", ""pcxbcf""].
+
+Example 3:
+Input: words = [""abcd"",""dbqca""]
+Output: 1
+Explanation: The trivial word chain [""abcd""] is one of the longest word chains.
+[""abcd"",""dbqca""] is not a valid word chain because the ordering of the letters is changed.
+
+ 
+Constraints:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of lowercase English letters.
+
+","Math,Stack,Simulation",Medium,,,
+918,918. Maximum Sum Circular Subarray,"Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+A circular array means the end of the array connects to the beginning of the array. Formally, the next element of nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n].
+A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n.
+ 
+Example 1:
+Input: nums = [1,-2,3,-2]
+Output: 3
+Explanation: Subarray [3] has maximum sum 3.
+
+Example 2:
+Input: nums = [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
+
+Example 3:
+Input: nums = [-3,-2,-3]
+Output: -2
+Explanation: Subarray [-2] has maximum sum -2.
+
+ 
+Constraints:
+
+n == nums.length
+1 <= n <= 3 * 104
+-3 * 104 <= nums[i] <= 3 * 104
+
+","Graph,Heap (Priority Queue),Shortest Path",Hard,,"2213,2218","Find All People With Secret,Paths in Maze That Lead to Same Room"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+123,123. Best Time to Buy and Sell Stock III,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+Find the maximum profit you can achieve. You may complete at most two transactions.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+ 
+Example 1:
+Input: prices = [3,3,5,0,0,3,1,4]
+Output: 6
+Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
+Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+
+Example 3:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transaction is done, i.e. max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 105
+
+","Array,Dynamic Programming",Hard,,"121,122,188,689","Best Time to Buy and Sell Stock,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock IV,Maximum Sum of 3 Non-Overlapping Subarrays"
+44,44. Wildcard Matching,"Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:
+
+'?' Matches any single character.
+'*' Matches any sequence of characters (including the empty sequence).
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""*""
+Output: true
+Explanation: '*' matches any sequence.
+
+Example 3:
+Input: s = ""cb"", p = ""?a""
+Output: false
+Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+
+ 
+Constraints:
+
+0 <= s.length, p.length <= 2000
+s contains only lowercase English letters.
+p contains only lowercase English letters, '?' or '*'.
+
+","String,Dynamic Programming,Greedy,Recursion",Hard,,10,Regular Expression Matching
+342,342. Power of Four,"Given an integer n, return true if it is a power of four. Otherwise, return false.
+An integer n is a power of four, if there exists an integer x such that n == 4x.
+ 
+Example 1:
+Input: n = 16
+Output: true
+Example 2:
+Input: n = 5
+Output: false
+Example 3:
+Input: n = 1
+Output: true
+
+ 
+Constraints:
+
+-231 <= n <= 231 - 1
+
+ 
+Follow up: Could you solve it without loops/recursion?","Math,Bit Manipulation,Recursion",Easy,,"231,326","Power of Two,Power of Three"
+528,528. Random Pick with Weight,"You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (inclusive) and returns it. The probability of picking an index i is w[i] / sum(w).
+
+For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%).
+
+ 
+Example 1:
+Input
+[""Solution"",""pickIndex""]
+[[[1]],[]]
+Output
+[null,0]
+
+Explanation
+Solution solution = new Solution([1]);
+solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
+
+Example 2:
+Input
+[""Solution"",""pickIndex"",""pickIndex"",""pickIndex"",""pickIndex"",""pickIndex""]
+[[[1,3]],[],[],[],[],[]]
+Output
+[null,1,1,1,1,0]
+
+Explanation
+Solution solution = new Solution([1, 3]);
+solution.pickIndex(); // return 1. It is returning the second element (index = 1) that has a probability of 3/4.
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 0. It is returning the first element (index = 0) that has a probability of 1/4.
+
+Since this is a randomization problem, multiple answers are allowed.
+All of the following outputs can be considered correct:
+[null,1,1,1,1,0]
+[null,1,1,1,1,1]
+[null,1,1,1,0,0]
+[null,1,1,1,0,1]
+[null,1,0,1,0,0]
+......
+and so on.
+
+ 
+Constraints:
+
+1 <= w.length <= 104
+1 <= w[i] <= 105
+pickIndex will be called at most 104 times.
+
+","Linked List,Two Pointers",Medium,We can transform the linked list to an array this should ease things up After transforming the linked list to an array it becomes as easy as swapping two integers in an array then rebuilding the linked list,"19,24,25","Remove Nth Node From End of List,Swap Nodes in Pairs,Reverse Nodes in k-Group"
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+710,710. Random Pick with Blacklist,"You are given an integer n and an array of unique integers blacklist. Design an algorithm to pick a random integer in the range [0, n - 1] that is not in blacklist. Any integer that is in the mentioned range and not in blacklist should be equally likely to be returned.
+Optimize your algorithm such that it minimizes the number of calls to the built-in random function of your language.
+Implement the Solution class:
+
+Solution(int n, int[] blacklist) Initializes the object with the integer n and the blacklisted integers blacklist.
+int pick() Returns a random integer in the range [0, n - 1] and not in blacklist.
+
+ 
+Example 1:
+Input
+[""Solution"", ""pick"", ""pick"", ""pick"", ""pick"", ""pick"", ""pick"", ""pick""]
+[[7, [2, 3, 5]], [], [], [], [], [], [], []]
+Output
+[null, 0, 4, 1, 6, 1, 0, 4]
+
+Explanation
+Solution solution = new Solution(7, [2, 3, 5]);
+solution.pick(); // return 0, any integer from [0,1,4,6] should be ok. Note that for every call of pick,
+                 // 0, 1, 4, and 6 must be equally likely to be returned (i.e., with probability 1/4).
+solution.pick(); // return 4
+solution.pick(); // return 1
+solution.pick(); // return 6
+solution.pick(); // return 1
+solution.pick(); // return 0
+solution.pick(); // return 4
+
+ 
+Constraints:
+
+1 <= n <= 109
+0 <= blacklist.length <= min(105, n - 1)
+0 <= blacklist[i] < n
+All the values of blacklist are unique.
+At most 2 * 104 calls will be made to pick.
+
+",,,,,
+289,289. Game of Life,"According to Wikipedia's article: ""The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.""
+The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population.
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.
+ 
+Example 1:
+
+Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+
+Example 2:
+
+Input: board = [[1,1],[1,0]]
+Output: [[1,1],[1,1]]
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 25
+board[i][j] is 0 or 1.
+
+ 
+Follow up:
+
+Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.
+In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?
+
+","Array,Matrix,Simulation",Medium,,73,Set Matrix Zeroes
+1163,1163. Last Substring in Lexicographical Order,"Given a string s, return the last substring of s in lexicographical order.
+ 
+Example 1:
+Input: s = ""abab""
+Output: ""bab""
+Explanation: The substrings are [""a"", ""ab"", ""aba"", ""abab"", ""b"", ""ba"", ""bab""]. The lexicographically maximum substring is ""bab"".
+
+Example 2:
+Input: s = ""leetcode""
+Output: ""tcode""
+
+ 
+Constraints:
+
+1 <= s.length <= 4 * 105
+s contains only lowercase English letters.
+
+",Database,Medium,,1162,Project Employees II
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+53,53. Maximum Subarray,"Given an integer array nums, find the subarray with the largest sum, and return its sum.
+ 
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+Example 3:
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+ 
+Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+","Array,Divide and Conquer,Dynamic Programming",Easy,,"121,152,697,1020,1849,1893","Best Time to Buy and Sell Stock,Maximum Product Subarray,Degree of an Array,Longest Turbulent Subarray,Maximum Absolute Sum of Any Subarray,Maximum Subarray Sum After One Operation"
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+384,384. Shuffle an Array,"Given an integer array nums, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.
+Implement the Solution class:
+
+Solution(int[] nums) Initializes the object with the integer array nums.
+int[] reset() Resets the array to its original configuration and returns it.
+int[] shuffle() Returns a random shuffling of the array.
+
+ 
+Example 1:
+Input
+[""Solution"", ""shuffle"", ""reset"", ""shuffle""]
+[[[1, 2, 3]], [], [], []]
+Output
+[null, [3, 1, 2], [1, 2, 3], [1, 3, 2]]
+
+Explanation
+Solution solution = new Solution([1, 2, 3]);
+solution.shuffle();    // Shuffle the array [1,2,3] and return its result.
+                       // Any permutation of [1,2,3] must be equally likely to be returned.
+                       // Example: return [3, 1, 2]
+solution.reset();      // Resets the array back to its original configuration [1,2,3]. Return [1, 2, 3]
+solution.shuffle();    // Returns the random shuffling of array [1,2,3]. Example: return [1, 3, 2]
+
+
+ 
+Constraints:
+
+1 <= nums.length <= 50
+-106 <= nums[i] <= 106
+All the elements of nums are unique.
+At most 104 calls in total will be made to reset and shuffle.
+
+","Array,Math,Randomized",Medium,The solution expects that we always use the original array to shuffle() else some of the test cases fail. (Credits; @snehasingh31),,
+221,221. Maximal Square,"Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 4
+
+Example 2:
+
+Input: matrix = [[""0"",""1""],[""1"",""0""]]
+Output: 1
+
+Example 3:
+Input: matrix = [[""0""]]
+Output: 0
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 300
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Matrix",Medium,,"85,769,1312,2200","Maximal Rectangle,Largest Plus Sign,Count Artifacts That Can Be Extracted,Stamping the Grid"
+349,349. Intersection of Two Arrays,"Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+ 
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Example 2:
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Explanation: [4,9] is also accepted.
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 1000
+
+","Array,Hash Table,Two Pointers,Binary Search,Sorting",Easy,,"350,1149,1392,2190,2282","Intersection of Two Arrays II,Intersection of Three Sorted Arrays,Find the Difference of Two Arrays,Count Common Words With One Occurrence,Choose Numbers From Two Arrays in Range"
+1186,1186. Maximum Subarray Sum with One Deletion,"Given an array of integers, return the maximum sum for a non-empty subarray (contiguous elements) with at most one element deletion. In other words, you want to choose a subarray and optionally delete one element from it so that there is still at least one element left and the sum of the remaining elements is maximum possible.
+Note that the subarray needs to be non-empty after deleting one element.
+ 
+Example 1:
+Input: arr = [1,-2,0,3]
+Output: 4
+Explanation: Because we can choose [1, -2, 0, 3] and drop -2, thus the subarray [1, 0, 3] becomes the maximum value.
+Example 2:
+Input: arr = [1,-2,-2,3]
+Output: 3
+Explanation: We just choose [3] and it's the maximum sum.
+
+Example 3:
+Input: arr = [-1,-1,-1,-1]
+Output: -1
+Explanation: The final subarray needs to be non-empty. You can't choose [-1] and delete -1 from it, then get an empty subarray to make the sum equals to 0.
+
+ 
+Constraints:
+
+1 <= arr.length <= 105
+-104 <= arr[i] <= 104
+
+",Concurrency,Medium,,,

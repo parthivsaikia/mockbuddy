@@ -1,0 +1,3096 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+289,289. Game of Life,"According to Wikipedia's article: ""The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.""
+The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population.
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.
+ 
+Example 1:
+
+Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+
+Example 2:
+
+Input: board = [[1,1],[1,0]]
+Output: [[1,1],[1,1]]
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 25
+board[i][j] is 0 or 1.
+
+ 
+Follow up:
+
+Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.
+In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?
+
+","Array,Matrix,Simulation",Medium,,73,Set Matrix Zeroes
+1086,1086. High Five,,"Math,Dynamic Programming,Brainteaser,Game Theory",Easy,"If the current number is even, we can always subtract a 1 to make it odd.  If the current number is odd, we must subtract an odd number to make it even.",,
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+209,209. Minimum Size Subarray Sum,"Given an array of positive integers nums and a positive integer target, return the minimal length of a subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+ 
+Example 1:
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+
+Example 2:
+Input: target = 4, nums = [1,4,4]
+Output: 1
+
+Example 3:
+Input: target = 11, nums = [1,1,1,1,1,1,1,1]
+Output: 0
+
+ 
+Constraints:
+
+1 <= target <= 109
+1 <= nums.length <= 105
+1 <= nums[i] <= 104
+
+ 
+Follow up: If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log(n)).","Array,Binary Search,Sliding Window,Prefix Sum",Medium,,"76,325,718,1776,2211,2329","Minimum Window Substring,Maximum Size Subarray Sum Equals k,Maximum Length of Repeated Subarray,Minimum Operations to Reduce X to Zero,K Radius Subarray Averages,Maximum Product After K Increments"
+780,780. Reaching Points,"Given four integers sx, sy, tx, and ty, return true if it is possible to convert the point (sx, sy) to the point (tx, ty) through some operations, or false otherwise.
+The allowed operation on some point (x, y) is to convert it to either (x, x + y) or (x + y, y).
+ 
+Example 1:
+Input: sx = 1, sy = 1, tx = 3, ty = 5
+Output: true
+Explanation:
+One series of moves that transforms the starting point to the target is:
+(1, 1) -> (1, 2)
+(1, 2) -> (3, 2)
+(3, 2) -> (3, 5)
+
+Example 2:
+Input: sx = 1, sy = 1, tx = 2, ty = 2
+Output: false
+
+Example 3:
+Input: sx = 1, sy = 1, tx = 1, ty = 1
+Output: true
+
+ 
+Constraints:
+
+1 <= sx, sy, tx, ty <= 109
+
+","Array,Stack,Greedy,Sorting,Monotonic Stack",Medium,"The first chunk can be found as the smallest k for which A[:k+1] == [0, 1, 2, ...k]; then we repeat this process.",779,Max Chunks To Make Sorted II
+166,166. Fraction to Recurring Decimal,"Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+If the fractional part is repeating, enclose the repeating part in parentheses.
+If multiple answers are possible, return any of them.
+It is guaranteed that the length of the answer string is less than 104 for all the given inputs.
+ 
+Example 1:
+Input: numerator = 1, denominator = 2
+Output: ""0.5""
+
+Example 2:
+Input: numerator = 2, denominator = 1
+Output: ""2""
+
+Example 3:
+Input: numerator = 4, denominator = 333
+Output: ""0.(012)""
+
+ 
+Constraints:
+
+-231 <= numerator, denominator <= 231 - 1
+denominator != 0
+
+","Hash Table,Math,String",Medium,"No scary math, just apply elementary math knowledge. Still remember how to perform a long division? Try a long division on 4/9, the repeating part is obvious. Now try 4/333. Do you see a pattern? Notice that once the remainder starts repeating, so does the divided result. Be wary of edge cases! List out as many test cases as you can think of and test your code thoroughly.",,
+1041,1041. Robot Bounded In Circle,"On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
+
+The north direction is the positive direction of the y-axis.
+The south direction is the negative direction of the y-axis.
+The east direction is the positive direction of the x-axis.
+The west direction is the negative direction of the x-axis.
+
+The robot can receive one of three instructions:
+
+""G"": go straight 1 unit.
+""L"": turn 90 degrees to the left (i.e., anti-clockwise direction).
+""R"": turn 90 degrees to the right (i.e., clockwise direction).
+
+The robot performs the instructions given in order, and repeats them forever.
+Return true if and only if there exists a circle in the plane such that the robot never leaves the circle.
+ 
+Example 1:
+Input: instructions = ""GGLLGG""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: South.
+""G"": move one step. Position: (0, 1). Direction: South.
+""G"": move one step. Position: (0, 0). Direction: South.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (0, 2) --> (0, 1) --> (0, 0).
+Based on that, we return true.
+
+Example 2:
+Input: instructions = ""GG""
+Output: false
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+Repeating the instructions, keeps advancing in the north direction and does not go into cycles.
+Based on that, we return false.
+
+Example 3:
+Input: instructions = ""GL""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 1). Direction: West.
+""G"": move one step. Position: (-1, 1). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 1). Direction: South.
+""G"": move one step. Position: (-1, 0). Direction: South.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 0). Direction: East.
+""G"": move one step. Position: (0, 0). Direction: East.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 0). Direction: North.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (-1, 1) --> (-1, 0) --> (0, 0).
+Based on that, we return true.
+
+ 
+Constraints:
+
+1 <= instructions.length <= 100
+instructions[i] is 'G', 'L' or, 'R'.
+
+","Array,Matrix,Simulation",Easy,,,
+387,387. First Unique Character in a String,"Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1.
+ 
+Example 1:
+Input: s = ""leetcode""
+Output: 0
+Example 2:
+Input: s = ""loveleetcode""
+Output: 2
+Example 3:
+Input: s = ""aabb""
+Output: -1
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+s consists of only lowercase English letters.
+
+","Hash Table,String,Queue,Counting",Easy,,451,Sort Characters By Frequency
+1163,1163. Last Substring in Lexicographical Order,"Given a string s, return the last substring of s in lexicographical order.
+ 
+Example 1:
+Input: s = ""abab""
+Output: ""bab""
+Explanation: The substrings are [""a"", ""ab"", ""aba"", ""abab"", ""b"", ""ba"", ""bab""]. The lexicographically maximum substring is ""bab"".
+
+Example 2:
+Input: s = ""leetcode""
+Output: ""tcode""
+
+ 
+Constraints:
+
+1 <= s.length <= 4 * 105
+s contains only lowercase English letters.
+
+",Database,Medium,,1162,Project Employees II
+238,238. Product of Array Except Self,"Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+You must write an algorithm that runs in O(n) time and without using the division operation.
+ 
+Example 1:
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+Example 2:
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+
+ 
+Constraints:
+
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+ 
+Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+","Array,Prefix Sum",Medium,,"42,152,265,2267","Trapping Rain Water,Maximum Product Subarray,Paint House II,Minimum Difference in Sums After Removal of Elements"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+862,862. Shortest Subarray with Sum at Least K,"Given an integer array nums and an integer k, return the length of the shortest non-empty subarray of nums with a sum of at least k. If there is no such subarray, return -1.
+A subarray is a contiguous part of an array.
+ 
+Example 1:
+Input: nums = [1], k = 1
+Output: 1
+Example 2:
+Input: nums = [1,2], k = 4
+Output: -1
+Example 3:
+Input: nums = [2,-1,2], k = 3
+Output: 3
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-105 <= nums[i] <= 105
+1 <= k <= 109
+
+","Array,String,Sorting",Medium,,,
+443,443. String Compression,"Given an array of characters chars, compress it using the following algorithm:
+Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+If the group's length is 1, append the character to s.
+Otherwise, append the character followed by the group's length.
+
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+After you are done modifying the input array, return the new length of the array.
+You must write an algorithm that uses only constant extra space.
+ 
+Example 1:
+Input: chars = [""a"",""a"",""b"",""b"",""c"",""c"",""c""]
+Output: Return 6, and the first 6 characters of the input array should be: [""a"",""2"",""b"",""2"",""c"",""3""]
+Explanation: The groups are ""aa"", ""bb"", and ""ccc"". This compresses to ""a2b2c3"".
+
+Example 2:
+Input: chars = [""a""]
+Output: Return 1, and the first character of the input array should be: [""a""]
+Explanation: The only group is ""a"", which remains uncompressed since it's a single character.
+
+Example 3:
+Input: chars = [""a"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b""]
+Output: Return 4, and the first 4 characters of the input array should be: [""a"",""b"",""1"",""2""].
+Explanation: The groups are ""a"" and ""bbbbbbbbbbbb"". This compresses to ""ab12"".
+ 
+Constraints:
+
+1 <= chars.length <= 2000
+chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol.
+
+","Two Pointers,String",Medium,How do you know if you are at the end of a consecutive group of characters?,"38,271,604,1241","Count and Say,Encode and Decode Strings,Design Compressed String Iterator,Decompress Run-Length Encoded List"
+524,524. Longest Word in Dictionary through Deleting,"Given a string s and a string array dictionary, return the longest string in the dictionary that can be formed by deleting some of the given string characters. If there is more than one possible result, return the longest word with the smallest lexicographical order. If there is no possible result, return the empty string.
+ 
+Example 1:
+Input: s = ""abpcplea"", dictionary = [""ale"",""apple"",""monkey"",""plea""]
+Output: ""apple""
+
+Example 2:
+Input: s = ""abpcplea"", dictionary = [""a"",""b"",""c""]
+Output: ""a""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+1 <= dictionary.length <= 1000
+1 <= dictionary[i].length <= 1000
+s and dictionary[i] consist of lowercase English letters.
+
+","Array,Two Pointers,String,Sorting",Medium,,720,Longest Word in Dictionary
+592,592. Fraction Addition and Subtraction,"Given a string expression representing an expression of fraction addition and subtraction, return the calculation result in string format.
+The final result should be an irreducible fraction. If your final result is an integer, change it to the format of a fraction that has a denominator 1. So in this case, 2 should be converted to 2/1.
+ 
+Example 1:
+Input: expression = ""-1/2+1/2""
+Output: ""0/1""
+
+Example 2:
+Input: expression = ""-1/2+1/2+1/3""
+Output: ""1/3""
+
+Example 3:
+Input: expression = ""1/3-1/2""
+Output: ""-1/6""
+
+ 
+Constraints:
+
+The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
+Each fraction (input and output) has the format ±numerator/denominator. If the first input fraction or the output is positive, then '+' will be omitted.
+The input only contains valid irreducible fractions, where the numerator and denominator of each fraction will always be in the range [1, 10]. If the denominator is 1, it means this fraction is actually an integer in a fraction format defined above.
+The number of given fractions will be in the range [1, 10].
+The numerator and denominator of the final result are guaranteed to be valid and in the range of 32-bit int.
+
+","Math,String,Simulation",Medium,,640,Solve the Equation
+49,49. Group Anagrams,"Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: strs = [""eat"",""tea"",""tan"",""ate"",""nat"",""bat""]
+Output: [[""bat""],[""nat"",""tan""],[""ate"",""eat"",""tea""]]
+Example 2:
+Input: strs = [""""]
+Output: [[""""]]
+Example 3:
+Input: strs = [""a""]
+Output: [[""a""]]
+
+ 
+Constraints:
+
+1 <= strs.length <= 104
+0 <= strs[i].length <= 100
+strs[i] consists of lowercase English letters.
+
+","Hash Table,String,Sorting",Medium,,"242,249","Valid Anagram,Group Shifted Strings"
+64,64. Minimum Path Sum,"Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+ 
+Example 1:
+
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
+Example 2:
+Input: grid = [[1,2,3],[4,5,6]]
+Output: 12
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 200
+0 <= grid[i][j] <= 200
+
+","Array,Dynamic Programming,Matrix",Medium,,"62,174,741,2067,2192","Unique Paths,Dungeon Game,Cherry Pickup,Maximum Number of Points with Cost,Minimum Cost Homecoming of a Robot in a Grid"
+532,532. K-diff Pairs in an Array,"Given an array of integers nums and an integer k, return the number of unique k-diff pairs in the array.
+A k-diff pair is an integer pair (nums[i], nums[j]), where the following are true:
+
+0 <= i, j < nums.length
+i != j
+|nums[i] - nums[j]| == k
+
+Notice that |val| denotes the absolute value of val.
+ 
+Example 1:
+Input: nums = [3,1,4,1,5], k = 2
+Output: 2
+Explanation: There are two 2-diff pairs in the array, (1, 3) and (3, 5).
+Although we have two 1s in the input, we should only return the number of unique pairs.
+
+Example 2:
+Input: nums = [1,2,3,4,5], k = 1
+Output: 4
+Explanation: There are four 1-diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
+
+Example 3:
+Input: nums = [1,3,1,5,4], k = 0
+Output: 1
+Explanation: There is one 0-diff pair in the array, (1, 1).
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-107 <= nums[i] <= 107
+0 <= k <= 107
+
+","Array,Hash Table,Two Pointers,Binary Search,Sorting",Medium,,"530,2116,2150","Minimum Absolute Difference in BST,Count Number of Pairs With Absolute Difference K,Kth Smallest Product of Two Sorted Arrays"
+706,706. Design HashMap,"Design a HashMap without using any built-in hash table libraries.
+Implement the MyHashMap class:
+
+MyHashMap() initializes the object with an empty map.
+void put(int key, int value) inserts a (key, value) pair into the HashMap. If the key already exists in the map, update the corresponding value.
+int get(int key) returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.
+void remove(key) removes the key and its corresponding value if the map contains the mapping for the key.
+
+ 
+Example 1:
+Input
+[""MyHashMap"", ""put"", ""put"", ""get"", ""get"", ""put"", ""get"", ""remove"", ""get""]
+[[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]
+Output
+[null, null, null, 1, -1, null, 1, null, -1]
+
+Explanation
+MyHashMap myHashMap = new MyHashMap();
+myHashMap.put(1, 1); // The map is now [[1,1]]
+myHashMap.put(2, 2); // The map is now [[1,1], [2,2]]
+myHashMap.get(1);    // return 1, The map is now [[1,1], [2,2]]
+myHashMap.get(3);    // return -1 (i.e., not found), The map is now [[1,1], [2,2]]
+myHashMap.put(2, 1); // The map is now [[1,1], [2,1]] (i.e., update the existing value)
+myHashMap.get(2);    // return 1, The map is now [[1,1], [2,1]]
+myHashMap.remove(2); // remove the mapping for 2, The map is now [[1,1]]
+myHashMap.get(2);    // return -1 (i.e., not found), The map is now [[1,1]]
+
+ 
+Constraints:
+
+0 <= key, value <= 106
+At most 104 calls will be made to put, get, and remove.
+
+",,,,,
+688,688. Knight Probability in Chessboard,"On an n x n chessboard, a knight starts at the cell (row, column) and attempts to make exactly k moves. The rows and columns are 0-indexed, so the top-left cell is (0, 0), and the bottom-right cell is (n - 1, n - 1).
+A chess knight has eight possible moves it can make, as illustrated below. Each move is two cells in a cardinal direction, then one cell in an orthogonal direction.
+
+Each time the knight is to move, it chooses one of eight possible moves uniformly at random (even if the piece would go off the chessboard) and moves there.
+The knight continues moving until it has made exactly k moves or has moved off the chessboard.
+Return the probability that the knight remains on the board after it has stopped moving.
+ 
+Example 1:
+Input: n = 3, k = 2, row = 0, column = 0
+Output: 0.06250
+Explanation: There are two moves (to (1,2), (2,1)) that will keep the knight on the board.
+From each of those positions, there are also two moves that will keep the knight on the board.
+The total probability the knight stays on the board is 0.0625.
+
+Example 2:
+Input: n = 1, k = 0, row = 0, column = 0
+Output: 1.00000
+
+ 
+Constraints:
+
+1 <= n <= 25
+0 <= k <= 100
+0 <= row, column <= n - 1
+
+",Dynamic Programming,Medium,,576,Out of Boundary Paths
+121,121. Best Time to Buy and Sell Stock,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming",Easy,,"53,122,123,188,309,2138,2144","Maximum Subarray,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Sum of Beauty in the Array,Maximum Difference Between Increasing Elements"
+54,54. Spiral Matrix,"Given an m x n matrix, return all elements of the matrix in spiral order.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+","Array,Matrix,Simulation",Medium,"Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do. We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column and then we move inwards by 1 and then repeat. That's all, that is all the simulation that we need. Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'd be shifting in the same column. Similarly, by changing values for j, you'd be shifting in the same row.
+Also, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to run the simulation on edge cases like a single column or a single row to see if anything breaks or not.","59,921","Spiral Matrix II,Spiral Matrix III"
+657,657. Robot Return to Origin,"There is a robot starting at the position (0, 0), the origin, on a 2D plane. Given a sequence of its moves, judge if this robot ends up at (0, 0) after it completes its moves.
+You are given a string moves that represents the move sequence of the robot where moves[i] represents its ith move. Valid moves are 'R' (right), 'L' (left), 'U' (up), and 'D' (down).
+Return true if the robot returns to the origin after it finishes all of its moves, or false otherwise.
+Note: The way that the robot is ""facing"" is irrelevant. 'R' will always make the robot move to the right once, 'L' will always make it move left, etc. Also, assume that the magnitude of the robot's movement is the same for each move.
+ 
+Example 1:
+Input: moves = ""UD""
+Output: true
+Explanation: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.
+
+Example 2:
+Input: moves = ""LL""
+Output: false
+Explanation: The robot moves left twice. It ends up two ""moves"" to the left of the origin. We return false because it is not at the origin at the end of its moves.
+
+ 
+Constraints:
+
+1 <= moves.length <= 2 * 104
+moves only contains the characters 'U', 'D', 'L' and 'R'.
+
+","String,Simulation",Easy,,"547,2239","Number of Provinces,Execution of All Suffix Instructions Staying in a Grid"
+326,326. Power of Three,"Given an integer n, return true if it is a power of three. Otherwise, return false.
+An integer n is a power of three, if there exists an integer x such that n == 3x.
+ 
+Example 1:
+Input: n = 27
+Output: true
+Explanation: 27 = 33
+
+Example 2:
+Input: n = 0
+Output: false
+Explanation: There is no x where 3x = 0.
+
+Example 3:
+Input: n = -1
+Output: false
+Explanation: There is no x where 3x = (-1).
+
+ 
+Constraints:
+
+-231 <= n <= 231 - 1
+
+ 
+Follow up: Could you solve it without loops/recursion?","Math,Recursion",Easy,,"231,342,1889","Power of Two,Power of Four,Check if Number is a Sum of Powers of Three"
+942,942. DI String Match,"A permutation perm of n + 1 integers of all the integers in the range [0, n] can be represented as a string s of length n where:
+
+s[i] == 'I' if perm[i] < perm[i + 1], and
+s[i] == 'D' if perm[i] > perm[i + 1].
+
+Given a string s, reconstruct the permutation perm and return it. If there are multiple valid permutations perm, return any of them.
+ 
+Example 1:
+Input: s = ""IDID""
+Output: [0,4,1,3,2]
+Example 2:
+Input: s = ""III""
+Output: [0,1,2,3]
+Example 3:
+Input: s = ""DDI""
+Output: [3,2,0,1]
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+s[i] is either 'I' or 'D'.
+
+","Math,Enumeration",Hard,,,
+939,939. Minimum Area Rectangle,"You are given an array of points in the X-Y plane points where points[i] = [xi, yi].
+Return the minimum area of a rectangle formed from these points, with sides parallel to the X and Y axes. If there is not any such rectangle, return 0.
+ 
+Example 1:
+
+Input: points = [[1,1],[1,3],[3,1],[3,3],[2,2]]
+Output: 4
+
+Example 2:
+
+Input: points = [[1,1],[1,3],[3,1],[3,3],[4,1],[4,3]]
+Output: 2
+
+ 
+Constraints:
+
+1 <= points.length <= 500
+points[i].length == 2
+0 <= xi, yi <= 4 * 104
+All the given points are unique.
+
+",Dynamic Programming,Hard,,,
+887,887. Super Egg Drop,"You are given k identical eggs and you have access to a building with n floors labeled from 1 to n.
+You know that there exists a floor f where 0 <= f <= n such that any egg dropped at a floor higher than f will break, and any egg dropped at or below floor f will not break.
+Each move, you may take an unbroken egg and drop it from any floor x (where 1 <= x <= n). If the egg breaks, you can no longer use it. However, if the egg does not break, you may reuse it in future moves.
+Return the minimum number of moves that you need to determine with certainty what the value of f is.
+ 
+Example 1:
+Input: k = 1, n = 2
+Output: 2
+Explanation: 
+Drop the egg from floor 1. If it breaks, we know that f = 0.
+Otherwise, drop the egg from floor 2. If it breaks, we know that f = 1.
+If it does not break, then we know f = 2.
+Hence, we need at minimum 2 moves to determine with certainty what the value of f is.
+
+Example 2:
+Input: k = 2, n = 6
+Output: 3
+
+Example 3:
+Input: k = 3, n = 14
+Output: 4
+
+ 
+Constraints:
+
+1 <= k <= 100
+1 <= n <= 104
+
+","Array,Greedy,Sorting,Heap (Priority Queue)",Hard,,,
+8,8. String to Integer (atoi),"Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+The algorithm for myAtoi(string s) is as follows:
+
+Read in and ignore any leading whitespace.
+Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
+Read in next the characters until the next non-digit character or the end of the input is reached. The rest of the string is ignored.
+Convert these digits into an integer (i.e. ""123"" -> 123, ""0032"" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
+If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
+Return the integer as the final result.
+
+Note:
+
+Only the space character ' ' is considered a whitespace character.
+Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+
+ 
+Example 1:
+Input: s = ""42""
+Output: 42
+Explanation: The underlined characters are what is read in, the caret is the current reader position.
+Step 1: ""42"" (no characters read because there is no leading whitespace)
+         ^
+Step 2: ""42"" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: ""42"" (""42"" is read in)
+           ^
+The parsed integer is 42.
+Since 42 is in the range [-231, 231 - 1], the final result is 42.
+
+Example 2:
+Input: s = ""   -42""
+Output: -42
+Explanation:
+Step 1: ""   -42"" (leading whitespace is read and ignored)
+            ^
+Step 2: ""   -42"" ('-' is read, so the result should be negative)
+             ^
+Step 3: ""   -42"" (""42"" is read in)
+               ^
+The parsed integer is -42.
+Since -42 is in the range [-231, 231 - 1], the final result is -42.
+
+Example 3:
+Input: s = ""4193 with words""
+Output: 4193
+Explanation:
+Step 1: ""4193 with words"" (no characters read because there is no leading whitespace)
+         ^
+Step 2: ""4193 with words"" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: ""4193 with words"" (""4193"" is read in; reading stops because the next character is a non-digit)
+             ^
+The parsed integer is 4193.
+Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
+
+ 
+Constraints:
+
+0 <= s.length <= 200
+s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
+
+",String,Medium,,"7,65,2168","Reverse Integer,Valid Number,Check if Numbers Are Ascending in a Sentence"
+547,547. Number of Provinces,"There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+Return the total number of provinces.
+ 
+Example 1:
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Example 2:
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+
+ 
+Constraints:
+
+1 <= n <= 200
+n == isConnected.length
+n == isConnected[i].length
+isConnected[i][j] is 1 or 0.
+isConnected[i][i] == 1
+isConnected[i][j] == isConnected[j][i]
+
+","Depth-First Search,Breadth-First Search,Union Find,Graph",Medium,,"323,657,734,737,1085,2206","Number of Connected Components in an Undirected Graph,Robot Return to Origin,Sentence Similarity,Sentence Similarity II,The Earliest Moment When Everyone Become Friends,Detonate the Maximum Bombs"
+1051,1051. Height Checker,"A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in non-decreasing order by height. Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
+You are given an integer array heights representing the current order that the students are standing in. Each heights[i] is the height of the ith student in line (0-indexed).
+Return the number of indices where heights[i] != expected[i].
+ 
+Example 1:
+Input: heights = [1,1,4,2,1,3]
+Output: 3
+Explanation: 
+heights:  [1,1,4,2,1,3]
+expected: [1,1,1,2,3,4]
+Indices 2, 4, and 5 do not match.
+
+Example 2:
+Input: heights = [5,1,2,3,4]
+Output: 5
+Explanation:
+heights:  [5,1,2,3,4]
+expected: [1,2,3,4,5]
+All indices do not match.
+
+Example 3:
+Input: heights = [1,2,3,4,5]
+Output: 0
+Explanation:
+heights:  [1,2,3,4,5]
+expected: [1,2,3,4,5]
+All indices match.
+
+ 
+Constraints:
+
+1 <= heights.length <= 100
+1 <= heights[i] <= 100
+
+","String,Dynamic Programming,Greedy",Medium,"Which conditions have to been met in order to be impossible to form the target string? If there exists a character in the target string which doesn't exist in the source string then it will be impossible to form the target string. Assuming we are in the case which is possible to form the target string, how can we assure the minimum number of used subsequences of source? For each used subsequence try to match the leftmost character of the current subsequence with the leftmost character of the target string, if they match then erase both character otherwise erase just the subsequence character whenever the current subsequence gets empty, reset it to a new copy of subsequence and increment the count, do this until the target sequence gets empty. Finally return the count.","392,808","Is Subsequence,Number of Matching Subsequences"
+460,460. LFU Cache,"Design and implement a data structure for a Least Frequently Used (LFU) cache.
+Implement the LFUCache class:
+
+LFUCache(int capacity) Initializes the object with the capacity of the data structure.
+int get(int key) Gets the value of the key if the key exists in the cache. Otherwise, returns -1.
+void put(int key, int value) Update the value of the key if present, or inserts the key if not already present. When the cache reaches its capacity, it should invalidate and remove the least frequently used key before inserting a new item. For this problem, when there is a tie (i.e., two or more keys with the same frequency), the least recently used key would be invalidated.
+
+To determine the least frequently used key, a use counter is maintained for each key in the cache. The key with the smallest use counter is the least frequently used key.
+When a key is first inserted into the cache, its use counter is set to 1 (due to the put operation). The use counter for a key in the cache is incremented either a get or put operation is called on it.
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LFUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [3], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, 3, null, -1, 3, 4]
+
+Explanation
+// cnt(x) = the use counter for key x
+// cache=[] will show the last used order for tiebreakers (leftmost element is  most recent)
+LFUCache lfu = new LFUCache(2);
+lfu.put(1, 1);   // cache=[1,_], cnt(1)=1
+lfu.put(2, 2);   // cache=[2,1], cnt(2)=1, cnt(1)=1
+lfu.get(1);      // return 1
+                 // cache=[1,2], cnt(2)=1, cnt(1)=2
+lfu.put(3, 3);   // 2 is the LFU key because cnt(2)=1 is the smallest, invalidate 2.
+                 // cache=[3,1], cnt(3)=1, cnt(1)=2
+lfu.get(2);      // return -1 (not found)
+lfu.get(3);      // return 3
+                 // cache=[3,1], cnt(3)=2, cnt(1)=2
+lfu.put(4, 4);   // Both 1 and 3 have the same cnt, but 1 is LRU, invalidate 1.
+                 // cache=[4,3], cnt(4)=1, cnt(3)=2
+lfu.get(1);      // return -1 (not found)
+lfu.get(3);      // return 3
+                 // cache=[3,4], cnt(4)=1, cnt(3)=3
+lfu.get(4);      // return 4
+                 // cache=[4,3], cnt(4)=2, cnt(3)=3
+
+ 
+Constraints:
+
+1 <= capacity <= 104
+0 <= key <= 105
+0 <= value <= 109
+At most 2 * 105 calls will be made to get and put.
+
+ 
+ ","Hash Table,Linked List,Design,Doubly-Linked List",Hard,,"146,588","LRU Cache,Design In-Memory File System"
+33,33. Search in Rotated Sorted Array,"There is an integer array nums sorted in ascending order (with distinct values).
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+Input: nums = [1], target = 0
+Output: -1
+
+ 
+Constraints:
+
+1 <= nums.length <= 5000
+-104 <= nums[i] <= 104
+All values of nums are unique.
+nums is an ascending array that is possibly rotated.
+-104 <= target <= 104
+
+","Array,Binary Search",Medium,,"81,153,2273","Search in Rotated Sorted Array II,Find Minimum in Rotated Sorted Array,Pour Water Between Buckets to Make Water Levels Equal"
+11,11. Container With Most Water,"You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+Return the maximum amount of water a container can store.
+Notice that you may not slant the container.
+ 
+Example 1:
+
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+Example 2:
+Input: height = [1,1]
+Output: 1
+
+ 
+Constraints:
+
+n == height.length
+2 <= n <= 105
+0 <= height[i] <= 104
+
+","Array,Two Pointers,Greedy",Medium,"The aim is to maximize the area formed between the vertical lines. The area of any container is calculated using the shorter line as length and the distance between the lines as the width of the rectangle.
+
+
+Area = length of shorter vertical line * distance between lines
+
+
+We can definitely get the maximum width container as the outermost lines have the maximum distance between them. However, this container might not be the maximum in size as one of the vertical lines of this container could be really short. Start with the maximum width container and go to a shorter width container if there is a vertical line longer than the current containers shorter line. This way we are compromising on the width but we are looking forward to a longer length container.",42,Trapping Rain Water
+588,588. Design In-Memory File System,,"Hash Table,String,Design,Trie",Hard,,"146,460,635","LRU Cache,LFU Cache,Design Log Storage System"
+1395,1395. Count Number of Teams,"There are n soldiers standing in a line. Each soldier is assigned a unique rating value.
+You have to form a team of 3 soldiers amongst them under the following rules:
+
+Choose 3 soldiers with index (i, j, k) with rating (rating[i], rating[j], rating[k]).
+A team is valid if: (rating[i] < rating[j] < rating[k]) or (rating[i] > rating[j] > rating[k]) where (0 <= i < j < k < n).
+
+Return the number of teams you can form given the conditions. (soldiers can be part of multiple teams).
+ 
+Example 1:
+Input: rating = [2,5,3,4,1]
+Output: 3
+Explanation: We can form three teams given the conditions. (2,3,4), (5,4,1), (5,3,1). 
+
+Example 2:
+Input: rating = [2,1,3]
+Output: 0
+Explanation: We can't form any team given the conditions.
+
+Example 3:
+Input: rating = [1,2,3,4]
+Output: 4
+
+ 
+Constraints:
+
+n == rating.length
+3 <= n <= 1000
+1 <= rating[i] <= 105
+All the integers in rating are unique.
+
+","Array,Math,Geometry",Easy,To walk from point A to point B there will be an optimal strategy to walk ? Advance in diagonal as possible then after that go in straight line. Repeat the process until visiting all the points.,,
+76,76. Minimum Window Substring,"Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string """".
+The testcases will be generated such that the answer is unique.
+ 
+Example 1:
+Input: s = ""ADOBECODEBANC"", t = ""ABC""
+Output: ""BANC""
+Explanation: The minimum window substring ""BANC"" includes 'A', 'B', and 'C' from string t.
+
+Example 2:
+Input: s = ""a"", t = ""a""
+Output: ""a""
+Explanation: The entire string s is the minimum window.
+
+Example 3:
+Input: s = ""a"", t = ""aa""
+Output: """"
+Explanation: Both 'a's from t must be included in the window.
+Since the largest window of s only has one 'a', return empty string.
+
+ 
+Constraints:
+
+m == s.length
+n == t.length
+1 <= m, n <= 105
+s and t consist of uppercase and lowercase English letters.
+
+ 
+Follow up: Could you find an algorithm that runs in O(m + n) time?
+","Hash Table,String,Sliding Window",Hard,"Use two pointers to create a window of letters in S, which would have all the characters from T. Since you have to find the minimum window in S which has all the characters from T, you need to expand and contract the window using the two pointers and keep checking the window for all the characters. This approach is also called Sliding Window Approach.
+
+
+
+L ------------------------ R , Suppose this is the window that contains all characters of T 
+                          
+        L----------------- R , this is the contracted window. We found a smaller window that still contains all the characters in T
+
+When the window is no longer valid, start expanding again using the right pointer.","30,209,239,567,632,727","Substring with Concatenation of All Words,Minimum Size Subarray Sum,Sliding Window Maximum,Permutation in String,Smallest Range Covering Elements from K Lists,Minimum Window Subsequence"
+724,724. Find Pivot Index,"Given an array of integers nums, calculate the pivot index of this array.
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+Return the leftmost pivot index. If no such index exists, return -1.
+ 
+Example 1:
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+Example 2:
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+Example 3:
+Input: nums = [2,1,-1]
+Output: 0
+Explanation:
+The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+ 
+Note: This question is the same as 1991: https://leetcode.com/problems/find-the-middle-index-in-array/
+","Array,Prefix Sum",Easy,"We can precompute prefix sums P[i] = nums[0] + nums[1] + ... + nums[i-1].
+Then for each index, the left sum is P[i], and the right sum is P[P.length - 1] - P[i] - nums[i].","560,2102,2369","Subarray Sum Equals K,Find the Middle Index in Array,Maximum Sum Score of Array"
+332,332. Reconstruct Itinerary,"You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.
+All of the tickets belong to a man who departs from ""JFK"", thus, the itinerary must begin with ""JFK"". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.
+
+For example, the itinerary [""JFK"", ""LGA""] has a smaller lexical order than [""JFK"", ""LGB""].
+
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+ 
+Example 1:
+
+Input: tickets = [[""MUC"",""LHR""],[""JFK"",""MUC""],[""SFO"",""SJC""],[""LHR"",""SFO""]]
+Output: [""JFK"",""MUC"",""LHR"",""SFO"",""SJC""]
+
+Example 2:
+
+Input: tickets = [[""JFK"",""SFO""],[""JFK"",""ATL""],[""SFO"",""ATL""],[""ATL"",""JFK""],[""ATL"",""SFO""]]
+Output: [""JFK"",""ATL"",""JFK"",""SFO"",""ATL"",""SFO""]
+Explanation: Another possible reconstruction is [""JFK"",""SFO"",""ATL"",""JFK"",""ATL"",""SFO""] but it is larger in lexical order.
+
+ 
+Constraints:
+
+1 <= tickets.length <= 300
+tickets[i].length == 2
+fromi.length == 3
+toi.length == 3
+fromi and toi consist of uppercase English letters.
+fromi != toi
+
+","Depth-First Search,Graph,Eulerian Circuit",Hard,,"2051,2201","Longest Common Subpath,Valid Arrangement of Pairs"
+91,91. Decode Ways,"A message containing letters from A-Z can be encoded into numbers using the following mapping:
+'A' -> ""1""
+'B' -> ""2""
+...
+'Z' -> ""26""
+
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, ""11106"" can be mapped into:
+
+""AAJF"" with the grouping (1 1 10 6)
+""KJF"" with the grouping (11 10 6)
+
+Note that the grouping (1 11 06) is invalid because ""06"" cannot be mapped into 'F' since ""6"" is different from ""06"".
+Given a string s containing only digits, return the number of ways to decode it.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: s = ""12""
+Output: 2
+Explanation: ""12"" could be decoded as ""AB"" (1 2) or ""L"" (12).
+
+Example 2:
+Input: s = ""226""
+Output: 3
+Explanation: ""226"" could be decoded as ""BZ"" (2 26), ""VF"" (22 6), or ""BBF"" (2 2 6).
+
+Example 3:
+Input: s = ""06""
+Output: 0
+Explanation: ""06"" cannot be mapped to ""F"" because of the leading zero (""6"" is different from ""06"").
+
+ 
+Constraints:
+
+1 <= s.length <= 100
+s contains only digits and may contain leading zero(s).
+
+","String,Dynamic Programming",Medium,,"639,2091","Decode Ways II,Number of Ways to Separate Numbers"
+99,99. Recover Binary Search Tree,"You are given the root of a binary search tree (BST), where the values of exactly two nodes of the tree were swapped by mistake. Recover the tree without changing its structure.
+ 
+Example 1:
+
+Input: root = [1,3,null,null,2]
+Output: [3,1,null,null,2]
+Explanation: 3 cannot be a left child of 1 because 3 > 1. Swapping 1 and 3 makes the BST valid.
+
+Example 2:
+
+Input: root = [3,1,4,null,null,2]
+Output: [2,1,4,null,null,3]
+Explanation: 2 cannot be in the right subtree of 3 because 2 < 3. Swapping 2 and 3 makes the BST valid.
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [2, 1000].
+-231 <= Node.val <= 231 - 1
+
+ 
+Follow up: A solution using O(n) space is pretty straight-forward. Could you devise a constant O(1) space solution?","Tree,Depth-First Search,Binary Search Tree,Binary Tree",Medium,,,
+560,560. Subarray Sum Equals K,"Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+A subarray is a contiguous non-empty sequence of elements within an array.
+ 
+Example 1:
+Input: nums = [1,1,1], k = 2
+Output: 2
+Example 2:
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+ 
+Constraints:
+
+1 <= nums.length <= 2 * 104
+-1000 <= nums[i] <= 1000
+-107 <= k <= 107
+
+","Array,Hash Table,Prefix Sum",Medium,"Will Brute force work here? Try to optimize it. Can we optimize it by using some extra space? What about storing sum frequencies in a hash table? Will it be useful? sum(i,j)=sum(0,j)-sum(0,i), where sum(i,j) represents the sum of all the elements from index i to j-1.
+
+Can we use this property to optimize it.","1,523,713,724,1016,1776,2211,2369","Two Sum,Continuous Subarray Sum,Subarray Product Less Than K,Find Pivot Index,Subarray Sums Divisible by K,Minimum Operations to Reduce X to Zero,K Radius Subarray Averages,Maximum Sum Score of Array"
+322,322. Coin Change,"You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+You may assume that you have an infinite number of each kind of coin.
+ 
+Example 1:
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+
+Example 2:
+Input: coins = [2], amount = 3
+Output: -1
+
+Example 3:
+Input: coins = [1], amount = 0
+Output: 0
+
+ 
+Constraints:
+
+1 <= coins.length <= 12
+1 <= coins[i] <= 231 - 1
+0 <= amount <= 104
+
+","Array,Dynamic Programming,Breadth-First Search",Medium,,"1025,1393,2345","Minimum Cost For Tickets,Maximum Value of K Coins From Piles,Minimum Number of Operations to Convert Time"
+119,119. Pascal's Triangle II,"Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+ 
+Example 1:
+Input: rowIndex = 3
+Output: [1,3,3,1]
+Example 2:
+Input: rowIndex = 0
+Output: [1]
+Example 3:
+Input: rowIndex = 1
+Output: [1,1]
+
+ 
+Constraints:
+
+0 <= rowIndex <= 33
+
+ 
+Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space?
+","Array,Dynamic Programming",Easy,,"118,2324","Pascal's Triangle,Find Triangular Sum of an Array"
+153,153. Find Minimum in Rotated Sorted Array,"Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
+
+[4,5,6,7,0,1,2] if it was rotated 4 times.
+[0,1,2,4,5,6,7] if it was rotated 7 times.
+
+Notice that rotating an array [a[0], a[1], a[2], ..., a[n-1]] 1 time results in the array [a[n-1], a[0], a[1], a[2], ..., a[n-2]].
+Given the sorted rotated array nums of unique elements, return the minimum element of this array.
+You must write an algorithm that runs in O(log n) time.
+ 
+Example 1:
+Input: nums = [3,4,5,1,2]
+Output: 1
+Explanation: The original array was [1,2,3,4,5] rotated 3 times.
+
+Example 2:
+Input: nums = [4,5,6,7,0,1,2]
+Output: 0
+Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
+
+Example 3:
+Input: nums = [11,13,15,17]
+Output: 11
+Explanation: The original array was [11,13,15,17] and it was rotated 4 times. 
+
+ 
+Constraints:
+
+n == nums.length
+1 <= n <= 5000
+-5000 <= nums[i] <= 5000
+All the integers of nums are unique.
+nums is sorted and rotated between 1 and n times.
+
+","Array,Binary Search",Medium,"Array was originally in ascending order. Now that the array is rotated, there would be a point in the array where there is a small deflection from the increasing sequence. eg. The array would be something like [4, 5, 6, 7, 0, 1, 2]. You can divide the search space into two and see which direction to go.
+Can you think of an algorithm which has O(logN) search complexity? All the elements to the left of inflection point > first element of the array.
+All the elements to the right of inflection point < first element of the array.","33,154","Search in Rotated Sorted Array,Find Minimum in Rotated Sorted Array II"
+720,720. Longest Word in Dictionary,"Given an array of strings words representing an English Dictionary, return the longest word in words that can be built one character at a time by other words in words.
+If there is more than one possible answer, return the longest word with the smallest lexicographical order. If there is no answer, return the empty string.
+Note that the word should be built from left to right with each additional character being added to the end of a previous word. 
+ 
+Example 1:
+Input: words = [""w"",""wo"",""wor"",""worl"",""world""]
+Output: ""world""
+Explanation: The word ""world"" can be built one character at a time by ""w"", ""wo"", ""wor"", and ""worl"".
+
+Example 2:
+Input: words = [""a"",""banana"",""app"",""appl"",""ap"",""apply"",""apple""]
+Output: ""apple""
+Explanation: Both ""apply"" and ""apple"" can be built from other words in the dictionary. However, ""apple"" is lexicographically smaller than ""apply"".
+
+ 
+Constraints:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 30
+words[i] consists of lowercase English letters.
+
+","Array,Hash Table,String,Trie,Sorting",Medium,"For every word in the input list, we can check whether all prefixes of that word are in the input list by using a Set.","524,676,2009","Longest Word in Dictionary through Deleting,Implement Magic Dictionary,Longest Word With All Prefixes"
+1219,1219. Path with Maximum Gold,"In a gold mine grid of size m x n, each cell in this mine has an integer representing the amount of gold in that cell, 0 if it is empty.
+Return the maximum amount of gold you can collect under the conditions:
+
+Every time you are located in a cell you will collect all the gold in that cell.
+From your position, you can walk one step to the left, right, up, or down.
+You can't visit the same cell more than once.
+Never visit a cell with 0 gold.
+You can start and stop collecting gold from any position in the grid that has some gold.
+
+ 
+Example 1:
+Input: grid = [[0,6,0],[5,8,7],[0,9,0]]
+Output: 24
+Explanation:
+[[0,6,0],
+ [5,8,7],
+ [0,9,0]]
+Path to get the maximum gold, 9 -> 8 -> 7.
+
+Example 2:
+Input: grid = [[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]
+Output: 28
+Explanation:
+[[1,0,7],
+ [2,0,6],
+ [3,4,5],
+ [0,3,0],
+ [9,0,20]]
+Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 15
+0 <= grid[i][j] <= 100
+There are at most 25 cells containing gold.
+
+","Array,Hash Table,Stack,Monotonic Stack,Prefix Sum",Medium,"Make a new array A of +1/-1s corresponding to if hours[i] is > 8 or not. The goal is to find the longest subarray with positive sum. Using prefix sums (PrefixSum[i+1] = A[0] + A[1] + ... + A[i]), you need to find for each j, the smallest i < j with PrefixSum[i] + 1 == PrefixSum[j].",,
+647,647. Palindromic Substrings,"Given a string s, return the number of palindromic substrings in it.
+A string is a palindrome when it reads the same backward as forward.
+A substring is a contiguous sequence of characters within the string.
+ 
+Example 1:
+Input: s = ""abc""
+Output: 3
+Explanation: Three palindromic strings: ""a"", ""b"", ""c"".
+
+Example 2:
+Input: s = ""aaa""
+Output: 6
+Explanation: Six palindromic strings: ""a"", ""a"", ""a"", ""aa"", ""aa"", ""aaa"".
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” and palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation?","5,516","Longest Palindromic Substring,Longest Palindromic Subsequence"
+722,722. Remove Comments,"Given a C++ program, remove comments from it. The program source is an array of strings source where source[i] is the ith line of the source code. This represents the result of splitting the original source code string by the newline character '\n'.
+In C++, there are two types of comments, line comments, and block comments.
+
+The string ""//"" denotes a line comment, which represents that it and the rest of the characters to the right of it in the same line should be ignored.
+The string ""/*"" denotes a block comment, which represents that all characters until the next (non-overlapping) occurrence of ""*/"" should be ignored. (Here, occurrences happen in reading order: line by line from left to right.) To be clear, the string ""/*/"" does not yet end the block comment, as the ending would be overlapping the beginning.
+
+The first effective comment takes precedence over others.
+
+For example, if the string ""//"" occurs in a block comment, it is ignored.
+Similarly, if the string ""/*"" occurs in a line or block comment, it is also ignored.
+
+If a certain line of code is empty after removing comments, you must not output that line: each string in the answer list will be non-empty.
+There will be no control characters, single quote, or double quote characters.
+
+For example, source = ""string s = ""/* Not a comment. */"";"" will not be a test case.
+
+Also, nothing else such as defines or macros will interfere with the comments.
+It is guaranteed that every open block comment will eventually be closed, so ""/*"" outside of a line or block comment always starts a new comment.
+Finally, implicit newline characters can be deleted by block comments. Please see the examples below for details.
+After removing the comments from the source code, return the source code in the same format.
+ 
+Example 1:
+Input: source = [""/*Test program */"", ""int main()"", ""{ "", ""  // variable declaration "", ""int a, b, c;"", ""/* This is a test"", ""   multiline  "", ""   comment for "", ""   testing */"", ""a = b + c;"", ""}""]
+Output: [""int main()"",""{ "",""  "",""int a, b, c;"",""a = b + c;"",""}""]
+Explanation: The line by line code is visualized as below:
+/*Test program */
+int main()
+{ 
+  // variable declaration 
+int a, b, c;
+/* This is a test
+   multiline  
+   comment for 
+   testing */
+a = b + c;
+}
+The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments.
+The line by line output code is visualized as below:
+int main()
+{ 
+  
+int a, b, c;
+a = b + c;
+}
+
+Example 2:
+Input: source = [""a/*comment"", ""line"", ""more_comment*/b""]
+Output: [""ab""]
+Explanation: The original source string is ""a/*comment\nline\nmore_comment*/b"", where we have bolded the newline characters.  After deletion, the implicit newline characters are deleted, leaving the string ""ab"", which when delimited by newline characters becomes [""ab""].
+
+ 
+Constraints:
+
+1 <= source.length <= 100
+0 <= source[i].length <= 80
+source[i] consists of printable ASCII characters.
+Every open block comment is eventually closed.
+There are no single-quote or double-quote in the input.
+
+","Array,String",Medium,"Carefully parse each line according to the following rules:
+
+* If we start a block comment and we aren't in a block, then we will skip over the next two characters and change our state to be in a block.
+
+* If we end a block comment and we are in a block, then we will skip over the next two characters and change our state to be *not* in a block.
+
+* If we start a line comment and we aren't in a block, then we will ignore the rest of the line.
+
+* If we aren't in a block comment (and it wasn't the start of a comment), we will record the character we are at.
+
+* At the end of each line, if we aren't in a block, we will record the line.","385,439","Mini Parser,Ternary Expression Parser"
+993,993. Cousins in Binary Tree,"Given the root of a binary tree with unique values and the values of two different nodes of the tree x and y, return true if the nodes corresponding to the values x and y in the tree are cousins, or false otherwise.
+Two nodes of a binary tree are cousins if they have the same depth with different parents.
+Note that in a binary tree, the root node is at the depth 0, and children of each depth k node are at the depth k + 1.
+ 
+Example 1:
+
+Input: root = [1,2,3,4], x = 4, y = 3
+Output: false
+
+Example 2:
+
+Input: root = [1,2,3,null,4,null,5], x = 5, y = 4
+Output: true
+
+Example 3:
+
+Input: root = [1,2,3,null,4], x = 2, y = 3
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [2, 100].
+1 <= Node.val <= 100
+Each node has a unique value.
+x != y
+x and y are exist in the tree.
+
+","Array,Dynamic Programming",Hard,,2162,Partition Array Into Two Arrays to Minimize Sum Difference
+992,992. Subarrays with K Different Integers,"Given an integer array nums and an integer k, return the number of good subarrays of nums.
+A good array is an array where the number of different integers in that array is exactly k.
+
+For example, [1,2,3,1,2] has 3 different integers: 1, 2, and 3.
+
+A subarray is a contiguous part of an array.
+ 
+Example 1:
+Input: nums = [1,2,1,2,3], k = 2
+Output: 7
+Explanation: Subarrays formed with exactly 2 different integers: [1,2], [2,1], [1,2], [2,3], [1,2,1], [2,1,2], [1,2,1,2]
+
+Example 2:
+Input: nums = [1,2,1,3,4], k = 3
+Output: 3
+Explanation: Subarrays formed with exactly 3 different integers: [1,2,1,3], [2,1,3], [1,3,4].
+
+ 
+Constraints:
+
+1 <= nums.length <= 2 * 104
+1 <= nums[i], k <= nums.length
+
+","Array,String,Greedy",Medium,,,
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+62,62. Unique Paths,"There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+The test cases are generated so that the answer will be less than or equal to 2 * 109.
+ 
+Example 1:
+
+Input: m = 3, n = 7
+Output: 28
+
+Example 2:
+Input: m = 3, n = 2
+Output: 3
+Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+1. Right -> Down -> Down
+2. Down -> Down -> Right
+3. Down -> Right -> Down
+
+ 
+Constraints:
+
+1 <= m, n <= 100
+
+","Math,Dynamic Programming,Combinatorics",Medium,,"63,64,174,2192","Unique Paths II,Minimum Path Sum,Dungeon Game,Minimum Cost Homecoming of a Robot in a Grid"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+218,218. The Skyline Problem,"A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.
+The geometric information of each building is given in the array buildings where buildings[i] = [lefti, righti, heighti]:
+
+lefti is the x coordinate of the left edge of the ith building.
+righti is the x coordinate of the right edge of the ith building.
+heighti is the height of the ith building.
+
+You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
+The skyline should be represented as a list of ""key points"" sorted by their x-coordinate in the form [[x1,y1],[x2,y2],...]. Each key point is the left endpoint of some horizontal segment in the skyline except the last point in the list, which always has a y-coordinate 0 and is used to mark the skyline's termination where the rightmost building ends. Any ground between the leftmost and rightmost buildings should be part of the skyline's contour.
+Note: There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...,[2 3],[4 5],[7 5],[11 5],[12 7],...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...,[2 3],[4 5],[12 7],...]
+ 
+Example 1:
+
+Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+Explanation:
+Figure A shows the buildings of the input.
+Figure B shows the skyline formed by those buildings. The red points in figure B represent the key points in the output list.
+
+Example 2:
+Input: buildings = [[0,2,3],[2,5,3]]
+Output: [[0,3],[5,0]]
+
+ 
+Constraints:
+
+1 <= buildings.length <= 104
+0 <= lefti < righti <= 231 - 1
+1 <= heighti <= 231 - 1
+buildings is sorted by lefti in non-decreasing order.
+
+","Array,Divide and Conquer,Binary Indexed Tree,Segment Tree,Line Sweep,Heap (Priority Queue),Ordered Set",Hard,,699,Falling Squares
+836,836. Rectangle Overlap,"An axis-aligned rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) is the coordinate of its bottom-left corner, and (x2, y2) is the coordinate of its top-right corner. Its top and bottom edges are parallel to the X-axis, and its left and right edges are parallel to the Y-axis.
+Two rectangles overlap if the area of their intersection is positive. To be clear, two rectangles that only touch at the corner or edges do not overlap.
+Given two axis-aligned rectangles rec1 and rec2, return true if they overlap, otherwise return false.
+ 
+Example 1:
+Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]
+Output: true
+Example 2:
+Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]
+Output: false
+Example 3:
+Input: rec1 = [0,0,1,1], rec2 = [2,2,3,3]
+Output: false
+
+ 
+Constraints:
+
+rec1.length == 4
+rec2.length == 4
+-109 <= rec1[i], rec2[i] <= 109
+rec1 and rec2 represent a valid rectangle with a non-zero area.
+
+",Dynamic Programming,Hard,,,
+1209,1209. Remove All Adjacent Duplicates in String II,"You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+We repeatedly make k duplicate removals on s until we no longer can.
+Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
+ 
+Example 1:
+Input: s = ""abcd"", k = 2
+Output: ""abcd""
+Explanation: There's nothing to delete.
+Example 2:
+Input: s = ""deeedbbcccbdaa"", k = 3
+Output: ""aa""
+Explanation: 
+First delete ""eee"" and ""ccc"", get ""ddbbbdaa""
+Then delete ""bbb"", get ""dddaa""
+Finally delete ""ddd"", get ""aa""
+Example 3:
+Input: s = ""pbbcggttciiippooaais"", k = 2
+Output: ""ps""
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+2 <= k <= 104
+s only contains lowercase English letters.
+
+",Concurrency,Medium,,,
+19,19. Remove Nth Node From End of List,"Given the head of a linked list, remove the nth node from the end of the list and return its head.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+
+Example 2:
+Input: head = [1], n = 1
+Output: []
+
+Example 3:
+Input: head = [1,2], n = 1
+Output: [1]
+
+ 
+Constraints:
+
+The number of nodes in the list is sz.
+1 <= sz <= 30
+0 <= Node.val <= 100
+1 <= n <= sz
+
+ 
+Follow up: Could you do this in one pass?
+","Linked List,Two Pointers",Medium,Maintain two pointers and update one with a delay of n steps.,"528,1618,2216","Swapping Nodes in a Linked List,Delete N Nodes After M Nodes of a Linked List,Delete the Middle Node of a Linked List"
+155,155. Min Stack,"Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+ 
+Example 1:
+Input
+[""MinStack"",""push"",""push"",""push"",""getMin"",""pop"",""top"",""getMin""]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+Methods pop, top and getMin operations will always be called on non-empty stacks.
+At most 3 * 104 calls will be made to push, pop, top, and getMin.
+
+","Stack,Design",Easy,Consider each node in the stack having a minimum value. (Credits to @aakarshmadhavan),"239,716","Sliding Window Maximum,Max Stack"
+206,206. Reverse Linked List,"Given the head of a singly linked list, reverse the list, and return the reversed list.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+ 
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+","Linked List,Recursion",Easy,,"92,156,234,2196,2236","Reverse Linked List II,Binary Tree Upside Down,Palindrome Linked List,Reverse Nodes in Even Length Groups,Maximum Twin Sum of a Linked List"
+3,3. Longest Substring Without Repeating Characters,"Given a string s, find the length of the longest substring without repeating characters.
+ 
+Example 1:
+Input: s = ""abcabcbb""
+Output: 3
+Explanation: The answer is ""abc"", with the length of 3.
+
+Example 2:
+Input: s = ""bbbbb""
+Output: 1
+Explanation: The answer is ""b"", with the length of 1.
+
+Example 3:
+Input: s = ""pwwkew""
+Output: 3
+Explanation: The answer is ""wke"", with the length of 3.
+Notice that the answer must be a substring, ""pwke"" is a subsequence and not a substring.
+
+ 
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+","Hash Table,String,Sliding Window",Medium,,"159,340,1034,1813,2209","Longest Substring with At Most Two Distinct Characters,Longest Substring with At Most K Distinct Characters,Subarrays with K Different Integers,Maximum Erasure Value,Number of Equal Count Substrings"
+44,44. Wildcard Matching,"Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:
+
+'?' Matches any single character.
+'*' Matches any sequence of characters (including the empty sequence).
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""*""
+Output: true
+Explanation: '*' matches any sequence.
+
+Example 3:
+Input: s = ""cb"", p = ""?a""
+Output: false
+Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+
+ 
+Constraints:
+
+0 <= s.length, p.length <= 2000
+s contains only lowercase English letters.
+p contains only lowercase English letters, '?' or '*'.
+
+","String,Dynamic Programming,Greedy,Recursion",Hard,,10,Regular Expression Matching
+122,122. Best Time to Buy and Sell Stock II,"You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
+Find and return the maximum profit you can achieve.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.
+
+Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Total profit is 4.
+
+Example 3:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 3 * 104
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming,Greedy",Medium,,"121,123,188,309,714","Best Time to Buy and Sell Stock,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Best Time to Buy and Sell Stock with Transaction Fee"
+120,120. Triangle,"Given a triangle array, return the minimum path sum from top to bottom.
+For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
+ 
+Example 1:
+Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+Output: 11
+Explanation: The triangle looks like:
+   2
+  3 4
+ 6 5 7
+4 1 8 3
+The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
+
+Example 2:
+Input: triangle = [[-10]]
+Output: -10
+
+ 
+Constraints:
+
+1 <= triangle.length <= 200
+triangle[0].length == 1
+triangle[i].length == triangle[i - 1].length + 1
+-104 <= triangle[i][j] <= 104
+
+ 
+Follow up: Could you do this using only O(n) extra space, where n is the total number of rows in the triangle?","Array,Dynamic Programming",Medium,,,
+739,739. Daily Temperatures,"Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
+ 
+Example 1:
+Input: temperatures = [73,74,75,71,69,72,76,73]
+Output: [1,1,4,2,1,1,0,0]
+Example 2:
+Input: temperatures = [30,40,50,60]
+Output: [1,1,1,0]
+Example 3:
+Input: temperatures = [30,60,90]
+Output: [1,1,0]
+
+ 
+Constraints:
+
+1 <= temperatures.length <= 105
+30 <= temperatures[i] <= 100
+
+","Array,Stack,Monotonic Stack",Medium,"If the temperature is say, 70 today, then in the future a warmer temperature must be either 71, 72, 73, ..., 99, or 100.  We could remember when all of them occur next.","496,937","Next Greater Element I,Online Stock Span"
+17,17. Letter Combinations of a Phone Number,"Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+ 
+Example 1:
+Input: digits = ""23""
+Output: [""ad"",""ae"",""af"",""bd"",""be"",""bf"",""cd"",""ce"",""cf""]
+
+Example 2:
+Input: digits = """"
+Output: []
+
+Example 3:
+Input: digits = ""2""
+Output: [""a"",""b"",""c""]
+
+ 
+Constraints:
+
+0 <= digits.length <= 4
+digits[i] is a digit in the range ['2', '9'].
+
+","Hash Table,String,Backtracking",Medium,,"22,39,401","Generate Parentheses,Combination Sum,Binary Watch"
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+189,189. Rotate Array,"Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+ 
+Example 1:
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Example 2:
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+0 <= k <= 105
+
+ 
+Follow up:
+
+Try to come up with as many solutions as you can. There are at least three different ways to solve this problem.
+Could you do it in-place with O(1) extra space?
+
+","Array,Math,Two Pointers",Medium,"The easiest solution would use additional memory and that is perfectly fine. The actual trick comes when trying to solve this problem without using any additional memory. This means you need to use the original array somehow to move the elements around. Now, we can place each element in its original location and shift all the elements around it to adjust as that would be too costly and most likely will time out on larger input arrays. One line of thought is based on reversing the array (or parts of it) to obtain the desired result. Think about how reversal might potentially help us out by using an example. The other line of thought is a tad bit complicated but essentially it builds on the idea of placing each element in its original position while keeping track of the element originally in that position. Basically, at every step, we place an element in its rightful position and keep track of the element already there or the one being overwritten in an additional variable. We can't do this in one linear pass and the idea here is based on cyclic-dependencies between elements.","61,186","Rotate List,Reverse Words in a String II"
+53,53. Maximum Subarray,"Given an integer array nums, find the subarray with the largest sum, and return its sum.
+ 
+Example 1:
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Example 2:
+Input: nums = [1]
+Output: 1
+Explanation: The subarray [1] has the largest sum 1.
+
+Example 3:
+Input: nums = [5,4,-1,7,8]
+Output: 23
+Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+ 
+Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+","Array,Divide and Conquer,Dynamic Programming",Easy,,"121,152,697,1020,1849,1893","Best Time to Buy and Sell Stock,Maximum Product Subarray,Degree of an Array,Longest Turbulent Subarray,Maximum Absolute Sum of Any Subarray,Maximum Subarray Sum After One Operation"
+253,253. Meeting Rooms II,,"Array,Two Pointers,Greedy,Sorting,Heap (Priority Queue)",Medium,"Think about how we would approach this problem in a very simplistic way. We will allocate rooms to meetings that occur earlier in the day v/s the ones that occur later on, right? If you've figured out that we have to sort the meetings by their start time, the next thing to think about is how do we do the allocation? There are two scenarios possible here for any meeting. Either there is no meeting room available and a new one has to be allocated, or a meeting room has freed up and this meeting can take place there. An important thing to note is that we don't really care which room gets freed up while allocating a room for the current meeting. As long as a room is free, our job is done. We already know the rooms we have allocated till now and we also know when are they due to get free because of the end times of the meetings going on in those rooms. We can simply check the room which is due to get vacated the earliest amongst all the allocated rooms. Following up on the previous hint, we can make use of a min-heap to store the end times of the meetings in various rooms. So, every time we want to check if any room is free or not, simply check the topmost element of the min heap as that would be the room that would get free the earliest out of all the other rooms currently occupied.
+
+If the room we extracted from the top of the min heap isn't free, then no other room is. So, we can save time here and simply allocate a new room.","56,252,452,1184","Merge Intervals,Meeting Rooms,Minimum Number of Arrows to Burst Balloons,Car Pooling"
+141,141. Linked List Cycle,"Given head, the head of a linked list, determine if the linked list has a cycle in it.
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+Return true if there is a cycle in the linked list. Otherwise, return false.
+ 
+Example 1:
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+
+Example 2:
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where the tail connects to the 0th node.
+
+Example 3:
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+
+ 
+Constraints:
+
+The number of the nodes in the list is in the range [0, 104].
+-105 <= Node.val <= 105
+pos is -1 or a valid index in the linked-list.
+
+ 
+Follow up: Can you solve it using O(1) (i.e. constant) memory?
+","Hash Table,Linked List,Two Pointers",Easy,,"142,202","Linked List Cycle II,Happy Number"
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+876,876. Middle of the Linked List,"Given the head of a singly linked list, return the middle node of the linked list.
+If there are two middle nodes, return the second middle node.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+Explanation: The middle node of the list is node 3.
+
+Example 2:
+
+Input: head = [1,2,3,4,5,6]
+Output: [4,5,6]
+Explanation: Since the list has two middle nodes with values 3 and 4, we return the second one.
+
+ 
+Constraints:
+
+The number of nodes in the list is in the range [1, 100].
+1 <= Node.val <= 100
+
+","Array,Hash Table,Greedy,Sorting",Medium,,,
+16,16. 3Sum Closest,"Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+Return the sum of the three integers.
+You may assume that each input would have exactly one solution.
+ 
+Example 1:
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+
+Example 2:
+Input: nums = [0,0,0], target = 1
+Output: 0
+Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).
+
+ 
+Constraints:
+
+3 <= nums.length <= 500
+-1000 <= nums[i] <= 1000
+-104 <= target <= 104
+
+","Array,Two Pointers,Sorting",Medium,,"15,259","3Sum,3Sum Smaller"
+118,118. Pascal's Triangle,"Given an integer numRows, return the first numRows of Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+ 
+Example 1:
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+Example 2:
+Input: numRows = 1
+Output: [[1]]
+
+ 
+Constraints:
+
+1 <= numRows <= 30
+
+","Array,Dynamic Programming",Easy,,119,Pascal's Triangle II
+283,283. Move Zeroes,"Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+Note that you must do this in-place without making a copy of the array.
+ 
+Example 1:
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+Example 2:
+Input: nums = [0]
+Output: [0]
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-231 <= nums[i] <= 231 - 1
+
+ 
+Follow up: Could you minimize the total number of operations done?","Array,Two Pointers",Easy,"In-place means we should not be allocating any space for extra array. But we are allowed to modify the existing array. However, as a first step, try coming up with a solution that makes use of additional space. For this problem as well, first apply the idea discussed using an additional array and the in-place solution will pop up eventually. A two-pointer approach could be helpful here. The idea would be to have one pointer for iterating the array and another pointer that just works on the non-zero elements of the array.",27,Remove Element
+973,973. K Closest Points to Origin,"Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, return the k closest points to the origin (0, 0).
+The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+ 
+Example 1:
+
+Input: points = [[1,3],[-2,2]], k = 1
+Output: [[-2,2]]
+Explanation:
+The distance between (1, 3) and the origin is sqrt(10).
+The distance between (-2, 2) and the origin is sqrt(8).
+Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+We only want the closest k = 1 points from the origin, so the answer is just [[-2,2]].
+
+Example 2:
+Input: points = [[3,3],[5,-1],[-2,4]], k = 2
+Output: [[3,3],[-2,4]]
+Explanation: The answer [[-2,4],[3,3]] would also be accepted.
+
+ 
+Constraints:
+
+1 <= k <= points.length <= 104
+-104 <= xi, yi <= 104
+
+","String,Stack,Greedy,Queue",Hard,,,
+237,237. Delete Node in a Linked List,"There is a singly-linked list head and we want to delete a node node in it.
+You are given the node to be deleted node. You will not be given access to the first node of head.
+All the values of the linked list are unique, and it is guaranteed that the given node node is not the last node in the linked list.
+Delete the given node. Note that by deleting the node, we do not mean removing it from memory. We mean:
+
+The value of the given node should not exist in the linked list.
+The number of nodes in the linked list should decrease by one.
+All the values before node should be in the same order.
+All the values after node should be in the same order.
+
+Custom testing:
+
+For the input, you should provide the entire linked list head and the node to be given node. node should not be the last node of the list and should be an actual node in the list.
+We will build the linked list and pass the node to your function.
+The output will be the entire list after calling your function.
+
+ 
+Example 1:
+
+Input: head = [4,5,1,9], node = 5
+Output: [4,1,9]
+Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
+
+Example 2:
+
+Input: head = [4,5,1,9], node = 1
+Output: [4,5,9]
+Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
+
+ 
+Constraints:
+
+The number of the nodes in the given list is in the range [2, 1000].
+-1000 <= Node.val <= 1000
+The value of each node in the list is unique.
+The node to be deleted is in the list and is not a tail node.
+
+",Linked List,Easy,,203,Remove Linked List Elements
+46,46. Permutations,"Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+Example 2:
+Input: nums = [0,1]
+Output: [[0,1],[1,0]]
+Example 3:
+Input: nums = [1]
+Output: [[1]]
+
+ 
+Constraints:
+
+1 <= nums.length <= 6
+-10 <= nums[i] <= 10
+All the integers of nums are unique.
+
+","Array,Backtracking",Medium,,"31,47,60,77","Next Permutation,Permutations II,Permutation Sequence,Combinations"
+242,242. Valid Anagram,"Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: s = ""anagram"", t = ""nagaram""
+Output: true
+Example 2:
+Input: s = ""rat"", t = ""car""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+
+ 
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+","Hash Table,String,Sorting",Easy,,"49,266,438","Group Anagrams,Palindrome Permutation,Find All Anagrams in a String"
+215,215. Kth Largest Element in an Array,"Given an integer array nums and an integer k, return the kth largest element in the array.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Can you solve it without sorting?
+ 
+Example 1:
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+Example 2:
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+","Array,Divide and Conquer,Sorting,Heap (Priority Queue),Quickselect",Medium,,"324,347,414,789,1014,2113,2204,2250","Wiggle Sort II,Top K Frequent Elements,Third Maximum Number,Kth Largest Element in a Stream,K Closest Points to Origin,Find the Kth Largest Integer in the Array,Find Subsequence of Length K With the Largest Sum,K Highest Ranked Items Within a Price Range"
+78,78. Subsets,"Given an integer array nums of unique elements, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+
+ 
+Constraints:
+
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+All the numbers of nums are unique.
+
+","Array,Backtracking,Bit Manipulation",Medium,,"90,320,800,2109,2170","Subsets II,Generalized Abbreviation,Letter Case Permutation,Find Array Given Subset Sums,Count Number of Maximum Bitwise-OR Subsets"
+98,98. Validate Binary Search Tree,"Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+A valid BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+
+ 
+Example 1:
+
+Input: root = [2,1,3]
+Output: true
+
+Example 2:
+
+Input: root = [5,1,4,null,null,3,6]
+Output: false
+Explanation: The root node's value is 5 but its right child's value is 4.
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 104].
+-231 <= Node.val <= 231 - 1
+
+","Tree,Depth-First Search,Binary Search Tree,Binary Tree",Medium,,"94,501","Binary Tree Inorder Traversal,Find Mode in Binary Search Tree"
+104,104. Maximum Depth of Binary Tree,"Given the root of a binary tree, return its maximum depth.
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+
+Example 2:
+Input: root = [1,null,2]
+Output: 2
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-100 <= Node.val <= 100
+
+","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Easy,,"110,111,774,1492","Balanced Binary Tree,Minimum Depth of Binary Tree,Maximum Depth of N-ary Tree,Time Needed to Inform All Employees"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+347,347. Top K Frequent Elements,"Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+ 
+Example 1:
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+k is in the range [1, the number of unique elements in the array].
+It is guaranteed that the answer is unique.
+
+ 
+Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+","Array,Hash Table,Divide and Conquer,Sorting,Heap (Priority Queue),Bucket Sort,Counting,Quickselect",Medium,,"192,215,451,659,692,1014,1919","Word Frequency,Kth Largest Element in an Array,Sort Characters By Frequency,Split Array into Consecutive Subsequences,Top K Frequent Words,K Closest Points to Origin,Sort Features by Popularity"
+50,"50. Pow(x, n)","Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+ 
+Example 1:
+Input: x = 2.00000, n = 10
+Output: 1024.00000
+
+Example 2:
+Input: x = 2.10000, n = 3
+Output: 9.26100
+
+Example 3:
+Input: x = 2.00000, n = -2
+Output: 0.25000
+Explanation: 2-2 = 1/22 = 1/4 = 0.25
+
+ 
+Constraints:
+
+-100.0 < x < 100.0
+-231 <= n <= 231-1
+n is an integer.
+Either x is not zero or n > 0.
+-104 <= xn <= 104
+
+","Math,Recursion",Medium,,"69,372","Sqrt(x),Super Pow"
+931,931. Minimum Falling Path Sum,"Given an n x n array of integers matrix, return the minimum sum of any falling path through matrix.
+A falling path starts at any element in the first row and chooses the element in the next row that is either directly below or diagonally left/right. Specifically, the next element from position (row, col) will be (row + 1, col - 1), (row + 1, col), or (row + 1, col + 1).
+ 
+Example 1:
+
+Input: matrix = [[2,1,3],[6,5,4],[7,8,9]]
+Output: 13
+Explanation: There are two falling paths with a minimum sum as shown.
+
+Example 2:
+
+Input: matrix = [[-19,57],[-40,-5]]
+Output: -59
+Explanation: The falling path with a minimum sum is shown.
+
+ 
+Constraints:
+
+n == matrix.length == matrix[i].length
+1 <= n <= 100
+-100 <= matrix[i][j] <= 100
+
+","Hash Table,Stack,Design,Ordered Set",Hard,,,
+1010,1010. Pairs of Songs With Total Durations Divisible by 60,"You are given a list of songs where the ith song has a duration of time[i] seconds.
+Return the number of pairs of songs for which their total duration in seconds is divisible by 60. Formally, we want the number of indices i, j such that i < j with (time[i] + time[j]) % 60 == 0.
+ 
+Example 1:
+Input: time = [30,20,150,100,40]
+Output: 3
+Explanation: Three pairs have a total duration divisible by 60:
+(time[0] = 30, time[2] = 150): total duration 180
+(time[1] = 20, time[3] = 100): total duration 120
+(time[1] = 20, time[4] = 40): total duration 60
+
+Example 2:
+Input: time = [60,60,60]
+Output: 3
+Explanation: All three pairs have a total duration of 120, which is divisible by 60.
+
+ 
+Constraints:
+
+1 <= time.length <= 6 * 104
+1 <= time[i] <= 500
+
+","Hash Table,Math",Medium,,,
+317,317. Shortest Distance from All Buildings,,"Array,Breadth-First Search,Matrix",Hard,,"286,296,1117","Walls and Gates,Best Meeting Point,As Far from Land as Possible"
+167,167. Two Sum II - Input Array Is Sorted,"Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number. Let these two numbers be numbers[index1] and numbers[index2] where 1 <= index1 < index2 < numbers.length.
+Return the indices of the two numbers, index1 and index2, added by one as an integer array [index1, index2] of length 2.
+The tests are generated such that there is exactly one solution. You may not use the same element twice.
+Your solution must use only constant extra space.
+ 
+Example 1:
+Input: numbers = [2,7,11,15], target = 9
+Output: [1,2]
+Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+
+Example 2:
+Input: numbers = [2,3,4], target = 6
+Output: [1,3]
+Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
+
+Example 3:
+Input: numbers = [-1,0], target = -1
+Output: [1,2]
+Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
+
+ 
+Constraints:
+
+2 <= numbers.length <= 3 * 104
+-1000 <= numbers[i] <= 1000
+numbers is sorted in non-decreasing order.
+-1000 <= target <= 1000
+The tests are generated such that there is exactly one solution.
+
+","Array,Two Pointers,Binary Search",Medium,,"1,653,1083","Two Sum,Two Sum IV - Input is a BST,Two Sum Less Than K"
+240,240. Search a 2D Matrix II,"Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+
+Integers in each row are sorted in ascending from left to right.
+Integers in each column are sorted in ascending from top to bottom.
+
+ 
+Example 1:
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+Output: true
+
+Example 2:
+
+Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+Output: false
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matrix[i][j] <= 109
+All the integers in each row are sorted in ascending order.
+All the integers in each column are sorted in ascending order.
+-109 <= target <= 109
+
+","Array,Binary Search,Divide and Conquer,Matrix",Medium,,74,Search a 2D Matrix
+628,628. Maximum Product of Three Numbers,"Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 6
+Example 2:
+Input: nums = [1,2,3,4]
+Output: 24
+Example 3:
+Input: nums = [-1,-2,-3]
+Output: -6
+
+ 
+Constraints:
+
+3 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+","Array,Math,Sorting",Easy,,152,Maximum Product Subarray
+445,445. Add Two Numbers II,"You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ 
+Example 1:
+
+Input: l1 = [7,2,4,3], l2 = [5,6,4]
+Output: [7,8,0,7]
+
+Example 2:
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [8,0,7]
+
+Example 3:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+
+ 
+Follow up: Could you solve it without reversing the input lists?
+","Linked List,Math,Stack",Medium,,"2,1774","Add Two Numbers,Add Two Polynomials Represented as Linked Lists"
+207,207. Course Schedule,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return true if you can finish all courses. Otherwise, return false.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
+
+Example 2:
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= 5000
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+All the pairs prerequisites[i] are unique.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","210,261,310,630","Course Schedule II,Graph Valid Tree,Minimum Height Trees,Course Schedule III"
+72,72. Edit Distance,"Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
+You have the following three operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+
+ 
+Example 1:
+Input: word1 = ""horse"", word2 = ""ros""
+Output: 3
+Explanation: 
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+Example 2:
+Input: word1 = ""intention"", word2 = ""execution""
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')
+
+ 
+Constraints:
+
+0 <= word1.length, word2.length <= 500
+word1 and word2 consist of lowercase English letters.
+
+","String,Dynamic Programming",Hard,,"161,583,712,1105,2311","One Edit Distance,Delete Operation for Two Strings,Minimum ASCII Delete Sum for Two Strings,Uncrossed Lines,Minimum White Tiles After Covering With Carpets"
+70,70. Climbing Stairs,"You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+ 
+Example 1:
+Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1. 1 step + 1 step
+2. 2 steps
+
+Example 2:
+Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1. 1 step + 1 step + 1 step
+2. 1 step + 2 steps
+3. 2 steps + 1 step
+
+ 
+Constraints:
+
+1 <= n <= 45
+
+","Math,Dynamic Programming,Memoization",Easy,"To reach nth step, what could have been your previous steps? (Think about the step sizes)","747,1013,1236","Min Cost Climbing Stairs,Fibonacci Number,N-th Tribonacci Number"
+295,295. Find Median from Data Stream,"The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.
+
+For example, for arr = [2,3,4], the median is 3.
+For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+
+Implement the MedianFinder class:
+
+MedianFinder() initializes the MedianFinder object.
+void addNum(int num) adds the integer num from the data stream to the data structure.
+double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+
+ 
+Example 1:
+Input
+[""MedianFinder"", ""addNum"", ""addNum"", ""findMedian"", ""addNum"", ""findMedian""]
+[[], [1], [2], [], [3], []]
+Output
+[null, null, null, 1.5, null, 2.0]
+
+Explanation
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.addNum(1);    // arr = [1]
+medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.findMedian(); // return 2.0
+
+ 
+Constraints:
+
+-105 <= num <= 105
+There will be at least one element in the data structure before calling findMedian.
+At most 5 * 104 calls will be made to addNum and findMedian.
+
+ 
+Follow up:
+
+If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+","Two Pointers,Design,Sorting,Heap (Priority Queue),Data Stream",Hard,,"480,1953,2207","Sliding Window Median,Finding MK Average,Sequentially Ordinal Rank Tracker"
+63,63. Unique Paths II,"You are given an m x n integer array grid. There is a robot initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+An obstacle and space are marked as 1 or 0 respectively in grid. A path that the robot takes cannot include any square that is an obstacle.
+Return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+The testcases are generated so that the answer will be less than or equal to 2 * 109.
+ 
+Example 1:
+
+Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Output: 2
+Explanation: There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+
+Example 2:
+
+Input: obstacleGrid = [[0,1],[0,0]]
+Output: 1
+
+ 
+Constraints:
+
+m == obstacleGrid.length
+n == obstacleGrid[i].length
+1 <= m, n <= 100
+obstacleGrid[i][j] is 0 or 1.
+
+","Array,Dynamic Programming,Matrix",Medium,"The robot can only move either down or right. Hence any cell in the first row can only be reached from the cell left to it. However, if any cell has an obstacle, you don't let that cell contribute to any path. So, for the first row, the number of ways will simply be 
+
+
+if obstacleGrid[i][j] is not an obstacle
+     obstacleGrid[i,j] = obstacleGrid[i,j - 1] 
+else
+     obstacleGrid[i,j] = 0
+
+
+You can do a similar processing for finding out the number of ways of reaching the cells in the first column. For any other cell, we can find out the number of ways of reaching it, by making use of the number of ways of reaching the cell directly above it and the cell to the left of it in the grid. This is because these are the only two directions from which the robot can come to the current cell. Since we are making use of pre-computed values along the iteration, this becomes a dynamic programming problem.
+
+
+if obstacleGrid[i][j] is not an obstacle
+     obstacleGrid[i,j] = obstacleGrid[i,j - 1]  + obstacleGrid[i - 1][j]
+else
+     obstacleGrid[i,j] = 0","62,1022","Unique Paths,Unique Paths III"
+438,438. Find All Anagrams in a String,"Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: s = ""cbaebabacd"", p = ""abc""
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is ""cba"", which is an anagram of ""abc"".
+The substring with start index = 6 is ""bac"", which is an anagram of ""abc"".
+
+Example 2:
+Input: s = ""abab"", p = ""ab""
+Output: [0,1,2]
+Explanation:
+The substring with start index = 0 is ""ab"", which is an anagram of ""ab"".
+The substring with start index = 1 is ""ba"", which is an anagram of ""ab"".
+The substring with start index = 2 is ""ab"", which is an anagram of ""ab"".
+
+ 
+Constraints:
+
+1 <= s.length, p.length <= 3 * 104
+s and p consist of lowercase English letters.
+
+","Hash Table,String,Sliding Window",Medium,,"242,567","Valid Anagram,Permutation in String"
+13,13. Roman to Integer,"Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+
+Given a roman numeral, convert it to an integer.
+ 
+Example 1:
+Input: s = ""III""
+Output: 3
+Explanation: III = 3.
+
+Example 2:
+Input: s = ""LVIII""
+Output: 58
+Explanation: L = 50, V= 5, III = 3.
+
+Example 3:
+Input: s = ""MCMXCIV""
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+ 
+Constraints:
+
+1 <= s.length <= 15
+s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
+It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+
+","Hash Table,Math,String",Easy,Problem is simpler to solve by working the string from back to front and using a map.,12,Integer to Roman
+204,204. Count Primes,"Given an integer n, return the number of prime numbers that are strictly less than n.
+ 
+Example 1:
+Input: n = 10
+Output: 4
+Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
+
+Example 2:
+Input: n = 0
+Output: 0
+
+Example 3:
+Input: n = 1
+Output: 0
+
+ 
+Constraints:
+
+0 <= n <= 5 * 106
+
+","Array,Math,Enumeration,Number Theory",Medium,"Let's start with a isPrime function. To determine if a number is prime, we need to check if it is not divisible by any number less than n. The runtime complexity of isPrime function would be O(n) and hence counting the total prime numbers up to n would be O(n2). Could we do better? As we know the number must not be divisible by any number > n / 2, we can immediately cut the total iterations half by dividing only up to n / 2. Could we still do better? Let's write down all of 12's factors:
+
+2 × 6 = 12
+3 × 4 = 12
+4 × 3 = 12
+6 × 2 = 12
+
+As you can see, calculations of 4 × 3 and 6 × 2 are not necessary. Therefore, we only need to consider factors up to √n because, if n is divisible by some number p, then n = p × q and since p ≤ q, we could derive that p ≤ √n.
+Our total runtime has now improved to O(n1.5), which is slightly better. Is there a faster approach?
+
+public int countPrimes(int n) {
+   int count = 0;
+   for (int i = 1; i < n; i++) {
+      if (isPrime(i)) count++;
+   }
+   return count;
+}
+
+private boolean isPrime(int num) {
+   if (num <= 1) return false;
+   // Loop's ending condition is i * i <= num instead of i <= sqrt(num)
+   // to avoid repeatedly calling an expensive function sqrt().
+   for (int i = 2; i * i <= num; i++) {
+      if (num % i == 0) return false;
+   }
+   return true;
+} The Sieve of Eratosthenes is one of the most efficient ways to find all prime numbers up to n. But don't let that name scare you, I promise that the concept is surprisingly simple.
+
+
+Sieve of Eratosthenes: algorithm steps for primes below 121. ""Sieve of Eratosthenes Animation"" by SKopp is licensed under CC BY 2.0.
+
+We start off with a table of n numbers. Let's look at the first number, 2. We know all multiples of 2 must not be primes, so we mark them off as non-primes. Then we look at the next number, 3. Similarly, all multiples of 3 such as 3 × 2 = 6, 3 × 3 = 9, ... must not be primes, so we mark them off as well. Now we look at the next number, 4, which was already marked off. What does this tell you? Should you mark off all multiples of 4 as well? 4 is not a prime because it is divisible by 2, which means all multiples of 4 must also be divisible by 2 and were already marked off. So we can skip 4 immediately and go to the next number, 5. Now, all multiples of 5 such as 5 × 2 = 10, 5 × 3 = 15, 5 × 4 = 20, 5 × 5 = 25, ... can be marked off. There is a slight optimization here, we do not need to start from 5 × 2 = 10. Where should we start marking off? In fact, we can mark off multiples of 5 starting at 5 × 5 = 25, because 5 × 2 = 10 was already marked off by multiple of 2, similarly 5 × 3 = 15 was already marked off by multiple of 3. Therefore, if the current number is p, we can always mark off multiples of p starting at p2, then in increments of p: p2 + p, p2 + 2p, ... Now what should be the terminating loop condition? It is easy to say that the terminating loop condition is p < n, which is certainly correct but not efficient. Do you still remember Hint #3? Yes, the terminating loop condition can be p < √n, as all non-primes ≥ √n must have already been marked off. When the loop terminates, all the numbers in the table that are non-marked are prime.
+The Sieve of Eratosthenes uses an extra O(n) memory and its runtime complexity is O(n log log n). For the more mathematically inclined readers, you can read more about its algorithm complexity on Wikipedia.
+
+public int countPrimes(int n) {
+   boolean[] isPrime = new boolean[n];
+   for (int i = 2; i < n; i++) {
+      isPrime[i] = true;
+   }
+   // Loop's ending condition is i * i < n instead of i < sqrt(n)
+   // to avoid repeatedly calling an expensive function sqrt().
+   for (int i = 2; i * i < n; i++) {
+      if (!isPrime[i]) continue;
+      for (int j = i * i; j < n; j += i) {
+         isPrime[j] = false;
+      }
+   }
+   int count = 0;
+   for (int i = 2; i < n; i++) {
+      if (isPrime[i]) count++;
+   }
+   return count;
+}","263,264,279","Ugly Number,Ugly Number II,Perfect Squares"
+39,39. Combination Sum,"Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+ 
+Example 1:
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+
+Example 2:
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+
+Example 3:
+Input: candidates = [2], target = 1
+Output: []
+
+ 
+Constraints:
+
+1 <= candidates.length <= 30
+2 <= candidates[i] <= 40
+All elements of candidates are distinct.
+1 <= target <= 40
+
+","Array,Backtracking",Medium,,"17,40,77,216,254,377","Letter Combinations of a Phone Number,Combination Sum II,Combinations,Combination Sum III,Factor Combinations,Combination Sum IV"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+160,160. Intersection of Two Linked Lists,"Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+For example, the following two linked lists begin to intersect at node c1:
+
+The test cases are generated such that there are no cycles anywhere in the entire linked structure.
+Note that the linked lists must retain their original structure after the function returns.
+Custom Judge:
+The inputs to the judge are given as follows (your program is not given these inputs):
+
+intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node.
+listA - The first linked list.
+listB - The second linked list.
+skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the intersected node.
+skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the intersected node.
+
+The judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.
+ 
+Example 1:
+
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+Output: Intersected at '8'
+Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
+- Note that the intersected node's value is not 1 because the nodes with value 1 in A and B (2nd node in A and 3rd node in B) are different node references. In other words, they point to two different locations in memory, while the nodes with value 8 in A and B (3rd node in A and 4th node in B) point to the same location in memory.
+
+Example 2:
+
+Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Intersected at '2'
+Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.
+
+Example 3:
+
+Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+Output: No intersection
+Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
+Explanation: The two lists do not intersect, so return null.
+
+ 
+Constraints:
+
+The number of nodes of listA is in the m.
+The number of nodes of listB is in the n.
+1 <= m, n <= 3 * 104
+1 <= Node.val <= 105
+0 <= skipA < m
+0 <= skipB < n
+intersectVal is 0 if listA and listB do not intersect.
+intersectVal == listA[skipA] == listB[skipB] if listA and listB intersect.
+
+ 
+Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?","Hash Table,Linked List,Two Pointers",Easy,,599,Minimum Index Sum of Two Lists
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+198,198. House Robber,"You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+ 
+Example 1:
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+Example 2:
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 400
+
+","Array,Dynamic Programming",Medium,,"152,213,256,276,337,600,656,740,2262","Maximum Product Subarray,House Robber II,Paint House,Paint Fence,House Robber III,Non-negative Integers without Consecutive Ones,Coin Path,Delete and Earn,Solving Questions With Brainpower"
+344,344. Reverse String,"Write a function that reverses a string. The input string is given as an array of characters s.
+You must do this by modifying the input array in-place with O(1) extra memory.
+ 
+Example 1:
+Input: s = [""h"",""e"",""l"",""l"",""o""]
+Output: [""o"",""l"",""l"",""e"",""h""]
+Example 2:
+Input: s = [""H"",""a"",""n"",""n"",""a"",""h""]
+Output: [""h"",""a"",""n"",""n"",""a"",""H""]
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+s[i] is a printable ascii character.
+
+","Two Pointers,String,Recursion",Easy,The entire logic for reversing a string is based on using the opposite directional two-pointer approach!,"345,541","Reverse Vowels of a String,Reverse String II"
+88,88. Merge Sorted Array,"You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+ 
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+
+Example 3:
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+
+ 
+Constraints:
+
+nums1.length == m + n
+nums2.length == n
+0 <= m, n <= 200
+1 <= m + n <= 200
+-109 <= nums1[i], nums2[j] <= 109
+
+ 
+Follow up: Can you come up with an algorithm that runs in O(m + n) time?
+","Array,Two Pointers,Sorting",Easy,"You can easily solve this problem if you simply think about two elements at a time rather than two arrays. We know that each of the individual arrays is sorted. What we don't know is how they will intertwine. Can we take a local decision and arrive at an optimal solution? If you simply consider one element each at a time from the two arrays and make a decision and proceed accordingly, you will arrive at the optimal solution.","21,1019,1028","Merge Two Sorted Lists,Squares of a Sorted Array,Interval List Intersections"
+1109,1109. Corporate Flight Bookings,"There are n flights that are labeled from 1 to n.
+You are given an array of flight bookings bookings, where bookings[i] = [firsti, lasti, seatsi] represents a booking for flights firsti through lasti (inclusive) with seatsi seats reserved for each flight in the range.
+Return an array answer of length n, where answer[i] is the total number of seats reserved for flight i.
+ 
+Example 1:
+Input: bookings = [[1,2,10],[2,3,20],[2,5,25]], n = 5
+Output: [10,55,45,25,25]
+Explanation:
+Flight labels:        1   2   3   4   5
+Booking 1 reserved:  10  10
+Booking 2 reserved:      20  20
+Booking 3 reserved:      25  25  25  25
+Total seats:         10  55  45  25  25
+Hence, answer = [10,55,45,25,25]
+
+Example 2:
+Input: bookings = [[1,2,10],[2,2,15]], n = 2
+Output: [10,25]
+Explanation:
+Flight labels:        1   2
+Booking 1 reserved:  10  10
+Booking 2 reserved:      15
+Total seats:         10  25
+Hence, answer = [10,25]
+
+
+ 
+Constraints:
+
+1 <= n <= 2 * 104
+1 <= bookings.length <= 2 * 104
+bookings[i].length == 3
+1 <= firsti <= lasti <= n
+1 <= seatsi <= 104
+
+",,,,,
+1116,1116. Print Zero Even Odd,"You have a function printNumber that can be called with an integer parameter and prints it to the console.
+
+For example, calling printNumber(7) prints 7 to the console.
+
+You are given an instance of the class ZeroEvenOdd that has three functions: zero, even, and odd. The same instance of ZeroEvenOdd will be passed to three different threads:
+
+Thread A: calls zero() that should only output 0's.
+Thread B: calls even() that should only output even numbers.
+Thread C: calls odd() that should only output odd numbers.
+
+Modify the given class to output the series ""010203040506..."" where the length of the series must be 2n.
+Implement the ZeroEvenOdd class:
+
+ZeroEvenOdd(int n) Initializes the object with the number n that represents the numbers that should be printed.
+void zero(printNumber) Calls printNumber to output one zero.
+void even(printNumber) Calls printNumber to output one even number.
+void odd(printNumber) Calls printNumber to output one odd number.
+
+ 
+Example 1:
+Input: n = 2
+Output: ""0102""
+Explanation: There are three threads being fired asynchronously.
+One of them calls zero(), the other calls even(), and the last one calls odd().
+""0102"" is the correct output.
+
+Example 2:
+Input: n = 5
+Output: ""0102030405""
+
+ 
+Constraints:
+
+1 <= n <= 1000
+
+","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,"Calculate the sum for each level then find the level with the maximum sum. How can you traverse the tree ? How can you sum up the values for every level ? Use DFS or BFS to traverse the tree keeping the level of each node, and sum up those values with a map or a frequency array.",,
+1427,1427. Perform String Shifts,,"Tree,Depth-First Search,Binary Search Tree,Sorting,Binary Tree",Medium,Traverse the first tree in list1 and the second tree in list2. Merge the two trees in one list and sort it.,,

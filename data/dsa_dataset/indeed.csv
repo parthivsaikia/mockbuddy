@@ -1,0 +1,660 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+811,811. Subdomain Visit Count,"A website domain ""discuss.leetcode.com"" consists of various subdomains. At the top level, we have ""com"", at the next level, we have ""leetcode.com"" and at the lowest level, ""discuss.leetcode.com"". When we visit a domain like ""discuss.leetcode.com"", we will also visit the parent domains ""leetcode.com"" and ""com"" implicitly.
+A count-paired domain is a domain that has one of the two formats ""rep d1.d2.d3"" or ""rep d1.d2"" where rep is the number of visits to the domain and d1.d2.d3 is the domain itself.
+
+For example, ""9001 discuss.leetcode.com"" is a count-paired domain that indicates that discuss.leetcode.com was visited 9001 times.
+
+Given an array of count-paired domains cpdomains, return an array of the count-paired domains of each subdomain in the input. You may return the answer in any order.
+ 
+Example 1:
+Input: cpdomains = [""9001 discuss.leetcode.com""]
+Output: [""9001 leetcode.com"",""9001 discuss.leetcode.com"",""9001 com""]
+Explanation: We only have one website domain: ""discuss.leetcode.com"".
+As discussed above, the subdomain ""leetcode.com"" and ""com"" will also be visited. So they will all be visited 9001 times.
+
+Example 2:
+Input: cpdomains = [""900 google.mail.com"", ""50 yahoo.com"", ""1 intel.mail.com"", ""5 wiki.org""]
+Output: [""901 mail.com"",""50 yahoo.com"",""900 google.mail.com"",""5 wiki.org"",""5 org"",""1 intel.mail.com"",""951 com""]
+Explanation: We will visit ""google.mail.com"" 900 times, ""yahoo.com"" 50 times, ""intel.mail.com"" once and ""wiki.org"" 5 times.
+For the subdomains, we will visit ""mail.com"" 900 + 1 = 901 times, ""com"" 900 + 50 + 1 = 951 times, and ""org"" 5 times.
+
+ 
+Constraints:
+
+1 <= cpdomain.length <= 100
+1 <= cpdomain[i].length <= 100
+cpdomain[i] follows either the ""repi d1i.d2i.d3i"" format or the ""repi d1i.d2i"" format.
+repi is an integer in the range [1, 104].
+d1i, d2i, and d3i consist of lowercase English letters.
+
+","Array,Two Pointers",Medium,,,
+770,770. Basic Calculator IV,"Given an expression such as expression = ""e + 8 - a + 5"" and an evaluation map such as {""e"": 1} (given in terms of evalvars = [""e""] and evalints = [1]), return a list of tokens representing the simplified expression, such as [""-1*a"",""14""]
+
+An expression alternates chunks and symbols, with a space separating each chunk and symbol.
+A chunk is either an expression in parentheses, a variable, or a non-negative integer.
+A variable is a string of lowercase letters (not including digits.) Note that variables can be multiple letters, and note that variables never have a leading coefficient or unary operator like ""2x"" or ""-x"".
+
+Expressions are evaluated in the usual order: brackets first, then multiplication, then addition and subtraction.
+
+For example, expression = ""1 + 2 * 3"" has an answer of [""7""].
+
+The format of the output is as follows:
+
+For each term of free variables with a non-zero coefficient, we write the free variables within a term in sorted order lexicographically.
+	
+For example, we would never write a term like ""b*a*c"", only ""a*b*c"".
+
+
+Terms have degrees equal to the number of free variables being multiplied, counting multiplicity. We write the largest degree terms of our answer first, breaking ties by lexicographic order ignoring the leading coefficient of the term.
+	
+For example, ""a*a*b*c"" has degree 4.
+
+
+The leading coefficient of the term is placed directly to the left with an asterisk separating it from the variables (if they exist.) A leading coefficient of 1 is still printed.
+An example of a well-formatted answer is [""-2*a*a*a"", ""3*a*a*b"", ""3*b*b"", ""4*a"", ""5*c"", ""-6""].
+Terms (including constant terms) with coefficient 0 are not included.
+	
+For example, an expression of ""0"" has an output of [].
+
+
+
+Note: You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+ 
+Example 1:
+Input: expression = ""e + 8 - a + 5"", evalvars = [""e""], evalints = [1]
+Output: [""-1*a"",""14""]
+
+Example 2:
+Input: expression = ""e - 8 + temperature - pressure"", evalvars = [""e"", ""temperature""], evalints = [1, 12]
+Output: [""-1*pressure"",""5""]
+
+Example 3:
+Input: expression = ""(e + 8) * (e - 8)"", evalvars = [], evalints = []
+Output: [""1*e*e"",""-64""]
+
+ 
+Constraints:
+
+1 <= expression.length <= 250
+expression consists of lowercase English letters, digits, '+', '-', '*', '(', ')', ' '.
+expression does not contain any leading or trailing spaces.
+All the tokens in expression are separated by a single space.
+0 <= evalvars.length <= 100
+1 <= evalvars[i].length <= 20
+evalvars[i] consists of lowercase English letters.
+evalints.length == evalvars.length
+-100 <= evalints[i] <= 100
+
+","Greedy,Depth-First Search,Breadth-First Search,Union Find,Graph",Hard,"Say there are N two-seat couches.  For each couple, draw an edge from the couch of one partner to the couch of the other partner.","41,268,884","First Missing Positive,Missing Number,K-Similar Strings"
+224,224. Basic Calculator,"Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""1 + 1""
+Output: 2
+
+Example 2:
+Input: s = "" 2-1 + 2 ""
+Output: 3
+
+Example 3:
+Input: s = ""(1+(4+5+2)-3)+(6+8)""
+Output: 23
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of digits, '+', '-', '(', ')', and ' '.
+s represents a valid expression.
+'+' is not used as a unary operation (i.e., ""+1"" and ""+(2 + 3)"" is invalid).
+'-' could be used as a unary operation (i.e., ""-1"" and ""-(2 + 3)"" is valid).
+There will be no two consecutive operators in the input.
+Every number and running calculation will fit in a signed 32-bit integer.
+
+","Math,String,Stack,Recursion",Hard,,"150,227,241,282,785,2147,2328","Evaluate Reverse Polish Notation,Basic Calculator II,Different Ways to Add Parentheses,Expression Add Operators,Basic Calculator III,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+718,718. Maximum Length of Repeated Subarray,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+ 
+Example 1:
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
+
+Example 2:
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 100
+
+","Array,Binary Search,Dynamic Programming,Sliding Window,Rolling Hash,Hash Function",Medium,"Use dynamic programming.  dp[i][j] will be the answer for inputs A[i:], B[j:].","209,2051","Minimum Size Subarray Sum,Longest Common Subpath"
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+1197,1197. Minimum Knight Moves,,"String,Stack,Recursion",Hard,"Write a function ""parse"" which calls helper functions ""parse_or"", ""parse_and"", ""parse_not"".",,
+362,362. Design Hit Counter,,"Array,Hash Table,Binary Search,Design,Queue",Medium,,359,Logger Rate Limiter
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+1143,1143. Longest Common Subsequence,"Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+
+For example, ""ace"" is a subsequence of ""abcde"".
+
+A common subsequence of two strings is a subsequence that is common to both strings.
+ 
+Example 1:
+Input: text1 = ""abcde"", text2 = ""ace"" 
+Output: 3  
+Explanation: The longest common subsequence is ""ace"" and its length is 3.
+
+Example 2:
+Input: text1 = ""abc"", text2 = ""abc""
+Output: 3
+Explanation: The longest common subsequence is ""abc"" and its length is 3.
+
+Example 3:
+Input: text1 = ""abc"", text2 = ""def""
+Output: 0
+Explanation: There is no such common subsequence, so the result is 0.
+
+ 
+Constraints:
+
+1 <= text1.length, text2.length <= 1000
+text1 and text2 consist of only lowercase English characters.
+
+","Array,Hash Table,Binary Search,Matrix,Counting",Medium,Notice that each row has no duplicates. Is counting the frequency of elements enough to find the answer? Use a data structure to count the frequency of elements. Find an element whose frequency equals the number of rows.,,
+228,228. Summary Ranges,"You are given a sorted unique integer array nums.
+A range [a,b] is the set of all integers from a to b (inclusive).
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That is, each element of nums is covered by exactly one of the ranges, and there is no integer x such that x is in one of the ranges but not in nums.
+Each range [a,b] in the list should be output as:
+
+""a->b"" if a != b
+""a"" if a == b
+
+ 
+Example 1:
+Input: nums = [0,1,2,4,5,7]
+Output: [""0->2"",""4->5"",""7""]
+Explanation: The ranges are:
+[0,2] --> ""0->2""
+[4,5] --> ""4->5""
+[7,7] --> ""7""
+
+Example 2:
+Input: nums = [0,2,3,4,6,8,9]
+Output: [""0"",""2->4"",""6"",""8->9""]
+Explanation: The ranges are:
+[0,0] --> ""0""
+[2,4] --> ""2->4""
+[6,6] --> ""6""
+[8,9] --> ""8->9""
+
+ 
+Constraints:
+
+0 <= nums.length <= 20
+-231 <= nums[i] <= 231 - 1
+All the values of nums are unique.
+nums is sorted in ascending order.
+
+",Array,Easy,,"163,352","Missing Ranges,Data Stream as Disjoint Intervals"
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+563,563. Binary Tree Tilt,"Given the root of a binary tree, return the sum of every tree node's tilt.
+The tilt of a tree node is the absolute difference between the sum of all left subtree node values and all right subtree node values. If a node does not have a left child, then the sum of the left subtree node values is treated as 0. The rule is similar if the node does not have a right child.
+ 
+Example 1:
+
+Input: root = [1,2,3]
+Output: 1
+Explanation: 
+Tilt of node 2 : |0-0| = 0 (no children)
+Tilt of node 3 : |0-0| = 0 (no children)
+Tilt of node 1 : |2-3| = 1 (left subtree is just left child, so sum is 2; right subtree is just right child, so sum is 3)
+Sum of every tilt : 0 + 0 + 1 = 1
+
+Example 2:
+
+Input: root = [4,2,9,3,5,null,7]
+Output: 15
+Explanation: 
+Tilt of node 3 : |0-0| = 0 (no children)
+Tilt of node 5 : |0-0| = 0 (no children)
+Tilt of node 7 : |0-0| = 0 (no children)
+Tilt of node 2 : |3-5| = 2 (left subtree is just left child, so sum is 3; right subtree is just right child, so sum is 5)
+Tilt of node 9 : |0-7| = 7 (no left child, so sum is 0; right subtree is just right child, so sum is 7)
+Tilt of node 4 : |(3+5+2)-(9+7)| = |10-16| = 6 (left subtree values are 3, 5, and 2, which sums to 10; right subtree values are 9 and 7, which sums to 16)
+Sum of every tilt : 0 + 0 + 0 + 2 + 7 + 6 = 15
+
+Example 3:
+
+Input: root = [21,7,14,1,1,2,2,3,3]
+Output: 9
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-1000 <= Node.val <= 1000
+
+","Tree,Depth-First Search,Binary Tree",Easy,"Don't think too much, this is an easy problem. Take some small tree as an example. Can a parent node use the values of its child nodes? How will you implement it? May be recursion and tree traversal can help you in implementing. What about postorder traversal, using values of left and right childs?",1609,Find All The Lonely Nodes
+85,85. Maximal Rectangle,"Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 6
+Explanation: The maximal rectangle is shown in the above picture.
+
+Example 2:
+Input: matrix = [[""0""]]
+Output: 0
+
+Example 3:
+Input: matrix = [[""1""]]
+Output: 1
+
+ 
+Constraints:
+
+rows == matrix.length
+cols == matrix[i].length
+1 <= row, cols <= 200
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Stack,Matrix,Monotonic Stack",Hard,,"84,221","Largest Rectangle in Histogram,Maximal Square"
+346,346. Moving Average from Data Stream,,"Array,Design,Queue,Data Stream",Easy,,2211,K Radius Subarray Averages
+21,21. Merge Two Sorted Lists,"You are given the heads of two sorted linked lists list1 and list2.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Return the head of the merged linked list.
+ 
+Example 1:
+
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in both lists is in the range [0, 50].
+-100 <= Node.val <= 100
+Both list1 and list2 are sorted in non-decreasing order.
+
+","Linked List,Recursion",Easy,,"23,88,148,244,1774,2071","Merge k Sorted Lists,Merge Sorted Array,Sort List,Shortest Word Distance II,Add Two Polynomials Represented as Linked Lists,Longest Common Subsequence Between Sorted Arrays"
+829,829. Consecutive Numbers Sum,"Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers.
+ 
+Example 1:
+Input: n = 5
+Output: 2
+Explanation: 5 = 2 + 3
+
+Example 2:
+Input: n = 9
+Output: 3
+Explanation: 9 = 4 + 5 = 2 + 3 + 4
+
+Example 3:
+Input: n = 15
+Output: 4
+Explanation: 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+
+ 
+Constraints:
+
+1 <= n <= 109
+
+","Array,Hash Table,String,Counting",Medium,,,
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+349,349. Intersection of Two Arrays,"Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+ 
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2]
+
+Example 2:
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [9,4]
+Explanation: [4,9] is also accepted.
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 1000
+
+","Array,Hash Table,Two Pointers,Binary Search,Sorting",Easy,,"350,1149,1392,2190,2282","Intersection of Two Arrays II,Intersection of Three Sorted Arrays,Find the Difference of Two Arrays,Count Common Words With One Occurrence,Choose Numbers From Two Arrays in Range"
+297,297. Serialize and Deserialize Binary Tree,"Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+ 
+Example 1:
+
+Input: root = [1,2,3,null,null,4,5]
+Output: [1,2,3,null,null,4,5]
+
+Example 2:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-1000 <= Node.val <= 1000
+
+","String,Tree,Depth-First Search,Breadth-First Search,Design,Binary Tree",Hard,,"271,449,652,765","Encode and Decode Strings,Serialize and Deserialize BST,Find Duplicate Subtrees,Serialize and Deserialize N-ary Tree"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+88,88. Merge Sorted Array,"You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+ 
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+
+Example 3:
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+
+ 
+Constraints:
+
+nums1.length == m + n
+nums2.length == n
+0 <= m, n <= 200
+1 <= m + n <= 200
+-109 <= nums1[i], nums2[j] <= 109
+
+ 
+Follow up: Can you come up with an algorithm that runs in O(m + n) time?
+","Array,Two Pointers,Sorting",Easy,"You can easily solve this problem if you simply think about two elements at a time rather than two arrays. We know that each of the individual arrays is sorted. What we don't know is how they will intertwine. Can we take a local decision and arrive at an optimal solution? If you simply consider one element each at a time from the two arrays and make a decision and proceed accordingly, you will arrive at the optimal solution.","21,1019,1028","Merge Two Sorted Lists,Squares of a Sorted Array,Interval List Intersections"
+724,724. Find Pivot Index,"Given an array of integers nums, calculate the pivot index of this array.
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+Return the leftmost pivot index. If no such index exists, return -1.
+ 
+Example 1:
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+Example 2:
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+Example 3:
+Input: nums = [2,1,-1]
+Output: 0
+Explanation:
+The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+ 
+Note: This question is the same as 1991: https://leetcode.com/problems/find-the-middle-index-in-array/
+","Array,Prefix Sum",Easy,"We can precompute prefix sums P[i] = nums[0] + nums[1] + ... + nums[i-1].
+Then for each index, the left sum is P[i], and the right sum is P[P.length - 1] - P[i] - nums[i].","560,2102,2369","Subarray Sum Equals K,Find the Middle Index in Array,Maximum Sum Score of Array"
+560,560. Subarray Sum Equals K,"Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+A subarray is a contiguous non-empty sequence of elements within an array.
+ 
+Example 1:
+Input: nums = [1,1,1], k = 2
+Output: 2
+Example 2:
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+ 
+Constraints:
+
+1 <= nums.length <= 2 * 104
+-1000 <= nums[i] <= 1000
+-107 <= k <= 107
+
+","Array,Hash Table,Prefix Sum",Medium,"Will Brute force work here? Try to optimize it. Can we optimize it by using some extra space? What about storing sum frequencies in a hash table? Will it be useful? sum(i,j)=sum(0,j)-sum(0,i), where sum(i,j) represents the sum of all the elements from index i to j-1.
+
+Can we use this property to optimize it.","1,523,713,724,1016,1776,2211,2369","Two Sum,Continuous Subarray Sum,Subarray Product Less Than K,Find Pivot Index,Subarray Sums Divisible by K,Minimum Operations to Reduce X to Zero,K Radius Subarray Averages,Maximum Sum Score of Array"
+453,453. Minimum Moves to Equal Array Elements,"Given an integer array nums of size n, return the minimum number of moves required to make all array elements equal.
+In one move, you can increment n - 1 elements of the array by 1.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 3
+Explanation: Only three moves are needed (remember each move increments two elements):
+[1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+
+Example 2:
+Input: nums = [1,1,1]
+Output: 0
+
+ 
+Constraints:
+
+n == nums.length
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Array,Math",Medium,,"462,2263,2273","Minimum Moves to Equal Array Elements II,Maximum Running Time of N Computers,Pour Water Between Buckets to Make Water Levels Equal"
+985,985. Sum of Even Numbers After Queries,"You are given an integer array nums and an array queries where queries[i] = [vali, indexi].
+For each query i, first, apply nums[indexi] = nums[indexi] + vali, then print the sum of the even values of nums.
+Return an integer array answer where answer[i] is the answer to the ith query.
+ 
+Example 1:
+Input: nums = [1,2,3,4], queries = [[1,0],[-3,1],[-4,0],[2,3]]
+Output: [8,6,2,4]
+Explanation: At the beginning, the array is [1,2,3,4].
+After adding 1 to nums[0], the array is [2,2,3,4], and the sum of even values is 2 + 2 + 4 = 8.
+After adding -3 to nums[1], the array is [2,-1,3,4], and the sum of even values is 2 + 4 = 6.
+After adding -4 to nums[0], the array is [-2,-1,3,4], and the sum of even values is -2 + 4 = 2.
+After adding 2 to nums[3], the array is [-2,-1,3,6], and the sum of even values is -2 + 6 = 4.
+
+Example 2:
+Input: nums = [1], queries = [[4,0]]
+Output: [0]
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-104 <= nums[i] <= 104
+1 <= queries.length <= 104
+-104 <= vali <= 104
+0 <= indexi < nums.length
+
+","Array,Two Pointers,Greedy,Sorting",Medium,,,

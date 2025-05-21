@@ -1,0 +1,46 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1185,1185. Day of the Week,"Given a date, return the corresponding day of the week for that date.
+The input is given as three integers representing the day, month and year respectively.
+Return the answer as one of the following values {""Sunday"", ""Monday"", ""Tuesday"", ""Wednesday"", ""Thursday"", ""Friday"", ""Saturday""}.
+ 
+Example 1:
+Input: day = 31, month = 8, year = 2019
+Output: ""Saturday""
+
+Example 2:
+Input: day = 18, month = 7, year = 1999
+Output: ""Sunday""
+
+Example 3:
+Input: day = 15, month = 8, year = 1993
+Output: ""Sunday""
+
+ 
+Constraints:
+
+The given dates are valid dates between the years 1971 and 2100.
+
+","Array,Binary Search,Interactive",Hard,"Based on whether A[i-1] < A[i] < A[i+1], A[i-1] < A[i] > A[i+1], or A[i-1] > A[i] > A[i+1], we are either at the left side, peak, or right side of the mountain.  We can binary search to find the peak.
+After finding the peak, we can binary search two more times to find whether the value occurs on either side of the peak.","882,1766,2205","Peak Index in a Mountain Array,Minimum Number of Removals to Make Mountain Array,Find Good Days to Rob the Bank"
+1437,1437. Check If All 1's Are at Least Length K Places Away,"Given an binary array nums and an integer k, return true if all 1's are at least k places away from each other, otherwise return false.
+ 
+Example 1:
+
+Input: nums = [1,0,0,0,1,0,0,1], k = 2
+Output: true
+Explanation: Each of the 1s are at least 2 places away from each other.
+
+Example 2:
+
+Input: nums = [1,0,0,1,0,1], k = 2
+Output: false
+Explanation: The second 1 and third 1 are only one apart from each other.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+0 <= k <= nums.length
+nums[i] is 0 or 1
+
+","String,Dynamic Programming",Hard,"Is dynamic programming suitable for this problem ? If we know the longest palindromic sub-sequence is x and the length of the string is n then, what is the answer to this problem? It is n - x as we need n - x insertions to make the remaining characters also palindrome.",1356,Minimum Number of Moves to Make Palindrome

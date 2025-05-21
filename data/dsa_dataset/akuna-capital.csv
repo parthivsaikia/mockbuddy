@@ -1,0 +1,656 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1223,1223. Dice Roll Simulation,"A die simulator generates a random number from 1 to 6 for each roll. You introduced a constraint to the generator such that it cannot roll the number i more than rollMax[i] (1-indexed) consecutive times.
+Given an array of integers rollMax and an integer n, return the number of distinct sequences that can be obtained with exact n rolls. Since the answer may be too large, return it modulo 109 + 7.
+Two sequences are considered different if at least one element differs from each other.
+ 
+Example 1:
+Input: n = 2, rollMax = [1,1,2,2,2,3]
+Output: 34
+Explanation: There will be 2 rolls of die, if there are no constraints on the die, there are 6 * 6 = 36 possible combinations. In this case, looking at rollMax array, the numbers 1 and 2 appear at most once consecutively, therefore sequences (1,1) and (2,2) cannot occur, so the final answer is 36-2 = 34.
+
+Example 2:
+Input: n = 2, rollMax = [1,1,1,1,1,1]
+Output: 30
+
+Example 3:
+Input: n = 3, rollMax = [1,1,1,2,2,3]
+Output: 181
+
+ 
+Constraints:
+
+1 <= n <= 5000
+rollMax.length == 6
+1 <= rollMax[i] <= 15
+
+","Array,Math,Union Find",Hard,"How to build the graph of the cities? Connect city i with all its multiples 2*i, 3*i, ... Answer the queries using union-find data structure.",,
+713,713. Subarray Product Less Than K,"Given an array of integers nums and an integer k, return the number of contiguous subarrays where the product of all the elements in the subarray is strictly less than k.
+ 
+Example 1:
+Input: nums = [10,5,2,6], k = 100
+Output: 8
+Explanation: The 8 subarrays that have product less than 100 are:
+[10], [5], [2], [6], [10, 5], [5, 2], [2, 6], [5, 2, 6]
+Note that [10, 5, 2] is not included as the product of 100 is not strictly less than k.
+
+Example 2:
+Input: nums = [1,2,3], k = 0
+Output: 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 3 * 104
+1 <= nums[i] <= 1000
+0 <= k <= 106
+
+","Array,Sliding Window",Medium,"For each j, let opt(j) be the smallest i so that nums[i] * nums[i+1] * ... * nums[j] is less than k.  opt is an increasing function.","152,325,560,1083,2233","Maximum Product Subarray,Maximum Size Subarray Sum Equals k,Subarray Sum Equals K,Two Sum Less Than K,Number of Smooth Descent Periods of a Stock"
+1411,1411. Number of Ways to Paint N × 3 Grid,"You have a grid of size n x 3 and you want to paint each cell of the grid with exactly one of the three colors: Red, Yellow, or Green while making sure that no two adjacent cells have the same color (i.e., no two cells that share vertical or horizontal sides have the same color).
+Given n the number of rows of the grid, return the number of ways you can paint this grid. As the answer may grow large, the answer must be computed modulo 109 + 7.
+ 
+Example 1:
+
+Input: n = 1
+Output: 12
+Explanation: There are 12 possible way to paint the grid as shown.
+
+Example 2:
+Input: n = 5000
+Output: 30228214
+
+ 
+Constraints:
+
+n == grid.length
+1 <= n <= 5000
+
+","Linked List,Math",Easy,Traverse the linked list and store all values in a string or array. convert the values obtained to decimal value. You can solve the problem in O(1) memory using bits operation. use shift left operation ( << ) and or operation ( | ) to get the decimal value in one operation.,,
+1177,1177. Can Make Palindrome from Substring,"You are given a string s and array queries where queries[i] = [lefti, righti, ki]. We may rearrange the substring s[lefti...righti] for each query and then choose up to ki of them to replace with any lowercase English letter.
+If the substring is possible to be a palindrome string after the operations above, the result of the query is true. Otherwise, the result is false.
+Return a boolean array answer where answer[i] is the result of the ith query queries[i].
+Note that each letter is counted individually for replacement, so if, for example s[lefti...righti] = ""aaa"", and ki = 2, we can only replace two of the letters. Also, note that no query modifies the initial string s.
+ 
+Example :
+Input: s = ""abcda"", queries = [[3,3,0],[1,2,0],[0,3,1],[0,3,2],[0,4,1]]
+Output: [true,false,false,true,true]
+Explanation:
+queries[0]: substring = ""d"", is palidrome.
+queries[1]: substring = ""bc"", is not palidrome.
+queries[2]: substring = ""abcd"", is not palidrome after replacing only 1 character.
+queries[3]: substring = ""abcd"", could be changed to ""abba"" which is palidrome. Also this can be changed to ""baab"" first rearrange it ""bacd"" then replace ""cd"" with ""ab"".
+queries[4]: substring = ""abcda"", could be changed to ""abcba"" which is palidrome.
+
+Example 2:
+Input: s = ""lyb"", queries = [[0,1,0],[2,2,1]]
+Output: [false,true]
+
+ 
+Constraints:
+
+1 <= s.length, queries.length <= 105
+0 <= lefti <= righti < s.length
+0 <= ki <= s.length
+s consists of lowercase English letters.
+
+","Tree,Depth-First Search,Breadth-First Search",Medium,"Start at any node A and traverse the tree to find the furthest node from it, let's call it B. Having found the furthest node B, traverse the tree from B to find the furthest node from it, lets call it C. The distance between B and C is the tree diameter.",1740,Count Subtrees With Max Distance Between Cities
+1319,1319. Number of Operations to Make Network Connected,"There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where connections[i] = [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other computer directly or indirectly through the network.
+You are given an initial computer network connections. You can extract certain cables between two directly connected computers, and place them between any pair of disconnected computers to make them directly connected.
+Return the minimum number of times you need to do this in order to make all the computers connected. If it is not possible, return -1.
+ 
+Example 1:
+
+Input: n = 4, connections = [[0,1],[0,2],[1,2]]
+Output: 1
+Explanation: Remove cable between computer 1 and 2 and place between computers 1 and 3.
+
+Example 2:
+
+Input: n = 6, connections = [[0,1],[0,2],[0,3],[1,2],[1,3]]
+Output: 2
+
+Example 3:
+Input: n = 6, connections = [[0,1],[0,2],[0,3],[1,2]]
+Output: -1
+Explanation: There are not enough cables.
+
+ 
+Constraints:
+
+1 <= n <= 105
+1 <= connections.length <= min(n * (n - 1) / 2, 105)
+connections[i].length == 2
+0 <= ai, bi < n
+ai != bi
+There are no repeated connections.
+No two computers are connected by more than one cable.
+
+","Array,Hash Table",Easy,Find the number of occurrences of each element in the array using a hash map. Iterate through the hash map and check if there is a repeated value.,,
+1048,1048. Longest String Chain,"You are given an array of words where each word consists of lowercase English letters.
+wordA is a predecessor of wordB if and only if we can insert exactly one letter anywhere in wordA without changing the order of the other characters to make it equal to wordB.
+
+For example, ""abc"" is a predecessor of ""abac"", while ""cba"" is not a predecessor of ""bcad"".
+
+A word chain is a sequence of words [word1, word2, ..., wordk] with k >= 1, where word1 is a predecessor of word2, word2 is a predecessor of word3, and so on. A single word is trivially a word chain with k == 1.
+Return the length of the longest possible word chain with words chosen from the given list of words.
+ 
+Example 1:
+Input: words = [""a"",""b"",""ba"",""bca"",""bda"",""bdca""]
+Output: 4
+Explanation: One of the longest word chains is [""a"",""ba"",""bda"",""bdca""].
+
+Example 2:
+Input: words = [""xbc"",""pcxbcf"",""xb"",""cxbc"",""pcxbc""]
+Output: 5
+Explanation: All the words can be put in a word chain [""xb"", ""xbc"", ""cxbc"", ""pcxbc"", ""pcxbcf""].
+
+Example 3:
+Input: words = [""abcd"",""dbqca""]
+Output: 1
+Explanation: The trivial word chain [""abcd""] is one of the longest word chains.
+[""abcd"",""dbqca""] is not a valid word chain because the ordering of the letters is changed.
+
+ 
+Constraints:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 16
+words[i] only consists of lowercase English letters.
+
+","Math,Stack,Simulation",Medium,,,
+152,152. Maximum Product Subarray,"Given an integer array nums, find a subarray that has the largest product, and return the product.
+The test cases are generated so that the answer will fit in a 32-bit integer.
+ 
+Example 1:
+Input: nums = [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+
+Example 2:
+Input: nums = [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+
+ 
+Constraints:
+
+1 <= nums.length <= 2 * 104
+-10 <= nums[i] <= 10
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+","Array,Dynamic Programming",Medium,,"53,198,238,628,713","Maximum Subarray,House Robber,Product of Array Except Self,Maximum Product of Three Numbers,Subarray Product Less Than K"
+48,48. Rotate Image,"You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[7,4,1],[8,5,2],[9,6,3]]
+
+Example 2:
+
+Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+ 
+Constraints:
+
+n == matrix.length == matrix[i].length
+1 <= n <= 20
+-1000 <= matrix[i][j] <= 1000
+
+","Array,Math,Matrix",Medium,,2015,Determine Whether Matrix Can Be Obtained By Rotation
+995,995. Minimum Number of K Consecutive Bit Flips,"You are given a binary array nums and an integer k.
+A k-bit flip is choosing a subarray of length k from nums and simultaneously changing every 0 in the subarray to 1, and every 1 in the subarray to 0.
+Return the minimum number of k-bit flips required so that there is no 0 in the array. If it is not possible, return -1.
+A subarray is a contiguous part of an array.
+ 
+Example 1:
+Input: nums = [0,1,0], k = 1
+Output: 2
+Explanation: Flip nums[0], then flip nums[2].
+
+Example 2:
+Input: nums = [1,1,0], k = 2
+Output: -1
+Explanation: No matter how we flip subarrays of size 2, we cannot make the array become [1,1,1].
+
+Example 3:
+Input: nums = [0,0,0,1,0,1,1,0], k = 3
+Output: 3
+Explanation: 
+Flip nums[0],nums[1],nums[2]: nums becomes [1,1,1,1,0,1,1,0]
+Flip nums[4],nums[5],nums[6]: nums becomes [1,1,1,1,1,0,0,0]
+Flip nums[5],nums[6],nums[7]: nums becomes [1,1,1,1,1,1,1,1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+1 <= k <= nums.length
+
+",,,,,
+324,324. Wiggle Sort II,"Given an integer array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
+You may assume the input array always has a valid answer.
+ 
+Example 1:
+Input: nums = [1,5,1,1,6,4]
+Output: [1,6,1,5,1,4]
+Explanation: [1,4,1,5,1,6] is also accepted.
+
+Example 2:
+Input: nums = [1,3,2,2,3,1]
+Output: [2,3,1,3,1,2]
+
+ 
+Constraints:
+
+1 <= nums.length <= 5 * 104
+0 <= nums[i] <= 5000
+It is guaranteed that there will be an answer for the given input nums.
+
+ 
+Follow Up: Can you do it in O(n) time and/or in-place with O(1) extra space?","Array,Divide and Conquer,Sorting,Quickselect",Medium,,"75,215,280,2085","Sort Colors,Kth Largest Element in an Array,Wiggle Sort,Array With Elements Not Equal to Average of Neighbors"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+443,443. String Compression,"Given an array of characters chars, compress it using the following algorithm:
+Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+If the group's length is 1, append the character to s.
+Otherwise, append the character followed by the group's length.
+
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+After you are done modifying the input array, return the new length of the array.
+You must write an algorithm that uses only constant extra space.
+ 
+Example 1:
+Input: chars = [""a"",""a"",""b"",""b"",""c"",""c"",""c""]
+Output: Return 6, and the first 6 characters of the input array should be: [""a"",""2"",""b"",""2"",""c"",""3""]
+Explanation: The groups are ""aa"", ""bb"", and ""ccc"". This compresses to ""a2b2c3"".
+
+Example 2:
+Input: chars = [""a""]
+Output: Return 1, and the first character of the input array should be: [""a""]
+Explanation: The only group is ""a"", which remains uncompressed since it's a single character.
+
+Example 3:
+Input: chars = [""a"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b"",""b""]
+Output: Return 4, and the first 4 characters of the input array should be: [""a"",""b"",""1"",""2""].
+Explanation: The groups are ""a"" and ""bbbbbbbbbbbb"". This compresses to ""ab12"".
+ 
+Constraints:
+
+1 <= chars.length <= 2000
+chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol.
+
+","Two Pointers,String",Medium,How do you know if you are at the end of a consecutive group of characters?,"38,271,604,1241","Count and Say,Encode and Decode Strings,Design Compressed String Iterator,Decompress Run-Length Encoded List"
+743,743. Network Delay Time,"You are given a network of n nodes, labeled from 1 to n. You are also given times, a list of travel times as directed edges times[i] = (ui, vi, wi), where ui is the source node, vi is the target node, and wi is the time it takes for a signal to travel from source to target.
+We will send a signal from a given node k. Return the minimum time it takes for all the n nodes to receive the signal. If it is impossible for all the n nodes to receive the signal, return -1.
+ 
+Example 1:
+
+Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+Output: 2
+
+Example 2:
+Input: times = [[1,2,1]], n = 2, k = 1
+Output: 1
+
+Example 3:
+Input: times = [[1,2,1]], n = 2, k = 2
+Output: -1
+
+ 
+Constraints:
+
+1 <= k <= n <= 100
+1 <= times.length <= 6000
+times[i].length == 3
+1 <= ui, vi <= n
+ui != vi
+0 <= wi <= 100
+All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
+
+","Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,"Convert the tree to a general graph, and do a breadth-first search.  Alternatively, find the closest leaf for every node on the path from root to target.",,
+121,121. Best Time to Buy and Sell Stock,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming",Easy,,"53,122,123,188,309,2138,2144","Maximum Subarray,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Sum of Beauty in the Array,Maximum Difference Between Increasing Elements"
+39,39. Combination Sum,"Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+ 
+Example 1:
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+
+Example 2:
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+
+Example 3:
+Input: candidates = [2], target = 1
+Output: []
+
+ 
+Constraints:
+
+1 <= candidates.length <= 30
+2 <= candidates[i] <= 40
+All elements of candidates are distinct.
+1 <= target <= 40
+
+","Array,Backtracking",Medium,,"17,40,77,216,254,377","Letter Combinations of a Phone Number,Combination Sum II,Combinations,Combination Sum III,Factor Combinations,Combination Sum IV"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+677,677. Map Sum Pairs,"Design a map that allows you to do the following:
+
+Maps a string key to a given value.
+Returns the sum of the values that have a key with a prefix equal to a given string.
+
+Implement the MapSum class:
+
+MapSum() Initializes the MapSum object.
+void insert(String key, int val) Inserts the key-val pair into the map. If the key already existed, the original key-value pair will be overridden to the new one.
+int sum(string prefix) Returns the sum of all the pairs' value whose key starts with the prefix.
+
+ 
+Example 1:
+Input
+[""MapSum"", ""insert"", ""sum"", ""insert"", ""sum""]
+[[], [""apple"", 3], [""ap""], [""app"", 2], [""ap""]]
+Output
+[null, null, 3, null, 5]
+
+Explanation
+MapSum mapSum = new MapSum();
+mapSum.insert(""apple"", 3);  
+mapSum.sum(""ap"");           // return 3 (apple = 3)
+mapSum.insert(""app"", 2);    
+mapSum.sum(""ap"");           // return 5 (apple + app = 3 + 2 = 5)
+
+ 
+Constraints:
+
+1 <= key.length, prefix.length <= 50
+key and prefix consist of only lowercase English letters.
+1 <= val <= 1000
+At most 50 calls will be made to insert and sum.
+
+","Hash Table,String,Design,Trie",Medium,,1333,Sort the Jumbled Numbers
+740,740. Delete and Earn,"You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:
+
+Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 and every element equal to nums[i] + 1.
+
+Return the maximum number of points you can earn by applying the above operation some number of times.
+ 
+Example 1:
+Input: nums = [3,4,2]
+Output: 6
+Explanation: You can perform the following operations:
+- Delete 4 to earn 4 points. Consequently, 3 is also deleted. nums = [2].
+- Delete 2 to earn 2 points. nums = [].
+You earn a total of 6 points.
+
+Example 2:
+Input: nums = [2,2,3,3,3,4]
+Output: 9
+Explanation: You can perform the following operations:
+- Delete a 3 to earn 3 points. All 2's and 4's are also deleted. nums = [3,3].
+- Delete a 3 again to earn 3 points. nums = [3].
+- Delete a 3 once more to earn 3 points. nums = [].
+You earn a total of 9 points.
+ 
+Constraints:
+
+1 <= nums.length <= 2 * 104
+1 <= nums[i] <= 104
+
+","Array,Hash Table,Dynamic Programming",Medium,"If you take a number, you might as well take them all.  Keep track of what the value is of the subset of the input with maximum M when you either take or don't take M.",198,House Robber
+741,741. Cherry Pickup,"You are given an n x n grid representing a field of cherries, each cell is one of three possible integers.
+
+0 means the cell is empty, so you can pass through,
+1 means the cell contains a cherry that you can pick up and pass through, or
+-1 means the cell contains a thorn that blocks your way.
+
+Return the maximum number of cherries you can collect by following the rules below:
+
+Starting at the position (0, 0) and reaching (n - 1, n - 1) by moving right or down through valid path cells (cells with value 0 or 1).
+After reaching (n - 1, n - 1), returning to (0, 0) by moving left or up through valid path cells.
+When passing through a path cell containing a cherry, you pick it up, and the cell becomes an empty cell 0.
+If there is no valid path between (0, 0) and (n - 1, n - 1), then no cherries can be collected.
+
+ 
+Example 1:
+
+Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
+Output: 5
+Explanation: The player started at (0, 0) and went down, down, right right to reach (2, 2).
+4 cherries were picked up during this single trip, and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].
+Then, the player went left, up, up, left to return home, picking up one more cherry.
+The total number of cherries picked up is 5, and this is the maximum possible.
+
+Example 2:
+Input: grid = [[1,1,-1],[1,-1,1],[-1,1,1]]
+Output: 0
+
+ 
+Constraints:
+
+n == grid.length
+n == grid[i].length
+1 <= n <= 50
+grid[i][j] is -1, 0, or 1.
+grid[0][0] != -1
+grid[n - 1][n - 1] != -1
+
+","Array,Dynamic Programming,Matrix",Hard,,"64,174,2189","Minimum Path Sum,Dungeon Game,Maximum Path Quality of a Graph"
+1425,1425. Constrained Subsequence Sum,"Given an integer array nums and an integer k, return the maximum sum of a non-empty subsequence of that array such that for every two consecutive integers in the subsequence, nums[i] and nums[j], where i < j, the condition j - i <= k is satisfied.
+A subsequence of an array is obtained by deleting some number of elements (can be zero) from the array, leaving the remaining elements in their original order.
+ 
+Example 1:
+Input: nums = [10,2,-10,5,20], k = 2
+Output: 37
+Explanation: The subsequence is [10, 2, 5, 20].
+
+Example 2:
+Input: nums = [-1,-2,-3], k = 1
+Output: -1
+Explanation: The subsequence must be non-empty, so we choose the largest number.
+
+Example 3:
+Input: nums = [10,-2,-10,-5,20], k = 2
+Output: 23
+Explanation: The subsequence is [10, -2, -5, 20].
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+",Database,Easy,,,
+1326,1326. Minimum Number of Taps to Open to Water a Garden,"There is a one-dimensional garden on the x-axis. The garden starts at the point 0 and ends at the point n. (i.e., the length of the garden is n).
+There are n + 1 taps located at points [0, 1, ..., n] in the garden.
+Given an integer n and an integer array ranges of length n + 1 where ranges[i] (0-indexed) means the i-th tap can water the area [i - ranges[i], i + ranges[i]] if it was open.
+Return the minimum number of taps that should be open to water the whole garden, If the garden cannot be watered return -1.
+ 
+Example 1:
+
+Input: n = 5, ranges = [3,4,1,1,0,0]
+Output: 1
+Explanation: The tap at point 0 can cover the interval [-3,3]
+The tap at point 1 can cover the interval [-3,5]
+The tap at point 2 can cover the interval [1,3]
+The tap at point 3 can cover the interval [2,4]
+The tap at point 4 can cover the interval [4,4]
+The tap at point 5 can cover the interval [5,5]
+Opening Only the second tap will water the whole garden [0,5]
+
+Example 2:
+Input: n = 3, ranges = [0,0,0,0]
+Output: -1
+Explanation: Even if you activate all the four taps you cannot water the whole garden.
+
+ 
+Constraints:
+
+1 <= n <= 104
+ranges.length == n + 1
+0 <= ranges[i] <= 100
+
+","Array,Math,Binary Search,Prefix Sum",Hard,"Find the frequency (number of occurrences) of all elements in the array. For each element, iterate through its multiples and multiply frequencies to find the answer.",,
+1338,1338. Reduce Array Size to The Half,"You are given an integer array arr. You can choose a set of integers and remove all the occurrences of these integers in the array.
+Return the minimum size of the set so that at least half of the integers of the array are removed.
+ 
+Example 1:
+Input: arr = [3,3,3,3,5,5,5,2,2,7]
+Output: 2
+Explanation: Choosing {3,7} will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).
+Possible sets of size 2 are {3,5},{3,2},{5,2}.
+Choosing set {2,7} is not possible as it will make the new array [3,3,3,3,5,5,5] which has a size greater than half of the size of the old array.
+
+Example 2:
+Input: arr = [7,7,7,7,7,7]
+Output: 1
+Explanation: The only possible set you can choose is {7}. This will make the new array empty.
+
+ 
+Constraints:
+
+2 <= arr.length <= 105
+arr.length is even.
+1 <= arr[i] <= 105
+
+",Database,Easy,,1773,Percentage of Users Attended a Contest
+1370,1370. Increasing Decreasing String,"You are given a string s. Reorder the string using the following algorithm:
+
+Pick the smallest character from s and append it to the result.
+Pick the smallest character from s which is greater than the last appended character to the result and append it.
+Repeat step 2 until you cannot pick more characters.
+Pick the largest character from s and append it to the result.
+Pick the largest character from s which is smaller than the last appended character to the result and append it.
+Repeat step 5 until you cannot pick more characters.
+Repeat the steps from 1 to 6 until you pick all characters from s.
+
+In each step, If the smallest or the largest character appears more than once you can choose any occurrence and append it to the result.
+Return the result string after sorting s with this algorithm.
+ 
+Example 1:
+Input: s = ""aaaabbbbcccc""
+Output: ""abccbaabccba""
+Explanation: After steps 1, 2 and 3 of the first iteration, result = ""abc""
+After steps 4, 5 and 6 of the first iteration, result = ""abccba""
+First iteration is done. Now s = ""aabbcc"" and we go back to step 1
+After steps 1, 2 and 3 of the second iteration, result = ""abccbaabc""
+After steps 4, 5 and 6 of the second iteration, result = ""abccbaabccba""
+
+Example 2:
+Input: s = ""rat""
+Output: ""art""
+Explanation: The word ""rat"" becomes ""art"" after re-ordering it with the mentioned algorithm.
+
+ 
+Constraints:
+
+1 <= s.length <= 500
+s consists of only lowercase English letters.
+
+","Array,Hash Table,Math,Sliding Window",Medium,After replacing each even by zero and every odd by one can we use prefix sum to find answer ? Can we use two pointers to count number of sub-arrays ? Can we store indices of odd numbers and for each k indices count number of sub-arrays contains them ?,,

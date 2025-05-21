@@ -1,0 +1,213 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1293,1293. Shortest Path in a Grid with Obstacles Elimination,"You are given an m x n integer matrix grid where each cell is either 0 (empty) or 1 (obstacle). You can move up, down, left, or right from and to an empty cell in one step.
+Return the minimum number of steps to walk from the upper left corner (0, 0) to the lower right corner (m - 1, n - 1) given that you can eliminate at most k obstacles. If it is not possible to find such walk return -1.
+ 
+Example 1:
+
+Input: grid = [[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], k = 1
+Output: 6
+Explanation: 
+The shortest path without eliminating any obstacle is 10.
+The shortest path with one obstacle elimination at position (3,2) is 6. Such path is (0,0) -> (0,1) -> (0,2) -> (1,2) -> (2,2) -> (3,2) -> (4,2).
+
+Example 2:
+
+Input: grid = [[0,1,1],[1,1,1],[1,0,0]], k = 1
+Output: -1
+Explanation: We need to eliminate at least two obstacles to find such a walk.
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 40
+1 <= k <= m * n
+grid[i][j] is either 0 or 1.
+grid[0][0] == grid[m - 1][n - 1] == 0
+
+",Array,Easy,Check every three consecutive numbers in the array for parity.,,
+1374,1374. Generate a String With Characters That Have Odd Counts,"Given an integer n, return a string with n characters such that each character in such string occurs an odd number of times.
+The returned string must contain only lowercase English letters. If there are multiples valid strings, return any of them.  
+ 
+Example 1:
+Input: n = 4
+Output: ""pppz""
+Explanation: ""pppz"" is a valid string since the character 'p' occurs three times and the character 'z' occurs once. Note that there are many other valid strings such as ""ohhh"" and ""love"".
+
+Example 2:
+Input: n = 2
+Output: ""xy""
+Explanation: ""xy"" is a valid string since the characters 'x' and 'y' occur once. Note that there are many other valid strings such as ""ag"" and ""ur"".
+
+Example 3:
+Input: n = 7
+Output: ""holasss""
+
+ 
+Constraints:
+
+1 <= n <= 500
+
+","Array,Binary Search,Matrix,Interactive",Medium,"1. (Binary Search) For each row do a binary search to find the leftmost one on that row and update the answer. 2. (Optimal Approach) Imagine there is a pointer p(x, y) starting from top right corner. p can only move left or down. If the value at p is 0, move down. If the value at p is 1, move left. Try to figure out the correctness and time complexity of this algorithm.",,
+116,116. Populating Next Right Pointers in Each Node,"You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+ 
+Example 1:
+
+Input: root = [1,2,3,4,5,6,7]
+Output: [1,#,2,3,#,4,5,6,7,#]
+Explanation: Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
+
+Example 2:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 212 - 1].
+-1000 <= Node.val <= 1000
+
+ 
+Follow-up:
+
+You may only use constant extra space.
+The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.
+
+","Linked List,Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,,"117,199","Populating Next Right Pointers in Each Node II,Binary Tree Right Side View"
+364,364. Nested List Weight Sum II,,"Stack,Depth-First Search,Breadth-First Search",Medium,,"339,565","Nested List Weight Sum,Array Nesting"
+815,815. Bus Routes,"You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats forever.
+
+For example, if routes[0] = [1, 5, 7], this means that the 0th bus travels in the sequence 1 -> 5 -> 7 -> 1 -> 5 -> 7 -> 1 -> ... forever.
+
+You will start at the bus stop source (You are not on any bus initially), and you want to go to the bus stop target. You can travel between bus stops by buses only.
+Return the least number of buses you must take to travel from source to target. Return -1 if it is not possible.
+ 
+Example 1:
+Input: routes = [[1,2,7],[3,6,7]], source = 1, target = 6
+Output: 2
+Explanation: The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
+
+Example 2:
+Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 12
+Output: -1
+
+ 
+Constraints:
+
+1 <= routes.length <= 500.
+1 <= routes[i].length <= 105
+All the values of routes[i] are unique.
+sum(routes[i].length) <= 105
+0 <= routes[i][j] < 106
+0 <= source, target < 106
+
+",Dynamic Programming,Medium,,1385,Number of Ways to Build House of Cards
+402,402. Remove K Digits,"Given string num representing a non-negative integer num, and an integer k, return the smallest possible integer after removing k digits from num.
+ 
+Example 1:
+Input: num = ""1432219"", k = 3
+Output: ""1219""
+Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+
+Example 2:
+Input: num = ""10200"", k = 1
+Output: ""200""
+Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.
+
+Example 3:
+Input: num = ""10"", k = 2
+Output: ""0""
+Explanation: Remove all the digits from the number and it is left with nothing which is 0.
+
+ 
+Constraints:
+
+1 <= k <= num.length <= 105
+num consists of only digits.
+num does not have any leading zeros except for the zero itself.
+
+","String,Stack,Greedy,Monotonic Stack",Medium,,"321,738,1792,2305","Create Maximum Number,Monotone Increasing Digits,Find the Most Competitive Subsequence,Append K Integers With Minimal Sum"
+863,863. All Nodes Distance K in Binary Tree,"Given the root of a binary tree, the value of a target node target, and an integer k, return an array of the values of all nodes that have a distance k from the target node.
+You can return the answer in any order.
+ 
+Example 1:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k = 2
+Output: [7,4,1]
+Explanation: The nodes that are a distance 2 from the target node (with value 5) have values 7, 4, and 1.
+
+Example 2:
+Input: root = [1], target = 1, k = 3
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 500].
+0 <= Node.val <= 500
+All the values Node.val are unique.
+target is the value of one of the nodes in the tree.
+0 <= k <= 1000
+
+","Dynamic Programming,Tree,Depth-First Search,Graph",Hard,,"1021,2175","Distribute Coins in Binary Tree,Count Nodes With the Highest Score"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"

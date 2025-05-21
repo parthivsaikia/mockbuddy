@@ -1,0 +1,796 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+695,695. Max Area of Island,"You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+The area of an island is the number of cells with a value 1 in the island.
+Return the maximum area of an island in grid. If there is no island, return 0.
+ 
+Example 1:
+
+Input: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+Output: 6
+Explanation: The answer is not 11, because the island must be connected 4-directionally.
+
+Example 2:
+Input: grid = [[0,0,0,0,0,0,0,0]]
+Output: 0
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 50
+grid[i][j] is either 0 or 1.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"200,463,1845,2206","Number of Islands,Island Perimeter,Largest Submatrix With Rearrangements,Detonate the Maximum Bombs"
+127,127. Word Ladder,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: 5
+Explanation: One shortest transformation sequence is ""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> cog"", which is 5 words long.
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: 0
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 10
+endWord.length == beginWord.length
+1 <= wordList.length <= 5000
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+
+","Hash Table,String,Breadth-First Search",Hard,,"126,433","Word Ladder II,Minimum Genetic Mutation"
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+729,729. My Calendar I,"You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a double booking.
+A double booking happens when two events have some non-empty intersection (i.e., some moment is common to both events.).
+The event can be represented as a pair of integers start and end that represents a booking on the half-open interval [start, end), the range of real numbers x such that start <= x < end.
+Implement the MyCalendar class:
+
+MyCalendar() Initializes the calendar object.
+boolean book(int start, int end) Returns true if the event can be added to the calendar successfully without causing a double booking. Otherwise, return false and do not add the event to the calendar.
+
+ 
+Example 1:
+Input
+[""MyCalendar"", ""book"", ""book"", ""book""]
+[[], [10, 20], [15, 25], [20, 30]]
+Output
+[null, true, false, true]
+
+Explanation
+MyCalendar myCalendar = new MyCalendar();
+myCalendar.book(10, 20); // return True
+myCalendar.book(15, 25); // return False, It can not be booked because time 15 is already booked by another event.
+myCalendar.book(20, 30); // return True, The event can be booked, as the first event takes every time less than 20, but not including 20.
+ 
+Constraints:
+
+0 <= start < end <= 109
+At most 1000 calls will be made to book.
+
+","Design,Segment Tree,Ordered Set",Medium,"Store the events as a sorted list of intervals.  If none of the events conflict, then the new event can be added.","731,732","My Calendar II,My Calendar III"
+139,139. Word Break,"Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""leetcode"", wordDict = [""leet"",""code""]
+Output: true
+Explanation: Return true because ""leetcode"" can be segmented as ""leet code"".
+
+Example 2:
+Input: s = ""applepenapple"", wordDict = [""apple"",""pen""]
+Output: true
+Explanation: Return true because ""applepenapple"" can be segmented as ""apple pen apple"".
+Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 300
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 20
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+
+","Hash Table,String,Dynamic Programming,Trie,Memoization",Medium,,140,Word Break II
+332,332. Reconstruct Itinerary,"You are given a list of airline tickets where tickets[i] = [fromi, toi] represent the departure and the arrival airports of one flight. Reconstruct the itinerary in order and return it.
+All of the tickets belong to a man who departs from ""JFK"", thus, the itinerary must begin with ""JFK"". If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string.
+
+For example, the itinerary [""JFK"", ""LGA""] has a smaller lexical order than [""JFK"", ""LGB""].
+
+You may assume all tickets form at least one valid itinerary. You must use all the tickets once and only once.
+ 
+Example 1:
+
+Input: tickets = [[""MUC"",""LHR""],[""JFK"",""MUC""],[""SFO"",""SJC""],[""LHR"",""SFO""]]
+Output: [""JFK"",""MUC"",""LHR"",""SFO"",""SJC""]
+
+Example 2:
+
+Input: tickets = [[""JFK"",""SFO""],[""JFK"",""ATL""],[""SFO"",""ATL""],[""ATL"",""JFK""],[""ATL"",""SFO""]]
+Output: [""JFK"",""ATL"",""JFK"",""SFO"",""ATL"",""SFO""]
+Explanation: Another possible reconstruction is [""JFK"",""SFO"",""ATL"",""JFK"",""ATL"",""SFO""] but it is larger in lexical order.
+
+ 
+Constraints:
+
+1 <= tickets.length <= 300
+tickets[i].length == 2
+fromi.length == 3
+toi.length == 3
+fromi and toi consist of uppercase English letters.
+fromi != toi
+
+","Depth-First Search,Graph,Eulerian Circuit",Hard,,"2051,2201","Longest Common Subpath,Valid Arrangement of Pairs"
+138,138. Copy List with Random Pointer,"A linked list of length n is given such that each node contains an additional random pointer, which could point to any node in the list, or null.
+Construct a deep copy of the list. The deep copy should consist of exactly n brand new nodes, where each new node has its value set to the value of its corresponding original node. Both the next and random pointer of the new nodes should point to new nodes in the copied list such that the pointers in the original list and copied list represent the same list state. None of the pointers in the new list should point to nodes in the original list.
+For example, if there are two nodes X and Y in the original list, where X.random --> Y, then for the corresponding two nodes x and y in the copied list, x.random --> y.
+Return the head of the copied linked list.
+The linked list is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:
+
+val: an integer representing Node.val
+random_index: the index of the node (range from 0 to n-1) that the random pointer points to, or null if it does not point to any node.
+
+Your code will only be given the head of the original linked list.
+ 
+Example 1:
+
+Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+
+Example 2:
+
+Input: head = [[1,1],[2,1]]
+Output: [[1,1],[2,1]]
+
+Example 3:
+
+Input: head = [[3,null],[3,0],[3,null]]
+Output: [[3,null],[3,0],[3,null]]
+
+ 
+Constraints:
+
+0 <= n <= 1000
+-104 <= Node.val <= 104
+Node.random is null or is pointing to some node in the linked list.
+
+","Hash Table,Linked List",Medium,"Just iterate the linked list and create copies of the nodes on the go. Since a node can be referenced from multiple nodes due to the random pointers, make sure you are not making multiple copies of the same node. You may want to use extra space to keep old node ---> new node mapping to prevent creating multiples copies of same node. We can avoid using extra space for old node ---> new node mapping, by tweaking the original linked list. Simply interweave the nodes of the old and copied list. 
+For e.g.
+
+Old List: A --> B --> C --> D
+InterWeaved List: A --> A' --> B --> B' --> C --> C' --> D --> D' The interweaving is done using next pointers and we can make use of interweaved structure to get the correct reference nodes for random pointers.","133,1624,1634","Clone Graph,Clone Binary Tree With Random Pointer,Clone N-ary Tree"
+103,103. Binary Tree Zigzag Level Order Traversal,"Given the root of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[20,9],[15,7]]
+
+Example 2:
+Input: root = [1]
+Output: [[1]]
+
+Example 3:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-100 <= Node.val <= 100
+
+","Tree,Breadth-First Search,Binary Tree",Medium,,102,Binary Tree Level Order Traversal
+173,173. Binary Search Tree Iterator,"Implement the BSTIterator class that represents an iterator over the in-order traversal of a binary search tree (BST):
+
+BSTIterator(TreeNode root) Initializes an object of the BSTIterator class. The root of the BST is given as part of the constructor. The pointer should be initialized to a non-existent number smaller than any element in the BST.
+boolean hasNext() Returns true if there exists a number in the traversal to the right of the pointer, otherwise returns false.
+int next() Moves the pointer to the right, then returns the number at the pointer.
+
+Notice that by initializing the pointer to a non-existent smallest number, the first call to next() will return the smallest element in the BST.
+You may assume that next() calls will always be valid. That is, there will be at least a next number in the in-order traversal when next() is called.
+ 
+Example 1:
+
+Input
+[""BSTIterator"", ""next"", ""next"", ""hasNext"", ""next"", ""hasNext"", ""next"", ""hasNext"", ""next"", ""hasNext""]
+[[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]
+Output
+[null, 3, 7, true, 9, true, 15, true, 20, false]
+
+Explanation
+BSTIterator bSTIterator = new BSTIterator([7, 3, 15, null, null, 9, 20]);
+bSTIterator.next();    // return 3
+bSTIterator.next();    // return 7
+bSTIterator.hasNext(); // return True
+bSTIterator.next();    // return 9
+bSTIterator.hasNext(); // return True
+bSTIterator.next();    // return 15
+bSTIterator.hasNext(); // return True
+bSTIterator.next();    // return 20
+bSTIterator.hasNext(); // return False
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 105].
+0 <= Node.val <= 106
+At most 105 calls will be made to hasNext, and next.
+
+ 
+Follow up:
+
+Could you implement next() and hasNext() to run in average O(1) time and use O(h) memory, where h is the height of the tree?
+
+","Stack,Tree,Design,Binary Search Tree,Binary Tree,Iterator",Medium,,"94,251,281,284,285,1729","Binary Tree Inorder Traversal,Flatten 2D Vector,Zigzag Iterator,Peeking Iterator,Inorder Successor in BST,Binary Search Tree Iterator II"
+131,131. Palindrome Partitioning,"Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+ 
+Example 1:
+Input: s = ""aab""
+Output: [[""a"",""a"",""b""],[""aa"",""b""]]
+Example 2:
+Input: s = ""a""
+Output: [[""a""]]
+
+ 
+Constraints:
+
+1 <= s.length <= 16
+s contains only lowercase English letters.
+
+","String,Dynamic Programming,Backtracking",Medium,,"132,1871","Palindrome Partitioning II,Palindrome Partitioning IV"
+767,767. Reorganize String,"Given a string s, rearrange the characters of s so that any two adjacent characters are not the same.
+Return any possible rearrangement of s or return """" if not possible.
+ 
+Example 1:
+Input: s = ""aab""
+Output: ""aba""
+Example 2:
+Input: s = ""aaab""
+Output: """"
+
+ 
+Constraints:
+
+1 <= s.length <= 500
+s consists of lowercase English letters.
+
+","Math,Bit Manipulation",Easy,"Write a helper function to count the number of set bits in a number, then check whether the number of set bits is 2, 3, 5, 7, 11, 13, 17 or 19.",191,Number of 1 Bits
+733,733. Flood Fill,"An image is represented by an m x n integer grid image where image[i][j] represents the pixel value of the image.
+You are also given three integers sr, sc, and color. You should perform a flood fill on the image starting from the pixel image[sr][sc].
+To perform a flood fill, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color), and so on. Replace the color of all of the aforementioned pixels with color.
+Return the modified image after performing the flood fill.
+ 
+Example 1:
+
+Input: image = [[1,1,1],[1,1,0],[1,0,1]], sr = 1, sc = 1, color = 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation: From the center of the image with position (sr, sc) = (1, 1) (i.e., the red pixel), all pixels connected by a path of the same color as the starting pixel (i.e., the blue pixels) are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected to the starting pixel.
+
+Example 2:
+Input: image = [[0,0,0],[0,0,0]], sr = 0, sc = 0, color = 0
+Output: [[0,0,0],[0,0,0]]
+Explanation: The starting pixel is already colored 0, so no changes are made to the image.
+
+ 
+Constraints:
+
+m == image.length
+n == image[i].length
+1 <= m, n <= 50
+0 <= image[i][j], color < 216
+0 <= sr < m
+0 <= sc < n
+
+","Array,Depth-First Search,Breadth-First Search,Matrix",Easy,"Write a recursive function that paints the pixel if it's the correct color, then recurses on neighboring pixels.",463,Island Perimeter
+208,208. Implement Trie (Prefix Tree),"A trie (pronounced as ""try"") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+Implement the Trie class:
+
+Trie() Initializes the trie object.
+void insert(String word) Inserts the string word into the trie.
+boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
+ 
+Example 1:
+Input
+[""Trie"", ""insert"", ""search"", ""search"", ""startsWith"", ""insert"", ""search""]
+[[], [""apple""], [""apple""], [""app""], [""app""], [""app""], [""app""]]
+Output
+[null, null, true, false, true, null, true]
+
+Explanation
+Trie trie = new Trie();
+trie.insert(""apple"");
+trie.search(""apple"");   // return True
+trie.search(""app"");     // return False
+trie.startsWith(""app""); // return True
+trie.insert(""app"");
+trie.search(""app"");     // return True
+
+ 
+Constraints:
+
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.
+
+","Hash Table,String,Design,Trie",Medium,,"211,642,648,676,1433,1949","Design Add and Search Words Data Structure,Design Search Autocomplete System,Replace Words,Implement Magic Dictionary,Encrypt and Decrypt Strings,Implement Trie II (Prefix Tree)"
+238,238. Product of Array Except Self,"Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+You must write an algorithm that runs in O(n) time and without using the division operation.
+ 
+Example 1:
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+Example 2:
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+
+ 
+Constraints:
+
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+ 
+Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+","Array,Prefix Sum",Medium,,"42,152,265,2267","Trapping Rain Water,Maximum Product Subarray,Paint House II,Minimum Difference in Sums After Removal of Elements"
+13,13. Roman to Integer,"Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+
+Given a roman numeral, convert it to an integer.
+ 
+Example 1:
+Input: s = ""III""
+Output: 3
+Explanation: III = 3.
+
+Example 2:
+Input: s = ""LVIII""
+Output: 58
+Explanation: L = 50, V= 5, III = 3.
+
+Example 3:
+Input: s = ""MCMXCIV""
+Output: 1994
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+ 
+Constraints:
+
+1 <= s.length <= 15
+s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
+It is guaranteed that s is a valid roman numeral in the range [1, 3999].
+
+","Hash Table,Math,String",Easy,Problem is simpler to solve by working the string from back to front and using a map.,12,Integer to Roman
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+449,449. Serialize and Deserialize BST,"Serialization is converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary search tree. There is no restriction on how your serialization/deserialization algorithm should work. You need to ensure that a binary search tree can be serialized to a string, and this string can be deserialized to the original tree structure.
+The encoded string should be as compact as possible.
+ 
+Example 1:
+Input: root = [2,1,3]
+Output: [2,1,3]
+Example 2:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+0 <= Node.val <= 104
+The input tree is guaranteed to be a binary search tree.
+
+","String,Tree,Depth-First Search,Breadth-First Search,Design,Binary Search Tree,Binary Tree",Medium,,"297,652,765","Serialize and Deserialize Binary Tree,Find Duplicate Subtrees,Serialize and Deserialize N-ary Tree"
+49,49. Group Anagrams,"Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: strs = [""eat"",""tea"",""tan"",""ate"",""nat"",""bat""]
+Output: [[""bat""],[""nat"",""tan""],[""ate"",""eat"",""tea""]]
+Example 2:
+Input: strs = [""""]
+Output: [[""""]]
+Example 3:
+Input: strs = [""a""]
+Output: [[""a""]]
+
+ 
+Constraints:
+
+1 <= strs.length <= 104
+0 <= strs[i].length <= 100
+strs[i] consists of lowercase English letters.
+
+","Hash Table,String,Sorting",Medium,,"242,249","Valid Anagram,Group Shifted Strings"
+1041,1041. Robot Bounded In Circle,"On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
+
+The north direction is the positive direction of the y-axis.
+The south direction is the negative direction of the y-axis.
+The east direction is the positive direction of the x-axis.
+The west direction is the negative direction of the x-axis.
+
+The robot can receive one of three instructions:
+
+""G"": go straight 1 unit.
+""L"": turn 90 degrees to the left (i.e., anti-clockwise direction).
+""R"": turn 90 degrees to the right (i.e., clockwise direction).
+
+The robot performs the instructions given in order, and repeats them forever.
+Return true if and only if there exists a circle in the plane such that the robot never leaves the circle.
+ 
+Example 1:
+Input: instructions = ""GGLLGG""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: South.
+""G"": move one step. Position: (0, 1). Direction: South.
+""G"": move one step. Position: (0, 0). Direction: South.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (0, 2) --> (0, 1) --> (0, 0).
+Based on that, we return true.
+
+Example 2:
+Input: instructions = ""GG""
+Output: false
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+Repeating the instructions, keeps advancing in the north direction and does not go into cycles.
+Based on that, we return false.
+
+Example 3:
+Input: instructions = ""GL""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 1). Direction: West.
+""G"": move one step. Position: (-1, 1). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 1). Direction: South.
+""G"": move one step. Position: (-1, 0). Direction: South.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 0). Direction: East.
+""G"": move one step. Position: (0, 0). Direction: East.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 0). Direction: North.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (-1, 1) --> (-1, 0) --> (0, 0).
+Based on that, we return true.
+
+ 
+Constraints:
+
+1 <= instructions.length <= 100
+instructions[i] is 'G', 'L' or, 'R'.
+
+","Array,Matrix,Simulation",Easy,,,
+119,119. Pascal's Triangle II,"Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+ 
+Example 1:
+Input: rowIndex = 3
+Output: [1,3,3,1]
+Example 2:
+Input: rowIndex = 0
+Output: [1]
+Example 3:
+Input: rowIndex = 1
+Output: [1,1]
+
+ 
+Constraints:
+
+0 <= rowIndex <= 33
+
+ 
+Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space?
+","Array,Dynamic Programming",Easy,,"118,2324","Pascal's Triangle,Find Triangular Sum of an Array"
+722,722. Remove Comments,"Given a C++ program, remove comments from it. The program source is an array of strings source where source[i] is the ith line of the source code. This represents the result of splitting the original source code string by the newline character '\n'.
+In C++, there are two types of comments, line comments, and block comments.
+
+The string ""//"" denotes a line comment, which represents that it and the rest of the characters to the right of it in the same line should be ignored.
+The string ""/*"" denotes a block comment, which represents that all characters until the next (non-overlapping) occurrence of ""*/"" should be ignored. (Here, occurrences happen in reading order: line by line from left to right.) To be clear, the string ""/*/"" does not yet end the block comment, as the ending would be overlapping the beginning.
+
+The first effective comment takes precedence over others.
+
+For example, if the string ""//"" occurs in a block comment, it is ignored.
+Similarly, if the string ""/*"" occurs in a line or block comment, it is also ignored.
+
+If a certain line of code is empty after removing comments, you must not output that line: each string in the answer list will be non-empty.
+There will be no control characters, single quote, or double quote characters.
+
+For example, source = ""string s = ""/* Not a comment. */"";"" will not be a test case.
+
+Also, nothing else such as defines or macros will interfere with the comments.
+It is guaranteed that every open block comment will eventually be closed, so ""/*"" outside of a line or block comment always starts a new comment.
+Finally, implicit newline characters can be deleted by block comments. Please see the examples below for details.
+After removing the comments from the source code, return the source code in the same format.
+ 
+Example 1:
+Input: source = [""/*Test program */"", ""int main()"", ""{ "", ""  // variable declaration "", ""int a, b, c;"", ""/* This is a test"", ""   multiline  "", ""   comment for "", ""   testing */"", ""a = b + c;"", ""}""]
+Output: [""int main()"",""{ "",""  "",""int a, b, c;"",""a = b + c;"",""}""]
+Explanation: The line by line code is visualized as below:
+/*Test program */
+int main()
+{ 
+  // variable declaration 
+int a, b, c;
+/* This is a test
+   multiline  
+   comment for 
+   testing */
+a = b + c;
+}
+The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments.
+The line by line output code is visualized as below:
+int main()
+{ 
+  
+int a, b, c;
+a = b + c;
+}
+
+Example 2:
+Input: source = [""a/*comment"", ""line"", ""more_comment*/b""]
+Output: [""ab""]
+Explanation: The original source string is ""a/*comment\nline\nmore_comment*/b"", where we have bolded the newline characters.  After deletion, the implicit newline characters are deleted, leaving the string ""ab"", which when delimited by newline characters becomes [""ab""].
+
+ 
+Constraints:
+
+1 <= source.length <= 100
+0 <= source[i].length <= 80
+source[i] consists of printable ASCII characters.
+Every open block comment is eventually closed.
+There are no single-quote or double-quote in the input.
+
+","Array,String",Medium,"Carefully parse each line according to the following rules:
+
+* If we start a block comment and we aren't in a block, then we will skip over the next two characters and change our state to be in a block.
+
+* If we end a block comment and we are in a block, then we will skip over the next two characters and change our state to be *not* in a block.
+
+* If we start a line comment and we aren't in a block, then we will ignore the rest of the line.
+
+* If we aren't in a block comment (and it wasn't the start of a comment), we will record the character we are at.
+
+* At the end of each line, if we aren't in a block, we will record the line.","385,439","Mini Parser,Ternary Expression Parser"
+297,297. Serialize and Deserialize Binary Tree,"Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+Clarification: The input/output format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
+ 
+Example 1:
+
+Input: root = [1,2,3,null,null,4,5]
+Output: [1,2,3,null,null,4,5]
+
+Example 2:
+Input: root = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 104].
+-1000 <= Node.val <= 1000
+
+","String,Tree,Depth-First Search,Breadth-First Search,Design,Binary Tree",Hard,,"271,449,652,765","Encode and Decode Strings,Serialize and Deserialize BST,Find Duplicate Subtrees,Serialize and Deserialize N-ary Tree"
+543,543. Diameter of Binary Tree,"Given the root of a binary tree, return the length of the diameter of the tree.
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+The length of a path between two nodes is represented by the number of edges between them.
+ 
+Example 1:
+
+Input: root = [1,2,3,4,5]
+Output: 3
+Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Example 2:
+Input: root = [1,2]
+Output: 1
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 104].
+-100 <= Node.val <= 100
+
+","Tree,Depth-First Search,Binary Tree",Easy,,1665,Diameter of N-Ary Tree
+69,69. Sqrt(x),"Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
+You must not use any built-in exponent function or operator.
+
+For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+
+ 
+Example 1:
+Input: x = 4
+Output: 2
+Explanation: The square root of 4 is 2, so we return 2.
+
+Example 2:
+Input: x = 8
+Output: 2
+Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+
+ 
+Constraints:
+
+0 <= x <= 231 - 1
+
+","Math,Binary Search",Easy,Try exploring all integers. (Credits: @annujoshi) Use the sorted property of integers to reduced the search space. (Credits: @annujoshi),"50,367","Pow(x, n),Valid Perfect Square"
+295,295. Find Median from Data Stream,"The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.
+
+For example, for arr = [2,3,4], the median is 3.
+For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+
+Implement the MedianFinder class:
+
+MedianFinder() initializes the MedianFinder object.
+void addNum(int num) adds the integer num from the data stream to the data structure.
+double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+
+ 
+Example 1:
+Input
+[""MedianFinder"", ""addNum"", ""addNum"", ""findMedian"", ""addNum"", ""findMedian""]
+[[], [1], [2], [], [3], []]
+Output
+[null, null, null, 1.5, null, 2.0]
+
+Explanation
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.addNum(1);    // arr = [1]
+medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.findMedian(); // return 2.0
+
+ 
+Constraints:
+
+-105 <= num <= 105
+There will be at least one element in the data structure before calling findMedian.
+At most 5 * 104 calls will be made to addNum and findMedian.
+
+ 
+Follow up:
+
+If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+","Two Pointers,Design,Sorting,Heap (Priority Queue),Data Stream",Hard,,"480,1953,2207","Sliding Window Median,Finding MK Average,Sequentially Ordinal Rank Tracker"
+34,34. Find First and Last Position of Element in Sorted Array,"Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+If target is not found in the array, return [-1, -1].
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+Input: nums = [], target = 0
+Output: [-1,-1]
+
+ 
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+nums is a non-decreasing array.
+-109 <= target <= 109
+
+","Array,Binary Search",Medium,,"278,2165,2210","First Bad Version,Plates Between Candles,Find Target Indices After Sorting Array"

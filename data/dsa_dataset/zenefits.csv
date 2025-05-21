@@ -1,0 +1,469 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+52,52. N-Queens II,"The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+ 
+Example 1:
+
+Input: n = 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown.
+
+Example 2:
+Input: n = 1
+Output: 1
+
+ 
+Constraints:
+
+1 <= n <= 9
+
+",Backtracking,Hard,,51,N-Queens
+255,255. Verify Preorder Sequence in Binary Search Tree,,"Stack,Tree,Binary Search Tree,Recursion,Monotonic Stack,Binary Tree",Medium,,144,Binary Tree Preorder Traversal
+251,251. Flatten 2D Vector,,"Array,Two Pointers,Design,Iterator",Medium,"How many variables do you need to keep track? Two variables is all you need. Try with x and y. Beware of empty rows. It could be the first few rows. To write correct code, think about the invariant to maintain. What is it? The invariant is x and y must always point to a valid point in the 2d vector. Should you maintain your invariant ahead of time or right when you need it? Not sure? Think about how you would implement hasNext(). Which is more complex? Common logic in two different places should be refactored into a common method.","173,281,284,341","Binary Search Tree Iterator,Zigzag Iterator,Peeking Iterator,Flatten Nested List Iterator"
+317,317. Shortest Distance from All Buildings,,"Array,Breadth-First Search,Matrix",Hard,,"286,296,1117","Walls and Gates,Best Meeting Point,As Far from Land as Possible"
+109,109. Convert Sorted List to Binary Search Tree,"Given the head of a singly linked list where elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+ 
+Example 1:
+
+Input: head = [-10,-3,0,5,9]
+Output: [0,-3,9,-10,null,5]
+Explanation: One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST.
+
+Example 2:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in head is in the range [0, 2 * 104].
+-105 <= Node.val <= 105
+
+","Linked List,Divide and Conquer,Tree,Binary Search Tree,Binary Tree",Medium,,"108,2306","Convert Sorted Array to Binary Search Tree,Create Binary Tree From Descriptions"
+206,206. Reverse Linked List,"Given the head of a singly linked list, reverse the list, and return the reversed list.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+ 
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+","Linked List,Recursion",Easy,,"92,156,234,2196,2236","Reverse Linked List II,Binary Tree Upside Down,Palindrome Linked List,Reverse Nodes in Even Length Groups,Maximum Twin Sum of a Linked List"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+210,210. Course Schedule II,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: [0,1]
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
+
+Example 2:
+Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+Output: [0,2,1,3]
+Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
+So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
+
+Example 3:
+Input: numCourses = 1, prerequisites = []
+Output: [0]
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= numCourses * (numCourses - 1)
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+ai != bi
+All the pairs [ai, bi] are distinct.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding the topological order in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","207,269,310,444,630,1101,2220","Course Schedule,Alien Dictionary,Minimum Height Trees,Sequence Reconstruction,Course Schedule III,Parallel Courses,Find All Possible Recipes from Given Supplies"
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+22,22. Generate Parentheses,"Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ 
+Example 1:
+Input: n = 3
+Output: [""((()))"",""(()())"",""(())()"",""()(())"",""()()()""]
+Example 2:
+Input: n = 1
+Output: [""()""]
+
+ 
+Constraints:
+
+1 <= n <= 8
+
+","String,Dynamic Programming,Backtracking",Medium,,"17,20,2221","Letter Combinations of a Phone Number,Valid Parentheses,Check if a Parentheses String Can Be Valid"
+125,125. Valid Palindrome,"A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+Given a string s, return true if it is a palindrome, or false otherwise.
+ 
+Example 1:
+Input: s = ""A man, a plan, a canal: Panama""
+Output: true
+Explanation: ""amanaplanacanalpanama"" is a palindrome.
+
+Example 2:
+Input: s = ""race a car""
+Output: false
+Explanation: ""raceacar"" is not a palindrome.
+
+Example 3:
+Input: s = "" ""
+Output: true
+Explanation: s is an empty string """" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
+
+ 
+Constraints:
+
+1 <= s.length <= 2 * 105
+s consists only of printable ASCII characters.
+
+","Two Pointers,String",Easy,,"234,680,2130,2231","Palindrome Linked List,Valid Palindrome II,Maximum Product of the Length of Two Palindromic Subsequences,Find First Palindromic String in the Array"
+155,155. Min Stack,"Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+ 
+Example 1:
+Input
+[""MinStack"",""push"",""push"",""push"",""getMin"",""pop"",""top"",""getMin""]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+Methods pop, top and getMin operations will always be called on non-empty stacks.
+At most 3 * 104 calls will be made to push, pop, top, and getMin.
+
+","Stack,Design",Easy,Consider each node in the stack having a minimum value. (Credits to @aakarshmadhavan),"239,716","Sliding Window Maximum,Max Stack"
+168,168. Excel Sheet Column Title,"Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+For example:
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+
+ 
+Example 1:
+Input: columnNumber = 1
+Output: ""A""
+
+Example 2:
+Input: columnNumber = 28
+Output: ""AB""
+
+Example 3:
+Input: columnNumber = 701
+Output: ""ZY""
+
+ 
+Constraints:
+
+1 <= columnNumber <= 231 - 1
+
+","Math,String",Easy,,"171,2304","Excel Sheet Column Number,Cells in a Range on an Excel Sheet"
+169,169. Majority Element,"Given an array nums of size n, return the majority element.
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+ 
+Example 1:
+Input: nums = [3,2,3]
+Output: 3
+Example 2:
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+
+ 
+Constraints:
+
+n == nums.length
+1 <= n <= 5 * 104
+-109 <= nums[i] <= 109
+
+ 
+Follow-up: Could you solve the problem in linear time and in O(1) space?","Array,Hash Table,Divide and Conquer,Sorting,Counting",Easy,,"229,1102","Majority Element II,Check If a Number Is Majority Element in a Sorted Array"
+207,207. Course Schedule,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return true if you can finish all courses. Otherwise, return false.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
+
+Example 2:
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= 5000
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+All the pairs prerequisites[i] are unique.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","210,261,310,630","Course Schedule II,Graph Valid Tree,Minimum Height Trees,Course Schedule III"
+229,229. Majority Element II,"Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+ 
+Example 1:
+Input: nums = [3,2,3]
+Output: [3]
+
+Example 2:
+Input: nums = [1]
+Output: [1]
+
+Example 3:
+Input: nums = [1,2]
+Output: [1,2]
+
+ 
+Constraints:
+
+1 <= nums.length <= 5 * 104
+-109 <= nums[i] <= 109
+
+ 
+Follow up: Could you solve the problem in linear time and in O(1) space?
+","Array,Hash Table,Sorting,Counting",Medium,"How many majority elements could it possibly have?
+
+Do you have a better hint? Suggest it!","169,1102","Majority Element,Check If a Number Is Majority Element in a Sorted Array"
+239,239. Sliding Window Maximum,"You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+
+","Array,Queue,Sliding Window,Heap (Priority Queue),Monotonic Queue",Hard,How about using a data structure such as deque (double-ended queue)? The queue size need not be the same as the window’s size. Remove redundant elements and the queue should store only elements that need to be considered.,"76,155,159,265,1814","Minimum Window Substring,Min Stack,Longest Substring with At Most Two Distinct Characters,Paint House II,Jump Game VI"
+261,261. Graph Valid Tree,,"Depth-First Search,Breadth-First Search,Union Find,Graph",Medium,"Given n = 5 and edges = [[0, 1], [1, 2], [3, 4]], what should your return? Is this case a valid tree? According to the definition of tree on Wikipedia: “a tree is an undirected graph in which any two vertices are connected by exactly one path. In other words, any connected graph without simple cycles is a tree.”","207,323,871","Course Schedule,Number of Connected Components in an Undirected Graph,Keys and Rooms"

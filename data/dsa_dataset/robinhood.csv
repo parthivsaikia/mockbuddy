@@ -1,0 +1,280 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+418,418. Sentence Screen Fitting,,"String,Dynamic Programming,Simulation",Medium,,2082,Minimum Cost to Separate Sentence Into Rows
+755,755. Pour Water,,"Math,Binary Search",Medium,,,
+224,224. Basic Calculator,"Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""1 + 1""
+Output: 2
+
+Example 2:
+Input: s = "" 2-1 + 2 ""
+Output: 3
+
+Example 3:
+Input: s = ""(1+(4+5+2)-3)+(6+8)""
+Output: 23
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of digits, '+', '-', '(', ')', and ' '.
+s represents a valid expression.
+'+' is not used as a unary operation (i.e., ""+1"" and ""+(2 + 3)"" is invalid).
+'-' could be used as a unary operation (i.e., ""-1"" and ""-(2 + 3)"" is valid).
+There will be no two consecutive operators in the input.
+Every number and running calculation will fit in a signed 32-bit integer.
+
+","Math,String,Stack,Recursion",Hard,,"150,227,241,282,785,2147,2328","Evaluate Reverse Polish Notation,Basic Calculator II,Different Ways to Add Parentheses,Expression Add Operators,Basic Calculator III,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+54,54. Spiral Matrix,"Given an m x n matrix, return all elements of the matrix in spiral order.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+","Array,Matrix,Simulation",Medium,"Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do. We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column and then we move inwards by 1 and then repeat. That's all, that is all the simulation that we need. Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'd be shifting in the same column. Similarly, by changing values for j, you'd be shifting in the same row.
+Also, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to run the simulation on edge cases like a single column or a single row to see if anything breaks or not.","59,921","Spiral Matrix II,Spiral Matrix III"
+438,438. Find All Anagrams in a String,"Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: s = ""cbaebabacd"", p = ""abc""
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is ""cba"", which is an anagram of ""abc"".
+The substring with start index = 6 is ""bac"", which is an anagram of ""abc"".
+
+Example 2:
+Input: s = ""abab"", p = ""ab""
+Output: [0,1,2]
+Explanation:
+The substring with start index = 0 is ""ab"", which is an anagram of ""ab"".
+The substring with start index = 1 is ""ba"", which is an anagram of ""ab"".
+The substring with start index = 2 is ""ab"", which is an anagram of ""ab"".
+
+ 
+Constraints:
+
+1 <= s.length, p.length <= 3 * 104
+s and p consist of lowercase English letters.
+
+","Hash Table,String,Sliding Window",Medium,,"242,567","Valid Anagram,Permutation in String"
+59,59. Spiral Matrix II,"Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
+ 
+Example 1:
+
+Input: n = 3
+Output: [[1,2,3],[8,9,4],[7,6,5]]
+
+Example 2:
+Input: n = 1
+Output: [[1]]
+
+ 
+Constraints:
+
+1 <= n <= 20
+
+","Array,Matrix,Simulation",Medium,,"54,921","Spiral Matrix,Spiral Matrix III"
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+697,697. Degree of an Array,"Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.
+Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.
+ 
+Example 1:
+Input: nums = [1,2,2,3,1]
+Output: 2
+Explanation: 
+The input array has a degree of 2 because both elements 1 and 2 appear twice.
+Of the subarrays that have the same degree:
+[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+The shortest length is 2. So return 2.
+
+Example 2:
+Input: nums = [1,2,2,3,1,4,2]
+Output: 6
+Explanation: 
+The degree is 3 because the element 2 is repeated 3 times.
+So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+ 
+Constraints:
+
+nums.length will be between 1 and 50,000.
+nums[i] will be an integer between 0 and 49,999.
+
+","Array,Hash Table",Easy,"Say 5 is the only element that occurs the most number of times - for example, nums = [1, 5, 2, 3, 5, 4, 5, 6].  What is the answer?",53,Maximum Subarray
+525,525. Contiguous Array,"Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.
+ 
+Example 1:
+Input: nums = [0,1]
+Output: 2
+Explanation: [0, 1] is the longest contiguous subarray with an equal number of 0 and 1.
+
+Example 2:
+Input: nums = [0,1,0]
+Output: 2
+Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+nums[i] is either 0 or 1.
+
+","Array,Hash Table,Prefix Sum",Medium,,325,Maximum Size Subarray Sum Equals k
+1391,1391. Check if There is a Valid Path in a Grid,"You are given an m x n grid. Each cell of grid represents a street. The street of grid[i][j] can be:
+
+1 which means a street connecting the left cell and the right cell.
+2 which means a street connecting the upper cell and the lower cell.
+3 which means a street connecting the left cell and the lower cell.
+4 which means a street connecting the right cell and the lower cell.
+5 which means a street connecting the left cell and the upper cell.
+6 which means a street connecting the right cell and the upper cell.
+
+
+You will initially start at the street of the upper-left cell (0, 0). A valid path in the grid is a path that starts from the upper left cell (0, 0) and ends at the bottom-right cell (m - 1, n - 1). The path should only follow the streets.
+Notice that you are not allowed to change any street.
+Return true if there is a valid path in the grid or false otherwise.
+ 
+Example 1:
+
+Input: grid = [[2,4,3],[6,5,2]]
+Output: true
+Explanation: As shown you can start at cell (0, 0) and visit all the cells of the grid to reach (m - 1, n - 1).
+
+Example 2:
+
+Input: grid = [[1,2,1],[1,2,1]]
+Output: false
+Explanation: As shown you the street at cell (0, 0) is not connected with any street of any other cell and you will get stuck at cell (0, 0)
+
+Example 3:
+Input: grid = [[1,1,2]]
+Output: false
+Explanation: You will get stuck at cell (0, 1) and you cannot reach cell (0, 2).
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+1 <= grid[i][j] <= 6
+
+","Array,Hash Table",Easy,Use hashset to store all elements. Loop again to count all valid elements.,,
+1393,1393. Capital Gain/Loss,"Table: Stocks
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| stock_name    | varchar |
+| operation     | enum    |
+| operation_day | int     |
+| price         | int     |
++---------------+---------+
+(stock_name, operation_day) is the primary key (combination of columns with unique values) for this table.
+The operation column is an ENUM (category) of type ('Sell', 'Buy')
+Each row of this table indicates that the stock which has stock_name had an operation on the day operation_day with the price.
+It is guaranteed that each 'Sell' operation for a stock has a corresponding 'Buy' operation in a previous day. It is also guaranteed that each 'Buy' operation for a stock has a corresponding 'Sell' operation in an upcoming day.
+
+ 
+Write a solution to report the Capital gain/loss for each stock.
+The Capital gain/loss of a stock is the total gain or loss after buying and selling the stock one or many times.
+Return the result table in any order.
+The result format is in the following example.
+ 
+Example 1:
+Input: 
+Stocks table:
++---------------+-----------+---------------+--------+
+| stock_name    | operation | operation_day | price  |
++---------------+-----------+---------------+--------+
+| Leetcode      | Buy       | 1             | 1000   |
+| Corona Masks  | Buy       | 2             | 10     |
+| Leetcode      | Sell      | 5             | 9000   |
+| Handbags      | Buy       | 17            | 30000  |
+| Corona Masks  | Sell      | 3             | 1010   |
+| Corona Masks  | Buy       | 4             | 1000   |
+| Corona Masks  | Sell      | 5             | 500    |
+| Corona Masks  | Buy       | 6             | 1000   |
+| Handbags      | Sell      | 29            | 7000   |
+| Corona Masks  | Sell      | 10            | 10000  |
++---------------+-----------+---------------+--------+
+Output: 
++---------------+-------------------+
+| stock_name    | capital_gain_loss |
++---------------+-------------------+
+| Corona Masks  | 9500              |
+| Leetcode      | 8000              |
+| Handbags      | -23000            |
++---------------+-------------------+
+Explanation: 
+Leetcode stock was bought at day 1 for 1000$ and was sold at day 5 for 9000$. Capital gain = 9000 - 1000 = 8000$.
+Handbags stock was bought at day 17 for 30000$ and was sold at day 29 for 7000$. Capital loss = 7000 - 30000 = -23000$.
+Corona Masks stock was bought at day 1 for 10$ and was sold at day 3 for 1010$. It was bought again at day 4 for 1000$ and was sold at day 5 for 500$. At last, it was bought at day 6 for 1000$ and was sold at day 10 for 10000$. Capital gain/loss is the sum of capital gains/losses for each ('Buy' --> 'Sell') operation = (1010 - 10) + (500 - 1000) + (10000 - 1000) = 1000 - 500 + 9000 = 9500$.
+
+","Array,Dynamic Programming,Prefix Sum",Hard,"For each pile i, what will be the total value of coins we can collect if we choose the first j coins? How can we use dynamic programming to combine the results from different piles to find the most optimal answer?","322,518","Coin Change,Coin Change 2"

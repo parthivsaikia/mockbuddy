@@ -1,0 +1,427 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+281,281. Zigzag Iterator,,"Array,Design,Queue,Iterator",Medium,,"173,251,284,341,1894","Binary Search Tree Iterator,Flatten 2D Vector,Peeking Iterator,Flatten Nested List Iterator,Merge Strings Alternately"
+529,529. Minesweeper,"Let's play the minesweeper game (Wikipedia, online game)!
+You are given an m x n char matrix board representing the game board where:
+
+'M' represents an unrevealed mine,
+'E' represents an unrevealed empty square,
+'B' represents a revealed blank square that has no adjacent mines (i.e., above, below, left, right, and all 4 diagonals),
+digit ('1' to '8') represents how many mines are adjacent to this revealed square, and
+'X' represents a revealed mine.
+
+You are also given an integer array click where click = [clickr, clickc] represents the next click position among all the unrevealed squares ('M' or 'E').
+Return the board after revealing this position according to the following rules:
+
+If a mine 'M' is revealed, then the game is over. You should change it to 'X'.
+If an empty square 'E' with no adjacent mines is revealed, then change it to a revealed blank 'B' and all of its adjacent unrevealed squares should be revealed recursively.
+If an empty square 'E' with at least one adjacent mine is revealed, then change it to a digit ('1' to '8') representing the number of adjacent mines.
+Return the board when no more squares will be revealed.
+
+ 
+Example 1:
+
+Input: board = [[""E"",""E"",""E"",""E"",""E""],[""E"",""E"",""M"",""E"",""E""],[""E"",""E"",""E"",""E"",""E""],[""E"",""E"",""E"",""E"",""E""]], click = [3,0]
+Output: [[""B"",""1"",""E"",""1"",""B""],[""B"",""1"",""M"",""1"",""B""],[""B"",""1"",""1"",""1"",""B""],[""B"",""B"",""B"",""B"",""B""]]
+
+Example 2:
+
+Input: board = [[""B"",""1"",""E"",""1"",""B""],[""B"",""1"",""M"",""1"",""B""],[""B"",""1"",""1"",""1"",""B""],[""B"",""B"",""B"",""B"",""B""]], click = [1,2]
+Output: [[""B"",""1"",""E"",""1"",""B""],[""B"",""1"",""X"",""1"",""B""],[""B"",""1"",""1"",""1"",""B""],[""B"",""B"",""B"",""B"",""B""]]
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 50
+board[i][j] is either 'M', 'E', 'B', or a digit from '1' to '8'.
+click.length == 2
+0 <= clickr < m
+0 <= clickc < n
+board[clickr][clickc] is either 'M' or 'E'.
+
+","Array,Depth-First Search,Breadth-First Search,Matrix",Medium,,2206,Detonate the Maximum Bombs
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+304,304. Range Sum Query 2D - Immutable,"Given a 2D matrix matrix, handle multiple queries of the following type:
+
+Calculate the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+Implement the NumMatrix class:
+
+NumMatrix(int[][] matrix) Initializes the object with the integer matrix matrix.
+int sumRegion(int row1, int col1, int row2, int col2) Returns the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+You must design an algorithm where sumRegion works on O(1) time complexity.
+ 
+Example 1:
+
+Input
+[""NumMatrix"", ""sumRegion"", ""sumRegion"", ""sumRegion""]
+[[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [1, 1, 2, 2], [1, 2, 2, 4]]
+Output
+[null, 8, 11, 12]
+
+Explanation
+NumMatrix numMatrix = new NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);
+numMatrix.sumRegion(2, 1, 4, 3); // return 8 (i.e sum of the red rectangle)
+numMatrix.sumRegion(1, 1, 2, 2); // return 11 (i.e sum of the green rectangle)
+numMatrix.sumRegion(1, 2, 2, 4); // return 12 (i.e sum of the blue rectangle)
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 200
+-104 <= matrix[i][j] <= 104
+0 <= row1 <= row2 < m
+0 <= col1 <= col2 < n
+At most 104 calls will be made to sumRegion.
+
+","Array,Design,Matrix,Prefix Sum",Medium,,"303,308","Range Sum Query - Immutable,Range Sum Query 2D - Mutable"
+695,695. Max Area of Island,"You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+The area of an island is the number of cells with a value 1 in the island.
+Return the maximum area of an island in grid. If there is no island, return 0.
+ 
+Example 1:
+
+Input: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+Output: 6
+Explanation: The answer is not 11, because the island must be connected 4-directionally.
+
+Example 2:
+Input: grid = [[0,0,0,0,0,0,0,0]]
+Output: 0
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 50
+grid[i][j] is either 0 or 1.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"200,463,1845,2206","Number of Islands,Island Perimeter,Largest Submatrix With Rearrangements,Detonate the Maximum Bombs"
+44,44. Wildcard Matching,"Given an input string (s) and a pattern (p), implement wildcard pattern matching with support for '?' and '*' where:
+
+'?' Matches any single character.
+'*' Matches any sequence of characters (including the empty sequence).
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""*""
+Output: true
+Explanation: '*' matches any sequence.
+
+Example 3:
+Input: s = ""cb"", p = ""?a""
+Output: false
+Explanation: '?' matches 'c', but the second letter is 'a', which does not match 'b'.
+
+ 
+Constraints:
+
+0 <= s.length, p.length <= 2000
+s contains only lowercase English letters.
+p contains only lowercase English letters, '?' or '*'.
+
+","String,Dynamic Programming,Greedy,Recursion",Hard,,10,Regular Expression Matching
+986,986. Interval List Intersections,"You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and in sorted order.
+Return the intersection of these two interval lists.
+A closed interval [a, b] (with a <= b) denotes the set of real numbers x with a <= x <= b.
+The intersection of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].
+ 
+Example 1:
+
+Input: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]
+Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+
+Example 2:
+Input: firstList = [[1,3],[5,9]], secondList = []
+Output: []
+
+ 
+Constraints:
+
+0 <= firstList.length, secondList.length <= 1000
+firstList.length + secondList.length >= 1
+0 <= starti < endi <= 109
+endi < starti+1
+0 <= startj < endj <= 109 
+endj < startj+1
+
+","String,Enumeration",Medium,,,
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+63,63. Unique Paths II,"You are given an m x n integer array grid. There is a robot initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+An obstacle and space are marked as 1 or 0 respectively in grid. A path that the robot takes cannot include any square that is an obstacle.
+Return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+The testcases are generated so that the answer will be less than or equal to 2 * 109.
+ 
+Example 1:
+
+Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+Output: 2
+Explanation: There is one obstacle in the middle of the 3x3 grid above.
+There are two ways to reach the bottom-right corner:
+1. Right -> Right -> Down -> Down
+2. Down -> Down -> Right -> Right
+
+Example 2:
+
+Input: obstacleGrid = [[0,1],[0,0]]
+Output: 1
+
+ 
+Constraints:
+
+m == obstacleGrid.length
+n == obstacleGrid[i].length
+1 <= m, n <= 100
+obstacleGrid[i][j] is 0 or 1.
+
+","Array,Dynamic Programming,Matrix",Medium,"The robot can only move either down or right. Hence any cell in the first row can only be reached from the cell left to it. However, if any cell has an obstacle, you don't let that cell contribute to any path. So, for the first row, the number of ways will simply be 
+
+
+if obstacleGrid[i][j] is not an obstacle
+     obstacleGrid[i,j] = obstacleGrid[i,j - 1] 
+else
+     obstacleGrid[i,j] = 0
+
+
+You can do a similar processing for finding out the number of ways of reaching the cells in the first column. For any other cell, we can find out the number of ways of reaching it, by making use of the number of ways of reaching the cell directly above it and the cell to the left of it in the grid. This is because these are the only two directions from which the robot can come to the current cell. Since we are making use of pre-computed values along the iteration, this becomes a dynamic programming problem.
+
+
+if obstacleGrid[i][j] is not an obstacle
+     obstacleGrid[i,j] = obstacleGrid[i,j - 1]  + obstacleGrid[i - 1][j]
+else
+     obstacleGrid[i,j] = 0","62,1022","Unique Paths,Unique Paths III"
+394,394. Decode String,"Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there will not be input like 3a or 2[4].
+The test cases are generated so that the length of the output will never exceed 105.
+ 
+Example 1:
+Input: s = ""3[a]2[bc]""
+Output: ""aaabcbc""
+
+Example 2:
+Input: s = ""3[a2[c]]""
+Output: ""accaccacc""
+
+Example 3:
+Input: s = ""2[abc]3[cd]ef""
+Output: ""abcabccdcdcdef""
+
+ 
+Constraints:
+
+1 <= s.length <= 30
+s consists of lowercase English letters, digits, and square brackets '[]'.
+s is guaranteed to be a valid input.
+All the integers in s are in the range [1, 300].
+
+","String,Stack,Recursion",Medium,,"471,726,1076","Encode String with Shortest Length,Number of Atoms,Brace Expansion"
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+36,36. Valid Sudoku,"Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+
+ 
+Example 1:
+
+Input: board = 
+[[""5"",""3"",""."",""."",""7"",""."",""."",""."","".""]
+,[""6"",""."",""."",""1"",""9"",""5"",""."",""."","".""]
+,[""."",""9"",""8"",""."",""."",""."",""."",""6"","".""]
+,[""8"",""."",""."",""."",""6"",""."",""."",""."",""3""]
+,[""4"",""."",""."",""8"",""."",""3"",""."",""."",""1""]
+,[""7"",""."",""."",""."",""2"",""."",""."",""."",""6""]
+,[""."",""6"",""."",""."",""."",""."",""2"",""8"","".""]
+,[""."",""."",""."",""4"",""1"",""9"",""."",""."",""5""]
+,[""."",""."",""."",""."",""8"",""."",""."",""7"",""9""]]
+Output: true
+
+Example 2:
+Input: board = 
+[[""8"",""3"",""."",""."",""7"",""."",""."",""."","".""]
+,[""6"",""."",""."",""1"",""9"",""5"",""."",""."","".""]
+,[""."",""9"",""8"",""."",""."",""."",""."",""6"","".""]
+,[""8"",""."",""."",""."",""6"",""."",""."",""."",""3""]
+,[""4"",""."",""."",""8"",""."",""3"",""."",""."",""1""]
+,[""7"",""."",""."",""."",""2"",""."",""."",""."",""6""]
+,[""."",""6"",""."",""."",""."",""."",""2"",""8"","".""]
+,[""."",""."",""."",""4"",""1"",""9"",""."",""."",""5""]
+,[""."",""."",""."",""."",""8"",""."",""."",""7"",""9""]]
+Output: false
+Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+
+ 
+Constraints:
+
+board.length == 9
+board[i].length == 9
+board[i][j] is a digit 1-9 or '.'.
+
+","Array,Hash Table,Matrix",Medium,,"37,2254","Sudoku Solver,Check if Every Row and Column Contains All Numbers"
+79,79. Word Search,"Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+ 
+Example 1:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCCED""
+Output: true
+
+Example 2:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""SEE""
+Output: true
+
+Example 3:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCB""
+Output: false
+
+ 
+Constraints:
+
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+board and word consists of only lowercase and uppercase English letters.
+
+ 
+Follow up: Could you use search pruning to make your solution faster with a larger board?
+","Array,Backtracking,Matrix",Medium,,212,Word Search II
+1258,1258. Synonymous Sentences,,Database,Easy,,,

@@ -1,0 +1,1504 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+336,336. Palindrome Pairs,"You are given a 0-indexed array of unique strings words.
+A palindrome pair is a pair of integers (i, j) such that:
+
+0 <= i, j < words.length,
+i != j, and
+words[i] + words[j] (the concatenation of the two strings) is a palindrome.
+
+Return an array of all the palindrome pairs of words.
+You must write an algorithm with O(sum of words[i].length) runtime complexity.
+ 
+Example 1:
+Input: words = [""abcd"",""dcba"",""lls"",""s"",""sssll""]
+Output: [[0,1],[1,0],[3,2],[2,4]]
+Explanation: The palindromes are [""abcddcba"",""dcbaabcd"",""slls"",""llssssll""]
+
+Example 2:
+Input: words = [""bat"",""tab"",""cat""]
+Output: [[0,1],[1,0]]
+Explanation: The palindromes are [""battab"",""tabbat""]
+
+Example 3:
+Input: words = [""a"",""""]
+Output: [[0,1],[1,0]]
+Explanation: The palindromes are [""a"",""a""]
+
+ 
+Constraints:
+
+1 <= words.length <= 5000
+0 <= words[i].length <= 300
+words[i] consists of lowercase English letters.
+
+","Array,Hash Table,String,Trie",Hard,,"5,214,2237","Longest Palindromic Substring,Shortest Palindrome,Longest Palindrome by Concatenating Two Letter Words"
+755,755. Pour Water,,"Math,Binary Search",Medium,,,
+751,751. IP to CIDR,,"Array,Math,Dynamic Programming,Matrix",Medium,"For each pair of 1s in the new row (say at `new_row[i]` and `new_row[j]`), we could create more rectangles where that pair forms the base.  The number of new rectangles is the number of times some previous row had `row[i] = row[j] = 1`.",,
+251,251. Flatten 2D Vector,,"Array,Two Pointers,Design,Iterator",Medium,"How many variables do you need to keep track? Two variables is all you need. Try with x and y. Beware of empty rows. It could be the first few rows. To write correct code, think about the invariant to maintain. What is it? The invariant is x and y must always point to a valid point in the 2d vector. Should you maintain your invariant ahead of time or right when you need it? Not sure? Think about how you would implement hasNext(). Which is more complex? Common logic in two different places should be refactored into a common method.","173,281,284,341","Binary Search Tree Iterator,Zigzag Iterator,Peeking Iterator,Flatten Nested List Iterator"
+269,269. Alien Dictionary,,"Array,String,Depth-First Search,Breadth-First Search,Graph,Topological Sort",Hard,,210,Course Schedule II
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+1166,1166. Design File System,,"Math,Dynamic Programming,Probability and Statistics",Medium,"What about solving the problem with DP? Use DP with two states dp[pos][cnt], where pos represents the pos-th coin and cnt is the number of heads seen so far. You can do the transitions with a little bit math. For the base case, when pos == n return (cnt == target) to filter out the invalid scenarios.",,
+787,787. Cheapest Flights Within K Stops,"There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
+You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
+ 
+Example 1:
+
+Input: n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1
+Output: 700
+Explanation:
+The graph is shown above.
+The optimal path with at most 1 stop from city 0 to 3 is marked in red and has cost 100 + 600 = 700.
+Note that the path through cities [0,1,2,3] is cheaper but is invalid because it uses 2 stops.
+
+Example 2:
+
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+Output: 200
+Explanation:
+The graph is shown above.
+The optimal path with at most 1 stop from city 0 to 2 is marked in red and has cost 100 + 100 = 200.
+
+Example 3:
+
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 0
+Output: 500
+Explanation:
+The graph is shown above.
+The optimal path with no stops from city 0 to 2 is marked in red and has cost 500.
+
+ 
+Constraints:
+
+1 <= n <= 100
+0 <= flights.length <= (n * (n - 1) / 2)
+flights[i].length == 3
+0 <= fromi, toi < n
+fromi != toi
+1 <= pricei <= 104
+There will not be any multiple flights between two cities.
+0 <= src, dst, k < n
+src != dst
+
+","Array,Breadth-First Search,Matrix",Hard,"Perform a breadth-first-search, where the nodes are the puzzle boards and edges are if two puzzle boards can be transformed into one another with one move.",,
+773,773. Sliding Puzzle,"On an 2 x 3 board, there are five tiles labeled from 1 to 5, and an empty square represented by 0. A move consists of choosing 0 and a 4-directionally adjacent number and swapping it.
+The state of the board is solved if and only if the board is [[1,2,3],[4,5,0]].
+Given the puzzle board board, return the least number of moves required so that the state of the board is solved. If it is impossible for the state of the board to be solved, return -1.
+ 
+Example 1:
+
+Input: board = [[1,2,3],[4,0,5]]
+Output: 1
+Explanation: Swap the 0 and the 5 in one move.
+
+Example 2:
+
+Input: board = [[1,2,3],[5,4,0]]
+Output: -1
+Explanation: No number of moves will make the board solved.
+
+Example 3:
+
+Input: board = [[4,1,2],[5,0,3]]
+Output: 5
+Explanation: 5 is the smallest number of moves that solves the board.
+An example path:
+After move 0: [[4,1,2],[5,0,3]]
+After move 1: [[4,1,2],[0,5,3]]
+After move 2: [[0,1,2],[4,5,3]]
+After move 3: [[1,0,2],[4,5,3]]
+After move 4: [[1,2,0],[4,5,3]]
+After move 5: [[1,2,3],[4,5,0]]
+
+ 
+Constraints:
+
+board.length == 2
+board[i].length == 3
+0 <= board[i][j] <= 5
+Each value board[i][j] is unique.
+
+","Divide and Conquer,Tree",Medium,,,
+341,341. Flatten Nested List Iterator,"You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.
+Implement the NestedIterator class:
+
+NestedIterator(List<NestedInteger> nestedList) Initializes the iterator with the nested list nestedList.
+int next() Returns the next integer in the nested list.
+boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+
+Your code will be tested with the following pseudocode:
+initialize iterator with nestedList
+res = []
+while iterator.hasNext()
+    append iterator.next() to the end of res
+return res
+
+If res matches the expected flattened list, then your code will be judged as correct.
+ 
+Example 1:
+Input: nestedList = [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+
+Example 2:
+Input: nestedList = [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+
+ 
+Constraints:
+
+1 <= nestedList.length <= 500
+The values of the integers in the nested list is in the range [-106, 106].
+
+","Stack,Tree,Depth-First Search,Design,Queue,Iterator",Medium,,"251,281,385,565","Flatten 2D Vector,Zigzag Iterator,Mini Parser,Array Nesting"
+166,166. Fraction to Recurring Decimal,"Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+If the fractional part is repeating, enclose the repeating part in parentheses.
+If multiple answers are possible, return any of them.
+It is guaranteed that the length of the answer string is less than 104 for all the given inputs.
+ 
+Example 1:
+Input: numerator = 1, denominator = 2
+Output: ""0.5""
+
+Example 2:
+Input: numerator = 2, denominator = 1
+Output: ""2""
+
+Example 3:
+Input: numerator = 4, denominator = 333
+Output: ""0.(012)""
+
+ 
+Constraints:
+
+-231 <= numerator, denominator <= 231 - 1
+denominator != 0
+
+","Hash Table,Math,String",Medium,"No scary math, just apply elementary math knowledge. Still remember how to perform a long division? Try a long division on 4/9, the repeating part is obvious. Now try 4/333. Do you see a pattern? Notice that once the remainder starts repeating, so does the divided result. Be wary of edge cases! List out as many test cases as you can think of and test your code thoroughly.",,
+39,39. Combination Sum,"Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+ 
+Example 1:
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+Explanation:
+2 and 3 are candidates, and 2 + 2 + 3 = 7. Note that 2 can be used multiple times.
+7 is a candidate, and 7 = 7.
+These are the only two combinations.
+
+Example 2:
+Input: candidates = [2,3,5], target = 8
+Output: [[2,2,2,2],[2,3,3],[3,5]]
+
+Example 3:
+Input: candidates = [2], target = 1
+Output: []
+
+ 
+Constraints:
+
+1 <= candidates.length <= 30
+2 <= candidates[i] <= 40
+All elements of candidates are distinct.
+1 <= target <= 40
+
+","Array,Backtracking",Medium,,"17,40,77,216,254,377","Letter Combinations of a Phone Number,Combination Sum II,Combinations,Combination Sum III,Factor Combinations,Combination Sum IV"
+324,324. Wiggle Sort II,"Given an integer array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
+You may assume the input array always has a valid answer.
+ 
+Example 1:
+Input: nums = [1,5,1,1,6,4]
+Output: [1,6,1,5,1,4]
+Explanation: [1,4,1,5,1,6] is also accepted.
+
+Example 2:
+Input: nums = [1,3,2,2,3,1]
+Output: [2,3,1,3,1,2]
+
+ 
+Constraints:
+
+1 <= nums.length <= 5 * 104
+0 <= nums[i] <= 5000
+It is guaranteed that there will be an answer for the given input nums.
+
+ 
+Follow Up: Can you do it in O(n) time and/or in-place with O(1) extra space?","Array,Divide and Conquer,Sorting,Quickselect",Medium,,"75,215,280,2085","Sort Colors,Kth Largest Element in an Array,Wiggle Sort,Array With Elements Not Equal to Average of Neighbors"
+875,875. Koko Eating Bananas,"Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
+Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+Return the minimum integer k such that she can eat all the bananas within h hours.
+ 
+Example 1:
+Input: piles = [3,6,7,11], h = 8
+Output: 4
+
+Example 2:
+Input: piles = [30,11,23,4,20], h = 5
+Output: 30
+
+Example 3:
+Input: piles = [30,11,23,4,20], h = 6
+Output: 23
+
+ 
+Constraints:
+
+1 <= piles.length <= 104
+piles.length <= h <= 109
+1 <= piles[i] <= 109
+
+","Array,Two Pointers,Dynamic Programming,Enumeration",Medium,,"1766,2205","Minimum Number of Removals to Make Mountain Array,Find Good Days to Rob the Bank"
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+1058,1058. Minimize Rounding Error to Meet Target,,"String,Union Find",Medium,Model these equalities as edges of a graph. Group each connected component of the graph and assign each node of this component to the node with the lowest lexicographically character. Finally convert the string with the precalculated information.,,
+759,759. Employee Free Time,,"Array,Greedy,Sorting",Hard,,,
+756,756. Pyramid Transition Matrix,"You are stacking blocks to form a pyramid. Each block has a color, which is represented by a single letter. Each row of blocks contains one less block than the row beneath it and is centered on top.
+To make the pyramid aesthetically pleasing, there are only specific triangular patterns that are allowed. A triangular pattern consists of a single block stacked on top of two blocks. The patterns are given as a list of three-letter strings allowed, where the first two characters of a pattern represent the left and right bottom blocks respectively, and the third character is the top block.
+
+For example, ""ABC"" represents a triangular pattern with a 'C' block stacked on top of an 'A' (left) and 'B' (right) block. Note that this is different from ""BAC"" where 'B' is on the left bottom and 'A' is on the right bottom.
+
+You start with a bottom row of blocks bottom, given as a single string, that you must use as the base of the pyramid.
+Given bottom and allowed, return true if you can build the pyramid all the way to the top such that every triangular pattern in the pyramid is in allowed, or false otherwise.
+ 
+Example 1:
+
+Input: bottom = ""BCD"", allowed = [""BCC"",""CDE"",""CEA"",""FFF""]
+Output: true
+Explanation: The allowed triangular patterns are shown on the right.
+Starting from the bottom (level 3), we can build ""CE"" on level 2 and then build ""A"" on level 1.
+There are three triangular patterns in the pyramid, which are ""BCC"", ""CDE"", and ""CEA"". All are allowed.
+
+Example 2:
+
+Input: bottom = ""AAAA"", allowed = [""AAB"",""AAC"",""BCD"",""BBE"",""DEF""]
+Output: false
+Explanation: The allowed triangular patterns are shown on the right.
+Starting from the bottom (level 4), there are multiple ways to build level 3, but trying all the possibilites, you will get always stuck before building level 1.
+
+ 
+Constraints:
+
+2 <= bottom.length <= 6
+0 <= allowed.length <= 216
+allowed[i].length == 3
+The letters in all input strings are from the set {'A', 'B', 'C', 'D', 'E', 'F'}.
+All the values of allowed are unique.
+
+","Array,Simulation",Medium,,42,Trapping Rain Water
+864,864. Shortest Path to Get All Keys,"You are given an m x n grid grid where:
+
+'.' is an empty cell.
+'#' is a wall.
+'@' is the starting point.
+Lowercase letters represent keys.
+Uppercase letters represent locks.
+
+You start at the starting point and one move consists of walking one space in one of the four cardinal directions. You cannot walk outside the grid, or walk into a wall.
+If you walk over a key, you can pick it up and you cannot walk over a lock unless you have its corresponding key.
+For some 1 <= k <= 6, there is exactly one lowercase and one uppercase letter of the first k letters of the English alphabet in the grid. This means that there is exactly one key for each lock, and one lock for each key; and also that the letters used to represent the keys and locks were chosen in the same order as the English alphabet.
+Return the lowest number of moves to acquire all keys. If it is impossible, return -1.
+ 
+Example 1:
+
+Input: grid = [""@.a.."",""###.#"",""b.A.B""]
+Output: 8
+Explanation: Note that the goal is to obtain all the keys not to open all the locks.
+
+Example 2:
+
+Input: grid = [""@..aA"",""..B#."",""....b""]
+Output: 6
+
+Example 3:
+
+Input: grid = [""@Aa""]
+Output: -1
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 30
+grid[i][j] is either an English letter, '.', '#', or '@'. 
+There is exactly one '@' in the grid.
+The number of keys in the grid is in the range [1, 6].
+Each key in the grid is unique.
+Each key in the grid has a matching lock.
+
+","Array,Matrix",Medium,,,
+1257,1257. Smallest Common Region,,"Array,Greedy,Union Find,Graph,Topological Sort,Matrix",Hard,Sort the cells by value and process them in increasing order. The rank of a cell is the maximum rank in its row and column plus one. Handle the equal cells by treating them as components using a union-find data structure.,"1256,2125","Rank Transform of an Array,GCD Sort of an Array"
+843,843. Guess the Word,"You are given an array of unique strings words where words[i] is six letters long. One word of words was chosen as a secret word.
+You are also given the helper object Master. You may call Master.guess(word) where word is a six-letter-long string, and it must be from words. Master.guess(word) returns:
+
+-1 if word is not from words, or
+an integer representing the number of exact matches (value and position) of your guess to the secret word.
+
+There is a parameter allowedGuesses for each test case where allowedGuesses is the maximum number of times you can call Master.guess(word).
+For each test case, you should call Master.guess with the secret word without exceeding the maximum number of allowed guesses. You will get:
+
+""Either you took too many guesses, or you did not find the secret word."" if you called Master.guess more than allowedGuesses times or if you did not call Master.guess with the secret word, or
+""You guessed the secret word correctly."" if you called Master.guess with the secret word with the number of calls to Master.guess less than or equal to allowedGuesses.
+
+The test cases are generated such that you can guess the secret word with a reasonable strategy (other than using the bruteforce method).
+ 
+Example 1:
+Input: secret = ""acckzz"", words = [""acckzz"",""ccbazz"",""eiowzz"",""abcczz""], allowedGuesses = 10
+Output: You guessed the secret word correctly.
+Explanation:
+master.guess(""aaaaaa"") returns -1, because ""aaaaaa"" is not in wordlist.
+master.guess(""acckzz"") returns 6, because ""acckzz"" is secret and has all 6 matches.
+master.guess(""ccbazz"") returns 3, because ""ccbazz"" has 3 matches.
+master.guess(""eiowzz"") returns 2, because ""eiowzz"" has 2 matches.
+master.guess(""abcczz"") returns 4, because ""abcczz"" has 4 matches.
+We made 5 calls to master.guess, and one of them was the secret, so we pass the test case.
+
+Example 2:
+Input: secret = ""hamada"", words = [""hamada"",""khaled""], allowedGuesses = 10
+Output: You guessed the secret word correctly.
+Explanation: Since there are two words, you can guess both.
+
+ 
+Constraints:
+
+1 <= words.length <= 100
+words[i].length == 6
+words[i] consist of lowercase English letters.
+All the strings of wordlist are unique.
+secret exists in words.
+10 <= allowedGuesses <= 30
+
+","Array,Hash Table,Dynamic Programming",Medium,,,
+212,212. Word Search II,"Given an m x n board of characters and a list of strings words, return all words on the board.
+Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+ 
+Example 1:
+
+Input: board = [[""o"",""a"",""a"",""n""],[""e"",""t"",""a"",""e""],[""i"",""h"",""k"",""r""],[""i"",""f"",""l"",""v""]], words = [""oath"",""pea"",""eat"",""rain""]
+Output: [""eat"",""oath""]
+
+Example 2:
+
+Input: board = [[""a"",""b""],[""c"",""d""]], words = [""abcb""]
+Output: []
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 12
+board[i][j] is a lowercase English letter.
+1 <= words.length <= 3 * 104
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+All the strings of words are unique.
+
+","Array,String,Backtracking,Trie,Matrix",Hard,"You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier? If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.","79,1022,1433","Word Search,Unique Paths III,Encrypt and Decrypt Strings"
+588,588. Design In-Memory File System,,"Hash Table,String,Design,Trie",Hard,,"146,460,635","LRU Cache,LFU Cache,Design Log Storage System"
+322,322. Coin Change,"You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+You may assume that you have an infinite number of each kind of coin.
+ 
+Example 1:
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+
+Example 2:
+Input: coins = [2], amount = 3
+Output: -1
+
+Example 3:
+Input: coins = [1], amount = 0
+Output: 0
+
+ 
+Constraints:
+
+1 <= coins.length <= 12
+1 <= coins[i] <= 231 - 1
+0 <= amount <= 104
+
+","Array,Dynamic Programming,Breadth-First Search",Medium,,"1025,1393,2345","Minimum Cost For Tickets,Maximum Value of K Coins From Piles,Minimum Number of Operations to Convert Time"
+2,2. Add Two Numbers,"You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ 
+Example 1:
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+
+Example 2:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+
+Example 3:
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+
+ 
+Constraints:
+
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+
+","Linked List,Math,Recursion",Medium,,"43,67,371,415,445,1031,1774","Multiply Strings,Add Binary,Sum of Two Integers,Add Strings,Add Two Numbers II,Add to Array-Form of Integer,Add Two Polynomials Represented as Linked Lists"
+10,10. Regular Expression Matching,"Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
+
+'.' Matches any single character.​​​​
+'*' Matches zero or more of the preceding element.
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""a*""
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes ""aa"".
+
+Example 3:
+Input: s = ""ab"", p = "".*""
+Output: true
+Explanation: "".*"" means ""zero or more (*) of any character (.)"".
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= p.length <= 20
+s contains only lowercase English letters.
+p contains only lowercase English letters, '.', and '*'.
+It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.
+
+","String,Dynamic Programming,Recursion",Hard,,44,Wildcard Matching
+1235,1235. Maximum Profit in Job Scheduling,"We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
+You're given the startTime, endTime and profit arrays, return the maximum profit you can take such that there are no two jobs in the subset with overlapping time range.
+If you choose a job that ends at time X you will be able to start another job that starts at time X.
+ 
+Example 1:
+
+Input: startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
+Output: 120
+Explanation: The subset chosen is the first and fourth job. 
+Time range [1-3]+[3-6] , we get profit of 120 = 50 + 70.
+
+Example 2:
+ 
+Input: startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60]
+Output: 150
+Explanation: The subset chosen is the first, fourth and fifth job. 
+Profit obtained 150 = 20 + 70 + 60.
+
+Example 3:
+
+Input: startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
+Output: 6
+
+ 
+Constraints:
+
+1 <= startTime.length == endTime.length == profit.length <= 5 * 104
+1 <= startTime[i] < endTime[i] <= 109
+1 <= profit[i] <= 104
+
+",,,,,
+299,299. Bulls and Cows,"You are playing the Bulls and Cows game with your friend.
+You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:
+
+The number of ""bulls"", which are digits in the guess that are in the correct position.
+The number of ""cows"", which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.
+
+Given the secret number secret and your friend's guess guess, return the hint for your friend's guess.
+The hint should be formatted as ""xAyB"", where x is the number of bulls and y is the number of cows. Note that both secret and guess may contain duplicate digits.
+ 
+Example 1:
+Input: secret = ""1807"", guess = ""7810""
+Output: ""1A3B""
+Explanation: Bulls are connected with a '|' and cows are underlined:
+""1807""
+  |
+""7810""
+Example 2:
+Input: secret = ""1123"", guess = ""0111""
+Output: ""1A1B""
+Explanation: Bulls are connected with a '|' and cows are underlined:
+""1123""        ""1123""
+  |      or     |
+""0111""        ""0111""
+Note that only one of the two unmatched 1s is counted as a cow since the non-bull digits can only be rearranged to allow one 1 to be a bull.
+
+ 
+Constraints:
+
+1 <= secret.length, guess.length <= 1000
+secret.length == guess.length
+secret and guess consist of digits only.
+
+","Hash Table,String,Counting",Medium,,,
+76,76. Minimum Window Substring,"Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string """".
+The testcases will be generated such that the answer is unique.
+ 
+Example 1:
+Input: s = ""ADOBECODEBANC"", t = ""ABC""
+Output: ""BANC""
+Explanation: The minimum window substring ""BANC"" includes 'A', 'B', and 'C' from string t.
+
+Example 2:
+Input: s = ""a"", t = ""a""
+Output: ""a""
+Explanation: The entire string s is the minimum window.
+
+Example 3:
+Input: s = ""a"", t = ""aa""
+Output: """"
+Explanation: Both 'a's from t must be included in the window.
+Since the largest window of s only has one 'a', return empty string.
+
+ 
+Constraints:
+
+m == s.length
+n == t.length
+1 <= m, n <= 105
+s and t consist of uppercase and lowercase English letters.
+
+ 
+Follow up: Could you find an algorithm that runs in O(m + n) time?
+","Hash Table,String,Sliding Window",Hard,"Use two pointers to create a window of letters in S, which would have all the characters from T. Since you have to find the minimum window in S which has all the characters from T, you need to expand and contract the window using the two pointers and keep checking the window for all the characters. This approach is also called Sliding Window Approach.
+
+
+
+L ------------------------ R , Suppose this is the window that contains all characters of T 
+                          
+        L----------------- R , this is the contracted window. We found a smaller window that still contains all the characters in T
+
+When the window is no longer valid, start expanding again using the right pointer.","30,209,239,567,632,727","Substring with Concatenation of All Words,Minimum Size Subarray Sum,Sliding Window Maximum,Permutation in String,Smallest Range Covering Elements from K Lists,Minimum Window Subsequence"
+219,219. Contains Duplicate II,"Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+ 
+Example 1:
+Input: nums = [1,2,3,1], k = 3
+Output: true
+
+Example 2:
+Input: nums = [1,0,1,1], k = 1
+Output: true
+
+Example 3:
+Input: nums = [1,2,3,1,2,3], k = 2
+Output: false
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+0 <= k <= 105
+
+","Array,Hash Table,Sliding Window",Easy,,"217,220","Contains Duplicate,Contains Duplicate III"
+385,385. Mini Parser,"Given a string s represents the serialization of a nested list, implement a parser to deserialize it and return the deserialized NestedInteger.
+Each element is either an integer or a list whose elements may also be integers or other lists.
+ 
+Example 1:
+Input: s = ""324""
+Output: 324
+Explanation: You should return a NestedInteger object which contains a single integer 324.
+
+Example 2:
+Input: s = ""[123,[456,[789]]]""
+Output: [123,[456,[789]]]
+Explanation: Return a NestedInteger object containing a nested list with 2 elements:
+1. An integer containing value 123.
+2. A nested list containing two elements:
+    i.  An integer containing value 456.
+    ii. A nested list with one element:
+         a. An integer containing value 789
+
+ 
+Constraints:
+
+1 <= s.length <= 5 * 104
+s consists of digits, square brackets ""[]"", negative sign '-', and commas ','.
+s is the serialization of valid NestedInteger.
+All the values in the input are in the range [-106, 106].
+
+","String,Stack,Depth-First Search",Medium,,"341,439,722","Flatten Nested List Iterator,Ternary Expression Parser,Remove Comments"
+198,198. House Robber,"You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+ 
+Example 1:
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+Example 2:
+Input: nums = [2,7,9,3,1]
+Output: 12
+Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+Total amount you can rob = 2 + 9 + 1 = 12.
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 400
+
+","Array,Dynamic Programming",Medium,,"152,213,256,276,337,600,656,740,2262","Maximum Product Subarray,House Robber II,Paint House,Paint Fence,House Robber III,Non-negative Integers without Consecutive Ones,Coin Path,Delete and Earn,Solving Questions With Brainpower"
+5,5. Longest Palindromic Substring,"Given a string s, return the longest palindromic substring in s.
+ 
+Example 1:
+Input: s = ""babad""
+Output: ""bab""
+Explanation: ""aba"" is also a valid answer.
+
+Example 2:
+Input: s = ""cbbd""
+Output: ""bb""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consist of only digits and English letters.
+
+","String,Dynamic Programming",Medium,"How can we reuse a previously computed palindrome to compute a larger palindrome? If “aba” is a palindrome, is “xabax” a palindrome? Similarly is “xabay” a palindrome? Complexity based hint:
+If we use brute-force and check whether for every start and end position a substring is a palindrome we have O(n^2) start - end pairs and O(n) palindromic checks. Can we reduce the time for palindromic checks to O(1) by reusing some previous computation.","214,266,336,516,647","Shortest Palindrome,Palindrome Permutation,Palindrome Pairs,Longest Palindromic Subsequence,Palindromic Substrings"
+220,220. Contains Duplicate III,"You are given an integer array nums and two integers indexDiff and valueDiff.
+Find a pair of indices (i, j) such that:
+
+i != j,
+abs(i - j) <= indexDiff.
+abs(nums[i] - nums[j]) <= valueDiff, and
+
+Return true if such pair exists or false otherwise.
+ 
+Example 1:
+Input: nums = [1,2,3,1], indexDiff = 3, valueDiff = 0
+Output: true
+Explanation: We can choose (i, j) = (0, 3).
+We satisfy the three conditions:
+i != j --> 0 != 3
+abs(i - j) <= indexDiff --> abs(0 - 3) <= 3
+abs(nums[i] - nums[j]) <= valueDiff --> abs(1 - 1) <= 0
+
+Example 2:
+Input: nums = [1,5,9,1,5,9], indexDiff = 2, valueDiff = 3
+Output: false
+Explanation: After trying all the possible pairs (i, j), we cannot satisfy the three conditions, so we return false.
+
+ 
+Constraints:
+
+2 <= nums.length <= 105
+-109 <= nums[i] <= 109
+1 <= indexDiff <= nums.length
+0 <= valueDiff <= 109
+
+","Array,Sliding Window,Sorting,Bucket Sort,Ordered Set",Medium,"Time complexity O(n logk)  - This will give an indication that sorting is involved for k elements. Use already existing state to evaluate next state  -  Like, a set of k sorted numbers are only needed to be tracked. When we are processing the next number in array, then we can utilize the existing sorted state and it is not necessary to sort next overlapping set of k numbers again.","217,219","Contains Duplicate,Contains Duplicate II"
+280,280. Wiggle Sort,,"Array,Greedy,Sorting",Medium,,"75,324,2085","Sort Colors,Wiggle Sort II,Array With Elements Not Equal to Average of Neighbors"
+236,236. Lowest Common Ancestor of a Binary Tree,"Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+ 
+Example 1:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+
+Example 2:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+
+Example 3:
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [2, 105].
+-109 <= Node.val <= 109
+All Node.val are unique.
+p != q
+p and q will exist in the tree.
+
+","Tree,Depth-First Search,Binary Tree",Medium,,"235,1190,1354,1780,1790,1816,2217","Lowest Common Ancestor of a Binary Search Tree,Smallest Common Region,Find Players With Zero or One Losses,Lowest Common Ancestor of a Binary Tree II,Lowest Common Ancestor of a Binary Tree III,Lowest Common Ancestor of a Binary Tree IV,Step-By-Step Directions From a Binary Tree Node to Another"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+160,160. Intersection of Two Linked Lists,"Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+For example, the following two linked lists begin to intersect at node c1:
+
+The test cases are generated such that there are no cycles anywhere in the entire linked structure.
+Note that the linked lists must retain their original structure after the function returns.
+Custom Judge:
+The inputs to the judge are given as follows (your program is not given these inputs):
+
+intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node.
+listA - The first linked list.
+listB - The second linked list.
+skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the intersected node.
+skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the intersected node.
+
+The judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.
+ 
+Example 1:
+
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+Output: Intersected at '8'
+Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
+- Note that the intersected node's value is not 1 because the nodes with value 1 in A and B (2nd node in A and 3rd node in B) are different node references. In other words, they point to two different locations in memory, while the nodes with value 8 in A and B (3rd node in A and 4th node in B) point to the same location in memory.
+
+Example 2:
+
+Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
+Output: Intersected at '2'
+Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect).
+From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.
+
+Example 3:
+
+Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
+Output: No intersection
+Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
+Explanation: The two lists do not intersect, so return null.
+
+ 
+Constraints:
+
+The number of nodes of listA is in the m.
+The number of nodes of listB is in the n.
+1 <= m, n <= 3 * 104
+1 <= Node.val <= 105
+0 <= skipA < m
+0 <= skipB < n
+intersectVal is 0 if listA and listB do not intersect.
+intersectVal == listA[skipA] == listB[skipB] if listA and listB intersect.
+
+ 
+Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?","Hash Table,Linked List,Two Pointers",Easy,,599,Minimum Index Sum of Two Lists
+202,202. Happy Number,"Write an algorithm to determine if a number n is happy.
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+
+Return true if n is a happy number, and false if not.
+ 
+Example 1:
+Input: n = 19
+Output: true
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+
+Example 2:
+Input: n = 2
+Output: false
+
+ 
+Constraints:
+
+1 <= n <= 231 - 1
+
+","Hash Table,Math,Two Pointers",Easy,,"141,258,263,2076","Linked List Cycle,Add Digits,Ugly Number,Sum of Digits of String After Convert"
+21,21. Merge Two Sorted Lists,"You are given the heads of two sorted linked lists list1 and list2.
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+Return the head of the merged linked list.
+ 
+Example 1:
+
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+
+Example 2:
+Input: list1 = [], list2 = []
+Output: []
+
+Example 3:
+Input: list1 = [], list2 = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in both lists is in the range [0, 50].
+-100 <= Node.val <= 100
+Both list1 and list2 are sorted in non-decreasing order.
+
+","Linked List,Recursion",Easy,,"23,88,148,244,1774,2071","Merge k Sorted Lists,Merge Sorted Array,Sort List,Shortest Word Distance II,Add Two Polynomials Represented as Linked Lists,Longest Common Subsequence Between Sorted Arrays"
+136,136. Single Number,"Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+You must implement a solution with a linear runtime complexity and use only constant extra space.
+ 
+Example 1:
+Input: nums = [2,2,1]
+Output: 1
+Example 2:
+Input: nums = [4,1,2,1,2]
+Output: 4
+Example 3:
+Input: nums = [1]
+Output: 1
+
+ 
+Constraints:
+
+1 <= nums.length <= 3 * 104
+-3 * 104 <= nums[i] <= 3 * 104
+Each element in the array appears twice except for one element which appears only once.
+
+","Array,Bit Manipulation",Easy,,"137,260,268,287,389","Single Number II,Single Number III,Missing Number,Find the Duplicate Number,Find the Difference"
+108,108. Convert Sorted Array to Binary Search Tree,"Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+ 
+Example 1:
+
+Input: nums = [-10,-3,0,5,9]
+Output: [0,-3,9,-10,null,5]
+Explanation: [0,-10,5,null,-3,null,9] is also accepted:
+
+
+Example 2:
+
+Input: nums = [1,3]
+Output: [3,1]
+Explanation: [1,null,3] and [3,1] are both height-balanced BSTs.
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-104 <= nums[i] <= 104
+nums is sorted in a strictly increasing order.
+
+","Array,Divide and Conquer,Tree,Binary Search Tree,Binary Tree",Easy,,109,Convert Sorted List to Binary Search Tree
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+215,215. Kth Largest Element in an Array,"Given an integer array nums and an integer k, return the kth largest element in the array.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Can you solve it without sorting?
+ 
+Example 1:
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+Example 2:
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+","Array,Divide and Conquer,Sorting,Heap (Priority Queue),Quickselect",Medium,,"324,347,414,789,1014,2113,2204,2250","Wiggle Sort II,Top K Frequent Elements,Third Maximum Number,Kth Largest Element in a Stream,K Closest Points to Origin,Find the Kth Largest Integer in the Array,Find Subsequence of Length K With the Largest Sum,K Highest Ranked Items Within a Price Range"
+622,622. Design Circular Queue,"Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called ""Ring Buffer"".
+One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
+Implement the MyCircularQueue class:
+
+MyCircularQueue(k) Initializes the object with the size of the queue to be k.
+int Front() Gets the front item from the queue. If the queue is empty, return -1.
+int Rear() Gets the last item from the queue. If the queue is empty, return -1.
+boolean enQueue(int value) Inserts an element into the circular queue. Return true if the operation is successful.
+boolean deQueue() Deletes an element from the circular queue. Return true if the operation is successful.
+boolean isEmpty() Checks whether the circular queue is empty or not.
+boolean isFull() Checks whether the circular queue is full or not.
+
+You must solve the problem without using the built-in queue data structure in your programming language. 
+ 
+Example 1:
+Input
+[""MyCircularQueue"", ""enQueue"", ""enQueue"", ""enQueue"", ""enQueue"", ""Rear"", ""isFull"", ""deQueue"", ""enQueue"", ""Rear""]
+[[3], [1], [2], [3], [4], [], [], [], [4], []]
+Output
+[null, true, true, true, false, 3, true, true, true, 4]
+
+Explanation
+MyCircularQueue myCircularQueue = new MyCircularQueue(3);
+myCircularQueue.enQueue(1); // return True
+myCircularQueue.enQueue(2); // return True
+myCircularQueue.enQueue(3); // return True
+myCircularQueue.enQueue(4); // return False
+myCircularQueue.Rear();     // return 3
+myCircularQueue.isFull();   // return True
+myCircularQueue.deQueue();  // return True
+myCircularQueue.enQueue(4); // return True
+myCircularQueue.Rear();     // return 4
+
+ 
+Constraints:
+
+1 <= k <= 1000
+0 <= value <= 1000
+At most 3000 calls will be made to enQueue, deQueue, Front, Rear, isEmpty, and isFull.
+
+",,,,,
+221,221. Maximal Square,"Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 4
+
+Example 2:
+
+Input: matrix = [[""0"",""1""],[""1"",""0""]]
+Output: 1
+
+Example 3:
+Input: matrix = [[""0""]]
+Output: 0
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 300
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Matrix",Medium,,"85,769,1312,2200","Maximal Rectangle,Largest Plus Sign,Count Artifacts That Can Be Extracted,Stamping the Grid"
+217,217. Contains Duplicate,"Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+ 
+Example 1:
+Input: nums = [1,2,3,1]
+Output: true
+Example 2:
+Input: nums = [1,2,3,4]
+Output: false
+Example 3:
+Input: nums = [1,1,1,3,3,4,3,2,4,2]
+Output: true
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+
+","Array,Hash Table,Sorting",Easy,,"219,220","Contains Duplicate II,Contains Duplicate III"
+211,211. Design Add and Search Words Data Structure,"Design a data structure that supports adding new words and finding if a string matches any previously added string.
+Implement the WordDictionary class:
+
+WordDictionary() Initializes the object.
+void addWord(word) Adds word to the data structure, it can be matched later.
+bool search(word) Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
+
+ 
+Example:
+Input
+[""WordDictionary"",""addWord"",""addWord"",""addWord"",""search"",""search"",""search"",""search""]
+[[],[""bad""],[""dad""],[""mad""],[""pad""],[""bad""],["".ad""],[""b..""]]
+Output
+[null,null,null,null,false,true,true,true]
+
+Explanation
+WordDictionary wordDictionary = new WordDictionary();
+wordDictionary.addWord(""bad"");
+wordDictionary.addWord(""dad"");
+wordDictionary.addWord(""mad"");
+wordDictionary.search(""pad""); // return False
+wordDictionary.search(""bad""); // return True
+wordDictionary.search("".ad""); // return True
+wordDictionary.search(""b..""); // return True
+
+ 
+Constraints:
+
+1 <= word.length <= 25
+word in addWord consists of lowercase English letters.
+word in search consist of '.' or lowercase English letters.
+There will be at most 2 dots in word for search queries.
+At most 104 calls will be made to addWord and search.
+
+","String,Depth-First Search,Design,Trie",Medium,"You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.","208,746","Implement Trie (Prefix Tree),Prefix and Suffix Search"
+953,953. Verifying an Alien Dictionary,"In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
+Given a sequence of words written in the alien language, and the order of the alphabet, return true if and only if the given words are sorted lexicographically in this alien language.
+ 
+Example 1:
+Input: words = [""hello"",""leetcode""], order = ""hlabcdefgijkmnopqrstuvwxyz""
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+
+Example 2:
+Input: words = [""word"",""world"",""row""], order = ""worldabcefghijkmnpqstuvxyz""
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+
+Example 3:
+Input: words = [""apple"",""app""], order = ""abcdefghijklmnopqrstuvwxyz""
+Output: false
+Explanation: The first three characters ""app"" match, and the second string is shorter (in size.) According to lexicographical rules ""apple"" > ""app"", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+
+ 
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 20
+order.length == 26
+All characters in words[i] and order are English lowercase letters.
+
+","Two Pointers,String",Easy,This problem is exactly like reversing a normal string except that there are certain characters that we have to simply skip. That should be easy enough to do if you know how to reverse a string using the two-pointer approach.,,
+190,190. Reverse Bits,"Reverse bits of a given 32 bits unsigned integer.
+Note:
+
+Note that in some languages, such as Java, there is no unsigned integer type. In this case, both input and output will be given as a signed integer type. They should not affect your implementation, as the integer's internal binary representation is the same, whether it is signed or unsigned.
+In Java, the compiler represents the signed integers using 2's complement notation. Therefore, in Example 2 above, the input represents the signed integer -3 and the output represents the signed integer -1073741825.
+
+ 
+Example 1:
+Input: n = 00000010100101000001111010011100
+Output:    964176192 (00111001011110000010100101000000)
+Explanation: The input binary string 00000010100101000001111010011100 represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000.
+
+Example 2:
+Input: n = 11111111111111111111111111111101
+Output:   3221225471 (10111111111111111111111111111111)
+Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111.
+
+ 
+Constraints:
+
+The input must be a binary string of length 32
+
+ 
+Follow up: If this function is called many times, how would you optimize it?
+","Divide and Conquer,Bit Manipulation",Easy,,"7,191,2238","Reverse Integer,Number of 1 Bits,A Number After a Double Reversal"
+34,34. Find First and Last Position of Element in Sorted Array,"Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+If target is not found in the array, return [-1, -1].
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+Input: nums = [], target = 0
+Output: [-1,-1]
+
+ 
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+nums is a non-decreasing array.
+-109 <= target <= 109
+
+","Array,Binary Search",Medium,,"278,2165,2210","First Bad Version,Plates Between Candles,Find Target Indices After Sorting Array"
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+415,415. Add Strings,"Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
+ 
+Example 1:
+Input: num1 = ""11"", num2 = ""123""
+Output: ""134""
+
+Example 2:
+Input: num1 = ""456"", num2 = ""77""
+Output: ""533""
+
+Example 3:
+Input: num1 = ""0"", num2 = ""0""
+Output: ""0""
+
+ 
+Constraints:
+
+1 <= num1.length, num2.length <= 104
+num1 and num2 consist of only digits.
+num1 and num2 don't have any leading zeros except for the zero itself.
+
+","Math,String,Simulation",Easy,,"2,43,1031","Add Two Numbers,Multiply Strings,Add to Array-Form of Integer"
+1017,1017. Convert to Base -2,"Given an integer n, return a binary string representing its representation in base -2.
+Note that the returned string should not have leading zeros unless the string is ""0"".
+ 
+Example 1:
+Input: n = 2
+Output: ""110""
+Explantion: (-2)2 + (-2)1 = 2
+
+Example 2:
+Input: n = 3
+Output: ""111""
+Explantion: (-2)2 + (-2)1 + (-2)0 = 3
+
+Example 3:
+Input: n = 4
+Output: ""100""
+Explantion: (-2)2 = 4
+
+ 
+Constraints:
+
+0 <= n <= 109
+
+","Array,Dynamic Programming,Stack,Monotonic Stack,Ordered Set",Hard,,,
+1041,1041. Robot Bounded In Circle,"On an infinite plane, a robot initially stands at (0, 0) and faces north. Note that:
+
+The north direction is the positive direction of the y-axis.
+The south direction is the negative direction of the y-axis.
+The east direction is the positive direction of the x-axis.
+The west direction is the negative direction of the x-axis.
+
+The robot can receive one of three instructions:
+
+""G"": go straight 1 unit.
+""L"": turn 90 degrees to the left (i.e., anti-clockwise direction).
+""R"": turn 90 degrees to the right (i.e., clockwise direction).
+
+The robot performs the instructions given in order, and repeats them forever.
+Return true if and only if there exists a circle in the plane such that the robot never leaves the circle.
+ 
+Example 1:
+Input: instructions = ""GGLLGG""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 2). Direction: South.
+""G"": move one step. Position: (0, 1). Direction: South.
+""G"": move one step. Position: (0, 0). Direction: South.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (0, 2) --> (0, 1) --> (0, 0).
+Based on that, we return true.
+
+Example 2:
+Input: instructions = ""GG""
+Output: false
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""G"": move one step. Position: (0, 2). Direction: North.
+Repeating the instructions, keeps advancing in the north direction and does not go into cycles.
+Based on that, we return false.
+
+Example 3:
+Input: instructions = ""GL""
+Output: true
+Explanation: The robot is initially at (0, 0) facing the north direction.
+""G"": move one step. Position: (0, 1). Direction: North.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 1). Direction: West.
+""G"": move one step. Position: (-1, 1). Direction: West.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 1). Direction: South.
+""G"": move one step. Position: (-1, 0). Direction: South.
+""L"": turn 90 degrees anti-clockwise. Position: (-1, 0). Direction: East.
+""G"": move one step. Position: (0, 0). Direction: East.
+""L"": turn 90 degrees anti-clockwise. Position: (0, 0). Direction: North.
+Repeating the instructions, the robot goes into the cycle: (0, 0) --> (0, 1) --> (-1, 1) --> (-1, 0) --> (0, 0).
+Based on that, we return true.
+
+ 
+Constraints:
+
+1 <= instructions.length <= 100
+instructions[i] is 'G', 'L' or, 'R'.
+
+","Array,Matrix,Simulation",Easy,,,
+1284,1284. Minimum Number of Flips to Convert Binary Matrix to Zero Matrix,"Given a m x n binary matrix mat. In one step, you can choose one cell and flip it and all the four neighbors of it if they exist (Flip is changing 1 to 0 and 0 to 1). A pair of cells are called neighbors if they share one edge.
+Return the minimum number of steps required to convert mat to a zero matrix or -1 if you cannot.
+A binary matrix is a matrix with all cells equal to 0 or 1 only.
+A zero matrix is a matrix with all cells equal to 0.
+ 
+Example 1:
+
+Input: mat = [[0,0],[0,1]]
+Output: 3
+Explanation: One possible solution is to flip (1, 0) then (0, 1) and finally (1, 1) as shown.
+
+Example 2:
+Input: mat = [[0]]
+Output: 0
+Explanation: Given matrix is a zero matrix. We do not need to change it.
+
+Example 3:
+Input: mat = [[1,0,0],[1,0,0]]
+Output: -1
+Explanation: Given matrix cannot be a zero matrix.
+
+ 
+Constraints:
+
+m == mat.length
+n == mat[i].length
+1 <= m, n <= 3
+mat[i][j] is either 0 or 1.
+
+","Array,Math",Medium,Find the divisors of each element in the array. You only need to loop to the square root of a number to find its divisors.,,
+1298,1298. Maximum Candies You Can Get from Boxes,"You have n boxes labeled from 0 to n - 1. You are given four arrays: status, candies, keys, and containedBoxes where:
+
+status[i] is 1 if the ith box is open and 0 if the ith box is closed,
+candies[i] is the number of candies in the ith box,
+keys[i] is a list of the labels of the boxes you can open after opening the ith box.
+containedBoxes[i] is a list of the boxes you found inside the ith box.
+
+You are given an integer array initialBoxes that contains the labels of the boxes you initially have. You can take all the candies in any open box and you can use the keys in it to open new boxes and you also can use the boxes you find in it.
+Return the maximum number of candies you can get following the rules above.
+ 
+Example 1:
+Input: status = [1,0,1,0], candies = [7,5,4,100], keys = [[],[],[1],[]], containedBoxes = [[1,2],[3],[],[]], initialBoxes = [0]
+Output: 16
+Explanation: You will be initially given box 0. You will find 7 candies in it and boxes 1 and 2.
+Box 1 is closed and you do not have a key for it so you will open box 2. You will find 4 candies and a key to box 1 in box 2.
+In box 1, you will find 5 candies and box 3 but you will not find a key to box 3 so box 3 will remain closed.
+Total number of candies collected = 7 + 4 + 5 = 16 candy.
+
+Example 2:
+Input: status = [1,0,0,0,0,0], candies = [1,1,1,1,1,1], keys = [[1,2,3,4,5],[],[],[],[],[]], containedBoxes = [[1,2,3,4,5],[],[],[],[],[]], initialBoxes = [0]
+Output: 6
+Explanation: You have initially box 0. Opening it you can find boxes 1,2,3,4 and 5 and their keys.
+The total number of candies will be 6.
+
+ 
+Constraints:
+
+n == status.length == candies.length == keys.length == containedBoxes.length
+1 <= n <= 1000
+status[i] is either 0 or 1.
+1 <= candies[i] <= 1000
+0 <= keys[i].length <= n
+0 <= keys[i][j] < n
+All values of keys[i] are unique.
+0 <= containedBoxes[i].length <= n
+0 <= containedBoxes[i][j] < n
+All values of containedBoxes[i] are unique.
+Each box is contained in one box at most.
+0 <= initialBoxes.length <= n
+0 <= initialBoxes[i] < n
+
+","String,Stack",Medium,Find all brackets in the string. Does the order of the reverse matter ? The order does not matter.,,

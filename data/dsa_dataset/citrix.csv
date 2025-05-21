@@ -1,0 +1,308 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1010,1010. Pairs of Songs With Total Durations Divisible by 60,"You are given a list of songs where the ith song has a duration of time[i] seconds.
+Return the number of pairs of songs for which their total duration in seconds is divisible by 60. Formally, we want the number of indices i, j such that i < j with (time[i] + time[j]) % 60 == 0.
+ 
+Example 1:
+Input: time = [30,20,150,100,40]
+Output: 3
+Explanation: Three pairs have a total duration divisible by 60:
+(time[0] = 30, time[2] = 150): total duration 180
+(time[1] = 20, time[3] = 100): total duration 120
+(time[1] = 20, time[4] = 40): total duration 60
+
+Example 2:
+Input: time = [60,60,60]
+Output: 3
+Explanation: All three pairs have a total duration of 120, which is divisible by 60.
+
+ 
+Constraints:
+
+1 <= time.length <= 6 * 104
+1 <= time[i] <= 500
+
+","Hash Table,Math",Medium,,,
+206,206. Reverse Linked List,"Given the head of a singly linked list, reverse the list, and return the reversed list.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+ 
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+","Linked List,Recursion",Easy,,"92,156,234,2196,2236","Reverse Linked List II,Binary Tree Upside Down,Palindrome Linked List,Reverse Nodes in Even Length Groups,Maximum Twin Sum of a Linked List"
+15,15. 3Sum,"Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+ 
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+Example 2:
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+Example 3:
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+
+ 
+Constraints:
+
+3 <= nums.length <= 3000
+-105 <= nums[i] <= 105
+
+","Array,Two Pointers,Sorting",Medium,"So, we essentially need to find three numbers x, y, and z such that they add up to the given value. If we fix one of the numbers say x, we are left with the two-sum problem at hand! For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next numbery which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought for two-sum is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","1,16,18,259","Two Sum,3Sum Closest,4Sum,3Sum Smaller"
+761,761. Special Binary String,"Special binary strings are binary strings with the following two properties:
+
+The number of 0's is equal to the number of 1's.
+Every prefix of the binary string has at least as many 1's as 0's.
+
+You are given a special binary string s.
+A move consists of choosing two consecutive, non-empty, special substrings of s, and swapping them. Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.
+Return the lexicographically largest resulting string possible after applying the mentioned operations on the string.
+ 
+Example 1:
+Input: s = ""11011000""
+Output: ""11100100""
+Explanation: The strings ""10"" [occuring at s[1]] and ""1100"" [at s[3]] are swapped.
+This is the lexicographically largest string possible after some number of swaps.
+
+Example 2:
+Input: s = ""10""
+Output: ""10""
+
+ 
+Constraints:
+
+1 <= s.length <= 50
+s[i] is either '0' or '1'.
+s is a special binary string.
+
+","Array,Sorting,Heap (Priority Queue)",Hard,"Take all the intervals and do an ""events"" (or ""line sweep"") approach - an event of (x, OPEN) increases the number of active intervals, while (x, CLOSE) decreases it.
+
+Processing in sorted order from left to right, if the number of active intervals is zero, then you crossed a region of common free time.","56,1028","Merge Intervals,Interval List Intersections"
+741,741. Cherry Pickup,"You are given an n x n grid representing a field of cherries, each cell is one of three possible integers.
+
+0 means the cell is empty, so you can pass through,
+1 means the cell contains a cherry that you can pick up and pass through, or
+-1 means the cell contains a thorn that blocks your way.
+
+Return the maximum number of cherries you can collect by following the rules below:
+
+Starting at the position (0, 0) and reaching (n - 1, n - 1) by moving right or down through valid path cells (cells with value 0 or 1).
+After reaching (n - 1, n - 1), returning to (0, 0) by moving left or up through valid path cells.
+When passing through a path cell containing a cherry, you pick it up, and the cell becomes an empty cell 0.
+If there is no valid path between (0, 0) and (n - 1, n - 1), then no cherries can be collected.
+
+ 
+Example 1:
+
+Input: grid = [[0,1,-1],[1,0,-1],[1,1,1]]
+Output: 5
+Explanation: The player started at (0, 0) and went down, down, right right to reach (2, 2).
+4 cherries were picked up during this single trip, and the matrix becomes [[0,1,-1],[0,0,-1],[0,0,0]].
+Then, the player went left, up, up, left to return home, picking up one more cherry.
+The total number of cherries picked up is 5, and this is the maximum possible.
+
+Example 2:
+Input: grid = [[1,1,-1],[1,-1,1],[-1,1,1]]
+Output: 0
+
+ 
+Constraints:
+
+n == grid.length
+n == grid[i].length
+1 <= n <= 50
+grid[i][j] is -1, 0, or 1.
+grid[0][0] != -1
+grid[n - 1][n - 1] != -1
+
+","Array,Dynamic Programming,Matrix",Hard,,"64,174,2189","Minimum Path Sum,Dungeon Game,Maximum Path Quality of a Graph"
+697,697. Degree of an Array,"Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.
+Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.
+ 
+Example 1:
+Input: nums = [1,2,2,3,1]
+Output: 2
+Explanation: 
+The input array has a degree of 2 because both elements 1 and 2 appear twice.
+Of the subarrays that have the same degree:
+[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+The shortest length is 2. So return 2.
+
+Example 2:
+Input: nums = [1,2,2,3,1,4,2]
+Output: 6
+Explanation: 
+The degree is 3 because the element 2 is repeated 3 times.
+So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+ 
+Constraints:
+
+nums.length will be between 1 and 50,000.
+nums[i] will be an integer between 0 and 49,999.
+
+","Array,Hash Table",Easy,"Say 5 is the only element that occurs the most number of times - for example, nums = [1, 5, 2, 3, 5, 4, 5, 6].  What is the answer?",53,Maximum Subarray
+829,829. Consecutive Numbers Sum,"Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers.
+ 
+Example 1:
+Input: n = 5
+Output: 2
+Explanation: 5 = 2 + 3
+
+Example 2:
+Input: n = 9
+Output: 3
+Explanation: 9 = 4 + 5 = 2 + 3 + 4
+
+Example 3:
+Input: n = 15
+Output: 4
+Explanation: 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5
+
+ 
+Constraints:
+
+1 <= n <= 109
+
+","Array,Hash Table,String,Counting",Medium,,,
+253,253. Meeting Rooms II,,"Array,Two Pointers,Greedy,Sorting,Heap (Priority Queue)",Medium,"Think about how we would approach this problem in a very simplistic way. We will allocate rooms to meetings that occur earlier in the day v/s the ones that occur later on, right? If you've figured out that we have to sort the meetings by their start time, the next thing to think about is how do we do the allocation? There are two scenarios possible here for any meeting. Either there is no meeting room available and a new one has to be allocated, or a meeting room has freed up and this meeting can take place there. An important thing to note is that we don't really care which room gets freed up while allocating a room for the current meeting. As long as a room is free, our job is done. We already know the rooms we have allocated till now and we also know when are they due to get free because of the end times of the meetings going on in those rooms. We can simply check the room which is due to get vacated the earliest amongst all the allocated rooms. Following up on the previous hint, we can make use of a min-heap to store the end times of the meetings in various rooms. So, every time we want to check if any room is free or not, simply check the topmost element of the min heap as that would be the room that would get free the earliest out of all the other rooms currently occupied.
+
+If the room we extracted from the top of the min heap isn't free, then no other room is. So, we can save time here and simply allocate a new room.","56,252,452,1184","Merge Intervals,Meeting Rooms,Minimum Number of Arrows to Burst Balloons,Car Pooling"
+811,811. Subdomain Visit Count,"A website domain ""discuss.leetcode.com"" consists of various subdomains. At the top level, we have ""com"", at the next level, we have ""leetcode.com"" and at the lowest level, ""discuss.leetcode.com"". When we visit a domain like ""discuss.leetcode.com"", we will also visit the parent domains ""leetcode.com"" and ""com"" implicitly.
+A count-paired domain is a domain that has one of the two formats ""rep d1.d2.d3"" or ""rep d1.d2"" where rep is the number of visits to the domain and d1.d2.d3 is the domain itself.
+
+For example, ""9001 discuss.leetcode.com"" is a count-paired domain that indicates that discuss.leetcode.com was visited 9001 times.
+
+Given an array of count-paired domains cpdomains, return an array of the count-paired domains of each subdomain in the input. You may return the answer in any order.
+ 
+Example 1:
+Input: cpdomains = [""9001 discuss.leetcode.com""]
+Output: [""9001 leetcode.com"",""9001 discuss.leetcode.com"",""9001 com""]
+Explanation: We only have one website domain: ""discuss.leetcode.com"".
+As discussed above, the subdomain ""leetcode.com"" and ""com"" will also be visited. So they will all be visited 9001 times.
+
+Example 2:
+Input: cpdomains = [""900 google.mail.com"", ""50 yahoo.com"", ""1 intel.mail.com"", ""5 wiki.org""]
+Output: [""901 mail.com"",""50 yahoo.com"",""900 google.mail.com"",""5 wiki.org"",""5 org"",""1 intel.mail.com"",""951 com""]
+Explanation: We will visit ""google.mail.com"" 900 times, ""yahoo.com"" 50 times, ""intel.mail.com"" once and ""wiki.org"" 5 times.
+For the subdomains, we will visit ""mail.com"" 900 + 1 = 901 times, ""com"" 900 + 50 + 1 = 951 times, and ""org"" 5 times.
+
+ 
+Constraints:
+
+1 <= cpdomain.length <= 100
+1 <= cpdomain[i].length <= 100
+cpdomain[i] follows either the ""repi d1i.d2i.d3i"" format or the ""repi d1i.d2i"" format.
+repi is an integer in the range [1, 104].
+d1i, d2i, and d3i consist of lowercase English letters.
+
+","Array,Two Pointers",Medium,,,
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+273,273. Integer to English Words,"Convert a non-negative integer num to its English words representation.
+ 
+Example 1:
+Input: num = 123
+Output: ""One Hundred Twenty Three""
+
+Example 2:
+Input: num = 12345
+Output: ""Twelve Thousand Three Hundred Forty Five""
+
+Example 3:
+Input: num = 1234567
+Output: ""One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven""
+
+ 
+Constraints:
+
+0 <= num <= 231 - 1
+
+","Math,String,Recursion",Hard,"Did you see a pattern in dividing the number into chunk of words? For example, 123 and 123000. Group the number by thousands (3 digits). You can write a helper function that takes a number less than 1000 and convert just that chunk to words. There are many edge cases. What are some good test cases? Does your code work with input such as 0? Or 1000010? (middle chunk is zero and should not be printed out)",12,Integer to Roman
+1383,1383. Maximum Performance of a Team,"You are given two integers n and k and two integer arrays speed and efficiency both of length n. There are n engineers numbered from 1 to n. speed[i] and efficiency[i] represent the speed and efficiency of the ith engineer respectively.
+Choose at most k different engineers out of the n engineers to form a team with the maximum performance.
+The performance of a team is the sum of its engineers' speeds multiplied by the minimum efficiency among its engineers.
+Return the maximum performance of this team. Since the answer can be a huge number, return it modulo 109 + 7.
+ 
+Example 1:
+Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 2
+Output: 60
+Explanation: 
+We have the maximum performance of the team by selecting engineer 2 (with speed=10 and efficiency=4) and engineer 5 (with speed=5 and efficiency=7). That is, performance = (10 + 5) * min(4, 7) = 60.
+
+Example 2:
+Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 3
+Output: 68
+Explanation:
+This is the same example as the first but k = 3. We can select engineer 1, engineer 2 and engineer 5 to get the maximum performance of the team. That is, performance = (2 + 10 + 5) * min(5, 4, 7) = 68.
+
+Example 3:
+Input: n = 6, speed = [2,10,3,1,5,8], efficiency = [5,4,3,9,7,2], k = 4
+Output: 72
+
+ 
+Constraints:
+
+1 <= k <= n <= 105
+speed.length == n
+efficiency.length == n
+1 <= speed[i] <= 105
+1 <= efficiency[i] <= 108
+
+",Math,Medium,"The maximum value of nums.length is very large, but the maximum value of nums[i] is not. Count the number of times each value appears in nums. Brute force through every possible combination of values and count how many single divisor triplets can be made with that combination of values.",2301,Count Array Pairs Divisible by K

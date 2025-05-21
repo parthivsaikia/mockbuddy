@@ -1,0 +1,59 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1220,1220. Count Vowels Permutation,"Given an integer n, your task is to count how many strings of length n can be formed under the following rules:
+
+Each character is a lower case vowel ('a', 'e', 'i', 'o', 'u')
+Each vowel 'a' may only be followed by an 'e'.
+Each vowel 'e' may only be followed by an 'a' or an 'i'.
+Each vowel 'i' may not be followed by another 'i'.
+Each vowel 'o' may only be followed by an 'i' or a 'u'.
+Each vowel 'u' may only be followed by an 'a'.
+
+Since the answer may be too large, return it modulo 10^9 + 7.
+ 
+Example 1:
+Input: n = 1
+Output: 5
+Explanation: All possible strings are: ""a"", ""e"", ""i"" , ""o"" and ""u"".
+
+Example 2:
+Input: n = 2
+Output: 10
+Explanation: All possible strings are: ""ae"", ""ea"", ""ei"", ""ia"", ""ie"", ""io"", ""iu"", ""oi"", ""ou"" and ""ua"".
+
+Example 3: 
+Input: n = 5
+Output: 68
+ 
+Constraints:
+
+1 <= n <= 2 * 10^4
+
+","Array,Dynamic Programming,Bit Manipulation,Bitmask",Hard,"Do a bitmask DP. For each person, for each set of skills, we can update our understanding of a minimum set of people needed to perform this set of skills.","2105,2114","The Number of Good Subsets,Minimum Number of Work Sessions to Finish the Tasks"
+1419,1419. Minimum Number of Frogs Croaking,"You are given the string croakOfFrogs, which represents a combination of the string ""croak"" from different frogs, that is, multiple frogs can croak at the same time, so multiple ""croak"" are mixed.
+Return the minimum number of different frogs to finish all the croaks in the given string.
+A valid ""croak"" means a frog is printing five letters 'c', 'r', 'o', 'a', and 'k' sequentially. The frogs have to print all five letters to finish a croak. If the given string is not a combination of a valid ""croak"" return -1.
+ 
+Example 1:
+Input: croakOfFrogs = ""croakcroak""
+Output: 1 
+Explanation: One frog yelling ""croak"" twice.
+
+Example 2:
+Input: croakOfFrogs = ""crcoakroak""
+Output: 2 
+Explanation: The minimum number of frogs is two. 
+The first frog could yell ""crcoakroak"".
+The second frog could yell later ""crcoakroak"".
+
+Example 3:
+Input: croakOfFrogs = ""croakcrook""
+Output: -1
+Explanation: The given string is an invalid combination of ""croak"" from different frogs.
+
+ 
+Constraints:
+
+1 <= croakOfFrogs.length <= 105
+croakOfFrogs is either 'c', 'r', 'o', 'a', or 'k'.
+
+",,,,,

@@ -1,0 +1,453 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+314,314. Binary Tree Vertical Order Traversal,,"Hash Table,Tree,Depth-First Search,Breadth-First Search,Binary Tree",Medium,,102,Binary Tree Level Order Traversal
+1242,1242. Web Crawler Multithreaded,,"Array,Matrix,Prefix Sum",Medium,"How to calculate the required sum for a cell (i,j) fast ? Use the concept of cumulative sum array. Create a cumulative sum matrix where dp[i][j] is the sum of all cells in the rectangle from (0,0) to (i,j), use inclusion-exclusion idea.",2200,Stamping the Grid
+722,722. Remove Comments,"Given a C++ program, remove comments from it. The program source is an array of strings source where source[i] is the ith line of the source code. This represents the result of splitting the original source code string by the newline character '\n'.
+In C++, there are two types of comments, line comments, and block comments.
+
+The string ""//"" denotes a line comment, which represents that it and the rest of the characters to the right of it in the same line should be ignored.
+The string ""/*"" denotes a block comment, which represents that all characters until the next (non-overlapping) occurrence of ""*/"" should be ignored. (Here, occurrences happen in reading order: line by line from left to right.) To be clear, the string ""/*/"" does not yet end the block comment, as the ending would be overlapping the beginning.
+
+The first effective comment takes precedence over others.
+
+For example, if the string ""//"" occurs in a block comment, it is ignored.
+Similarly, if the string ""/*"" occurs in a line or block comment, it is also ignored.
+
+If a certain line of code is empty after removing comments, you must not output that line: each string in the answer list will be non-empty.
+There will be no control characters, single quote, or double quote characters.
+
+For example, source = ""string s = ""/* Not a comment. */"";"" will not be a test case.
+
+Also, nothing else such as defines or macros will interfere with the comments.
+It is guaranteed that every open block comment will eventually be closed, so ""/*"" outside of a line or block comment always starts a new comment.
+Finally, implicit newline characters can be deleted by block comments. Please see the examples below for details.
+After removing the comments from the source code, return the source code in the same format.
+ 
+Example 1:
+Input: source = [""/*Test program */"", ""int main()"", ""{ "", ""  // variable declaration "", ""int a, b, c;"", ""/* This is a test"", ""   multiline  "", ""   comment for "", ""   testing */"", ""a = b + c;"", ""}""]
+Output: [""int main()"",""{ "",""  "",""int a, b, c;"",""a = b + c;"",""}""]
+Explanation: The line by line code is visualized as below:
+/*Test program */
+int main()
+{ 
+  // variable declaration 
+int a, b, c;
+/* This is a test
+   multiline  
+   comment for 
+   testing */
+a = b + c;
+}
+The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments.
+The line by line output code is visualized as below:
+int main()
+{ 
+  
+int a, b, c;
+a = b + c;
+}
+
+Example 2:
+Input: source = [""a/*comment"", ""line"", ""more_comment*/b""]
+Output: [""ab""]
+Explanation: The original source string is ""a/*comment\nline\nmore_comment*/b"", where we have bolded the newline characters.  After deletion, the implicit newline characters are deleted, leaving the string ""ab"", which when delimited by newline characters becomes [""ab""].
+
+ 
+Constraints:
+
+1 <= source.length <= 100
+0 <= source[i].length <= 80
+source[i] consists of printable ASCII characters.
+Every open block comment is eventually closed.
+There are no single-quote or double-quote in the input.
+
+","Array,String",Medium,"Carefully parse each line according to the following rules:
+
+* If we start a block comment and we aren't in a block, then we will skip over the next two characters and change our state to be in a block.
+
+* If we end a block comment and we are in a block, then we will skip over the next two characters and change our state to be *not* in a block.
+
+* If we start a line comment and we aren't in a block, then we will ignore the rest of the line.
+
+* If we aren't in a block comment (and it wasn't the start of a comment), we will record the character we are at.
+
+* At the end of each line, if we aren't in a block, we will record the line.","385,439","Mini Parser,Ternary Expression Parser"
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+742,742. Closest Leaf in a Binary Tree,,String,Easy,"Most languages support lowercase conversion for a string data type. However, that is certainly not the purpose of the problem. Think about how the implementation of the lowercase function call can be done easily. Think ASCII! Think about the different capital letters and their ASCII codes and how that relates to their lowercase counterparts. Does there seem to be any pattern there? Any mathematical relationship that we can use?",2235,Capitalize the Title
+41,41. First Missing Positive,"Given an unsorted integer array nums, return the smallest missing positive integer.
+You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.
+ 
+Example 1:
+Input: nums = [1,2,0]
+Output: 3
+Explanation: The numbers in the range [1,2] are all in the array.
+
+Example 2:
+Input: nums = [3,4,-1,1]
+Output: 2
+Explanation: 1 is in the array but 2 is missing.
+
+Example 3:
+Input: nums = [7,8,9,11,12]
+Output: 1
+Explanation: The smallest positive integer 1 is missing.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+
+","Array,Hash Table",Hard,Think about how you would solve the problem in non-constant space.  Can you apply that logic to the existing space? We don't care about duplicates or non-positive integers Remember that O(2n) = O(n),"268,287,448,770","Missing Number,Find the Duplicate Number,Find All Numbers Disappeared in an Array,Couples Holding Hands"
+239,239. Sliding Window Maximum,"You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+
+","Array,Queue,Sliding Window,Heap (Priority Queue),Monotonic Queue",Hard,How about using a data structure such as deque (double-ended queue)? The queue size need not be the same as the window’s size. Remove redundant elements and the queue should store only elements that need to be considered.,"76,155,159,265,1814","Minimum Window Substring,Min Stack,Longest Substring with At Most Two Distinct Characters,Paint House II,Jump Game VI"
+91,91. Decode Ways,"A message containing letters from A-Z can be encoded into numbers using the following mapping:
+'A' -> ""1""
+'B' -> ""2""
+...
+'Z' -> ""26""
+
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, ""11106"" can be mapped into:
+
+""AAJF"" with the grouping (1 1 10 6)
+""KJF"" with the grouping (11 10 6)
+
+Note that the grouping (1 11 06) is invalid because ""06"" cannot be mapped into 'F' since ""6"" is different from ""06"".
+Given a string s containing only digits, return the number of ways to decode it.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: s = ""12""
+Output: 2
+Explanation: ""12"" could be decoded as ""AB"" (1 2) or ""L"" (12).
+
+Example 2:
+Input: s = ""226""
+Output: 3
+Explanation: ""226"" could be decoded as ""BZ"" (2 26), ""VF"" (22 6), or ""BBF"" (2 2 6).
+
+Example 3:
+Input: s = ""06""
+Output: 0
+Explanation: ""06"" cannot be mapped to ""F"" because of the leading zero (""6"" is different from ""06"").
+
+ 
+Constraints:
+
+1 <= s.length <= 100
+s contains only digits and may contain leading zero(s).
+
+","String,Dynamic Programming",Medium,,"639,2091","Decode Ways II,Number of Ways to Separate Numbers"
+218,218. The Skyline Problem,"A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.
+The geometric information of each building is given in the array buildings where buildings[i] = [lefti, righti, heighti]:
+
+lefti is the x coordinate of the left edge of the ith building.
+righti is the x coordinate of the right edge of the ith building.
+heighti is the height of the ith building.
+
+You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
+The skyline should be represented as a list of ""key points"" sorted by their x-coordinate in the form [[x1,y1],[x2,y2],...]. Each key point is the left endpoint of some horizontal segment in the skyline except the last point in the list, which always has a y-coordinate 0 and is used to mark the skyline's termination where the rightmost building ends. Any ground between the leftmost and rightmost buildings should be part of the skyline's contour.
+Note: There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...,[2 3],[4 5],[7 5],[11 5],[12 7],...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...,[2 3],[4 5],[12 7],...]
+ 
+Example 1:
+
+Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+Explanation:
+Figure A shows the buildings of the input.
+Figure B shows the skyline formed by those buildings. The red points in figure B represent the key points in the output list.
+
+Example 2:
+Input: buildings = [[0,2,3],[2,5,3]]
+Output: [[0,3],[5,0]]
+
+ 
+Constraints:
+
+1 <= buildings.length <= 104
+0 <= lefti < righti <= 231 - 1
+1 <= heighti <= 231 - 1
+buildings is sorted by lefti in non-decreasing order.
+
+","Array,Divide and Conquer,Binary Indexed Tree,Segment Tree,Line Sweep,Heap (Priority Queue),Ordered Set",Hard,,699,Falling Squares
+426,426. Convert Binary Search Tree to Sorted Doubly Linked List,,,,,,
+987,987. Vertical Order Traversal of a Binary Tree,"Given the root of a binary tree, calculate the vertical order traversal of the binary tree.
+For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at (0, 0).
+The vertical order traversal of a binary tree is a list of top-to-bottom orderings for each column index starting from the leftmost column and ending on the rightmost column. There may be multiple nodes in the same row and same column. In such a case, sort these nodes by their values.
+Return the vertical order traversal of the binary tree.
+ 
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[9],[3,15],[20],[7]]
+Explanation:
+Column -1: Only node 9 is in this column.
+Column 0: Nodes 3 and 15 are in this column in that order from top to bottom.
+Column 1: Only node 20 is in this column.
+Column 2: Only node 7 is in this column.
+Example 2:
+
+Input: root = [1,2,3,4,5,6,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation:
+Column -2: Only node 4 is in this column.
+Column -1: Only node 2 is in this column.
+Column 0: Nodes 1, 5, and 6 are in this column.
+          1 is at the top, so it comes first.
+          5 and 6 are at the same position (2, 0), so we order them by their value, 5 before 6.
+Column 1: Only node 3 is in this column.
+Column 2: Only node 7 is in this column.
+
+Example 3:
+
+Input: root = [1,2,3,4,6,5,7]
+Output: [[4],[2],[1,5,6],[3],[7]]
+Explanation:
+This case is the exact same as example 2, but with nodes 5 and 6 swapped.
+Note that the solution remains the same since 5 and 6 are in the same location and should be ordered by their values.
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 1000].
+0 <= Node.val <= 1000
+
+","Array,Queue,Sorting,Simulation",Medium,,,
+381,381. Insert Delete GetRandom O(1) - Duplicates allowed,"RandomizedCollection is a data structure that contains a collection of numbers, possibly duplicates (i.e., a multiset). It should support inserting and removing specific elements and also reporting a random element.
+Implement the RandomizedCollection class:
+
+RandomizedCollection() Initializes the empty RandomizedCollection object.
+bool insert(int val) Inserts an item val into the multiset, even if the item is already present. Returns true if the item is not present, false otherwise.
+bool remove(int val) Removes an item val from the multiset if present. Returns true if the item is present, false otherwise. Note that if val has multiple occurrences in the multiset, we only remove one of them.
+int getRandom() Returns a random element from the current multiset of elements. The probability of each element being returned is linearly related to the number of the same values the multiset contains.
+
+You must implement the functions of the class such that each function works on average O(1) time complexity.
+Note: The test cases are generated such that getRandom will only be called if there is at least one item in the RandomizedCollection.
+ 
+Example 1:
+Input
+[""RandomizedCollection"", ""insert"", ""insert"", ""insert"", ""getRandom"", ""remove"", ""getRandom""]
+[[], [1], [1], [2], [], [1], []]
+Output
+[null, true, false, true, 2, true, 1]
+
+Explanation
+RandomizedCollection randomizedCollection = new RandomizedCollection();
+randomizedCollection.insert(1);   // return true since the collection does not contain 1.
+                                  // Inserts 1 into the collection.
+randomizedCollection.insert(1);   // return false since the collection contains 1.
+                                  // Inserts another 1 into the collection. Collection now contains [1,1].
+randomizedCollection.insert(2);   // return true since the collection does not contain 2.
+                                  // Inserts 2 into the collection. Collection now contains [1,1,2].
+randomizedCollection.getRandom(); // getRandom should:
+                                  // - return 1 with probability 2/3, or
+                                  // - return 2 with probability 1/3.
+randomizedCollection.remove(1);   // return true since the collection contains 1.
+                                  // Removes 1 from the collection. Collection now contains [1,2].
+randomizedCollection.getRandom(); // getRandom should return 1 or 2, both equally likely.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls in total will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Hard,,380,Insert Delete GetRandom O(1)
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+10,10. Regular Expression Matching,"Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
+
+'.' Matches any single character.​​​​
+'*' Matches zero or more of the preceding element.
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""a*""
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes ""aa"".
+
+Example 3:
+Input: s = ""ab"", p = "".*""
+Output: true
+Explanation: "".*"" means ""zero or more (*) of any character (.)"".
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= p.length <= 20
+s contains only lowercase English letters.
+p contains only lowercase English letters, '.', and '*'.
+It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.
+
+","String,Dynamic Programming,Recursion",Hard,,44,Wildcard Matching
+114,114. Flatten Binary Tree to Linked List,"Given the root of a binary tree, flatten the tree into a ""linked list"":
+
+The ""linked list"" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+The ""linked list"" should be in the same order as a pre-order traversal of the binary tree.
+
+ 
+Example 1:
+
+Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+
+Example 2:
+Input: root = []
+Output: []
+
+Example 3:
+Input: root = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-100 <= Node.val <= 100
+
+ 
+Follow up: Can you flatten the tree in-place (with O(1) extra space)?","Linked List,Stack,Tree,Depth-First Search,Binary Tree",Medium,"If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.","766,1796","Flatten a Multilevel Doubly Linked List,Correct a Binary Tree"
+614,614. Second Degree Follower,,Database,Medium,,,
+350,350. Intersection of Two Arrays II,"Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+ 
+Example 1:
+Input: nums1 = [1,2,2,1], nums2 = [2,2]
+Output: [2,2]
+
+Example 2:
+Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+Output: [4,9]
+Explanation: [9,4] is also accepted.
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 1000
+
+ 
+Follow up:
+
+What if the given array is already sorted? How would you optimize your algorithm?
+What if nums1's size is small compared to nums2's size? Which algorithm is better?
+What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+
+","Array,Hash Table,Two Pointers,Binary Search,Sorting",Easy,,"349,1044,1392,2282","Intersection of Two Arrays,Find Common Characters,Find the Difference of Two Arrays,Choose Numbers From Two Arrays in Range"
+981,981. Time Based Key-Value Store,"Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+Implement the TimeMap class:
+
+TimeMap() Initializes the object of the data structure.
+void set(String key, String value, int timestamp) Stores the key key with the value value at the given time timestamp.
+String get(String key, int timestamp) Returns a value such that set was called previously, with timestamp_prev <= timestamp. If there are multiple such values, it returns the value associated with the largest timestamp_prev. If there are no values, it returns """".
+
+ 
+Example 1:
+Input
+[""TimeMap"", ""set"", ""get"", ""get"", ""set"", ""get"", ""get""]
+[[], [""foo"", ""bar"", 1], [""foo"", 1], [""foo"", 3], [""foo"", ""bar2"", 4], [""foo"", 4], [""foo"", 5]]
+Output
+[null, null, ""bar"", ""bar"", null, ""bar2"", ""bar2""]
+
+Explanation
+TimeMap timeMap = new TimeMap();
+timeMap.set(""foo"", ""bar"", 1);  // store the key ""foo"" and value ""bar"" along with timestamp = 1.
+timeMap.get(""foo"", 1);         // return ""bar""
+timeMap.get(""foo"", 3);         // return ""bar"", since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is ""bar"".
+timeMap.set(""foo"", ""bar2"", 4); // store the key ""foo"" and value ""bar2"" along with timestamp = 4.
+timeMap.get(""foo"", 4);         // return ""bar2""
+timeMap.get(""foo"", 5);         // return ""bar2""
+
+ 
+Constraints:
+
+1 <= key.length, value.length <= 100
+key and value consist of lowercase English letters and digits.
+1 <= timestamp <= 107
+All the timestamps timestamp of set are strictly increasing.
+At most 2 * 105 calls will be made to set and get.
+
+","Array,String",Easy,,,

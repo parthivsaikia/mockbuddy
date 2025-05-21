@@ -1,0 +1,185 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+168,168. Excel Sheet Column Title,"Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+For example:
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+
+ 
+Example 1:
+Input: columnNumber = 1
+Output: ""A""
+
+Example 2:
+Input: columnNumber = 28
+Output: ""AB""
+
+Example 3:
+Input: columnNumber = 701
+Output: ""ZY""
+
+ 
+Constraints:
+
+1 <= columnNumber <= 231 - 1
+
+","Math,String",Easy,,"171,2304","Excel Sheet Column Number,Cells in a Range on an Excel Sheet"
+881,881. Boats to Save People,"You are given an array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.
+Return the minimum number of boats to carry every given person.
+ 
+Example 1:
+Input: people = [1,2], limit = 3
+Output: 1
+Explanation: 1 boat (1, 2)
+
+Example 2:
+Input: people = [3,2,2,1], limit = 3
+Output: 3
+Explanation: 3 boats (1, 2), (2) and (3)
+
+Example 3:
+Input: people = [3,5,3,4], limit = 5
+Output: 4
+Explanation: 4 boats (3), (3), (4), (5)
+
+ 
+Constraints:
+
+1 <= people.length <= 5 * 104
+1 <= people[i] <= limit <= 3 * 104
+
+","Array,Depth-First Search,Graph,Topological Sort",Medium,,,
+171,171. Excel Sheet Column Number,"Given a string columnTitle that represents the column title as appears in an Excel sheet, return its corresponding column number.
+For example:
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+...
+
+ 
+Example 1:
+Input: columnTitle = ""A""
+Output: 1
+
+Example 2:
+Input: columnTitle = ""AB""
+Output: 28
+
+Example 3:
+Input: columnTitle = ""ZY""
+Output: 701
+
+ 
+Constraints:
+
+1 <= columnTitle.length <= 7
+columnTitle consists only of uppercase English letters.
+columnTitle is in the range [""A"", ""FXSHRXW""].
+
+","Math,String",Easy,,"168,2304","Excel Sheet Column Title,Cells in a Range on an Excel Sheet"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+206,206. Reverse Linked List,"Given the head of a singly linked list, reverse the list, and return the reversed list.
+ 
+Example 1:
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Example 2:
+
+Input: head = [1,2]
+Output: [2,1]
+
+Example 3:
+Input: head = []
+Output: []
+
+ 
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+
+ 
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+","Linked List,Recursion",Easy,,"92,156,234,2196,2236","Reverse Linked List II,Binary Tree Upside Down,Palindrome Linked List,Reverse Nodes in Even Length Groups,Maximum Twin Sum of a Linked List"
+1081,1081. Smallest Subsequence of Distinct Characters,"Given a string s, return the lexicographically smallest subsequence of s that contains all the distinct characters of s exactly once.
+ 
+Example 1:
+Input: s = ""bcabc""
+Output: ""abc""
+
+Example 2:
+Input: s = ""cbacdcbc""
+Output: ""acdb""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of lowercase English letters.
+
+ 
+Note: This question is the same as 316: https://leetcode.com/problems/remove-duplicate-letters/","Array,Dynamic Programming,Greedy",Medium,"What if we sort the intervals?  Considering the sorted intervals, how can we solve the problem with dynamic programming? Let's consider a DP(pos, limit) where pos represents the position of the current interval we are gonna take the decision and limit is the current covered area from [0 - limit]. This DP returns the minimum number of taken intervals or infinite if it's not possible to cover the [0 - T] section.",,
+1209,1209. Remove All Adjacent Duplicates in String II,"You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+We repeatedly make k duplicate removals on s until we no longer can.
+Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
+ 
+Example 1:
+Input: s = ""abcd"", k = 2
+Output: ""abcd""
+Explanation: There's nothing to delete.
+Example 2:
+Input: s = ""deeedbbcccbdaa"", k = 3
+Output: ""aa""
+Explanation: 
+First delete ""eee"" and ""ccc"", get ""ddbbbdaa""
+Then delete ""bbb"", get ""dddaa""
+Finally delete ""ddd"", get ""aa""
+Example 3:
+Input: s = ""pbbcggttciiippooaais"", k = 2
+Output: ""ps""
+
+ 
+Constraints:
+
+1 <= s.length <= 105
+2 <= k <= 104
+s only contains lowercase English letters.
+
+",Concurrency,Medium,,,

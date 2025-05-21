@@ -1,0 +1,273 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+759,759. Employee Free Time,,"Array,Greedy,Sorting",Hard,,,
+1296,1296. Divide Array in Sets of K Consecutive Numbers,"Given an array of integers nums and a positive integer k, check whether it is possible to divide this array into sets of k consecutive numbers.
+Return true if it is possible. Otherwise, return false.
+ 
+Example 1:
+Input: nums = [1,2,3,3,4,4,5,6], k = 4
+Output: true
+Explanation: Array can be divided into [1,2,3,4] and [3,4,5,6].
+
+Example 2:
+Input: nums = [3,2,1,2,3,4,3,4,5,9,10,11], k = 3
+Output: true
+Explanation: Array can be divided into [1,2,3] , [2,3,4] , [3,4,5] and [9,10,11].
+
+Example 3:
+Input: nums = [1,2,3,4], k = 3
+Output: false
+Explanation: Each array should be divided in subarrays of size 3.
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+1 <= nums[i] <= 109
+
+ 
+Note: This question is the same as 846: https://leetcode.com/problems/hand-of-straights/","Binary Search,Dynamic Programming,Tree,Depth-First Search,Breadth-First Search,Design",Hard,The queries must be answered efficiently to avoid time limit exceeded verdict. Use sparse table (dynamic programming application) to travel the tree upwards in a fast way.,,
+114,114. Flatten Binary Tree to Linked List,"Given the root of a binary tree, flatten the tree into a ""linked list"":
+
+The ""linked list"" should use the same TreeNode class where the right child pointer points to the next node in the list and the left child pointer is always null.
+The ""linked list"" should be in the same order as a pre-order traversal of the binary tree.
+
+ 
+Example 1:
+
+Input: root = [1,2,5,3,4,null,6]
+Output: [1,null,2,null,3,null,4,null,5,null,6]
+
+Example 2:
+Input: root = []
+Output: []
+
+Example 3:
+Input: root = [0]
+Output: [0]
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [0, 2000].
+-100 <= Node.val <= 100
+
+ 
+Follow up: Can you flatten the tree in-place (with O(1) extra space)?","Linked List,Stack,Tree,Depth-First Search,Binary Tree",Medium,"If you notice carefully in the flattened tree, each node's right child points to the next node of a pre-order traversal.","766,1796","Flatten a Multilevel Doubly Linked List,Correct a Binary Tree"
+79,79. Word Search,"Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+ 
+Example 1:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCCED""
+Output: true
+
+Example 2:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""SEE""
+Output: true
+
+Example 3:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCB""
+Output: false
+
+ 
+Constraints:
+
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+board and word consists of only lowercase and uppercase English letters.
+
+ 
+Follow up: Could you use search pruning to make your solution faster with a larger board?
+","Array,Backtracking,Matrix",Medium,,212,Word Search II
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+3,3. Longest Substring Without Repeating Characters,"Given a string s, find the length of the longest substring without repeating characters.
+ 
+Example 1:
+Input: s = ""abcabcbb""
+Output: 3
+Explanation: The answer is ""abc"", with the length of 3.
+
+Example 2:
+Input: s = ""bbbbb""
+Output: 1
+Explanation: The answer is ""b"", with the length of 1.
+
+Example 3:
+Input: s = ""pwwkew""
+Output: 3
+Explanation: The answer is ""wke"", with the length of 3.
+Notice that the answer must be a substring, ""pwke"" is a subsequence and not a substring.
+
+ 
+Constraints:
+
+0 <= s.length <= 5 * 104
+s consists of English letters, digits, symbols and spaces.
+
+","Hash Table,String,Sliding Window",Medium,,"159,340,1034,1813,2209","Longest Substring with At Most Two Distinct Characters,Longest Substring with At Most K Distinct Characters,Subarrays with K Different Integers,Maximum Erasure Value,Number of Equal Count Substrings"
+394,394. Decode String,"Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there will not be input like 3a or 2[4].
+The test cases are generated so that the length of the output will never exceed 105.
+ 
+Example 1:
+Input: s = ""3[a]2[bc]""
+Output: ""aaabcbc""
+
+Example 2:
+Input: s = ""3[a2[c]]""
+Output: ""accaccacc""
+
+Example 3:
+Input: s = ""2[abc]3[cd]ef""
+Output: ""abcabccdcdcdef""
+
+ 
+Constraints:
+
+1 <= s.length <= 30
+s consists of lowercase English letters, digits, and square brackets '[]'.
+s is guaranteed to be a valid input.
+All the integers in s are in the range [1, 300].
+
+","String,Stack,Recursion",Medium,,"471,726,1076","Encode String with Shortest Length,Number of Atoms,Brace Expansion"
+78,78. Subsets,"Given an integer array nums of unique elements, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+
+ 
+Constraints:
+
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+All the numbers of nums are unique.
+
+","Array,Backtracking,Bit Manipulation",Medium,,"90,320,800,2109,2170","Subsets II,Generalized Abbreviation,Letter Case Permutation,Find Array Given Subset Sums,Count Number of Maximum Bitwise-OR Subsets"
+139,139. Word Break,"Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""leetcode"", wordDict = [""leet"",""code""]
+Output: true
+Explanation: Return true because ""leetcode"" can be segmented as ""leet code"".
+
+Example 2:
+Input: s = ""applepenapple"", wordDict = [""apple"",""pen""]
+Output: true
+Explanation: Return true because ""applepenapple"" can be segmented as ""apple pen apple"".
+Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 300
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 20
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+
+","Hash Table,String,Dynamic Programming,Trie,Memoization",Medium,,140,Word Break II
+340,340. Longest Substring with At Most K Distinct Characters,,"Hash Table,String,Sliding Window",Medium,,"3,159,424,1034,1046,2134","Longest Substring Without Repeating Characters,Longest Substring with At Most Two Distinct Characters,Longest Repeating Character Replacement,Subarrays with K Different Integers,Max Consecutive Ones III,Maximize the Confusion of an Exam"
+715,715. Range Module,"A Range Module is a module that tracks ranges of numbers. Design a data structure to track the ranges represented as half-open intervals and query about them.
+A half-open interval [left, right) denotes all the real numbers x where left <= x < right.
+Implement the RangeModule class:
+
+RangeModule() Initializes the object of the data structure.
+void addRange(int left, int right) Adds the half-open interval [left, right), tracking every real number in that interval. Adding an interval that partially overlaps with currently tracked numbers should add any numbers in the interval [left, right) that are not already tracked.
+boolean queryRange(int left, int right) Returns true if every real number in the interval [left, right) is currently being tracked, and false otherwise.
+void removeRange(int left, int right) Stops tracking every real number currently being tracked in the half-open interval [left, right).
+
+ 
+Example 1:
+Input
+[""RangeModule"", ""addRange"", ""removeRange"", ""queryRange"", ""queryRange"", ""queryRange""]
+[[], [10, 20], [14, 16], [10, 14], [13, 15], [16, 17]]
+Output
+[null, null, null, true, false, true]
+
+Explanation
+RangeModule rangeModule = new RangeModule();
+rangeModule.addRange(10, 20);
+rangeModule.removeRange(14, 16);
+rangeModule.queryRange(10, 14); // return True,(Every number in [10, 14) is being tracked)
+rangeModule.queryRange(13, 15); // return False,(Numbers like 14, 14.03, 14.17 in [13, 15) are not being tracked)
+rangeModule.queryRange(16, 17); // return True, (The number 16 in [16, 17) is still being tracked, despite the remove operation)
+
+ 
+Constraints:
+
+1 <= left < right <= 109
+At most 104 calls will be made to addRange, queryRange, and removeRange.
+
+","Design,Segment Tree,Ordered Set",Hard,Maintain a sorted set of disjoint intervals.  addRange and removeRange can be performed with time complexity linear to the size of this set; queryRange can be performed with time complexity logarithmic to the size of this set.,"56,57,352","Merge Intervals,Insert Interval,Data Stream as Disjoint Intervals"
+724,724. Find Pivot Index,"Given an array of integers nums, calculate the pivot index of this array.
+The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+Return the leftmost pivot index. If no such index exists, return -1.
+ 
+Example 1:
+Input: nums = [1,7,3,6,5,6]
+Output: 3
+Explanation:
+The pivot index is 3.
+Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+Example 2:
+Input: nums = [1,2,3]
+Output: -1
+Explanation:
+There is no index that satisfies the conditions in the problem statement.
+Example 3:
+Input: nums = [2,1,-1]
+Output: 0
+Explanation:
+The pivot index is 0.
+Left sum = 0 (no elements to the left of index 0)
+Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+ 
+Constraints:
+
+1 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+ 
+Note: This question is the same as 1991: https://leetcode.com/problems/find-the-middle-index-in-array/
+","Array,Prefix Sum",Easy,"We can precompute prefix sums P[i] = nums[0] + nums[1] + ... + nums[i-1].
+Then for each index, the left sum is P[i], and the right sum is P[P.length - 1] - P[i] - nums[i].","560,2102,2369","Subarray Sum Equals K,Find the Middle Index in Array,Maximum Sum Score of Array"
+776,776. Split BST,,"Stack,Tree,Depth-First Search",Easy,,"145,764,775","Binary Tree Postorder Traversal,N-ary Tree Level Order Traversal,N-ary Tree Preorder Traversal"

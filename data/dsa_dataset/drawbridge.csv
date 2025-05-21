@@ -1,0 +1,134 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+453,453. Minimum Moves to Equal Array Elements,"Given an integer array nums of size n, return the minimum number of moves required to make all array elements equal.
+In one move, you can increment n - 1 elements of the array by 1.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 3
+Explanation: Only three moves are needed (remember each move increments two elements):
+[1,2,3]  =>  [2,3,3]  =>  [3,4,3]  =>  [4,4,4]
+
+Example 2:
+Input: nums = [1,1,1]
+Output: 0
+
+ 
+Constraints:
+
+n == nums.length
+1 <= nums.length <= 105
+-109 <= nums[i] <= 109
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Array,Math",Medium,,"462,2263,2273","Minimum Moves to Equal Array Elements II,Maximum Running Time of N Computers,Pour Water Between Buckets to Make Water Levels Equal"
+547,547. Number of Provinces,"There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+Return the total number of provinces.
+ 
+Example 1:
+
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Example 2:
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+
+ 
+Constraints:
+
+1 <= n <= 200
+n == isConnected.length
+n == isConnected[i].length
+isConnected[i][j] is 1 or 0.
+isConnected[i][i] == 1
+isConnected[i][j] == isConnected[j][i]
+
+","Depth-First Search,Breadth-First Search,Union Find,Graph",Medium,,"323,657,734,737,1085,2206","Number of Connected Components in an Undirected Graph,Robot Return to Origin,Sentence Similarity,Sentence Similarity II,The Earliest Moment When Everyone Become Friends,Detonate the Maximum Bombs"
+253,253. Meeting Rooms II,,"Array,Two Pointers,Greedy,Sorting,Heap (Priority Queue)",Medium,"Think about how we would approach this problem in a very simplistic way. We will allocate rooms to meetings that occur earlier in the day v/s the ones that occur later on, right? If you've figured out that we have to sort the meetings by their start time, the next thing to think about is how do we do the allocation? There are two scenarios possible here for any meeting. Either there is no meeting room available and a new one has to be allocated, or a meeting room has freed up and this meeting can take place there. An important thing to note is that we don't really care which room gets freed up while allocating a room for the current meeting. As long as a room is free, our job is done. We already know the rooms we have allocated till now and we also know when are they due to get free because of the end times of the meetings going on in those rooms. We can simply check the room which is due to get vacated the earliest amongst all the allocated rooms. Following up on the previous hint, we can make use of a min-heap to store the end times of the meetings in various rooms. So, every time we want to check if any room is free or not, simply check the topmost element of the min heap as that would be the room that would get free the earliest out of all the other rooms currently occupied.
+
+If the room we extracted from the top of the min heap isn't free, then no other room is. So, we can save time here and simply allocate a new room.","56,252,452,1184","Merge Intervals,Meeting Rooms,Minimum Number of Arrows to Burst Balloons,Car Pooling"
+54,54. Spiral Matrix,"Given an m x n matrix, return all elements of the matrix in spiral order.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+","Array,Matrix,Simulation",Medium,"Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do. We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column and then we move inwards by 1 and then repeat. That's all, that is all the simulation that we need. Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'd be shifting in the same column. Similarly, by changing values for j, you'd be shifting in the same row.
+Also, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to run the simulation on edge cases like a single column or a single row to see if anything breaks or not.","59,921","Spiral Matrix II,Spiral Matrix III"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+757,757. Set Intersection Size At Least Two,"You are given a 2D integer array intervals where intervals[i] = [starti, endi] represents all the integers from starti to endi inclusively.
+A containing set is an array nums where each interval from intervals has at least two integers in nums.
+
+For example, if intervals = [[1,3], [3,7], [8,9]], then [1,2,4,7,8,9] and [2,3,4,8,9] are containing sets.
+
+Return the minimum possible size of a containing set.
+ 
+Example 1:
+Input: intervals = [[1,3],[3,7],[8,9]]
+Output: 5
+Explanation: let nums = [2, 3, 4, 8, 9].
+It can be shown that there cannot be any containing array of size 4.
+
+Example 2:
+Input: intervals = [[1,3],[1,4],[2,5],[3,5]]
+Output: 3
+Explanation: let nums = [2, 3, 4].
+It can be shown that there cannot be any containing array of size 2.
+
+Example 3:
+Input: intervals = [[1,2],[2,3],[2,4],[4,5]]
+Output: 5
+Explanation: let nums = [1, 2, 3, 4, 5].
+It can be shown that there cannot be any containing array of size 4.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 3000
+intervals[i].length == 2
+0 <= starti < endi <= 108
+
+","Bit Manipulation,Depth-First Search,Breadth-First Search",Medium,,,

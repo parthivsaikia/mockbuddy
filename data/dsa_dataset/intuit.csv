@@ -1,0 +1,694 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+811,811. Subdomain Visit Count,"A website domain ""discuss.leetcode.com"" consists of various subdomains. At the top level, we have ""com"", at the next level, we have ""leetcode.com"" and at the lowest level, ""discuss.leetcode.com"". When we visit a domain like ""discuss.leetcode.com"", we will also visit the parent domains ""leetcode.com"" and ""com"" implicitly.
+A count-paired domain is a domain that has one of the two formats ""rep d1.d2.d3"" or ""rep d1.d2"" where rep is the number of visits to the domain and d1.d2.d3 is the domain itself.
+
+For example, ""9001 discuss.leetcode.com"" is a count-paired domain that indicates that discuss.leetcode.com was visited 9001 times.
+
+Given an array of count-paired domains cpdomains, return an array of the count-paired domains of each subdomain in the input. You may return the answer in any order.
+ 
+Example 1:
+Input: cpdomains = [""9001 discuss.leetcode.com""]
+Output: [""9001 leetcode.com"",""9001 discuss.leetcode.com"",""9001 com""]
+Explanation: We only have one website domain: ""discuss.leetcode.com"".
+As discussed above, the subdomain ""leetcode.com"" and ""com"" will also be visited. So they will all be visited 9001 times.
+
+Example 2:
+Input: cpdomains = [""900 google.mail.com"", ""50 yahoo.com"", ""1 intel.mail.com"", ""5 wiki.org""]
+Output: [""901 mail.com"",""50 yahoo.com"",""900 google.mail.com"",""5 wiki.org"",""5 org"",""1 intel.mail.com"",""951 com""]
+Explanation: We will visit ""google.mail.com"" 900 times, ""yahoo.com"" 50 times, ""intel.mail.com"" once and ""wiki.org"" 5 times.
+For the subdomains, we will visit ""mail.com"" 900 + 1 = 901 times, ""com"" 900 + 50 + 1 = 951 times, and ""org"" 5 times.
+
+ 
+Constraints:
+
+1 <= cpdomain.length <= 100
+1 <= cpdomain[i].length <= 100
+cpdomain[i] follows either the ""repi d1i.d2i.d3i"" format or the ""repi d1i.d2i"" format.
+repi is an integer in the range [1, 104].
+d1i, d2i, and d3i consist of lowercase English letters.
+
+","Array,Two Pointers",Medium,,,
+79,79. Word Search,"Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+ 
+Example 1:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCCED""
+Output: true
+
+Example 2:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""SEE""
+Output: true
+
+Example 3:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCB""
+Output: false
+
+ 
+Constraints:
+
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+board and word consists of only lowercase and uppercase English letters.
+
+ 
+Follow up: Could you use search pruning to make your solution faster with a larger board?
+","Array,Backtracking,Matrix",Medium,,212,Word Search II
+729,729. My Calendar I,"You are implementing a program to use as your calendar. We can add a new event if adding the event will not cause a double booking.
+A double booking happens when two events have some non-empty intersection (i.e., some moment is common to both events.).
+The event can be represented as a pair of integers start and end that represents a booking on the half-open interval [start, end), the range of real numbers x such that start <= x < end.
+Implement the MyCalendar class:
+
+MyCalendar() Initializes the calendar object.
+boolean book(int start, int end) Returns true if the event can be added to the calendar successfully without causing a double booking. Otherwise, return false and do not add the event to the calendar.
+
+ 
+Example 1:
+Input
+[""MyCalendar"", ""book"", ""book"", ""book""]
+[[], [10, 20], [15, 25], [20, 30]]
+Output
+[null, true, false, true]
+
+Explanation
+MyCalendar myCalendar = new MyCalendar();
+myCalendar.book(10, 20); // return True
+myCalendar.book(15, 25); // return False, It can not be booked because time 15 is already booked by another event.
+myCalendar.book(20, 30); // return True, The event can be booked, as the first event takes every time less than 20, but not including 20.
+ 
+Constraints:
+
+0 <= start < end <= 109
+At most 1000 calls will be made to book.
+
+","Design,Segment Tree,Ordered Set",Medium,"Store the events as a sorted list of intervals.  If none of the events conflict, then the new event can be added.","731,732","My Calendar II,My Calendar III"
+409,409. Longest Palindrome,"Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+Letters are case sensitive, for example, ""Aa"" is not considered a palindrome here.
+ 
+Example 1:
+Input: s = ""abccccdd""
+Output: 7
+Explanation: One longest palindrome that can be built is ""dccaccd"", whose length is 7.
+
+Example 2:
+Input: s = ""a""
+Output: 1
+Explanation: The longest palindrome that can be built is ""a"", whose length is 1.
+
+ 
+Constraints:
+
+1 <= s.length <= 2000
+s consists of lowercase and/or uppercase English letters only.
+
+","Hash Table,String,Greedy",Easy,,"266,2237","Palindrome Permutation,Longest Palindrome by Concatenating Two Letter Words"
+759,759. Employee Free Time,,"Array,Greedy,Sorting",Hard,,,
+210,210. Course Schedule II,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: [0,1]
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
+
+Example 2:
+Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+Output: [0,2,1,3]
+Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
+So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
+
+Example 3:
+Input: numCourses = 1, prerequisites = []
+Output: [0]
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= numCourses * (numCourses - 1)
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+ai != bi
+All the pairs [ai, bi] are distinct.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding the topological order in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","207,269,310,444,630,1101,2220","Course Schedule,Alien Dictionary,Minimum Height Trees,Sequence Reconstruction,Course Schedule III,Parallel Courses,Find All Possible Recipes from Given Supplies"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+287,287. Find the Duplicate Number,"Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+There is only one repeated number in nums, return this repeated number.
+You must solve the problem without modifying the array nums and uses only constant extra space.
+ 
+Example 1:
+Input: nums = [1,3,4,2,2]
+Output: 2
+
+Example 2:
+Input: nums = [3,1,3,4,2]
+Output: 3
+
+ 
+Constraints:
+
+1 <= n <= 105
+nums.length == n + 1
+1 <= nums[i] <= n
+All the integers in nums appear only once except for precisely one integer which appears two or more times.
+
+ 
+Follow up:
+
+How can we prove that at least one duplicate number must exist in nums?
+Can you solve the problem in linear runtime complexity?
+
+","Array,Two Pointers,Binary Search,Bit Manipulation",Medium,,"41,136,142,268,645","First Missing Positive,Single Number,Linked List Cycle II,Missing Number,Set Mismatch"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+207,207. Course Schedule,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return true if you can finish all courses. Otherwise, return false.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
+
+Example 2:
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+Output: false
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= 5000
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+All the pairs prerequisites[i] are unique.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","210,261,310,630","Course Schedule II,Graph Valid Tree,Minimum Height Trees,Course Schedule III"
+49,49. Group Anagrams,"Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ 
+Example 1:
+Input: strs = [""eat"",""tea"",""tan"",""ate"",""nat"",""bat""]
+Output: [[""bat""],[""nat"",""tan""],[""ate"",""eat"",""tea""]]
+Example 2:
+Input: strs = [""""]
+Output: [[""""]]
+Example 3:
+Input: strs = [""a""]
+Output: [[""a""]]
+
+ 
+Constraints:
+
+1 <= strs.length <= 104
+0 <= strs[i].length <= 100
+strs[i] consists of lowercase English letters.
+
+","Hash Table,String,Sorting",Medium,,"242,249","Valid Anagram,Group Shifted Strings"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+770,770. Basic Calculator IV,"Given an expression such as expression = ""e + 8 - a + 5"" and an evaluation map such as {""e"": 1} (given in terms of evalvars = [""e""] and evalints = [1]), return a list of tokens representing the simplified expression, such as [""-1*a"",""14""]
+
+An expression alternates chunks and symbols, with a space separating each chunk and symbol.
+A chunk is either an expression in parentheses, a variable, or a non-negative integer.
+A variable is a string of lowercase letters (not including digits.) Note that variables can be multiple letters, and note that variables never have a leading coefficient or unary operator like ""2x"" or ""-x"".
+
+Expressions are evaluated in the usual order: brackets first, then multiplication, then addition and subtraction.
+
+For example, expression = ""1 + 2 * 3"" has an answer of [""7""].
+
+The format of the output is as follows:
+
+For each term of free variables with a non-zero coefficient, we write the free variables within a term in sorted order lexicographically.
+	
+For example, we would never write a term like ""b*a*c"", only ""a*b*c"".
+
+
+Terms have degrees equal to the number of free variables being multiplied, counting multiplicity. We write the largest degree terms of our answer first, breaking ties by lexicographic order ignoring the leading coefficient of the term.
+	
+For example, ""a*a*b*c"" has degree 4.
+
+
+The leading coefficient of the term is placed directly to the left with an asterisk separating it from the variables (if they exist.) A leading coefficient of 1 is still printed.
+An example of a well-formatted answer is [""-2*a*a*a"", ""3*a*a*b"", ""3*b*b"", ""4*a"", ""5*c"", ""-6""].
+Terms (including constant terms) with coefficient 0 are not included.
+	
+For example, an expression of ""0"" has an output of [].
+
+
+
+Note: You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+ 
+Example 1:
+Input: expression = ""e + 8 - a + 5"", evalvars = [""e""], evalints = [1]
+Output: [""-1*a"",""14""]
+
+Example 2:
+Input: expression = ""e - 8 + temperature - pressure"", evalvars = [""e"", ""temperature""], evalints = [1, 12]
+Output: [""-1*pressure"",""5""]
+
+Example 3:
+Input: expression = ""(e + 8) * (e - 8)"", evalvars = [], evalints = []
+Output: [""1*e*e"",""-64""]
+
+ 
+Constraints:
+
+1 <= expression.length <= 250
+expression consists of lowercase English letters, digits, '+', '-', '*', '(', ')', ' '.
+expression does not contain any leading or trailing spaces.
+All the tokens in expression are separated by a single space.
+0 <= evalvars.length <= 100
+1 <= evalvars[i].length <= 20
+evalvars[i] consists of lowercase English letters.
+evalints.length == evalvars.length
+-100 <= evalints[i] <= 100
+
+","Greedy,Depth-First Search,Breadth-First Search,Union Find,Graph",Hard,"Say there are N two-seat couches.  For each couple, draw an edge from the couch of one partner to the couch of the other partner.","41,268,884","First Missing Positive,Missing Number,K-Similar Strings"
+224,224. Basic Calculator,"Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""1 + 1""
+Output: 2
+
+Example 2:
+Input: s = "" 2-1 + 2 ""
+Output: 3
+
+Example 3:
+Input: s = ""(1+(4+5+2)-3)+(6+8)""
+Output: 23
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of digits, '+', '-', '(', ')', and ' '.
+s represents a valid expression.
+'+' is not used as a unary operation (i.e., ""+1"" and ""+(2 + 3)"" is invalid).
+'-' could be used as a unary operation (i.e., ""-1"" and ""-(2 + 3)"" is valid).
+There will be no two consecutive operators in the input.
+Every number and running calculation will fit in a signed 32-bit integer.
+
+","Math,String,Stack,Recursion",Hard,,"150,227,241,282,785,2147,2328","Evaluate Reverse Polish Notation,Basic Calculator II,Different Ways to Add Parentheses,Expression Add Operators,Basic Calculator III,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+718,718. Maximum Length of Repeated Subarray,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+ 
+Example 1:
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
+
+Example 2:
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 100
+
+","Array,Binary Search,Dynamic Programming,Sliding Window,Rolling Hash,Hash Function",Medium,"Use dynamic programming.  dp[i][j] will be the answer for inputs A[i:], B[j:].","209,2051","Minimum Size Subarray Sum,Longest Common Subpath"
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+236,236. Lowest Common Ancestor of a Binary Tree,"Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+ 
+Example 1:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+
+Example 2:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+
+Example 3:
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [2, 105].
+-109 <= Node.val <= 109
+All Node.val are unique.
+p != q
+p and q will exist in the tree.
+
+","Tree,Depth-First Search,Binary Tree",Medium,,"235,1190,1354,1780,1790,1816,2217","Lowest Common Ancestor of a Binary Search Tree,Smallest Common Region,Find Players With Zero or One Losses,Lowest Common Ancestor of a Binary Tree II,Lowest Common Ancestor of a Binary Tree III,Lowest Common Ancestor of a Binary Tree IV,Step-By-Step Directions From a Binary Tree Node to Another"
+72,72. Edit Distance,"Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
+You have the following three operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+
+ 
+Example 1:
+Input: word1 = ""horse"", word2 = ""ros""
+Output: 3
+Explanation: 
+horse -> rorse (replace 'h' with 'r')
+rorse -> rose (remove 'r')
+rose -> ros (remove 'e')
+
+Example 2:
+Input: word1 = ""intention"", word2 = ""execution""
+Output: 5
+Explanation: 
+intention -> inention (remove 't')
+inention -> enention (replace 'i' with 'e')
+enention -> exention (replace 'n' with 'x')
+exention -> exection (replace 'n' with 'c')
+exection -> execution (insert 'u')
+
+ 
+Constraints:
+
+0 <= word1.length, word2.length <= 500
+word1 and word2 consist of lowercase English letters.
+
+","String,Dynamic Programming",Hard,,"161,583,712,1105,2311","One Edit Distance,Delete Operation for Two Strings,Minimum ASCII Delete Sum for Two Strings,Uncrossed Lines,Minimum White Tiles After Covering With Carpets"
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+124,124. Binary Tree Maximum Path Sum,"A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
+The path sum of a path is the sum of the node's values in the path.
+Given the root of a binary tree, return the maximum path sum of any non-empty path.
+ 
+Example 1:
+
+Input: root = [1,2,3]
+Output: 6
+Explanation: The optimal path is 2 -> 1 -> 3 with a path sum of 2 + 1 + 3 = 6.
+
+Example 2:
+
+Input: root = [-10,9,20,null,null,15,7]
+Output: 42
+Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 42.
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [1, 3 * 104].
+-1000 <= Node.val <= 1000
+
+","Dynamic Programming,Tree,Depth-First Search,Binary Tree",Hard,,"112,129,666,687,1492","Path Sum,Sum Root to Leaf Numbers,Path Sum IV,Longest Univalue Path,Time Needed to Inform All Employees"
+155,155. Min Stack,"Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Implement the MinStack class:
+
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+ 
+Example 1:
+Input
+[""MinStack"",""push"",""push"",""push"",""getMin"",""pop"",""top"",""getMin""]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explanation
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+Methods pop, top and getMin operations will always be called on non-empty stacks.
+At most 3 * 104 calls will be made to push, pop, top, and getMin.
+
+","Stack,Design",Easy,Consider each node in the stack having a minimum value. (Credits to @aakarshmadhavan),"239,716","Sliding Window Maximum,Max Stack"
+695,695. Max Area of Island,"You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
+The area of an island is the number of cells with a value 1 in the island.
+Return the maximum area of an island in grid. If there is no island, return 0.
+ 
+Example 1:
+
+Input: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+Output: 6
+Explanation: The answer is not 11, because the island must be connected 4-directionally.
+
+Example 2:
+Input: grid = [[0,0,0,0,0,0,0,0]]
+Output: 0
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 50
+grid[i][j] is either 0 or 1.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"200,463,1845,2206","Number of Islands,Island Perimeter,Largest Submatrix With Rearrangements,Detonate the Maximum Bombs"
+628,628. Maximum Product of Three Numbers,"Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: 6
+Example 2:
+Input: nums = [1,2,3,4]
+Output: 24
+Example 3:
+Input: nums = [-1,-2,-3]
+Output: -6
+
+ 
+Constraints:
+
+3 <= nums.length <= 104
+-1000 <= nums[i] <= 1000
+
+","Array,Math,Sorting",Easy,,152,Maximum Product Subarray

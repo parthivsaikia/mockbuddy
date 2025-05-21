@@ -1,0 +1,60 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+1335,1335. Minimum Difficulty of a Job Schedule,"You want to schedule a list of jobs in d days. Jobs are dependent (i.e To work on the ith job, you have to finish all the jobs j where 0 <= j < i).
+You have to finish at least one task every day. The difficulty of a job schedule is the sum of difficulties of each day of the d days. The difficulty of a day is the maximum difficulty of a job done on that day.
+You are given an integer array jobDifficulty and an integer d. The difficulty of the ith job is jobDifficulty[i].
+Return the minimum difficulty of a job schedule. If you cannot find a schedule for the jobs return -1.
+ 
+Example 1:
+
+Input: jobDifficulty = [6,5,4,3,2,1], d = 2
+Output: 7
+Explanation: First day you can finish the first 5 jobs, total difficulty = 6.
+Second day you can finish the last job, total difficulty = 1.
+The difficulty of the schedule = 6 + 1 = 7 
+
+Example 2:
+Input: jobDifficulty = [9,9,9], d = 4
+Output: -1
+Explanation: If you finish a job per day you will still have a free day. you cannot find a schedule for the given jobs.
+
+Example 3:
+Input: jobDifficulty = [1,1,1], d = 3
+Output: 3
+Explanation: The schedule is one job per day. total difficulty will be 3.
+
+ 
+Constraints:
+
+1 <= jobDifficulty.length <= 300
+0 <= jobDifficulty[i] <= 1000
+1 <= d <= 10
+
+","Array,Binary Search",Medium,"For a fixed number of candies c, how can you check if each child can get c candies? Use binary search to find the maximum c as the answer.","907,1886,2000,2027,2188,2294","Koko Eating Bananas,Minimum Limit of Balls in a Bag,Minimum Speed to Arrive on Time,Maximum Number of Removable Characters,Minimized Maximum of Products Distributed to Any Store,Minimum Time to Complete Trips"
+1534,1534. Count Good Triplets,"Given an array of integers arr, and three integers a, b and c. You need to find the number of good triplets.
+A triplet (arr[i], arr[j], arr[k]) is good if the following conditions are true:
+
+0 <= i < j < k < arr.length
+|arr[i] - arr[j]| <= a
+|arr[j] - arr[k]| <= b
+|arr[i] - arr[k]| <= c
+
+Where |x| denotes the absolute value of x.
+Return the number of good triplets.
+ 
+Example 1:
+Input: arr = [3,0,1,1,9,7], a = 7, b = 2, c = 3
+Output: 4
+Explanation: There are 4 good triplets: [(3,0,1), (3,0,1), (3,1,1), (0,1,1)].
+
+Example 2:
+Input: arr = [1,1,2,2,3], a = 0, b = 0, c = 1
+Output: 0
+Explanation: No triplet satisfies all conditions.
+
+ 
+Constraints:
+
+3 <= arr.length <= 100
+0 <= arr[i] <= 1000
+0 <= a, b, c <= 1000
+","String,Counting",Medium,"keep the frequency of all characters from ""croak"" using a hashmap. For each character in the given string, greedily match it to a possible ""croak"".",,

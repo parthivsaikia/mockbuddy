@@ -1,0 +1,101 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+811,811. Subdomain Visit Count,"A website domain ""discuss.leetcode.com"" consists of various subdomains. At the top level, we have ""com"", at the next level, we have ""leetcode.com"" and at the lowest level, ""discuss.leetcode.com"". When we visit a domain like ""discuss.leetcode.com"", we will also visit the parent domains ""leetcode.com"" and ""com"" implicitly.
+A count-paired domain is a domain that has one of the two formats ""rep d1.d2.d3"" or ""rep d1.d2"" where rep is the number of visits to the domain and d1.d2.d3 is the domain itself.
+
+For example, ""9001 discuss.leetcode.com"" is a count-paired domain that indicates that discuss.leetcode.com was visited 9001 times.
+
+Given an array of count-paired domains cpdomains, return an array of the count-paired domains of each subdomain in the input. You may return the answer in any order.
+ 
+Example 1:
+Input: cpdomains = [""9001 discuss.leetcode.com""]
+Output: [""9001 leetcode.com"",""9001 discuss.leetcode.com"",""9001 com""]
+Explanation: We only have one website domain: ""discuss.leetcode.com"".
+As discussed above, the subdomain ""leetcode.com"" and ""com"" will also be visited. So they will all be visited 9001 times.
+
+Example 2:
+Input: cpdomains = [""900 google.mail.com"", ""50 yahoo.com"", ""1 intel.mail.com"", ""5 wiki.org""]
+Output: [""901 mail.com"",""50 yahoo.com"",""900 google.mail.com"",""5 wiki.org"",""5 org"",""1 intel.mail.com"",""951 com""]
+Explanation: We will visit ""google.mail.com"" 900 times, ""yahoo.com"" 50 times, ""intel.mail.com"" once and ""wiki.org"" 5 times.
+For the subdomains, we will visit ""mail.com"" 900 + 1 = 901 times, ""com"" 900 + 50 + 1 = 951 times, and ""org"" 5 times.
+
+ 
+Constraints:
+
+1 <= cpdomain.length <= 100
+1 <= cpdomain[i].length <= 100
+cpdomain[i] follows either the ""repi d1i.d2i.d3i"" format or the ""repi d1i.d2i"" format.
+repi is an integer in the range [1, 104].
+d1i, d2i, and d3i consist of lowercase English letters.
+
+","Array,Two Pointers",Medium,,,
+224,224. Basic Calculator,"Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""1 + 1""
+Output: 2
+
+Example 2:
+Input: s = "" 2-1 + 2 ""
+Output: 3
+
+Example 3:
+Input: s = ""(1+(4+5+2)-3)+(6+8)""
+Output: 23
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of digits, '+', '-', '(', ')', and ' '.
+s represents a valid expression.
+'+' is not used as a unary operation (i.e., ""+1"" and ""+(2 + 3)"" is invalid).
+'-' could be used as a unary operation (i.e., ""-1"" and ""-(2 + 3)"" is valid).
+There will be no two consecutive operators in the input.
+Every number and running calculation will fit in a signed 32-bit integer.
+
+","Math,String,Stack,Recursion",Hard,,"150,227,241,282,785,2147,2328","Evaluate Reverse Polish Notation,Basic Calculator II,Different Ways to Add Parentheses,Expression Add Operators,Basic Calculator III,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+718,718. Maximum Length of Repeated Subarray,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+ 
+Example 1:
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
+
+Example 2:
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 100
+
+","Array,Binary Search,Dynamic Programming,Sliding Window,Rolling Hash,Hash Function",Medium,"Use dynamic programming.  dp[i][j] will be the answer for inputs A[i:], B[j:].","209,2051","Minimum Size Subarray Sum,Longest Common Subpath"
+85,85. Maximal Rectangle,"Given a rows x cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
+ 
+Example 1:
+
+Input: matrix = [[""1"",""0"",""1"",""0"",""0""],[""1"",""0"",""1"",""1"",""1""],[""1"",""1"",""1"",""1"",""1""],[""1"",""0"",""0"",""1"",""0""]]
+Output: 6
+Explanation: The maximal rectangle is shown in the above picture.
+
+Example 2:
+Input: matrix = [[""0""]]
+Output: 0
+
+Example 3:
+Input: matrix = [[""1""]]
+Output: 1
+
+ 
+Constraints:
+
+rows == matrix.length
+cols == matrix[i].length
+1 <= row, cols <= 200
+matrix[i][j] is '0' or '1'.
+
+","Array,Dynamic Programming,Stack,Matrix,Monotonic Stack",Hard,,"84,221","Largest Rectangle in Histogram,Maximal Square"

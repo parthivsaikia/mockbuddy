@@ -1,0 +1,472 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+609,609. Find Duplicate File in System,"Given a list paths of directory info, including the directory path, and all the files with contents in this directory, return all the duplicate files in the file system in terms of their paths. You may return the answer in any order.
+A group of duplicate files consists of at least two files that have the same content.
+A single directory info string in the input list has the following format:
+
+""root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ... fn.txt(fn_content)""
+
+It means there are n files (f1.txt, f2.txt ... fn.txt) with content (f1_content, f2_content ... fn_content) respectively in the directory ""root/d1/d2/.../dm"". Note that n >= 1 and m >= 0. If m = 0, it means the directory is just the root directory.
+The output is a list of groups of duplicate file paths. For each group, it contains all the file paths of the files that have the same content. A file path is a string that has the following format:
+
+""directory_path/file_name.txt""
+
+ 
+Example 1:
+Input: paths = [""root/a 1.txt(abcd) 2.txt(efgh)"",""root/c 3.txt(abcd)"",""root/c/d 4.txt(efgh)"",""root 4.txt(efgh)""]
+Output: [[""root/a/2.txt"",""root/c/d/4.txt"",""root/4.txt""],[""root/a/1.txt"",""root/c/3.txt""]]
+Example 2:
+Input: paths = [""root/a 1.txt(abcd) 2.txt(efgh)"",""root/c 3.txt(abcd)"",""root/c/d 4.txt(efgh)""]
+Output: [[""root/a/2.txt"",""root/c/d/4.txt""],[""root/a/1.txt"",""root/c/3.txt""]]
+
+ 
+Constraints:
+
+1 <= paths.length <= 2 * 104
+1 <= paths[i].length <= 3000
+1 <= sum(paths[i].length) <= 5 * 105
+paths[i] consist of English letters, digits, '/', '.', '(', ')', and ' '.
+You may assume no files or directories share the same name in the same directory.
+You may assume each given directory info represents a unique directory. A single blank space separates the directory path and file info.
+
+ 
+Follow up:
+
+Imagine you are given a real file system, how will you search files? DFS or BFS?
+If the file content is very large (GB level), how will you modify your solution?
+If you can only read the file by 1kb each time, how will you modify your solution?
+What is the time complexity of your modified solution? What is the most time-consuming part and memory-consuming part of it? How to optimize?
+How to make sure the duplicated files you find are not false positive?
+
+","Array,Hash Table,String",Medium,,2079,Delete Duplicate Folders in System
+289,289. Game of Life,"According to Wikipedia's article: ""The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.""
+The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+
+Any live cell with fewer than two live neighbors dies as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by over-population.
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.
+ 
+Example 1:
+
+Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
+Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
+
+Example 2:
+
+Input: board = [[1,1],[1,0]]
+Output: [[1,1],[1,1]]
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 25
+board[i][j] is 0 or 1.
+
+ 
+Follow up:
+
+Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.
+In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?
+
+","Array,Matrix,Simulation",Medium,,73,Set Matrix Zeroes
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+924,924. Minimize Malware Spread,"You are given a network of n nodes represented as an n x n adjacency matrix graph, where the ith node is directly connected to the jth node if graph[i][j] == 1.
+Some nodes initial are initially infected by malware. Whenever two nodes are directly connected, and at least one of those two nodes is infected by malware, both nodes will be infected by malware. This spread of malware will continue until no more nodes can be infected in this manner.
+Suppose M(initial) is the final number of nodes infected with malware in the entire network after the spread of malware stops. We will remove exactly one node from initial.
+Return the node that, if removed, would minimize M(initial). If multiple nodes could be removed to minimize M(initial), return such a node with the smallest index.
+Note that if a node was removed from the initial list of infected nodes, it might still be infected later due to the malware spread.
+ 
+Example 1:
+Input: graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+Output: 0
+Example 2:
+Input: graph = [[1,0,0],[0,1,0],[0,0,1]], initial = [0,2]
+Output: 0
+Example 3:
+Input: graph = [[1,1,1],[1,1,1],[1,1,1]], initial = [1,2]
+Output: 1
+
+ 
+Constraints:
+
+n == graph.length
+n == graph[i].length
+2 <= n <= 300
+graph[i][j] is 0 or 1.
+graph[i][j] == graph[j][i]
+graph[i][i] == 1
+1 <= initial.length <= n
+0 <= initial[i] <= n - 1
+All the integers in initial are unique.
+
+","Array,Hash Table,Binary Search,Sorting",Easy,,,
+379,379. Design Phone Directory,,"Array,Hash Table,Linked List,Design,Queue",Medium,,1955,Seat Reservation Manager
+928,928. Minimize Malware Spread II,"You are given a network of n nodes represented as an n x n adjacency matrix graph, where the ith node is directly connected to the jth node if graph[i][j] == 1.
+Some nodes initial are initially infected by malware. Whenever two nodes are directly connected, and at least one of those two nodes is infected by malware, both nodes will be infected by malware. This spread of malware will continue until no more nodes can be infected in this manner.
+Suppose M(initial) is the final number of nodes infected with malware in the entire network after the spread of malware stops.
+We will remove exactly one node from initial, completely removing it and any connections from this node to any other node.
+Return the node that, if removed, would minimize M(initial). If multiple nodes could be removed to minimize M(initial), return such a node with the smallest index.
+ 
+Example 1:
+Input: graph = [[1,1,0],[1,1,0],[0,0,1]], initial = [0,1]
+Output: 0
+Example 2:
+Input: graph = [[1,1,0],[1,1,1],[0,1,1]], initial = [0,1]
+Output: 1
+Example 3:
+Input: graph = [[1,1,0,0],[1,1,1,0],[0,1,1,1],[0,0,1,1]], initial = [0,1]
+Output: 1
+
+ 
+Constraints:
+
+n == graph.length
+n == graph[i].length
+2 <= n <= 300
+graph[i][j] is 0 or 1.
+graph[i][j] == graph[j][i]
+graph[i][i] == 1
+1 <= initial.length < n
+0 <= initial[i] <= n - 1
+All the integers in initial are unique.
+
+","Array,Math,Geometry,Matrix",Easy,,,
+1242,1242. Web Crawler Multithreaded,,"Array,Matrix,Prefix Sum",Medium,"How to calculate the required sum for a cell (i,j) fast ? Use the concept of cumulative sum array. Create a cumulative sum matrix where dp[i][j] is the sum of all cells in the rectangle from (0,0) to (i,j), use inclusion-exclusion idea.",2200,Stamping the Grid
+1178,1178. Number of Valid Words for Each Puzzle,"With respect to a given puzzle string, a word is valid if both the following conditions are satisfied:
+
+word contains the first letter of puzzle.
+For each letter in word, that letter is in puzzle.
+	
+For example, if the puzzle is ""abcdefg"", then valid words are ""faced"", ""cabbage"", and ""baggage"", while
+invalid words are ""beefed"" (does not include 'a') and ""based"" (includes 's' which is not in the puzzle).
+
+
+
+Return an array answer, where answer[i] is the number of words in the given word list words that is valid with respect to the puzzle puzzles[i].
+ 
+Example 1:
+Input: words = [""aaaa"",""asas"",""able"",""ability"",""actt"",""actor"",""access""], puzzles = [""aboveyz"",""abrodyz"",""abslute"",""absoryz"",""actresz"",""gaswxyz""]
+Output: [1,1,3,2,4,0]
+Explanation: 
+1 valid word for ""aboveyz"" : ""aaaa"" 
+1 valid word for ""abrodyz"" : ""aaaa""
+3 valid words for ""abslute"" : ""aaaa"", ""asas"", ""able""
+2 valid words for ""absoryz"" : ""aaaa"", ""asas""
+4 valid words for ""actresz"" : ""aaaa"", ""asas"", ""actt"", ""access""
+There are no valid words for ""gaswxyz"" cause none of the words in the list contains letter 'g'.
+
+Example 2:
+Input: words = [""apple"",""pleas"",""please""], puzzles = [""aelwxyz"",""aelpxyz"",""aelpsxy"",""saelpxy"",""xaelpsy""]
+Output: [0,1,3,2,0]
+
+ 
+Constraints:
+
+1 <= words.length <= 105
+4 <= words[i].length <= 50
+1 <= puzzles.length <= 104
+puzzles[i].length == 7
+words[i] and puzzles[i] consist of lowercase English letters.
+Each puzzles[i] does not contain repeated characters.
+
+","String,Dynamic Programming",Hard,Can you reduce this problem to a classic problem? The problem is equivalent to finding any palindromic subsequence of length at least N-K where N is the length of the string. Try to find the longest palindromic subsequence. Use DP to do that.,680,Valid Palindrome II
+642,642. Design Search Autocomplete System,,"String,Design,Trie,Data Stream",Hard,,208,Implement Trie (Prefix Tree)
+1010,1010. Pairs of Songs With Total Durations Divisible by 60,"You are given a list of songs where the ith song has a duration of time[i] seconds.
+Return the number of pairs of songs for which their total duration in seconds is divisible by 60. Formally, we want the number of indices i, j such that i < j with (time[i] + time[j]) % 60 == 0.
+ 
+Example 1:
+Input: time = [30,20,150,100,40]
+Output: 3
+Explanation: Three pairs have a total duration divisible by 60:
+(time[0] = 30, time[2] = 150): total duration 180
+(time[1] = 20, time[3] = 100): total duration 120
+(time[1] = 20, time[4] = 40): total duration 60
+
+Example 2:
+Input: time = [60,60,60]
+Output: 3
+Explanation: All three pairs have a total duration of 120, which is divisible by 60.
+
+ 
+Constraints:
+
+1 <= time.length <= 6 * 104
+1 <= time[i] <= 500
+
+","Hash Table,Math",Medium,,,
+362,362. Design Hit Counter,,"Array,Hash Table,Binary Search,Design,Queue",Medium,,359,Logger Rate Limiter
+17,17. Letter Combinations of a Phone Number,"Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+ 
+Example 1:
+Input: digits = ""23""
+Output: [""ad"",""ae"",""af"",""bd"",""be"",""bf"",""cd"",""ce"",""cf""]
+
+Example 2:
+Input: digits = """"
+Output: []
+
+Example 3:
+Input: digits = ""2""
+Output: [""a"",""b"",""c""]
+
+ 
+Constraints:
+
+0 <= digits.length <= 4
+digits[i] is a digit in the range ['2', '9'].
+
+","Hash Table,String,Backtracking",Medium,,"22,39,401","Generate Parentheses,Combination Sum,Binary Watch"
+64,64. Minimum Path Sum,"Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+Note: You can only move either down or right at any point in time.
+ 
+Example 1:
+
+Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Output: 7
+Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
+Example 2:
+Input: grid = [[1,2,3],[4,5,6]]
+Output: 12
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 200
+0 <= grid[i][j] <= 200
+
+","Array,Dynamic Programming,Matrix",Medium,,"62,174,741,2067,2192","Unique Paths,Dungeon Game,Cherry Pickup,Maximum Number of Points with Cost,Minimum Cost Homecoming of a Robot in a Grid"
+28,28. Find the Index of the First Occurrence in a String,"Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+ 
+Example 1:
+Input: haystack = ""sadbutsad"", needle = ""sad""
+Output: 0
+Explanation: ""sad"" occurs at index 0 and 6.
+The first occurrence is at index 0, so we return 0.
+
+Example 2:
+Input: haystack = ""leetcode"", needle = ""leeto""
+Output: -1
+Explanation: ""leeto"" did not occur in ""leetcode"", so we return -1.
+
+ 
+Constraints:
+
+1 <= haystack.length, needle.length <= 104
+haystack and needle consist of only lowercase English characters.
+
+","Two Pointers,String,String Matching",Easy,,"214,459","Shortest Palindrome,Repeated Substring Pattern"
+291,291. Word Pattern II,,"Hash Table,String,Backtracking",Medium,,290,Word Pattern
+1001,1001. Grid Illumination,"There is a 2D grid of size n x n where each cell of this grid has a lamp that is initially turned off.
+You are given a 2D array of lamp positions lamps, where lamps[i] = [rowi, coli] indicates that the lamp at grid[rowi][coli] is turned on. Even if the same lamp is listed more than once, it is turned on.
+When a lamp is turned on, it illuminates its cell and all other cells in the same row, column, or diagonal.
+You are also given another 2D array queries, where queries[j] = [rowj, colj]. For the jth query, determine whether grid[rowj][colj] is illuminated or not. After answering the jth query, turn off the lamp at grid[rowj][colj] and its 8 adjacent lamps if they exist. A lamp is adjacent if its cell shares either a side or corner with grid[rowj][colj].
+Return an array of integers ans, where ans[j] should be 1 if the cell in the jth query was illuminated, or 0 if the lamp was not.
+ 
+Example 1:
+
+Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,0]]
+Output: [1,0]
+Explanation: We have the initial grid with all lamps turned off. In the above picture we see the grid after turning on the lamp at grid[0][0] then turning on the lamp at grid[4][4].
+The 0th query asks if the lamp at grid[1][1] is illuminated or not (the blue square). It is illuminated, so set ans[0] = 1. Then, we turn off all lamps in the red square.
+
+The 1st query asks if the lamp at grid[1][0] is illuminated or not (the blue square). It is not illuminated, so set ans[1] = 0. Then, we turn off all lamps in the red rectangle.
+
+
+Example 2:
+Input: n = 5, lamps = [[0,0],[4,4]], queries = [[1,1],[1,1]]
+Output: [1,1]
+
+Example 3:
+Input: n = 5, lamps = [[0,0],[0,4]], queries = [[0,4],[0,1],[1,4]]
+Output: [1,1,0]
+
+ 
+Constraints:
+
+1 <= n <= 109
+0 <= lamps.length <= 20000
+0 <= queries.length <= 20000
+lamps[i].length == 2
+0 <= rowi, coli < n
+queries[j].length == 2
+0 <= rowj, colj < n
+
+","Array,Hash Table",Easy,,,
+290,290. Word Pattern,"Given a pattern and a string s, find if s follows the same pattern.
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+ 
+Example 1:
+Input: pattern = ""abba"", s = ""dog cat cat dog""
+Output: true
+
+Example 2:
+Input: pattern = ""abba"", s = ""dog cat cat fish""
+Output: false
+
+Example 3:
+Input: pattern = ""aaaa"", s = ""dog cat cat dog""
+Output: false
+
+ 
+Constraints:
+
+1 <= pattern.length <= 300
+pattern contains only lower-case English letters.
+1 <= s.length <= 3000
+s contains only lowercase English letters and spaces ' '.
+s does not contain any leading or trailing spaces.
+All the words in s are separated by a single space.
+
+","Hash Table,String",Easy,,"205,291","Isomorphic Strings,Word Pattern II"
+1236,1236. Web Crawler,,"Math,Dynamic Programming,Memoization",Easy,"Make an array F of length 38, and set F[0] = 0, F[1] = F[2] = 1. Now write a loop where you set F[n+3] = F[n] + F[n+1] + F[n+2], and return F[n].","70,1013","Climbing Stairs,Fibonacci Number"
+140,140. Word Break II,"Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""catsanddog"", wordDict = [""cat"",""cats"",""and"",""sand"",""dog""]
+Output: [""cats and dog"",""cat sand dog""]
+
+Example 2:
+Input: s = ""pineapplepenapple"", wordDict = [""apple"",""pen"",""applepen"",""pine"",""pineapple""]
+Output: [""pine apple pen apple"",""pineapple pen apple"",""pine applepen apple""]
+Explanation: Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: []
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 10
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+Input is generated in a way that the length of the answer doesn't exceed 105.
+
+","Hash Table,String,Dynamic Programming,Backtracking,Trie,Memoization",Hard,,"139,472","Word Break,Concatenated Words"
+1,1. Two Sum,"Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+You can return the answer in any order.
+ 
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Example 2:
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+Example 3:
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+ 
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+
+ 
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?","Array,Hash Table",Easy,"A really brute force way would be to search for all possible pairs of numbers but that would be too slow. Again, it's best to try out brute force solutions for just for completeness. It is from these brute force solutions that you can come up with optimizations. So, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y which is value - x where value is the input parameter. Can we change our array somehow so that this search becomes faster? The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?","15,18,167,170,560,653,1083,1798,1830,2116,2133,2320","3Sum,4Sum,Two Sum II - Input Array Is Sorted,Two Sum III - Data structure design,Subarray Sum Equals K,Two Sum IV - Input is a BST,Two Sum Less Than K,Max Number of K-Sum Pairs,Count Good Meals,Count Number of Pairs With Absolute Difference K,Number of Pairs of Strings With Concatenation Equal to Target,Find All K-Distant Indices in an Array"
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+1250,1250. Check If It Is a Good Array,"Given an array nums of positive integers. Your task is to select some subset of nums, multiply each element by an integer and add all these numbers. The array is said to be good if you can obtain a sum of 1 from the array by any possible subset and multiplicand.
+Return True if the array is good otherwise return False.
+ 
+Example 1:
+Input: nums = [12,5,7,23]
+Output: true
+Explanation: Pick numbers 5 and 7.
+5*3 + 7*(-2) = 1
+
+Example 2:
+Input: nums = [29,6,10]
+Output: true
+Explanation: Pick numbers 29, 6 and 10.
+29*1 + 6*(-3) + 10*(-1) = 1
+
+Example 3:
+Input: nums = [3,6]
+Output: false
+
+ 
+Constraints:
+
+1 <= nums.length <= 10^5
+1 <= nums[i] <= 10^9
+
+","String,Dynamic Programming",Medium,"Try dynamic programming. 
+DP[i][j] represents the longest common subsequence of text1[0 ... i] & text2[0 ... j]. DP[i][j] = DP[i - 1][j - 1] + 1 , if text1[i] == text2[j]
+DP[i][j] = max(DP[i - 1][j], DP[i][j - 1]) , otherwise","516,583,1170,2309","Longest Palindromic Subsequence,Delete Operation for Two Strings,Shortest Common Supersequence ,Maximize Number of Subsequences in a String"

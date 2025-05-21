@@ -1,0 +1,230 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+708,708. Insert into a Sorted Circular Linked List,,,,,,
+855,855. Exam Room,"There is an exam room with n seats in a single row labeled from 0 to n - 1.
+When a student enters the room, they must sit in the seat that maximizes the distance to the closest person. If there are multiple such seats, they sit in the seat with the lowest number. If no one is in the room, then the student sits at seat number 0.
+Design a class that simulates the mentioned exam room.
+Implement the ExamRoom class:
+
+ExamRoom(int n) Initializes the object of the exam room with the number of the seats n.
+int seat() Returns the label of the seat at which the next student will set.
+void leave(int p) Indicates that the student sitting at seat p will leave the room. It is guaranteed that there will be a student sitting at seat p.
+
+ 
+Example 1:
+Input
+[""ExamRoom"", ""seat"", ""seat"", ""seat"", ""seat"", ""leave"", ""seat""]
+[[10], [], [], [], [], [4], []]
+Output
+[null, 0, 9, 4, 2, null, 5]
+
+Explanation
+ExamRoom examRoom = new ExamRoom(10);
+examRoom.seat(); // return 0, no one is in the room, then the student sits at seat number 0.
+examRoom.seat(); // return 9, the student sits at the last seat number 9.
+examRoom.seat(); // return 4, the student sits at the last seat number 4.
+examRoom.seat(); // return 2, the student sits at the last seat number 2.
+examRoom.leave(4);
+examRoom.seat(); // return 5, the student sits at the last seat number 5.
+
+
+ 
+Constraints:
+
+1 <= n <= 109
+It is guaranteed that there is a student sitting at seat p.
+At most 104 calls will be made to seat and leave.
+
+","String,Dynamic Programming",Hard,,,
+362,362. Design Hit Counter,,"Array,Hash Table,Binary Search,Design,Queue",Medium,,359,Logger Rate Limiter
+510,510. Inorder Successor in BST II,,"Array,Binary Search,Divide and Conquer,Binary Indexed Tree,Segment Tree,Merge Sort,Ordered Set",Medium,"Change the zeros in nums to -1 and create a prefix sum array prefixSum using the new nums. If prefixSum[i] for any index i in the range 0 <= i < prefixSum.length is positive, that means that there are more ones than zeros in the prefix ending at index i. If prefixSum[j] > prefixSum[i] for two indexes i and j such that 0 <= i < j < prefixSum.length, that means that there are more ones than zeros in nums in the range [i + 1 : j] (inclusive)","474,1999,2261","Ones and Zeroes,Longer Contiguous Segments of Ones than Zeros,All Divisions With the Highest Score of a Binary Array"
+285,285. Inorder Successor in BST,,"Tree,Depth-First Search,Binary Search Tree,Binary Tree",Medium,,"94,173,509","Binary Tree Inorder Traversal,Binary Search Tree Iterator,Inorder Successor in BST II"
+17,17. Letter Combinations of a Phone Number,"Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+ 
+Example 1:
+Input: digits = ""23""
+Output: [""ad"",""ae"",""af"",""bd"",""be"",""bf"",""cd"",""ce"",""cf""]
+
+Example 2:
+Input: digits = """"
+Output: []
+
+Example 3:
+Input: digits = ""2""
+Output: [""a"",""b"",""c""]
+
+ 
+Constraints:
+
+0 <= digits.length <= 4
+digits[i] is a digit in the range ['2', '9'].
+
+","Hash Table,String,Backtracking",Medium,,"22,39,401","Generate Parentheses,Combination Sum,Binary Watch"
+208,208. Implement Trie (Prefix Tree),"A trie (pronounced as ""try"") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+Implement the Trie class:
+
+Trie() Initializes the trie object.
+void insert(String word) Inserts the string word into the trie.
+boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
+ 
+Example 1:
+Input
+[""Trie"", ""insert"", ""search"", ""search"", ""startsWith"", ""insert"", ""search""]
+[[], [""apple""], [""apple""], [""app""], [""app""], [""app""], [""app""]]
+Output
+[null, null, true, false, true, null, true]
+
+Explanation
+Trie trie = new Trie();
+trie.insert(""apple"");
+trie.search(""apple"");   // return True
+trie.search(""app"");     // return False
+trie.startsWith(""app""); // return True
+trie.insert(""app"");
+trie.search(""app"");     // return True
+
+ 
+Constraints:
+
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.
+
+","Hash Table,String,Design,Trie",Medium,,"211,642,648,676,1433,1949","Design Add and Search Words Data Structure,Design Search Autocomplete System,Replace Words,Implement Magic Dictionary,Encrypt and Decrypt Strings,Implement Trie II (Prefix Tree)"
+54,54. Spiral Matrix,"Given an m x n matrix, return all elements of the matrix in spiral order.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+","Array,Matrix,Simulation",Medium,"Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do. We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column and then we move inwards by 1 and then repeat. That's all, that is all the simulation that we need. Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'd be shifting in the same column. Similarly, by changing values for j, you'd be shifting in the same row.
+Also, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to run the simulation on edge cases like a single column or a single row to see if anything breaks or not.","59,921","Spiral Matrix II,Spiral Matrix III"
+34,34. Find First and Last Position of Element in Sorted Array,"Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+If target is not found in the array, return [-1, -1].
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+Input: nums = [], target = 0
+Output: [-1,-1]
+
+ 
+Constraints:
+
+0 <= nums.length <= 105
+-109 <= nums[i] <= 109
+nums is a non-decreasing array.
+-109 <= target <= 109
+
+","Array,Binary Search",Medium,,"278,2165,2210","First Bad Version,Plates Between Candles,Find Target Indices After Sorting Array"
+88,88. Merge Sorted Array,"You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+ 
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+
+Example 3:
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+
+ 
+Constraints:
+
+nums1.length == m + n
+nums2.length == n
+0 <= m, n <= 200
+1 <= m + n <= 200
+-109 <= nums1[i], nums2[j] <= 109
+
+ 
+Follow up: Can you come up with an algorithm that runs in O(m + n) time?
+","Array,Two Pointers,Sorting",Easy,"You can easily solve this problem if you simply think about two elements at a time rather than two arrays. We know that each of the individual arrays is sorted. What we don't know is how they will intertwine. Can we take a local decision and arrive at an optimal solution? If you simply consider one element each at a time from the two arrays and make a decision and proceed accordingly, you will arrive at the optimal solution.","21,1019,1028","Merge Two Sorted Lists,Squares of a Sorted Array,Interval List Intersections"
+761,761. Special Binary String,"Special binary strings are binary strings with the following two properties:
+
+The number of 0's is equal to the number of 1's.
+Every prefix of the binary string has at least as many 1's as 0's.
+
+You are given a special binary string s.
+A move consists of choosing two consecutive, non-empty, special substrings of s, and swapping them. Two strings are consecutive if the last character of the first string is exactly one index before the first character of the second string.
+Return the lexicographically largest resulting string possible after applying the mentioned operations on the string.
+ 
+Example 1:
+Input: s = ""11011000""
+Output: ""11100100""
+Explanation: The strings ""10"" [occuring at s[1]] and ""1100"" [at s[3]] are swapped.
+This is the lexicographically largest string possible after some number of swaps.
+
+Example 2:
+Input: s = ""10""
+Output: ""10""
+
+ 
+Constraints:
+
+1 <= s.length <= 50
+s[i] is either '0' or '1'.
+s is a special binary string.
+
+","Array,Sorting,Heap (Priority Queue)",Hard,"Take all the intervals and do an ""events"" (or ""line sweep"") approach - an event of (x, OPEN) increases the number of active intervals, while (x, CLOSE) decreases it.
+
+Processing in sorted order from left to right, if the number of active intervals is zero, then you crossed a region of common free time.","56,1028","Merge Intervals,Interval List Intersections"
+1309,1309. Decrypt String from Alphabet to Integer Mapping,"You are given a string s formed by digits and '#'. We want to map s to English lowercase characters as follows:
+
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
+
+Return the string formed after mapping.
+The test cases are generated so that a unique mapping will always exist.
+ 
+Example 1:
+Input: s = ""10#11#12""
+Output: ""jkab""
+Explanation: ""j"" -> ""10#"" , ""k"" -> ""11#"" , ""a"" -> ""1"" , ""b"" -> ""2"".
+
+Example 2:
+Input: s = ""1326#""
+Output: ""acz""
+
+ 
+Constraints:
+
+1 <= s.length <= 1000
+s consists of digits and the '#' letter.
+s will be a valid string such that mapping is always possible.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Hard,"Think of it as a graph problem. We need to find a topological order on the dependency graph. Build two graphs, one for the groups and another for the items.",,

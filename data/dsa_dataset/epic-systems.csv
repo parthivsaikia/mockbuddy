@@ -1,0 +1,163 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+306,306. Additive Number,"An additive number is a string whose digits can form an additive sequence.
+A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.
+Given a string containing only digits, return true if it is an additive number or false otherwise.
+Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.
+ 
+Example 1:
+Input: ""112358""
+Output: true
+Explanation: 
+The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. 
+1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+
+Example 2:
+Input: ""199100199""
+Output: true
+Explanation: 
+The additive sequence is: 1, 99, 100, 199. 
+1 + 99 = 100, 99 + 100 = 199
+
+ 
+Constraints:
+
+1 <= num.length <= 35
+num consists only of digits.
+
+ 
+Follow up: How would you handle overflow for very large input integers?
+","String,Backtracking",Medium,,872,Split Array into Fibonacci Sequence
+54,54. Spiral Matrix,"Given an m x n matrix, return all elements of the matrix in spiral order.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+","Array,Matrix,Simulation",Medium,"Well for some problems, the best way really is to come up with some algorithms for simulation. Basically, you need to simulate what the problem asks us to do. We go boundary by boundary and move inwards. That is the essential operation. First row, last column, last row, first column and then we move inwards by 1 and then repeat. That's all, that is all the simulation that we need. Think about when you want to switch the progress on one of the indexes. If you progress on i out of [i, j], you'd be shifting in the same column. Similarly, by changing values for j, you'd be shifting in the same row.
+Also, keep track of the end of a boundary so that you can move inwards and then keep repeating. It's always best to run the simulation on edge cases like a single column or a single row to see if anything breaks or not.","59,921","Spiral Matrix II,Spiral Matrix III"
+38,38. Count and Say,"The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+
+countAndSay(1) = ""1""
+countAndSay(n) is the way you would ""say"" the digit string from countAndSay(n-1), which is then converted into a different digit string.
+
+To determine how you ""say"" a digit string, split it into the minimal number of substrings such that each substring contains exactly one unique digit. Then for each substring, say the number of digits, then say the digit. Finally, concatenate every said digit.
+For example, the saying and conversion for digit string ""3322251"":
+
+Given a positive integer n, return the nth term of the count-and-say sequence.
+ 
+Example 1:
+Input: n = 1
+Output: ""1""
+Explanation: This is the base case.
+
+Example 2:
+Input: n = 4
+Output: ""1211""
+Explanation:
+countAndSay(1) = ""1""
+countAndSay(2) = say ""1"" = one 1 = ""11""
+countAndSay(3) = say ""11"" = two 1's = ""21""
+countAndSay(4) = say ""21"" = one 2 + one 1 = ""12"" + ""11"" = ""1211""
+
+ 
+Constraints:
+
+1 <= n <= 30
+
+",String,Medium,"The following are the terms from n=1 to n=10 of the count-and-say sequence:
+
+ 1.     1
+ 2.     11
+ 3.     21
+ 4.     1211
+ 5.     111221 
+ 6.     312211
+ 7.     13112221
+ 8.     1113213211
+ 9.     31131211131221
+10.     13211311123113112211 To generate the nth term, just count and say the n-1th term.","271,443","Encode and Decode Strings,String Compression"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"
+728,728. Self Dividing Numbers,"A self-dividing number is a number that is divisible by every digit it contains.
+
+For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+
+A self-dividing number is not allowed to contain the digit zero.
+Given two integers left and right, return a list of all the self-dividing numbers in the range [left, right].
+ 
+Example 1:
+Input: left = 1, right = 22
+Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
+Example 2:
+Input: left = 47, right = 85
+Output: [48,55,66,77]
+
+ 
+Constraints:
+
+1 <= left <= right <= 104
+
+",Math,Easy,"For each number in the range, check whether it is self dividing by converting that number to a character array (or string in Python), then checking that each digit is nonzero and divides the original number.",507,Perfect Number
+1215,1215. Stepping Numbers,,Database,Easy,,,

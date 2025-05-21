@@ -1,0 +1,104 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+291,291. Word Pattern II,,"Hash Table,String,Backtracking",Medium,,290,Word Pattern
+786,786. K-th Smallest Prime Fraction,"You are given a sorted integer array arr containing 1 and prime numbers, where all the integers of arr are unique. You are also given an integer k.
+For every i and j where 0 <= i < j < arr.length, we consider the fraction arr[i] / arr[j].
+Return the kth smallest fraction considered. Return your answer as an array of integers of size 2, where answer[0] == arr[i] and answer[1] == arr[j].
+ 
+Example 1:
+Input: arr = [1,2,3,5], k = 3
+Output: [2,5]
+Explanation: The fractions to be considered in sorted order are:
+1/5, 1/3, 2/5, 1/2, 3/5, and 2/3.
+The third fraction is 2/5.
+
+Example 2:
+Input: arr = [1,7], k = 1
+Output: [1,7]
+
+ 
+Constraints:
+
+2 <= arr.length <= 1000
+1 <= arr[i] <= 3 * 104
+arr[0] == 1
+arr[i] is a prime number for i > 0.
+All the numbers of arr are unique and sorted in strictly increasing order.
+1 <= k <= arr.length * (arr.length - 1) / 2
+
+ 
+Follow up: Can you solve the problem with better than O(n2) complexity?","Array,Binary Search,Interactive",Medium,,"792,1672","Binary Search,Find the Index of the Large Integer"
+301,301. Remove Invalid Parentheses,"Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
+Return a list of unique strings that are valid with the minimum number of removals. You may return the answer in any order.
+ 
+Example 1:
+Input: s = ""()())()""
+Output: [""(())()"",""()()()""]
+
+Example 2:
+Input: s = ""(a)())()""
+Output: [""(a())()"",""(a)()()""]
+
+Example 3:
+Input: s = "")(""
+Output: [""""]
+
+ 
+Constraints:
+
+1 <= s.length <= 25
+s consists of lowercase English letters and parentheses '(' and ')'.
+There will be at most 20 parentheses in s.
+
+","String,Backtracking,Breadth-First Search",Hard,"Since we don't know which of the brackets can possibly be removed, we try out all the options! We can use recursion to try out all possibilities for the given expression. For each of the brackets, we have 2 options:
+
+
+ We keep the bracket and add it to the expression that we are building on the fly during recursion.
+ OR, we can discard the bracket and move on. The one thing all these valid expressions have in common is that they will all be of the same length i.e. as compared to the original expression, all of these expressions will have the same number of characters removed. 
+
+Can we somehow find the number of misplaced parentheses and use it in our solution? For every left parenthesis, we should have a corresponding right parenthesis. We can make use of two counters which keep track of misplaced left and right parenthesis and in one iteration we can find out these two values. 
+
+
+0 1 2 3 4 5 6 7
+( ) ) ) ( ( ( )  
+i = 0, left = 1, right = 0
+i = 1, left = 0, right = 0
+i = 2, left = 0, right = 1
+i = 3, left = 0, right = 2
+i = 4, left = 1, right = 2
+i = 5, left = 2, right = 2
+i = 6, left = 3, right = 2
+i = 7, left = 2, right = 2
+
+
+We have 2 misplaced left and 2 misplaced right parentheses. We found out that the exact number of left and right parenthesis that has to be removed to get a valid expression. So, e.g. in a 1000 parentheses string, if there are 2 misplaced left and 2 misplaced right parentheses, after we are done discarding 2 left and 2 right parentheses, we will have only one option per remaining character in the expression i.e. to consider them. We can't discard them.","20,2095","Valid Parentheses,Minimum Number of Swaps to Make the String Balanced"
+1235,1235. Maximum Profit in Job Scheduling,"We have n jobs, where every job is scheduled to be done from startTime[i] to endTime[i], obtaining a profit of profit[i].
+You're given the startTime, endTime and profit arrays, return the maximum profit you can take such that there are no two jobs in the subset with overlapping time range.
+If you choose a job that ends at time X you will be able to start another job that starts at time X.
+ 
+Example 1:
+
+Input: startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
+Output: 120
+Explanation: The subset chosen is the first and fourth job. 
+Time range [1-3]+[3-6] , we get profit of 120 = 50 + 70.
+
+Example 2:
+ 
+Input: startTime = [1,2,3,4,6], endTime = [3,5,10,6,9], profit = [20,20,100,70,60]
+Output: 150
+Explanation: The subset chosen is the first, fourth and fifth job. 
+Profit obtained 150 = 20 + 70 + 60.
+
+Example 3:
+
+Input: startTime = [1,1,1], endTime = [2,3,4], profit = [5,6,4]
+Output: 6
+
+ 
+Constraints:
+
+1 <= startTime.length == endTime.length == profit.length <= 5 * 104
+1 <= startTime[i] < endTime[i] <= 109
+1 <= profit[i] <= 104
+
+",,,,,

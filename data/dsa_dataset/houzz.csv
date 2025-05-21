@@ -1,0 +1,414 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+727,727. Minimum Window Subsequence,,"String,Dynamic Programming,Sliding Window",Hard,Let dp[j][e] = s be the largest index for which S[s:e+1] has T[:j] as a substring.,"76,674","Minimum Window Substring,Longest Continuous Increasing Subsequence"
+304,304. Range Sum Query 2D - Immutable,"Given a 2D matrix matrix, handle multiple queries of the following type:
+
+Calculate the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+Implement the NumMatrix class:
+
+NumMatrix(int[][] matrix) Initializes the object with the integer matrix matrix.
+int sumRegion(int row1, int col1, int row2, int col2) Returns the sum of the elements of matrix inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+
+You must design an algorithm where sumRegion works on O(1) time complexity.
+ 
+Example 1:
+
+Input
+[""NumMatrix"", ""sumRegion"", ""sumRegion"", ""sumRegion""]
+[[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [1, 1, 2, 2], [1, 2, 2, 4]]
+Output
+[null, 8, 11, 12]
+
+Explanation
+NumMatrix numMatrix = new NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);
+numMatrix.sumRegion(2, 1, 4, 3); // return 8 (i.e sum of the red rectangle)
+numMatrix.sumRegion(1, 1, 2, 2); // return 11 (i.e sum of the green rectangle)
+numMatrix.sumRegion(1, 2, 2, 4); // return 12 (i.e sum of the blue rectangle)
+
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 200
+-104 <= matrix[i][j] <= 104
+0 <= row1 <= row2 < m
+0 <= col1 <= col2 < n
+At most 104 calls will be made to sumRegion.
+
+","Array,Design,Matrix,Prefix Sum",Medium,,"303,308","Range Sum Query - Immutable,Range Sum Query 2D - Mutable"
+721,721. Accounts Merge,"Given a list of accounts where each element accounts[i] is a list of strings, where the first element accounts[i][0] is a name, and the rest of the elements are emails representing emails of the account.
+Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.
+After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails in sorted order. The accounts themselves can be returned in any order.
+ 
+Example 1:
+Input: accounts = [[""John"",""johnsmith@mail.com"",""john_newyork@mail.com""],[""John"",""johnsmith@mail.com"",""john00@mail.com""],[""Mary"",""mary@mail.com""],[""John"",""johnnybravo@mail.com""]]
+Output: [[""John"",""john00@mail.com"",""john_newyork@mail.com"",""johnsmith@mail.com""],[""Mary"",""mary@mail.com""],[""John"",""johnnybravo@mail.com""]]
+Explanation:
+The first and second John's are the same person as they have the common email ""johnsmith@mail.com"".
+The third John and Mary are different people as none of their email addresses are used by other accounts.
+We could return these lists in any order, for example the answer [['Mary', 'mary@mail.com'], ['John', 'johnnybravo@mail.com'], 
+['John', 'john00@mail.com', 'john_newyork@mail.com', 'johnsmith@mail.com']] would still be accepted.
+
+Example 2:
+Input: accounts = [[""Gabe"",""Gabe0@m.co"",""Gabe3@m.co"",""Gabe1@m.co""],[""Kevin"",""Kevin3@m.co"",""Kevin5@m.co"",""Kevin0@m.co""],[""Ethan"",""Ethan5@m.co"",""Ethan4@m.co"",""Ethan0@m.co""],[""Hanzo"",""Hanzo3@m.co"",""Hanzo1@m.co"",""Hanzo0@m.co""],[""Fern"",""Fern5@m.co"",""Fern1@m.co"",""Fern0@m.co""]]
+Output: [[""Ethan"",""Ethan0@m.co"",""Ethan4@m.co"",""Ethan5@m.co""],[""Gabe"",""Gabe0@m.co"",""Gabe1@m.co"",""Gabe3@m.co""],[""Hanzo"",""Hanzo0@m.co"",""Hanzo1@m.co"",""Hanzo3@m.co""],[""Kevin"",""Kevin0@m.co"",""Kevin3@m.co"",""Kevin5@m.co""],[""Fern"",""Fern0@m.co"",""Fern1@m.co"",""Fern5@m.co""]]
+
+ 
+Constraints:
+
+1 <= accounts.length <= 1000
+2 <= accounts[i].length <= 10
+1 <= accounts[i][j].length <= 30
+accounts[i][0] consists of English letters.
+accounts[i][j] (for j > 0) is a valid email.
+
+","Array,String,Depth-First Search,Breadth-First Search,Union Find",Medium,"For every pair of emails in the same account, draw an edge between those emails.  The problem is about enumerating the connected components of this graph.","684,734,737","Redundant Connection,Sentence Similarity,Sentence Similarity II"
+43,43. Multiply Strings,"Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+Note: You must not use any built-in BigInteger library or convert the inputs to integer directly.
+ 
+Example 1:
+Input: num1 = ""2"", num2 = ""3""
+Output: ""6""
+Example 2:
+Input: num1 = ""123"", num2 = ""456""
+Output: ""56088""
+
+ 
+Constraints:
+
+1 <= num1.length, num2.length <= 200
+num1 and num2 consist of digits only.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+
+","Math,String,Simulation",Medium,,"2,66,67,415","Add Two Numbers,Plus One,Add Binary,Add Strings"
+218,218. The Skyline Problem,"A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.
+The geometric information of each building is given in the array buildings where buildings[i] = [lefti, righti, heighti]:
+
+lefti is the x coordinate of the left edge of the ith building.
+righti is the x coordinate of the right edge of the ith building.
+heighti is the height of the ith building.
+
+You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height 0.
+The skyline should be represented as a list of ""key points"" sorted by their x-coordinate in the form [[x1,y1],[x2,y2],...]. Each key point is the left endpoint of some horizontal segment in the skyline except the last point in the list, which always has a y-coordinate 0 and is used to mark the skyline's termination where the rightmost building ends. Any ground between the leftmost and rightmost buildings should be part of the skyline's contour.
+Note: There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...,[2 3],[4 5],[7 5],[11 5],[12 7],...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...,[2 3],[4 5],[12 7],...]
+ 
+Example 1:
+
+Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]
+Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]
+Explanation:
+Figure A shows the buildings of the input.
+Figure B shows the skyline formed by those buildings. The red points in figure B represent the key points in the output list.
+
+Example 2:
+Input: buildings = [[0,2,3],[2,5,3]]
+Output: [[0,3],[5,0]]
+
+ 
+Constraints:
+
+1 <= buildings.length <= 104
+0 <= lefti < righti <= 231 - 1
+1 <= heighti <= 231 - 1
+buildings is sorted by lefti in non-decreasing order.
+
+","Array,Divide and Conquer,Binary Indexed Tree,Segment Tree,Line Sweep,Heap (Priority Queue),Ordered Set",Hard,,699,Falling Squares
+556,556. Next Greater Element III,"Given a positive integer n, find the smallest integer which has exactly the same digits existing in the integer n and is greater in value than n. If no such positive integer exists, return -1.
+Note that the returned integer should fit in 32-bit integer, if there is a valid answer but it does not fit in 32-bit integer, return -1.
+ 
+Example 1:
+Input: n = 12
+Output: 21
+Example 2:
+Input: n = 21
+Output: -1
+
+ 
+Constraints:
+
+1 <= n <= 231 - 1
+
+","Math,Two Pointers,String",Medium,,"496,503,1997","Next Greater Element I,Next Greater Element II,Next Palindrome Using Same Digits"
+200,200. Number of Islands,"Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+ 
+Example 1:
+Input: grid = [
+  [""1"",""1"",""1"",""1"",""0""],
+  [""1"",""1"",""0"",""1"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""0"",""0"",""0""]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  [""1"",""1"",""0"",""0"",""0""],
+  [""1"",""1"",""0"",""0"",""0""],
+  [""0"",""0"",""1"",""0"",""0""],
+  [""0"",""0"",""0"",""1"",""1""]
+]
+Output: 3
+
+ 
+Constraints:
+
+m == grid.length
+n == grid[i].length
+1 <= m, n <= 300
+grid[i][j] is '0' or '1'.
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,,"130,286,305,323,694,695,2035,2103","Surrounded Regions,Walls and Gates,Number of Islands II,Number of Connected Components in an Undirected Graph,Number of Distinct Islands,Max Area of Island,Count Sub Islands,Find All Groups of Farmland"
+48,48. Rotate Image,"You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+ 
+Example 1:
+
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[7,4,1],[8,5,2],[9,6,3]]
+
+Example 2:
+
+Input: matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+
+ 
+Constraints:
+
+n == matrix.length == matrix[i].length
+1 <= n <= 20
+-1000 <= matrix[i][j] <= 1000
+
+","Array,Math,Matrix",Medium,,2015,Determine Whether Matrix Can Be Obtained By Rotation
+698,698. Partition to K Equal Sum Subsets,"Given an integer array nums and an integer k, return true if it is possible to divide this array into k non-empty subsets whose sums are all equal.
+ 
+Example 1:
+Input: nums = [4,3,2,3,5,2,1], k = 4
+Output: true
+Explanation: It is possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+
+Example 2:
+Input: nums = [1,2,3,4], k = 3
+Output: false
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 16
+1 <= nums[i] <= 104
+The frequency of each element is in the range [1, 4].
+
+","Array,Dynamic Programming,Backtracking,Bit Manipulation,Memoization,Bitmask",Medium,"We can figure out what target each subset must sum to.  Then, let's recursively search, where at each call to our function, we choose which of k subsets the next value will join.","416,2135","Partition Equal Subset Sum,Maximum Number of Ways to Partition an Array"
+301,301. Remove Invalid Parentheses,"Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
+Return a list of unique strings that are valid with the minimum number of removals. You may return the answer in any order.
+ 
+Example 1:
+Input: s = ""()())()""
+Output: [""(())()"",""()()()""]
+
+Example 2:
+Input: s = ""(a)())()""
+Output: [""(a())()"",""(a)()()""]
+
+Example 3:
+Input: s = "")(""
+Output: [""""]
+
+ 
+Constraints:
+
+1 <= s.length <= 25
+s consists of lowercase English letters and parentheses '(' and ')'.
+There will be at most 20 parentheses in s.
+
+","String,Backtracking,Breadth-First Search",Hard,"Since we don't know which of the brackets can possibly be removed, we try out all the options! We can use recursion to try out all possibilities for the given expression. For each of the brackets, we have 2 options:
+
+
+ We keep the bracket and add it to the expression that we are building on the fly during recursion.
+ OR, we can discard the bracket and move on. The one thing all these valid expressions have in common is that they will all be of the same length i.e. as compared to the original expression, all of these expressions will have the same number of characters removed. 
+
+Can we somehow find the number of misplaced parentheses and use it in our solution? For every left parenthesis, we should have a corresponding right parenthesis. We can make use of two counters which keep track of misplaced left and right parenthesis and in one iteration we can find out these two values. 
+
+
+0 1 2 3 4 5 6 7
+( ) ) ) ( ( ( )  
+i = 0, left = 1, right = 0
+i = 1, left = 0, right = 0
+i = 2, left = 0, right = 1
+i = 3, left = 0, right = 2
+i = 4, left = 1, right = 2
+i = 5, left = 2, right = 2
+i = 6, left = 3, right = 2
+i = 7, left = 2, right = 2
+
+
+We have 2 misplaced left and 2 misplaced right parentheses. We found out that the exact number of left and right parenthesis that has to be removed to get a valid expression. So, e.g. in a 1000 parentheses string, if there are 2 misplaced left and 2 misplaced right parentheses, after we are done discarding 2 left and 2 right parentheses, we will have only one option per remaining character in the expression i.e. to consider them. We can't discard them.","20,2095","Valid Parentheses,Minimum Number of Swaps to Make the String Balanced"
+31,31. Next Permutation,"A permutation of an array of integers is an arrangement of its members into a sequence or linear order.
+
+For example, for arr = [1,2,3], the following are all the permutations of arr: [1,2,3], [1,3,2], [2, 1, 3], [2, 3, 1], [3,1,2], [3,2,1].
+
+The next permutation of an array of integers is the next lexicographically greater permutation of its integer. More formally, if all the permutations of the array are sorted in one container according to their lexicographical order, then the next permutation of that array is the permutation that follows it in the sorted container. If such arrangement is not possible, the array must be rearranged as the lowest possible order (i.e., sorted in ascending order).
+
+For example, the next permutation of arr = [1,2,3] is [1,3,2].
+Similarly, the next permutation of arr = [2,3,1] is [3,1,2].
+While the next permutation of arr = [3,2,1] is [1,2,3] because [3,2,1] does not have a lexicographical larger rearrangement.
+
+Given an array of integers nums, find the next permutation of nums.
+The replacement must be in place and use only constant extra memory.
+ 
+Example 1:
+Input: nums = [1,2,3]
+Output: [1,3,2]
+
+Example 2:
+Input: nums = [3,2,1]
+Output: [1,2,3]
+
+Example 3:
+Input: nums = [1,1,5]
+Output: [1,5,1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 100
+
+","Array,Two Pointers",Medium,,"46,47,60,267,1978","Permutations,Permutations II,Permutation Sequence,Palindrome Permutation II,Minimum Adjacent Swaps to Reach the Kth Smallest Number"
+120,120. Triangle,"Given a triangle array, return the minimum path sum from top to bottom.
+For each step, you may move to an adjacent number of the row below. More formally, if you are on index i on the current row, you may move to either index i or index i + 1 on the next row.
+ 
+Example 1:
+Input: triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+Output: 11
+Explanation: The triangle looks like:
+   2
+  3 4
+ 6 5 7
+4 1 8 3
+The minimum path sum from top to bottom is 2 + 3 + 5 + 1 = 11 (underlined above).
+
+Example 2:
+Input: triangle = [[-10]]
+Output: -10
+
+ 
+Constraints:
+
+1 <= triangle.length <= 200
+triangle[0].length == 1
+triangle[i].length == triangle[i - 1].length + 1
+-104 <= triangle[i][j] <= 104
+
+ 
+Follow up: Could you do this using only O(n) extra space, where n is the total number of rows in the triangle?","Array,Dynamic Programming",Medium,,,
+212,212. Word Search II,"Given an m x n board of characters and a list of strings words, return all words on the board.
+Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+ 
+Example 1:
+
+Input: board = [[""o"",""a"",""a"",""n""],[""e"",""t"",""a"",""e""],[""i"",""h"",""k"",""r""],[""i"",""f"",""l"",""v""]], words = [""oath"",""pea"",""eat"",""rain""]
+Output: [""eat"",""oath""]
+
+Example 2:
+
+Input: board = [[""a"",""b""],[""c"",""d""]], words = [""abcb""]
+Output: []
+
+ 
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 12
+board[i][j] is a lowercase English letter.
+1 <= words.length <= 3 * 104
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+All the strings of words are unique.
+
+","Array,String,Backtracking,Trie,Matrix",Hard,"You would need to optimize your backtracking to pass the larger test. Could you stop backtracking earlier? If the current candidate does not exist in all words' prefix, you could stop backtracking immediately. What kind of data structure could answer such query efficiently? Does a hash table work? Why or why not? How about a Trie? If you would like to learn how to implement a basic trie, please work on this problem: Implement Trie (Prefix Tree) first.","79,1022,1433","Word Search,Unique Paths III,Encrypt and Decrypt Strings"
+10,10. Regular Expression Matching,"Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where:
+
+'.' Matches any single character.​​​​
+'*' Matches zero or more of the preceding element.
+
+The matching should cover the entire input string (not partial).
+ 
+Example 1:
+Input: s = ""aa"", p = ""a""
+Output: false
+Explanation: ""a"" does not match the entire string ""aa"".
+
+Example 2:
+Input: s = ""aa"", p = ""a*""
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes ""aa"".
+
+Example 3:
+Input: s = ""ab"", p = "".*""
+Output: true
+Explanation: "".*"" means ""zero or more (*) of any character (.)"".
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= p.length <= 20
+s contains only lowercase English letters.
+p contains only lowercase English letters, '.', and '*'.
+It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.
+
+","String,Dynamic Programming,Recursion",Hard,,44,Wildcard Matching
+4,4. Median of Two Sorted Arrays,"Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+The overall run time complexity should be O(log (m+n)).
+ 
+Example 1:
+Input: nums1 = [1,3], nums2 = [2]
+Output: 2.00000
+Explanation: merged array = [1,2,3] and median is 2.
+
+Example 2:
+Input: nums1 = [1,2], nums2 = [3,4]
+Output: 2.50000
+Explanation: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+0 <= m <= 1000
+0 <= n <= 1000
+1 <= m + n <= 2000
+-106 <= nums1[i], nums2[i] <= 106
+
+","Array,Binary Search,Divide and Conquer",Hard,,,
+660,660. Remove 9,,Math,Hard,,,
+772,772. Basic Calculator III,,"Array,Divide and Conquer,Tree,Matrix",Medium,,,

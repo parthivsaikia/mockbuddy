@@ -1,0 +1,364 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+166,166. Fraction to Recurring Decimal,"Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+If the fractional part is repeating, enclose the repeating part in parentheses.
+If multiple answers are possible, return any of them.
+It is guaranteed that the length of the answer string is less than 104 for all the given inputs.
+ 
+Example 1:
+Input: numerator = 1, denominator = 2
+Output: ""0.5""
+
+Example 2:
+Input: numerator = 2, denominator = 1
+Output: ""2""
+
+Example 3:
+Input: numerator = 4, denominator = 333
+Output: ""0.(012)""
+
+ 
+Constraints:
+
+-231 <= numerator, denominator <= 231 - 1
+denominator != 0
+
+","Hash Table,Math,String",Medium,"No scary math, just apply elementary math knowledge. Still remember how to perform a long division? Try a long division on 4/9, the repeating part is obvious. Now try 4/333. Do you see a pattern? Notice that once the remainder starts repeating, so does the divided result. Be wary of edge cases! List out as many test cases as you can think of and test your code thoroughly.",,
+945,945. Minimum Increment to Make Array Unique,"You are given an integer array nums. In one move, you can pick an index i where 0 <= i < nums.length and increment nums[i] by 1.
+Return the minimum number of moves to make every value in nums unique.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: nums = [1,2,2]
+Output: 1
+Explanation: After 1 move, the array could be [1, 2, 3].
+
+Example 2:
+Input: nums = [3,2,1,2,1,7]
+Output: 6
+Explanation: After 6 moves, the array could be [3, 4, 1, 2, 5, 7].
+It can be shown with 5 or less moves that it is impossible for the array to have all unique values.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+0 <= nums[i] <= 105
+
+","Array,Breadth-First Search,Matrix",Medium,,,
+691,691. Stickers to Spell Word,"We are given n different types of stickers. Each sticker has a lowercase English word on it.
+You would like to spell out the given string target by cutting individual letters from your collection of stickers and rearranging them. You can use each sticker more than once if you want, and you have infinite quantities of each sticker.
+Return the minimum number of stickers that you need to spell out target. If the task is impossible, return -1.
+Note: In all test cases, all words were chosen randomly from the 1000 most common US English words, and target was chosen as a concatenation of two random words.
+ 
+Example 1:
+Input: stickers = [""with"",""example"",""science""], target = ""thehat""
+Output: 3
+Explanation:
+We can use 2 ""with"" stickers, and 1 ""example"" sticker.
+After cutting and rearrange the letters of those stickers, we can form the target ""thehat"".
+Also, this is the minimum number of stickers necessary to form the target string.
+
+Example 2:
+Input: stickers = [""notice"",""possible""], target = ""basicbasic""
+Output: -1
+Explanation:
+We cannot form the target ""basicbasic"" from cutting letters from the given stickers.
+
+ 
+Constraints:
+
+n == stickers.length
+1 <= n <= 50
+1 <= stickers[i].length <= 10
+1 <= target.length <= 15
+stickers[i] and target consist of lowercase English letters.
+
+","Dynamic Programming,Backtracking,Bit Manipulation,Bitmask",Hard,"We want to perform an exhaustive search, but we need to speed it up based on the input data being random.  
+
+For all stickers, we can ignore any letters that are not in the target word.  
+
+When our candidate answer won't be smaller than an answer we have already found, we can stop searching this path.  
+
+When a sticker dominates another, we shouldn't include the dominated sticker in our sticker collection.  [Here, we say a sticker `A` dominates `B` if `A.count(letter) >= B.count(letter)` for all letters.]",383,Ransom Note
+592,592. Fraction Addition and Subtraction,"Given a string expression representing an expression of fraction addition and subtraction, return the calculation result in string format.
+The final result should be an irreducible fraction. If your final result is an integer, change it to the format of a fraction that has a denominator 1. So in this case, 2 should be converted to 2/1.
+ 
+Example 1:
+Input: expression = ""-1/2+1/2""
+Output: ""0/1""
+
+Example 2:
+Input: expression = ""-1/2+1/2+1/3""
+Output: ""1/3""
+
+Example 3:
+Input: expression = ""1/3-1/2""
+Output: ""-1/6""
+
+ 
+Constraints:
+
+The input string only contains '0' to '9', '/', '+' and '-'. So does the output.
+Each fraction (input and output) has the format ±numerator/denominator. If the first input fraction or the output is positive, then '+' will be omitted.
+The input only contains valid irreducible fractions, where the numerator and denominator of each fraction will always be in the range [1, 10]. If the denominator is 1, it means this fraction is actually an integer in a fraction format defined above.
+The number of given fractions will be in the range [1, 10].
+The numerator and denominator of the final result are guaranteed to be valid and in the range of 32-bit int.
+
+","Math,String,Simulation",Medium,,640,Solve the Equation
+598,598. Range Addition II,"You are given an m x n matrix M initialized with all 0's and an array of operations ops, where ops[i] = [ai, bi] means M[x][y] should be incremented by one for all 0 <= x < ai and 0 <= y < bi.
+Count and return the number of maximum integers in the matrix after performing all the operations.
+ 
+Example 1:
+
+Input: m = 3, n = 3, ops = [[2,2],[3,3]]
+Output: 4
+Explanation: The maximum integer in M is 2, and there are four of it in M. So return 4.
+
+Example 2:
+Input: m = 3, n = 3, ops = [[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3],[2,2],[3,3],[3,3],[3,3]]
+Output: 4
+
+Example 3:
+Input: m = 3, n = 3, ops = []
+Output: 9
+
+ 
+Constraints:
+
+1 <= m, n <= 4 * 104
+0 <= ops.length <= 104
+ops[i].length == 2
+1 <= ai <= m
+1 <= bi <= n
+
+","Array,Math",Easy,,370,Range Addition
+14,14. Longest Common Prefix,"Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string """".
+ 
+Example 1:
+Input: strs = [""flower"",""flow"",""flight""]
+Output: ""fl""
+
+Example 2:
+Input: strs = [""dog"",""racecar"",""car""]
+Output: """"
+Explanation: There is no common prefix among the input strings.
+
+ 
+Constraints:
+
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters.
+
+",String,Easy,,,
+234,234. Palindrome Linked List,"Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+ 
+Example 1:
+
+Input: head = [1,2,2,1]
+Output: true
+
+Example 2:
+
+Input: head = [1,2]
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the list is in the range [1, 105].
+0 <= Node.val <= 9
+
+ 
+Follow up: Could you do it in O(n) time and O(1) space?","Linked List,Two Pointers,Stack,Recursion",Easy,,"9,125,206,2236","Palindrome Number,Valid Palindrome,Reverse Linked List,Maximum Twin Sum of a Linked List"
+23,23. Merge k Sorted Lists,"You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+Merge all the linked-lists into one sorted linked-list and return it.
+ 
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []
+
+ 
+Constraints:
+
+k == lists.length
+0 <= k <= 104
+0 <= lists[i].length <= 500
+-104 <= lists[i][j] <= 104
+lists[i] is sorted in ascending order.
+The sum of lists[i].length will not exceed 104.
+
+","Linked List,Divide and Conquer,Heap (Priority Queue),Merge Sort",Hard,,"21,264","Merge Two Sorted Lists,Ugly Number II"
+634,634. Find the Derangement of An Array,,"Math,Dynamic Programming",Medium,,,
+697,697. Degree of an Array,"Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.
+Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.
+ 
+Example 1:
+Input: nums = [1,2,2,3,1]
+Output: 2
+Explanation: 
+The input array has a degree of 2 because both elements 1 and 2 appear twice.
+Of the subarrays that have the same degree:
+[1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]
+The shortest length is 2. So return 2.
+
+Example 2:
+Input: nums = [1,2,2,3,1,4,2]
+Output: 6
+Explanation: 
+The degree is 3 because the element 2 is repeated 3 times.
+So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+ 
+Constraints:
+
+nums.length will be between 1 and 50,000.
+nums[i] will be an integer between 0 and 49,999.
+
+","Array,Hash Table",Easy,"Say 5 is the only element that occurs the most number of times - for example, nums = [1, 5, 2, 3, 5, 4, 5, 6].  What is the answer?",53,Maximum Subarray
+717,717. 1-bit and 2-bit Characters,"We have two special characters:
+
+The first character can be represented by one bit 0.
+The second character can be represented by two bits (10 or 11).
+
+Given a binary array bits that ends with 0, return true if the last character must be a one-bit character.
+ 
+Example 1:
+Input: bits = [1,0,0]
+Output: true
+Explanation: The only way to decode it is two-bit character and one-bit character.
+So the last character is one-bit character.
+
+Example 2:
+Input: bits = [1,1,1,0]
+Output: false
+Explanation: The only way to decode it is two-bit character and two-bit character.
+So the last character is not one-bit character.
+
+ 
+Constraints:
+
+1 <= bits.length <= 1000
+bits[i] is either 0 or 1.
+
+",Array,Easy,"Keep track of where the next character starts.  At the end, you want to know if you started on the last bit.",89,Gray Code
+227,227. Basic Calculator II,"Given a string s which represents an expression, evaluate this expression and return its value. 
+The integer division should truncate toward zero.
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""3+2*2""
+Output: 7
+Example 2:
+Input: s = "" 3/2 ""
+Output: 1
+Example 3:
+Input: s = "" 3+5 / 2 ""
+Output: 5
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of integers and operators ('+', '-', '*', '/') separated by some number of spaces.
+s represents a valid expression.
+All the integers in the expression are non-negative integers in the range [0, 231 - 1].
+The answer is guaranteed to fit in a 32-bit integer.
+
+","Math,String,Stack",Medium,,"224,282,785","Basic Calculator,Expression Add Operators,Basic Calculator III"
+518,518. Coin Change II,"You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+Return the number of combinations that make up that amount. If that amount of money cannot be made up by any combination of the coins, return 0.
+You may assume that you have an infinite number of each kind of coin.
+The answer is guaranteed to fit into a signed 32-bit integer.
+ 
+Example 1:
+Input: amount = 5, coins = [1,2,5]
+Output: 4
+Explanation: there are four ways to make up the amount:
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+
+Example 2:
+Input: amount = 3, coins = [2]
+Output: 0
+Explanation: the amount of 3 cannot be made up just with coins of 2.
+
+Example 3:
+Input: amount = 10, coins = [10]
+Output: 1
+
+ 
+Constraints:
+
+1 <= coins.length <= 300
+1 <= coins[i] <= 5000
+All the values of coins are unique.
+0 <= amount <= 5000
+
+","Array,Dynamic Programming",Medium,,1393,Maximum Value of K Coins From Piles
+33,33. Search in Rotated Sorted Array,"There is an integer array nums sorted in ascending order (with distinct values).
+Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+You must write an algorithm with O(log n) runtime complexity.
+ 
+Example 1:
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+Input: nums = [1], target = 0
+Output: -1
+
+ 
+Constraints:
+
+1 <= nums.length <= 5000
+-104 <= nums[i] <= 104
+All values of nums are unique.
+nums is an ascending array that is possibly rotated.
+-104 <= target <= 104
+
+","Array,Binary Search",Medium,,"81,153,2273","Search in Rotated Sorted Array II,Find Minimum in Rotated Sorted Array,Pour Water Between Buckets to Make Water Levels Equal"
+162,162. Find Peak Element,"A peak element is an element that is strictly greater than its neighbors.
+Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
+You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.
+You must write an algorithm that runs in O(log n) time.
+ 
+Example 1:
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+Example 2:
+Input: nums = [1,2,1,3,5,6,4]
+Output: 5
+Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.
+ 
+Constraints:
+
+1 <= nums.length <= 1000
+-231 <= nums[i] <= 231 - 1
+nums[i] != nums[i + 1] for all valid i.
+
+","Array,Binary Search",Medium,,"882,2047,2273,2316","Peak Index in a Mountain Array,Find a Peak Element II,Pour Water Between Buckets to Make Water Levels Equal,Count Hills and Valleys in an Array"

@@ -1,0 +1,1001 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+759,759. Employee Free Time,,"Array,Greedy,Sorting",Hard,,,
+811,811. Subdomain Visit Count,"A website domain ""discuss.leetcode.com"" consists of various subdomains. At the top level, we have ""com"", at the next level, we have ""leetcode.com"" and at the lowest level, ""discuss.leetcode.com"". When we visit a domain like ""discuss.leetcode.com"", we will also visit the parent domains ""leetcode.com"" and ""com"" implicitly.
+A count-paired domain is a domain that has one of the two formats ""rep d1.d2.d3"" or ""rep d1.d2"" where rep is the number of visits to the domain and d1.d2.d3 is the domain itself.
+
+For example, ""9001 discuss.leetcode.com"" is a count-paired domain that indicates that discuss.leetcode.com was visited 9001 times.
+
+Given an array of count-paired domains cpdomains, return an array of the count-paired domains of each subdomain in the input. You may return the answer in any order.
+ 
+Example 1:
+Input: cpdomains = [""9001 discuss.leetcode.com""]
+Output: [""9001 leetcode.com"",""9001 discuss.leetcode.com"",""9001 com""]
+Explanation: We only have one website domain: ""discuss.leetcode.com"".
+As discussed above, the subdomain ""leetcode.com"" and ""com"" will also be visited. So they will all be visited 9001 times.
+
+Example 2:
+Input: cpdomains = [""900 google.mail.com"", ""50 yahoo.com"", ""1 intel.mail.com"", ""5 wiki.org""]
+Output: [""901 mail.com"",""50 yahoo.com"",""900 google.mail.com"",""5 wiki.org"",""5 org"",""1 intel.mail.com"",""951 com""]
+Explanation: We will visit ""google.mail.com"" 900 times, ""yahoo.com"" 50 times, ""intel.mail.com"" once and ""wiki.org"" 5 times.
+For the subdomains, we will visit ""mail.com"" 900 + 1 = 901 times, ""com"" 900 + 50 + 1 = 951 times, and ""org"" 5 times.
+
+ 
+Constraints:
+
+1 <= cpdomain.length <= 100
+1 <= cpdomain[i].length <= 100
+cpdomain[i] follows either the ""repi d1i.d2i.d3i"" format or the ""repi d1i.d2i"" format.
+repi is an integer in the range [1, 104].
+d1i, d2i, and d3i consist of lowercase English letters.
+
+","Array,Two Pointers",Medium,,,
+362,362. Design Hit Counter,,"Array,Hash Table,Binary Search,Design,Queue",Medium,,359,Logger Rate Limiter
+277,277. Find the Celebrity,,"Two Pointers,Greedy,Graph,Interactive",Medium,"The best hint for this problem can be provided by the following figure: Well, if you understood the gist of the above idea, you can extend it to find a candidate that can possibly be a celebrity. Why do we say a ""candidate""? That is for you to think. This is clearly a greedy approach to find the answer. However, there is some information that would still remain to be verified without which we can't obtain an answer with certainty. To get that stake in the ground, we would need some more calls to the knows API.",1039,Find the Town Judge
+68,68. Text Justification,"Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.
+For the last line of text, it should be left-justified, and no extra space is inserted between words.
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+
+ 
+Example 1:
+Input: words = [""This"", ""is"", ""an"", ""example"", ""of"", ""text"", ""justification.""], maxWidth = 16
+Output:
+[
+   ""This    is    an"",
+   ""example  of text"",
+   ""justification.  ""
+]
+Example 2:
+Input: words = [""What"",""must"",""be"",""acknowledgment"",""shall"",""be""], maxWidth = 16
+Output:
+[
+  ""What   must   be"",
+  ""acknowledgment  "",
+  ""shall be        ""
+]
+Explanation: Note that the last line is ""shall be    "" instead of ""shall     be"", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+Example 3:
+Input: words = [""Science"",""is"",""what"",""we"",""understand"",""well"",""enough"",""to"",""explain"",""to"",""a"",""computer."",""Art"",""is"",""everything"",""else"",""we"",""do""], maxWidth = 20
+Output:
+[
+  ""Science  is  what we"",
+  ""understand      well"",
+  ""enough to explain to"",
+  ""a  computer.  Art is"",
+  ""everything  else  we"",
+  ""do                  ""
+]
+ 
+Constraints:
+
+1 <= words.length <= 300
+1 <= words[i].length <= 20
+words[i] consists of only English letters and symbols.
+1 <= maxWidth <= 100
+words[i].length <= maxWidth
+
+","Array,String,Simulation",Hard,,"1714,2260","Rearrange Spaces Between Words,Divide a String Into Groups of Size k"
+698,698. Partition to K Equal Sum Subsets,"Given an integer array nums and an integer k, return true if it is possible to divide this array into k non-empty subsets whose sums are all equal.
+ 
+Example 1:
+Input: nums = [4,3,2,3,5,2,1], k = 4
+Output: true
+Explanation: It is possible to divide it into 4 subsets (5), (1, 4), (2,3), (2,3) with equal sums.
+
+Example 2:
+Input: nums = [1,2,3,4], k = 3
+Output: false
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 16
+1 <= nums[i] <= 104
+The frequency of each element is in the range [1, 4].
+
+","Array,Dynamic Programming,Backtracking,Bit Manipulation,Memoization,Bitmask",Medium,"We can figure out what target each subset must sum to.  Then, let's recursively search, where at each call to our function, we choose which of k subsets the next value will join.","416,2135","Partition Equal Subset Sum,Maximum Number of Ways to Partition an Array"
+269,269. Alien Dictionary,,"Array,String,Depth-First Search,Breadth-First Search,Graph,Topological Sort",Hard,,210,Course Schedule II
+986,986. Interval List Intersections,"You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and in sorted order.
+Return the intersection of these two interval lists.
+A closed interval [a, b] (with a <= b) denotes the set of real numbers x with a <= x <= b.
+The intersection of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].
+ 
+Example 1:
+
+Input: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]
+Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
+
+Example 2:
+Input: firstList = [[1,3],[5,9]], secondList = []
+Output: []
+
+ 
+Constraints:
+
+0 <= firstList.length, secondList.length <= 1000
+firstList.length + secondList.length >= 1
+0 <= starti < endi <= 109
+endi < starti+1
+0 <= startj < endj <= 109 
+endj < startj+1
+
+","String,Enumeration",Medium,,,
+79,79. Word Search,"Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+ 
+Example 1:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCCED""
+Output: true
+
+Example 2:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""SEE""
+Output: true
+
+Example 3:
+
+Input: board = [[""A"",""B"",""C"",""E""],[""S"",""F"",""C"",""S""],[""A"",""D"",""E"",""E""]], word = ""ABCB""
+Output: false
+
+ 
+Constraints:
+
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+board and word consists of only lowercase and uppercase English letters.
+
+ 
+Follow up: Could you use search pruning to make your solution faster with a larger board?
+","Array,Backtracking,Matrix",Medium,,212,Word Search II
+621,621. Task Scheduler,"Given a characters array tasks, representing the tasks a CPU needs to do, where each letter represents a different task. Tasks could be done in any order. Each task is done in one unit of time. For each unit of time, the CPU could complete either one task or just be idle.
+However, there is a non-negative integer n that represents the cooldown period between two same tasks (the same letter in the array), that is that there must be at least n units of time between any two same tasks.
+Return the least number of units of times that the CPU will take to finish all the given tasks.
+ 
+Example 1:
+Input: tasks = [""A"",""A"",""A"",""B"",""B"",""B""], n = 2
+Output: 8
+Explanation: 
+A -> B -> idle -> A -> B -> idle -> A -> B
+There is at least 2 units of time between any two same tasks.
+
+Example 2:
+Input: tasks = [""A"",""A"",""A"",""B"",""B"",""B""], n = 0
+Output: 6
+Explanation: On this case any permutation of size 6 would work since n = 0.
+[""A"",""A"",""A"",""B"",""B"",""B""]
+[""A"",""B"",""A"",""B"",""A"",""B""]
+[""B"",""B"",""B"",""A"",""A"",""A""]
+...
+And so on.
+
+Example 3:
+Input: tasks = [""A"",""A"",""A"",""A"",""A"",""A"",""B"",""C"",""D"",""E"",""F"",""G""], n = 2
+Output: 16
+Explanation: 
+One possible solution is
+A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle -> idle -> A
+
+ 
+Constraints:
+
+1 <= task.length <= 104
+tasks[i] is upper-case English letter.
+The integer n is in the range [0, 100].
+
+","Array,Hash Table,Greedy,Sorting,Heap (Priority Queue),Counting",Medium,,"358,778,2084","Rearrange String k Distance Apart,Reorganize String,Maximum Number of Weeks for Which You Can Work"
+770,770. Basic Calculator IV,"Given an expression such as expression = ""e + 8 - a + 5"" and an evaluation map such as {""e"": 1} (given in terms of evalvars = [""e""] and evalints = [1]), return a list of tokens representing the simplified expression, such as [""-1*a"",""14""]
+
+An expression alternates chunks and symbols, with a space separating each chunk and symbol.
+A chunk is either an expression in parentheses, a variable, or a non-negative integer.
+A variable is a string of lowercase letters (not including digits.) Note that variables can be multiple letters, and note that variables never have a leading coefficient or unary operator like ""2x"" or ""-x"".
+
+Expressions are evaluated in the usual order: brackets first, then multiplication, then addition and subtraction.
+
+For example, expression = ""1 + 2 * 3"" has an answer of [""7""].
+
+The format of the output is as follows:
+
+For each term of free variables with a non-zero coefficient, we write the free variables within a term in sorted order lexicographically.
+	
+For example, we would never write a term like ""b*a*c"", only ""a*b*c"".
+
+
+Terms have degrees equal to the number of free variables being multiplied, counting multiplicity. We write the largest degree terms of our answer first, breaking ties by lexicographic order ignoring the leading coefficient of the term.
+	
+For example, ""a*a*b*c"" has degree 4.
+
+
+The leading coefficient of the term is placed directly to the left with an asterisk separating it from the variables (if they exist.) A leading coefficient of 1 is still printed.
+An example of a well-formatted answer is [""-2*a*a*a"", ""3*a*a*b"", ""3*b*b"", ""4*a"", ""5*c"", ""-6""].
+Terms (including constant terms) with coefficient 0 are not included.
+	
+For example, an expression of ""0"" has an output of [].
+
+
+
+Note: You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+ 
+Example 1:
+Input: expression = ""e + 8 - a + 5"", evalvars = [""e""], evalints = [1]
+Output: [""-1*a"",""14""]
+
+Example 2:
+Input: expression = ""e - 8 + temperature - pressure"", evalvars = [""e"", ""temperature""], evalints = [1, 12]
+Output: [""-1*pressure"",""5""]
+
+Example 3:
+Input: expression = ""(e + 8) * (e - 8)"", evalvars = [], evalints = []
+Output: [""1*e*e"",""-64""]
+
+ 
+Constraints:
+
+1 <= expression.length <= 250
+expression consists of lowercase English letters, digits, '+', '-', '*', '(', ')', ' '.
+expression does not contain any leading or trailing spaces.
+All the tokens in expression are separated by a single space.
+0 <= evalvars.length <= 100
+1 <= evalvars[i].length <= 20
+evalvars[i] consists of lowercase English letters.
+evalints.length == evalvars.length
+-100 <= evalints[i] <= 100
+
+","Greedy,Depth-First Search,Breadth-First Search,Union Find,Graph",Hard,"Say there are N two-seat couches.  For each couple, draw an edge from the couch of one partner to the couch of the other partner.","41,268,884","First Missing Positive,Missing Number,K-Similar Strings"
+224,224. Basic Calculator,"Given a string s representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+ 
+Example 1:
+Input: s = ""1 + 1""
+Output: 2
+
+Example 2:
+Input: s = "" 2-1 + 2 ""
+Output: 3
+
+Example 3:
+Input: s = ""(1+(4+5+2)-3)+(6+8)""
+Output: 23
+
+ 
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consists of digits, '+', '-', '(', ')', and ' '.
+s represents a valid expression.
+'+' is not used as a unary operation (i.e., ""+1"" and ""+(2 + 3)"" is invalid).
+'-' could be used as a unary operation (i.e., ""-1"" and ""-(2 + 3)"" is valid).
+There will be no two consecutive operators in the input.
+Every number and running calculation will fit in a signed 32-bit integer.
+
+","Math,String,Stack,Recursion",Hard,,"150,227,241,282,785,2147,2328","Evaluate Reverse Polish Notation,Basic Calculator II,Different Ways to Add Parentheses,Expression Add Operators,Basic Calculator III,The Score of Students Solving Math Expression,Minimize Result by Adding Parentheses to Expression"
+632,632. Smallest Range Covering Elements from K Lists,"You have k lists of sorted integers in non-decreasing order. Find the smallest range that includes at least one number from each of the k lists.
+We define the range [a, b] is smaller than range [c, d] if b - a < d - c or a < c if b - a == d - c.
+ 
+Example 1:
+Input: nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]
+Output: [20,24]
+Explanation: 
+List 1: [4, 10, 15, 24,26], 24 is in range [20,24].
+List 2: [0, 9, 12, 20], 20 is in range [20,24].
+List 3: [5, 18, 22, 30], 22 is in range [20,24].
+
+Example 2:
+Input: nums = [[1,2,3],[1,2,3],[1,2,3]]
+Output: [1,1]
+
+ 
+Constraints:
+
+nums.length == k
+1 <= k <= 3500
+1 <= nums[i].length <= 50
+-105 <= nums[i][j] <= 105
+nums[i] is sorted in non-decreasing order.
+
+","Array,Hash Table,Greedy,Sliding Window,Sorting,Heap (Priority Queue)",Hard,,76,Minimum Window Substring
+564,564. Find the Closest Palindrome,"Given a string n representing an integer, return the closest integer (not including itself), which is a palindrome. If there is a tie, return the smaller one.
+The closest is defined as the absolute difference minimized between two integers.
+ 
+Example 1:
+Input: n = ""123""
+Output: ""121""
+
+Example 2:
+Input: n = ""1""
+Output: ""0""
+Explanation: 0 and 2 are the closest palindromes but we return the smallest which is 0.
+
+ 
+Constraints:
+
+1 <= n.length <= 18
+n consists of only digits.
+n does not have leading zeros.
+n is representing an integer in the range [1, 1018 - 1].
+
+","Math,String",Hard,"Will brute force work for this problem? Think of something else. Take some examples like 1234, 999,1000, etc and check their closest palindromes. How many different cases are possible? Do we have to consider only left half or right half of the string or both? Try to find the closest palindrome of these numbers- 12932, 99800, 12120. Did you observe something?","1375,1997","Find Palindrome With Fixed Length,Next Palindrome Using Same Digits"
+254,254. Factor Combinations,,"Array,Backtracking",Medium,,39,Combination Sum
+126,126. Word Ladder II,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return all the shortest transformation sequences from beginWord to endWord, or an empty list if no such sequence exists. Each sequence should be returned as a list of the words [beginWord, s1, s2, ..., sk].
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: [[""hit"",""hot"",""dot"",""dog"",""cog""],[""hit"",""hot"",""lot"",""log"",""cog""]]
+Explanation: There are 2 shortest transformation sequences:
+""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> ""cog""
+""hit"" -> ""hot"" -> ""lot"" -> ""log"" -> ""cog""
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: []
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 5
+endWord.length == beginWord.length
+1 <= wordList.length <= 500
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+The sum of all shortest transformation sequences does not exceed 105.
+
+","Hash Table,String,Backtracking,Breadth-First Search",Hard,,"127,2276","Word Ladder,Groups of Strings"
+718,718. Maximum Length of Repeated Subarray,"Given two integer arrays nums1 and nums2, return the maximum length of a subarray that appears in both arrays.
+ 
+Example 1:
+Input: nums1 = [1,2,3,2,1], nums2 = [3,2,1,4,7]
+Output: 3
+Explanation: The repeated subarray with maximum length is [3,2,1].
+
+Example 2:
+Input: nums1 = [0,0,0,0,0], nums2 = [0,0,0,0,0]
+Output: 5
+Explanation: The repeated subarray with maximum length is [0,0,0,0,0].
+
+ 
+Constraints:
+
+1 <= nums1.length, nums2.length <= 1000
+0 <= nums1[i], nums2[i] <= 100
+
+","Array,Binary Search,Dynamic Programming,Sliding Window,Rolling Hash,Hash Function",Medium,"Use dynamic programming.  dp[i][j] will be the answer for inputs A[i:], B[j:].","209,2051","Minimum Size Subarray Sum,Longest Common Subpath"
+146,146. LRU Cache,"Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+Implement the LRUCache class:
+
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
+int get(int key) Return the value of the key if the key exists, otherwise return -1.
+void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+
+The functions get and put must each run in O(1) average time complexity.
+ 
+Example 1:
+Input
+[""LRUCache"", ""put"", ""put"", ""get"", ""put"", ""get"", ""put"", ""get"", ""get"", ""get""]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+Output
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+Explanation
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+
+ 
+Constraints:
+
+1 <= capacity <= 3000
+0 <= key <= 104
+0 <= value <= 105
+At most 2 * 105 calls will be made to get and put.
+
+","Hash Table,Linked List,Design,Doubly-Linked List",Medium,,"460,588,604,1903","LFU Cache,Design In-Memory File System,Design Compressed String Iterator,Design Most Recently Used Queue"
+158,158. Read N Characters Given read4 II - Call Multiple Times,,"String,Simulation,Interactive",Hard,,157,Read N Characters Given Read4
+772,772. Basic Calculator III,,"Array,Divide and Conquer,Tree,Matrix",Medium,,,
+202,202. Happy Number,"Write an algorithm to determine if a number n is happy.
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+
+Return true if n is a happy number, and false if not.
+ 
+Example 1:
+Input: n = 19
+Output: true
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+
+Example 2:
+Input: n = 2
+Output: false
+
+ 
+Constraints:
+
+1 <= n <= 231 - 1
+
+","Hash Table,Math,Two Pointers",Easy,,"141,258,263,2076","Linked List Cycle,Add Digits,Ugly Number,Sum of Digits of String After Convert"
+392,392. Is Subsequence,"Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., ""ace"" is a subsequence of ""abcde"" while ""aec"" is not).
+ 
+Example 1:
+Input: s = ""abc"", t = ""ahbgdc""
+Output: true
+Example 2:
+Input: s = ""axc"", t = ""ahbgdc""
+Output: false
+
+ 
+Constraints:
+
+0 <= s.length <= 100
+0 <= t.length <= 104
+s and t consist only of lowercase English letters.
+
+ 
+Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?","Two Pointers,String,Dynamic Programming",Easy,,"808,1051","Number of Matching Subsequences,Shortest Way to Form String"
+341,341. Flatten Nested List Iterator,"You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.
+Implement the NestedIterator class:
+
+NestedIterator(List<NestedInteger> nestedList) Initializes the iterator with the nested list nestedList.
+int next() Returns the next integer in the nested list.
+boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+
+Your code will be tested with the following pseudocode:
+initialize iterator with nestedList
+res = []
+while iterator.hasNext()
+    append iterator.next() to the end of res
+return res
+
+If res matches the expected flattened list, then your code will be judged as correct.
+ 
+Example 1:
+Input: nestedList = [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+
+Example 2:
+Input: nestedList = [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+
+ 
+Constraints:
+
+1 <= nestedList.length <= 500
+The values of the integers in the nested list is in the range [-106, 106].
+
+","Stack,Tree,Depth-First Search,Design,Queue,Iterator",Medium,,"251,281,385,565","Flatten 2D Vector,Zigzag Iterator,Mini Parser,Array Nesting"
+726,726. Number of Atoms,"Given a string formula representing a chemical formula, return the count of each atom.
+The atomic element always starts with an uppercase character, then zero or more lowercase letters, representing the name.
+One or more digits representing that element's count may follow if the count is greater than 1. If the count is 1, no digits will follow.
+
+For example, ""H2O"" and ""H2O2"" are possible, but ""H1O2"" is impossible.
+
+Two formulas are concatenated together to produce another formula.
+
+For example, ""H2O2He3Mg4"" is also a formula.
+
+A formula placed in parentheses, and a count (optionally added) is also a formula.
+
+For example, ""(H2O2)"" and ""(H2O2)3"" are formulas.
+
+Return the count of all elements as a string in the following form: the first name (in sorted order), followed by its count (if that count is more than 1), followed by the second name (in sorted order), followed by its count (if that count is more than 1), and so on.
+The test cases are generated so that all the values in the output fit in a 32-bit integer.
+ 
+Example 1:
+Input: formula = ""H2O""
+Output: ""H2O""
+Explanation: The count of elements are {'H': 2, 'O': 1}.
+
+Example 2:
+Input: formula = ""Mg(OH)2""
+Output: ""H2MgO2""
+Explanation: The count of elements are {'H': 2, 'Mg': 1, 'O': 2}.
+
+Example 3:
+Input: formula = ""K4(ON(SO3)2)2""
+Output: ""K4N2O14S4""
+Explanation: The count of elements are {'K': 4, 'N': 2, 'O': 14, 'S': 4}.
+
+ 
+Constraints:
+
+1 <= formula.length <= 1000
+formula consists of English letters, digits, '(', and ')'.
+formula is always valid.
+
+","Hash Table,String,Stack,Sorting",Hard,"To parse formula[i:], when we see a `'('`, we will parse recursively whatever is inside the brackets (up to the correct closing ending bracket) and add it to our count, multiplying by the following multiplicity if there is one.
+
+Otherwise, we should see an uppercase character: we will parse the rest of the letters to get the name, and add that (plus the multiplicity if there is one.)","394,471,736","Decode String,Encode String with Shortest Length,Parse Lisp Expression"
+428,428. Serialize and Deserialize N-ary Tree,,,,,,
+295,295. Find Median from Data Stream,"The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.
+
+For example, for arr = [2,3,4], the median is 3.
+For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.
+
+Implement the MedianFinder class:
+
+MedianFinder() initializes the MedianFinder object.
+void addNum(int num) adds the integer num from the data stream to the data structure.
+double findMedian() returns the median of all elements so far. Answers within 10-5 of the actual answer will be accepted.
+
+ 
+Example 1:
+Input
+[""MedianFinder"", ""addNum"", ""addNum"", ""findMedian"", ""addNum"", ""findMedian""]
+[[], [1], [2], [], [3], []]
+Output
+[null, null, null, 1.5, null, 2.0]
+
+Explanation
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.addNum(1);    // arr = [1]
+medianFinder.addNum(2);    // arr = [1, 2]
+medianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.addNum(3);    // arr[1, 2, 3]
+medianFinder.findMedian(); // return 2.0
+
+ 
+Constraints:
+
+-105 <= num <= 105
+There will be at least one element in the data structure before calling findMedian.
+At most 5 * 104 calls will be made to addNum and findMedian.
+
+ 
+Follow up:
+
+If all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
+
+","Two Pointers,Design,Sorting,Heap (Priority Queue),Data Stream",Hard,,"480,1953,2207","Sliding Window Median,Finding MK Average,Sequentially Ordinal Rank Tracker"
+36,36. Valid Sudoku,"Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+
+ 
+Example 1:
+
+Input: board = 
+[[""5"",""3"",""."",""."",""7"",""."",""."",""."","".""]
+,[""6"",""."",""."",""1"",""9"",""5"",""."",""."","".""]
+,[""."",""9"",""8"",""."",""."",""."",""."",""6"","".""]
+,[""8"",""."",""."",""."",""6"",""."",""."",""."",""3""]
+,[""4"",""."",""."",""8"",""."",""3"",""."",""."",""1""]
+,[""7"",""."",""."",""."",""2"",""."",""."",""."",""6""]
+,[""."",""6"",""."",""."",""."",""."",""2"",""8"","".""]
+,[""."",""."",""."",""4"",""1"",""9"",""."",""."",""5""]
+,[""."",""."",""."",""."",""8"",""."",""."",""7"",""9""]]
+Output: true
+
+Example 2:
+Input: board = 
+[[""8"",""3"",""."",""."",""7"",""."",""."",""."","".""]
+,[""6"",""."",""."",""1"",""9"",""5"",""."",""."","".""]
+,[""."",""9"",""8"",""."",""."",""."",""."",""6"","".""]
+,[""8"",""."",""."",""."",""6"",""."",""."",""."",""3""]
+,[""4"",""."",""."",""8"",""."",""3"",""."",""."",""1""]
+,[""7"",""."",""."",""."",""2"",""."",""."",""."",""6""]
+,[""."",""6"",""."",""."",""."",""."",""2"",""8"","".""]
+,[""."",""."",""."",""4"",""1"",""9"",""."",""."",""5""]
+,[""."",""."",""."",""."",""8"",""."",""."",""7"",""9""]]
+Output: false
+Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+
+ 
+Constraints:
+
+board.length == 9
+board[i].length == 9
+board[i][j] is a digit 1-9 or '.'.
+
+","Array,Hash Table,Matrix",Medium,,"37,2254","Sudoku Solver,Check if Every Row and Column Contains All Numbers"
+935,935. Knight Dialer,"The chess knight has a unique movement, it may move two squares vertically and one square horizontally, or two squares horizontally and one square vertically (with both forming the shape of an L). The possible movements of chess knight are shown in this diagaram:
+A chess knight can move as indicated in the chess diagram below:
+
+We have a chess knight and a phone pad as shown below, the knight can only stand on a numeric cell (i.e. blue cell).
+
+Given an integer n, return how many distinct phone numbers of length n we can dial.
+You are allowed to place the knight on any numeric cell initially and then you should perform n - 1 jumps to dial a number of length n. All jumps should be valid knight jumps.
+As the answer may be very large, return the answer modulo 109 + 7.
+ 
+Example 1:
+Input: n = 1
+Output: 10
+Explanation: We need to dial a number of length 1, so placing the knight over any numeric cell of the 10 cells is sufficient.
+
+Example 2:
+Input: n = 2
+Output: 20
+Explanation: All the valid number we can dial are [04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72, 76, 81, 83, 92, 94]
+
+Example 3:
+Input: n = 3131
+Output: 136006598
+Explanation: Please take care of the mod.
+
+ 
+Constraints:
+
+1 <= n <= 5000
+
+","Math,String,Sorting",Hard,,,
+56,56. Merge Intervals,"Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+ 
+Example 1:
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+Example 2:
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+
+ 
+Constraints:
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+","Array,Sorting",Medium,,"57,252,253,495,616,715,761,768,1028,2297,2319","Insert Interval,Meeting Rooms,Meeting Rooms II,Teemo Attacking,Add Bold Tag in String,Range Module,Employee Free Time,Partition Labels,Interval List Intersections,Amount of New Area Painted Each Day,Longest Substring of One Repeating Character"
+261,261. Graph Valid Tree,,"Depth-First Search,Breadth-First Search,Union Find,Graph",Medium,"Given n = 5 and edges = [[0, 1], [1, 2], [3, 4]], what should your return? Is this case a valid tree? According to the definition of tree on Wikipedia: “a tree is an undirected graph in which any two vertices are connected by exactly one path. In other words, any connected graph without simple cycles is a tree.”","207,323,871","Course Schedule,Number of Connected Components in an Undirected Graph,Keys and Rooms"
+127,127. Word Ladder,"A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+ 
+Example 1:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log"",""cog""]
+Output: 5
+Explanation: One shortest transformation sequence is ""hit"" -> ""hot"" -> ""dot"" -> ""dog"" -> cog"", which is 5 words long.
+
+Example 2:
+Input: beginWord = ""hit"", endWord = ""cog"", wordList = [""hot"",""dot"",""dog"",""lot"",""log""]
+Output: 0
+Explanation: The endWord ""cog"" is not in wordList, therefore there is no valid transformation sequence.
+
+ 
+Constraints:
+
+1 <= beginWord.length <= 10
+endWord.length == beginWord.length
+1 <= wordList.length <= 5000
+wordList[i].length == beginWord.length
+beginWord, endWord, and wordList[i] consist of lowercase English letters.
+beginWord != endWord
+All the words in wordList are unique.
+
+","Hash Table,String,Breadth-First Search",Hard,,"126,433","Word Ladder II,Minimum Genetic Mutation"
+91,91. Decode Ways,"A message containing letters from A-Z can be encoded into numbers using the following mapping:
+'A' -> ""1""
+'B' -> ""2""
+...
+'Z' -> ""26""
+
+To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, ""11106"" can be mapped into:
+
+""AAJF"" with the grouping (1 1 10 6)
+""KJF"" with the grouping (11 10 6)
+
+Note that the grouping (1 11 06) is invalid because ""06"" cannot be mapped into 'F' since ""6"" is different from ""06"".
+Given a string s containing only digits, return the number of ways to decode it.
+The test cases are generated so that the answer fits in a 32-bit integer.
+ 
+Example 1:
+Input: s = ""12""
+Output: 2
+Explanation: ""12"" could be decoded as ""AB"" (1 2) or ""L"" (12).
+
+Example 2:
+Input: s = ""226""
+Output: 3
+Explanation: ""226"" could be decoded as ""BZ"" (2 26), ""VF"" (22 6), or ""BBF"" (2 2 6).
+
+Example 3:
+Input: s = ""06""
+Output: 0
+Explanation: ""06"" cannot be mapped to ""F"" because of the leading zero (""6"" is different from ""06"").
+
+ 
+Constraints:
+
+1 <= s.length <= 100
+s contains only digits and may contain leading zero(s).
+
+","String,Dynamic Programming",Medium,,"639,2091","Decode Ways II,Number of Ways to Separate Numbers"
+208,208. Implement Trie (Prefix Tree),"A trie (pronounced as ""try"") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+Implement the Trie class:
+
+Trie() Initializes the trie object.
+void insert(String word) Inserts the string word into the trie.
+boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
+ 
+Example 1:
+Input
+[""Trie"", ""insert"", ""search"", ""search"", ""startsWith"", ""insert"", ""search""]
+[[], [""apple""], [""apple""], [""app""], [""app""], [""app""], [""app""]]
+Output
+[null, null, true, false, true, null, true]
+
+Explanation
+Trie trie = new Trie();
+trie.insert(""apple"");
+trie.search(""apple"");   // return True
+trie.search(""app"");     // return False
+trie.startsWith(""app""); // return True
+trie.insert(""app"");
+trie.search(""app"");     // return True
+
+ 
+Constraints:
+
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.
+
+","Hash Table,String,Design,Trie",Medium,,"211,642,648,676,1433,1949","Design Add and Search Words Data Structure,Design Search Autocomplete System,Replace Words,Implement Magic Dictionary,Encrypt and Decrypt Strings,Implement Trie II (Prefix Tree)"
+139,139. Word Break,"Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""leetcode"", wordDict = [""leet"",""code""]
+Output: true
+Explanation: Return true because ""leetcode"" can be segmented as ""leet code"".
+
+Example 2:
+Input: s = ""applepenapple"", wordDict = [""apple"",""pen""]
+Output: true
+Explanation: Return true because ""applepenapple"" can be segmented as ""apple pen apple"".
+Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 300
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 20
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+
+","Hash Table,String,Dynamic Programming,Trie,Memoization",Medium,,140,Word Break II
+236,236. Lowest Common Ancestor of a Binary Tree,"Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+ 
+Example 1:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+
+Example 2:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.
+
+Example 3:
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+
+ 
+Constraints:
+
+The number of nodes in the tree is in the range [2, 105].
+-109 <= Node.val <= 109
+All Node.val are unique.
+p != q
+p and q will exist in the tree.
+
+","Tree,Depth-First Search,Binary Tree",Medium,,"235,1190,1354,1780,1790,1816,2217","Lowest Common Ancestor of a Binary Search Tree,Smallest Common Region,Find Players With Zero or One Losses,Lowest Common Ancestor of a Binary Tree II,Lowest Common Ancestor of a Binary Tree III,Lowest Common Ancestor of a Binary Tree IV,Step-By-Step Directions From a Binary Tree Node to Another"
+380,380. Insert Delete GetRandom O(1),"Implement the RandomizedSet class:
+
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+
+You must implement the functions of the class such that each function works in average O(1) time complexity.
+ 
+Example 1:
+Input
+[""RandomizedSet"", ""insert"", ""remove"", ""insert"", ""getRandom"", ""remove"", ""insert"", ""getRandom""]
+[[], [1], [2], [2], [], [1], [2], []]
+Output
+[null, true, false, true, 2, true, false, 2]
+
+Explanation
+RandomizedSet randomizedSet = new RandomizedSet();
+randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
+randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2); // 2 was already in the set, so return false.
+randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+
+ 
+Constraints:
+
+-231 <= val <= 231 - 1
+At most 2 * 105 calls will be made to insert, remove, and getRandom.
+There will be at least one element in the data structure when getRandom is called.
+
+","Array,Hash Table,Math,Design,Randomized",Medium,,381,Insert Delete GetRandom O(1) - Duplicates allowed
+239,239. Sliding Window Maximum,"You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Return the max sliding window.
+ 
+Example 1:
+Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+Output: [3,3,5,5,6,7]
+Explanation: 
+Window position                Max
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+Example 2:
+Input: nums = [1], k = 1
+Output: [1]
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-104 <= nums[i] <= 104
+1 <= k <= nums.length
+
+","Array,Queue,Sliding Window,Heap (Priority Queue),Monotonic Queue",Hard,How about using a data structure such as deque (double-ended queue)? The queue size need not be the same as the window’s size. Remove redundant elements and the queue should store only elements that need to be considered.,"76,155,159,265,1814","Minimum Window Substring,Min Stack,Longest Substring with At Most Two Distinct Characters,Paint House II,Jump Game VI"
+14,14. Longest Common Prefix,"Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string """".
+ 
+Example 1:
+Input: strs = [""flower"",""flow"",""flight""]
+Output: ""fl""
+
+Example 2:
+Input: strs = [""dog"",""racecar"",""car""]
+Output: """"
+Explanation: There is no common prefix among the input strings.
+
+ 
+Constraints:
+
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters.
+
+",String,Easy,,,
+210,210. Course Schedule II,"There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+
+Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
+ 
+Example 1:
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: [0,1]
+Explanation: There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1].
+
+Example 2:
+Input: numCourses = 4, prerequisites = [[1,0],[2,0],[3,1],[3,2]]
+Output: [0,2,1,3]
+Explanation: There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0.
+So one correct course order is [0,1,2,3]. Another correct ordering is [0,2,1,3].
+
+Example 3:
+Input: numCourses = 1, prerequisites = []
+Output: [0]
+
+ 
+Constraints:
+
+1 <= numCourses <= 2000
+0 <= prerequisites.length <= numCourses * (numCourses - 1)
+prerequisites[i].length == 2
+0 <= ai, bi < numCourses
+ai != bi
+All the pairs [ai, bi] are distinct.
+
+","Depth-First Search,Breadth-First Search,Graph,Topological Sort",Medium,"This problem is equivalent to finding the topological order in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort. Topological sort could also be done via BFS.","207,269,310,444,630,1101,2220","Course Schedule,Alien Dictionary,Minimum Height Trees,Sequence Reconstruction,Course Schedule III,Parallel Courses,Find All Possible Recipes from Given Supplies"
+140,140. Word Break II,"Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences in any order.
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+ 
+Example 1:
+Input: s = ""catsanddog"", wordDict = [""cat"",""cats"",""and"",""sand"",""dog""]
+Output: [""cats and dog"",""cat sand dog""]
+
+Example 2:
+Input: s = ""pineapplepenapple"", wordDict = [""apple"",""pen"",""applepen"",""pine"",""pineapple""]
+Output: [""pine apple pen apple"",""pineapple pen apple"",""pine applepen apple""]
+Explanation: Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+Input: s = ""catsandog"", wordDict = [""cats"",""dog"",""sand"",""and"",""cat""]
+Output: []
+
+ 
+Constraints:
+
+1 <= s.length <= 20
+1 <= wordDict.length <= 1000
+1 <= wordDict[i].length <= 10
+s and wordDict[i] consist of only lowercase English letters.
+All the strings of wordDict are unique.
+Input is generated in a way that the length of the answer doesn't exceed 105.
+
+","Hash Table,String,Dynamic Programming,Backtracking,Trie,Memoization",Hard,,"139,472","Word Break,Concatenated Words"
+571,571. Find Median Given Frequency of Numbers,,Database,Hard,,569,Median Employee Salary
+720,720. Longest Word in Dictionary,"Given an array of strings words representing an English Dictionary, return the longest word in words that can be built one character at a time by other words in words.
+If there is more than one possible answer, return the longest word with the smallest lexicographical order. If there is no answer, return the empty string.
+Note that the word should be built from left to right with each additional character being added to the end of a previous word. 
+ 
+Example 1:
+Input: words = [""w"",""wo"",""wor"",""worl"",""world""]
+Output: ""world""
+Explanation: The word ""world"" can be built one character at a time by ""w"", ""wo"", ""wor"", and ""worl"".
+
+Example 2:
+Input: words = [""a"",""banana"",""app"",""appl"",""ap"",""apply"",""apple""]
+Output: ""apple""
+Explanation: Both ""apply"" and ""apple"" can be built from other words in the dictionary. However, ""apple"" is lexicographically smaller than ""apply"".
+
+ 
+Constraints:
+
+1 <= words.length <= 1000
+1 <= words[i].length <= 30
+words[i] consists of lowercase English letters.
+
+","Array,Hash Table,String,Trie,Sorting",Medium,"For every word in the input list, we can check whether all prefixes of that word are in the input list by using a Set.","524,676,2009","Longest Word in Dictionary through Deleting,Implement Magic Dictionary,Longest Word With All Prefixes"

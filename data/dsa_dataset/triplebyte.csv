@@ -1,0 +1,99 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+348,348. Design Tic-Tac-Toe,,"Array,Hash Table,Design,Matrix",Medium,"Could you trade extra space such that move() operation can be done in O(1)? You need two arrays: int rows[n], int cols[n], plus two variables: diagonal, anti_diagonal.",810,Valid Tic-Tac-Toe State
+230,230. Kth Smallest Element in a BST,"Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+ 
+Example 1:
+
+Input: root = [3,1,4,null,2], k = 1
+Output: 1
+
+Example 2:
+
+Input: root = [5,3,6,2,4,null,null,1], k = 3
+Output: 3
+
+ 
+Constraints:
+
+The number of nodes in the tree is n.
+1 <= k <= n <= 104
+0 <= Node.val <= 104
+
+ 
+Follow up: If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?
+","Tree,Depth-First Search,Binary Search Tree,Binary Tree",Medium,Try to utilize the property of a BST. Try in-order traversal. (Credits to @chan13) What if you could modify the BST node's structure? The optimal runtime complexity is O(height of BST).,"94,671","Binary Tree Inorder Traversal,Second Minimum Node In a Binary Tree"
+712,712. Minimum ASCII Delete Sum for Two Strings,"Given two strings s1 and s2, return the lowest ASCII sum of deleted characters to make two strings equal.
+ 
+Example 1:
+Input: s1 = ""sea"", s2 = ""eat""
+Output: 231
+Explanation: Deleting ""s"" from ""sea"" adds the ASCII value of ""s"" (115) to the sum.
+Deleting ""t"" from ""eat"" adds 116 to the sum.
+At the end, both strings are equal, and 115 + 116 = 231 is the minimum sum possible to achieve this.
+
+Example 2:
+Input: s1 = ""delete"", s2 = ""leet""
+Output: 403
+Explanation: Deleting ""dee"" from ""delete"" to turn the string into ""let"",
+adds 100[d] + 101[e] + 101[e] to the sum.
+Deleting ""e"" from ""leet"" adds 101[e] to the sum.
+At the end, both strings are equal to ""let"", and the answer is 100+101+101+101 = 403.
+If instead we turned both strings into ""lee"" or ""eet"", we would get answers of 433 or 417, which are higher.
+
+ 
+Constraints:
+
+1 <= s1.length, s2.length <= 1000
+s1 and s2 consist of lowercase English letters.
+
+","String,Dynamic Programming",Medium,"Let dp(i, j) be the answer for inputs s1[i:] and s2[j:].","72,300,583","Edit Distance,Longest Increasing Subsequence,Delete Operation for Two Strings"
+20,20. Valid Parentheses,"Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+ 
+Example 1:
+Input: s = ""()""
+Output: true
+
+Example 2:
+Input: s = ""()[]{}""
+Output: true
+
+Example 3:
+Input: s = ""(]""
+Output: false
+
+ 
+Constraints:
+
+1 <= s.length <= 104
+s consists of parentheses only '()[]{}'.
+
+","String,Stack",Easy,"An interesting property about a valid parenthesis expression is that a sub-expression of a valid expression should also be a valid expression. (Not every sub-expression) e.g.
+
+
+{ { } [ ] [ [ [ ] ] ] } is VALID expression
+          [ [ [ ] ] ]    is VALID sub-expression
+  { } [ ]                is VALID sub-expression
+
+
+Can we exploit this recursive structure somehow? What if whenever we encounter a matching pair of parenthesis in the expression, we simply remove it from the expression? This would keep on shortening the expression. e.g.
+
+
+{ { ( { } ) } }
+      |_|
+
+{ { (      ) } }
+    |______|
+
+{ {          } }
+  |__________|
+
+{                }
+|________________|
+
+VALID EXPRESSION! The stack data structure can come in handy here in representing this recursive structure of the problem. We can't really process this from the inside out because we don't have an idea about the overall structure. But, the stack can help us process this recursively i.e. from outside to inwards.","22,32,301,1045,2221","Generate Parentheses,Longest Valid Parentheses,Remove Invalid Parentheses,Check If Word Is Valid After Substitutions,Check if a Parentheses String Can Be Valid"

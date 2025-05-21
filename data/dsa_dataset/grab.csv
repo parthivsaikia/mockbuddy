@@ -1,0 +1,326 @@
+problem id,question title,question text,topic tagged text,difficulty level,hints,similar questions id,similar questions text
+984,984. String Without AAA or BBB,"Given two integers a and b, return any string s such that:
+
+s has length a + b and contains exactly a 'a' letters, and exactly b 'b' letters,
+The substring 'aaa' does not occur in s, and
+The substring 'bbb' does not occur in s.
+
+ 
+Example 1:
+Input: a = 1, b = 2
+Output: ""abb""
+Explanation: ""abb"", ""bab"" and ""bba"" are all correct answers.
+
+Example 2:
+Input: a = 4, b = 1
+Output: ""aabaa""
+
+ 
+Constraints:
+
+0 <= a, b <= 100
+It is guaranteed such an s exists for the given a and b.
+
+","Depth-First Search,Union Find,Graph",Medium,,,
+915,915. Partition Array into Disjoint Intervals,"Given an integer array nums, partition it into two (contiguous) subarrays left and right so that:
+
+Every element in left is less than or equal to every element in right.
+left and right are non-empty.
+left has the smallest possible size.
+
+Return the length of left after such a partitioning.
+Test cases are generated such that partitioning exists.
+ 
+Example 1:
+Input: nums = [5,0,3,8,6]
+Output: 3
+Explanation: left = [5,0,3], right = [8,6]
+
+Example 2:
+Input: nums = [1,1,1,0,6,12]
+Output: 4
+Explanation: left = [1,1,1,0], right = [6,12]
+
+ 
+Constraints:
+
+2 <= nums.length <= 105
+0 <= nums[i] <= 106
+There is at least one valid answer for the given input.
+
+","Math,Geometry,Rejection Sampling,Randomized",Medium,,914,Random Point in Non-overlapping Rectangles
+983,983. Minimum Cost For Tickets,"You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.
+Train tickets are sold in three different ways:
+
+a 1-day pass is sold for costs[0] dollars,
+a 7-day pass is sold for costs[1] dollars, and
+a 30-day pass is sold for costs[2] dollars.
+
+The passes allow that many days of consecutive travel.
+
+For example, if we get a 7-day pass on day 2, then we can travel for 7 days: 2, 3, 4, 5, 6, 7, and 8.
+
+Return the minimum number of dollars you need to travel every day in the given list of days.
+ 
+Example 1:
+Input: days = [1,4,6,7,8,20], costs = [2,7,15]
+Output: 11
+Explanation: For example, here is one way to buy passes that lets you travel your travel plan:
+On day 1, you bought a 1-day pass for costs[0] = $2, which covered day 1.
+On day 3, you bought a 7-day pass for costs[1] = $7, which covered days 3, 4, ..., 9.
+On day 20, you bought a 1-day pass for costs[0] = $2, which covered day 20.
+In total, you spent $11 and covered all the days of your travel.
+
+Example 2:
+Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
+Output: 17
+Explanation: For example, here is one way to buy passes that lets you travel your travel plan:
+On day 1, you bought a 30-day pass for costs[2] = $15 which covered days 1, 2, ..., 30.
+On day 31, you bought a 1-day pass for costs[0] = $2 which covered day 31.
+In total, you spent $17 and covered all the days of your travel.
+
+ 
+Constraints:
+
+1 <= days.length <= 365
+1 <= days[i] <= 365
+days is in strictly increasing order.
+costs.length == 3
+1 <= costs[i] <= 1000
+
+","Array,Stack,Simulation",Medium,,,
+527,527. Word Abbreviation,,"Array,String,Greedy,Trie,Sorting",Hard,,"408,411","Valid Word Abbreviation,Minimum Unique Word Abbreviation"
+1017,1017. Convert to Base -2,"Given an integer n, return a binary string representing its representation in base -2.
+Note that the returned string should not have leading zeros unless the string is ""0"".
+ 
+Example 1:
+Input: n = 2
+Output: ""110""
+Explantion: (-2)2 + (-2)1 = 2
+
+Example 2:
+Input: n = 3
+Output: ""111""
+Explantion: (-2)2 + (-2)1 + (-2)0 = 3
+
+Example 3:
+Input: n = 4
+Output: ""100""
+Explantion: (-2)2 = 4
+
+ 
+Constraints:
+
+0 <= n <= 109
+
+","Array,Dynamic Programming,Stack,Monotonic Stack,Ordered Set",Hard,,,
+1253,1253. Reconstruct a 2-Row Binary Matrix,"Given the following details of a matrix with n columns and 2 rows :
+
+The matrix is a binary matrix, which means each element in the matrix can be 0 or 1.
+The sum of elements of the 0-th(upper) row is given as upper.
+The sum of elements of the 1-st(lower) row is given as lower.
+The sum of elements in the i-th column(0-indexed) is colsum[i], where colsum is given as an integer array with length n.
+
+Your task is to reconstruct the matrix with upper, lower and colsum.
+Return it as a 2-D integer array.
+If there are more than one valid solution, any of them will be accepted.
+If no valid solution exists, return an empty 2-D array.
+ 
+Example 1:
+Input: upper = 2, lower = 1, colsum = [1,1,1]
+Output: [[1,1,0],[0,0,1]]
+Explanation: [[1,0,1],[0,1,0]], and [[0,1,1],[1,0,0]] are also correct answers.
+
+Example 2:
+Input: upper = 2, lower = 3, colsum = [2,2,1,1]
+Output: []
+
+Example 3:
+Input: upper = 5, lower = 5, colsum = [2,1,2,0,1,0,1,2,0,1]
+Output: [[1,1,1,0,1,0,0,1,0,0],[1,0,1,0,0,0,1,1,0,1]]
+
+ 
+Constraints:
+
+1 <= colsum.length <= 10^5
+0 <= upper, lower <= colsum.length
+0 <= colsum[i] <= 2
+
+","Array,Sorting,Matrix",Medium,"Use a data structure to store all values of each diagonal. How to index the data structure with the id of the diagonal? All cells in the same diagonal (i,j) have the same difference so we can get the diagonal of a cell using the difference i-j.",,
+42,42. Trapping Rain Water,"Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+ 
+Example 1:
+
+Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+Explanation: The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.
+
+Example 2:
+Input: height = [4,2,0,3,2,5]
+Output: 9
+
+ 
+Constraints:
+
+n == height.length
+1 <= n <= 2 * 104
+0 <= height[i] <= 105
+
+","Array,Two Pointers,Dynamic Programming,Stack,Monotonic Stack",Hard,,"11,238,407,756","Container With Most Water,Product of Array Except Self,Trapping Rain Water II,Pour Water"
+2,2. Add Two Numbers,"You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+ 
+Example 1:
+
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+
+Example 2:
+Input: l1 = [0], l2 = [0]
+Output: [0]
+
+Example 3:
+Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
+Output: [8,9,9,9,0,0,0,1]
+
+ 
+Constraints:
+
+The number of nodes in each linked list is in the range [1, 100].
+0 <= Node.val <= 9
+It is guaranteed that the list represents a number that does not have leading zeros.
+
+","Linked List,Math,Recursion",Medium,,"43,67,371,415,445,1031,1774","Multiply Strings,Add Binary,Sum of Two Integers,Add Strings,Add Two Numbers II,Add to Array-Form of Integer,Add Two Polynomials Represented as Linked Lists"
+41,41. First Missing Positive,"Given an unsorted integer array nums, return the smallest missing positive integer.
+You must implement an algorithm that runs in O(n) time and uses O(1) auxiliary space.
+ 
+Example 1:
+Input: nums = [1,2,0]
+Output: 3
+Explanation: The numbers in the range [1,2] are all in the array.
+
+Example 2:
+Input: nums = [3,4,-1,1]
+Output: 2
+Explanation: 1 is in the array but 2 is missing.
+
+Example 3:
+Input: nums = [7,8,9,11,12]
+Output: 1
+Explanation: The smallest positive integer 1 is missing.
+
+ 
+Constraints:
+
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+
+","Array,Hash Table",Hard,Think about how you would solve the problem in non-constant space.  Can you apply that logic to the existing space? We don't care about duplicates or non-positive integers Remember that O(2n) = O(n),"268,287,448,770","Missing Number,Find the Duplicate Number,Find All Numbers Disappeared in an Array,Couples Holding Hands"
+121,121. Best Time to Buy and Sell Stock,"You are given an array prices where prices[i] is the price of a given stock on the ith day.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+ 
+Example 1:
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+
+Example 2:
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+
+ 
+Constraints:
+
+1 <= prices.length <= 105
+0 <= prices[i] <= 104
+
+","Array,Dynamic Programming",Easy,,"53,122,123,188,309,2138,2144","Maximum Subarray,Best Time to Buy and Sell Stock II,Best Time to Buy and Sell Stock III,Best Time to Buy and Sell Stock IV,Best Time to Buy and Sell Stock with Cooldown,Sum of Beauty in the Array,Maximum Difference Between Increasing Elements"
+234,234. Palindrome Linked List,"Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+ 
+Example 1:
+
+Input: head = [1,2,2,1]
+Output: true
+
+Example 2:
+
+Input: head = [1,2]
+Output: false
+
+ 
+Constraints:
+
+The number of nodes in the list is in the range [1, 105].
+0 <= Node.val <= 9
+
+ 
+Follow up: Could you do it in O(n) time and O(1) space?","Linked List,Two Pointers,Stack,Recursion",Easy,,"9,125,206,2236","Palindrome Number,Valid Palindrome,Reverse Linked List,Maximum Twin Sum of a Linked List"
+238,238. Product of Array Except Self,"Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+You must write an algorithm that runs in O(n) time and without using the division operation.
+ 
+Example 1:
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+Example 2:
+Input: nums = [-1,1,0,-3,3]
+Output: [0,0,9,0,0]
+
+ 
+Constraints:
+
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+ 
+Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
+","Array,Prefix Sum",Medium,,"42,152,265,2267","Trapping Rain Water,Maximum Product Subarray,Paint House II,Minimum Difference in Sums After Removal of Elements"
+215,215. Kth Largest Element in an Array,"Given an integer array nums and an integer k, return the kth largest element in the array.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Can you solve it without sorting?
+ 
+Example 1:
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+Example 2:
+Input: nums = [3,2,3,1,2,4,5,5,6], k = 4
+Output: 4
+
+ 
+Constraints:
+
+1 <= k <= nums.length <= 105
+-104 <= nums[i] <= 104
+
+","Array,Divide and Conquer,Sorting,Heap (Priority Queue),Quickselect",Medium,,"324,347,414,789,1014,2113,2204,2250","Wiggle Sort II,Top K Frequent Elements,Third Maximum Number,Kth Largest Element in a Stream,K Closest Points to Origin,Find the Kth Largest Integer in the Array,Find Subsequence of Length K With the Largest Sum,K Highest Ranked Items Within a Price Range"
+1073,1073. Adding Two Negabinary Numbers,"Given two numbers arr1 and arr2 in base -2, return the result of adding them together.
+Each number is given in array format:  as an array of 0s and 1s, from most significant bit to least significant bit.  For example, arr = [1,1,0,1] represents the number (-2)^3 + (-2)^2 + (-2)^0 = -3.  A number arr in array, format is also guaranteed to have no leading zeros: either arr == [0] or arr[0] == 1.
+Return the result of adding arr1 and arr2 in the same format: as an array of 0s and 1s with no leading zeros.
+ 
+Example 1:
+Input: arr1 = [1,1,1,1,1], arr2 = [1,0,1]
+Output: [1,0,0,0,0]
+Explanation: arr1 represents 11, arr2 represents 5, the output represents 16.
+
+Example 2:
+Input: arr1 = [0], arr2 = [0]
+Output: [0]
+
+Example 3:
+Input: arr1 = [0], arr2 = [1]
+Output: [1]
+
+ 
+Constraints:
+
+1 <= arr1.length, arr2.length <= 1000
+arr1[i] and arr2[i] are 0 or 1
+arr1 and arr2 have no leading zeros
+
+","Array,Depth-First Search,Breadth-First Search,Union Find,Matrix",Medium,"Can you model this problem as a graph problem?  Create n * m + 1 nodes where n * m nodes represents each cell of the map and one extra node to represent the exterior of the map. In the map add edges between neighbors on land cells. And add edges between the exterior and land nodes which are in the boundary.
+Return as answer the number of nodes that are not reachable from the exterior node.",,
