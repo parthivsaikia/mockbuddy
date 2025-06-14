@@ -1,0 +1,9 @@
+{
+    "input": {
+        "classroom": [
+            "S."
+        ],
+        "energy": 1
+    },
+    "expected_output": 1
+}

@@ -29,16 +29,11 @@ def get_dsa_questions_route(request: DSARequest):
         
         parsed_questions: list[DSAQuestion] = []
         for q_data in questions_data:
-            # Convert 'hints' to list if it's a string
-            if isinstance(q_data.get("hints"), str):
-                q_data["hints"] = [q_data["hints"]]
-            elif q_data.get("hints") in [None, ""]:
-                q_data["hints"] = []
-
             try:
                 parsed_questions.append(DSAQuestion(**q_data))
             except Exception as e:
-                logger.error(f"Error parsing question data into DSAQuestion model: {q_data}, error: {e}") 
+                logger.error(f"Error parsing question data into DSAQuestion model: {q_data}, error: {e}", exc_info=True)
+                continue 
         
         if not parsed_questions and questions_data: 
             raise HTTPException(status_code=500, detail="Failed to parse any question data from the service.")
@@ -63,7 +58,7 @@ def generate_testcase_endpoint(
         )
         return TestCaseResponse(
             question_hash=q_hash,
-            testcase=GeneratedTestCaseData(input_data,expected_output),
+            testcase=GeneratedTestCaseData(input_data=input_data, expected_output=expected_output),
             message=message,
             company=request.company
         )
@@ -149,7 +144,7 @@ def evaluate_submission(req: EvaluationRequest, db: Session = Depends(get_db)):
         if evaluation_response.execution_stderr: feedback_parts.append(f"Execution Stderr: {evaluation_response.execution_stderr}")
         if evaluation_response.compile_error: feedback_parts.append(f"Compile Error: {evaluation_response.compile_error}")
         if evaluation_response.runtime_error: feedback_parts.append(f"Runtime Error: {evaluation_response.runtime_error}")
-        if evaluation_response.evaluation_error: feedback_parts.append(f"Evaluation Error: {evaluation_response.evaluation_error}")
+        if evaluation_response.error: feedback_parts.append(f"Evaluation Error: {evaluation_response.error}")
 
         final_feedback = "\n".join(feedback_parts) if feedback_parts else "No detailed feedback available."
         
