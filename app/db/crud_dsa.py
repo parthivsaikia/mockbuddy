@@ -7,7 +7,6 @@ from app.models.db_models import TestCase, DSAEvaluation, CoreEvaluation
 def get_test_case_by_hash(db: Session, question_hash: str) -> Optional[TestCase]:
     """Retrieves a test case by its question_hash."""
     return db.query(TestCase).filter(TestCase.question_hash == question_hash).first()
-
 def create_test_case(
     db: Session,
     problem_statement: str,

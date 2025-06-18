@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 from typing import List
 
-load_dotenv(dotenv_path='../../mockbuddy.env') # Adjust path as needed from where app runs
+load_dotenv(dotenv_path='/home/parthiv/repos/mockbuddy/mockbuddy.env') # Adjust path as needed from where app runs
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "MockBuddy"
@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     INTERVIEWER_REFRESH_TOKEN_EXPIRE_DAYS: int = 7 # 7 days
     
     # CORS
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost", "http://localhost:3000", "http://localhost:8080"] # Add your frontend origins
+    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost", "http://localhost:3000", "http://localhost:8080", "http://localhost:5173"] # Add your frontend origins
 
     # Gemini API Key
     GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")

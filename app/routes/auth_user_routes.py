@@ -1,5 +1,5 @@
 # app/routes/auth_user_routes.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Response
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from datetime import timedelta, datetime, timezone # Ensure timezone for utcnow()
@@ -30,6 +30,7 @@ def signup_user_route(
 
 @router.post("/users/login", response_model=resp_m.TokenResponse)
 async def login_for_access_token_user_route(
+    response: Response,
     db: Session = Depends(database.get_db),
     form_data: OAuth2PasswordRequestForm = Depends()
 ):
@@ -57,7 +58,30 @@ async def login_for_access_token_user_route(
         user_id=user.id,  # type: ignore
         db=db
     )
-    # No need to call crud_user.create_user_refresh_token separately if AuthService does it.
+    
+    # Set cookies for both access and refresh tokens
+    # Access token cookie - httpOnly for security, secure in production
+    response.set_cookie(
+        key="access_token",
+        value=access_token,
+        max_age=int(access_token_expires.total_seconds()),
+        httponly=True,  # Prevents XSS attacks
+        secure=getattr(settings, 'COOKIE_SECURE', False),  # Set to True in production with HTTPS
+        samesite="lax",  # CSRF protection while allowing normal navigation
+        path="/"
+    )
+    
+    # Refresh token cookie - longer expiration, also httpOnly
+    refresh_token_expires = timedelta(days=getattr(settings, 'USER_REFRESH_TOKEN_EXPIRE_DAYS', 30))
+    response.set_cookie(
+        key="refresh_token",
+        value=refresh_token_str,
+        max_age=int(refresh_token_expires.total_seconds()),
+        httponly=True,
+        secure=getattr(settings, 'COOKIE_SECURE', False),
+        samesite="lax",
+        path="/"
+    )
     
     return resp_m.TokenResponse(
         access_token=access_token,
@@ -69,6 +93,7 @@ async def login_for_access_token_user_route(
 
 @router.post("/users/token/refresh", response_model=resp_m.TokenResponse)
 async def refresh_user_access_token(
+    response: Response,
     refresh_token_data: rm.TokenRefresh,
     db: Session = Depends(database.get_db)
 ):
@@ -106,6 +131,28 @@ async def refresh_user_access_token(
         db=db
     )
 
+    # Update cookies with new tokens
+    response.set_cookie(
+        key="access_token",
+        value=new_access_token,
+        max_age=int(new_access_token_expires.total_seconds()),
+        httponly=True,
+        secure=getattr(settings, 'COOKIE_SECURE', False),
+        samesite="lax",
+        path="/"
+    )
+    
+    refresh_token_expires = timedelta(days=getattr(settings, 'USER_REFRESH_TOKEN_EXPIRE_DAYS', 30))
+    response.set_cookie(
+        key="refresh_token",
+        value=new_refresh_token_str,
+        max_age=int(refresh_token_expires.total_seconds()),
+        httponly=True,
+        secure=getattr(settings, 'COOKIE_SECURE', False),
+        samesite="lax",
+        path="/"
+    )
+
     return resp_m.TokenResponse(
         access_token=new_access_token,
         refresh_token=new_refresh_token_str,
@@ -113,6 +160,26 @@ async def refresh_user_access_token(
         expires_in=int(new_access_token_expires.total_seconds()),
         user=resp_m.UserResponse.model_validate(user)
     )
+
+@router.post("/users/logout")
+async def logout_user(
+    response: Response,
+    refresh_token_data: rm.TokenRefresh,
+    db: Session = Depends(database.get_db)
+):
+    """Logout user by revoking refresh token and clearing cookies"""
+    try:
+        # Revoke the refresh token in the database
+        crud_user.revoke_user_refresh_token(db, token=refresh_token_data.refresh_token)
+    except Exception:
+        # Even if token revocation fails, we should clear cookies
+        pass
+    
+    # Clear the cookies
+    response.delete_cookie(key="access_token", path="/")
+    response.delete_cookie(key="refresh_token", path="/")
+    
+    return {"message": "Successfully logged out"}
 
 @router.get("/users/me", response_model=resp_m.UserResponse)
 async def read_users_me(current_user: User = Depends(auth_services.get_current_active_user)):
